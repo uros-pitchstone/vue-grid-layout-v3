@@ -5,10 +5,10 @@ module.exports = {
     'vue',
   ],
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1', 
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
   transformIgnorePatterns: [
-    "<rootDir>/node_modules/(?!@babel|@interactjs)",
+    '<rootDir>/node_modules/(?!@babel|@interactjs)',
   ],
   transform: {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest',

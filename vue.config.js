@@ -3,22 +3,22 @@
 const webpack = require('webpack');
 const PACKAGE = require('./package.json');
 
-const banner = PACKAGE.name + ' - ' + PACKAGE.version + ' | ' +
-    '(c) 2015, ' + new Date().getFullYear() + '  ' + PACKAGE.author + ' | ' +
-    PACKAGE.homepage;
+const banner = `${PACKAGE.name} - ${PACKAGE.version} | `
+    + `(c) 2015, ${new Date().getFullYear()}  ${PACKAGE.author} | ${
+      PACKAGE.homepage}`;
 
 module.exports = {
-    configureWebpack: {
-        output: {
-            library: "VueGridLayout",
-            libraryExport: 'default'
-        },
-        plugins: [
-            // new BundleAnalyzerPlugin(),
-            new webpack.BannerPlugin(banner)
-        ],
+  configureWebpack: {
+    output: {
+      library: 'VueGridLayout',
+      libraryExport: 'default',
     },
-    css: {
-        extract: false
-    },
-}
+    plugins: [
+      // new BundleAnalyzerPlugin(),
+      new webpack.BannerPlugin(banner),
+    ],
+  },
+  css: {
+    extract: false,
+  },
+};

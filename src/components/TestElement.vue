@@ -1,34 +1,36 @@
+<script setup>
+import {
+  onMounted,
+} from 'vue';
+
+const props = defineProps({
+  text: {
+    type: String,
+    default: 'x',
+  },
+});
+
+const emit = defineEmits([
+  'removeItem',
+]);
+onMounted(() => {
+  console.log(`### ${props.text} ready!`);
+});
+</script>
 <template>
-    <div>
-        <span class="text">
-            {{text}}
-        </span>
-        <span class="remove" @click="$emit('removeItem', text)">x</span>
-    </div>
+  <div>
+    <span class="text">
+      {{text}}
+    </span>
+    <span class="remove" @click="emit('removeItem', text)">x</span>
+  </div>
 </template>
 <style>
 .remove {
-    position: absolute;
-    right: 2px;
-    top: 0;
-    cursor: pointer;
+  position: absolute;
+  right: 2px;
+  top: 0;
+  cursor: pointer;
 }
 </style>
-<script>
-    export default {
-        name: "TestElement",
-        props: {
-            text : {
-                type: String,
-                default: "x",
-            },
-        },
-        data: function() {
-            return {
-            }
-        },
-        mounted: function() {
-            console.log("### " + this.text + " ready!");
-        },
-    }
-</script>
+

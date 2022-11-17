@@ -22,20 +22,20 @@
     }
 </style>
 <script>
-    export default {
-        name: "CustomDragElement",
-        props: {
-            text : {
-                type: String,
-                default: "x",
-            },
-        },
-        data: function() {
-            return {
-            }
-        },
-        mounted: function() {
-            console.log("### " + this.text + " ready!");
-        },
-    }
+export default {
+  name: 'CustomDragElement',
+  props: {
+    text: {
+      type: String,
+      default: 'x',
+    },
+  },
+  data() {
+    return {
+    };
+  },
+  mounted() {
+    console.log(`### ${this.text} ready!`);
+  },
+};
 </script>
