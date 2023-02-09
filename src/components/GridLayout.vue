@@ -20,16 +20,16 @@ import {
   validateLayout,
   cloneLayout,
   getAllCollisions,
-} from '@/helpers/utils';
+} from '../helpers/utils';
 import {
   getBreakpointFromWidth,
   getColsFromBreakpoint,
   findOrGenerateResponsiveLayout,
-} from '@/helpers/responsiveUtils';
+} from '../helpers/responsiveUtils';
 import {
   addWindowEventListener,
   removeWindowEventListener,
-} from '@/helpers/DOM';
+} from '../helpers/DOM';
 import GridItem from './GridItem.vue';
 
 const props = defineProps({
@@ -158,25 +158,32 @@ const state = reactive({
   originalLayout: null, // store original Layout
 });
 const domRef = ref();
+const placeholderRef = ref();
 
 provide('emitter', emitter);
-provide('gridLayout', reactive({
-  margin: props.margin,
-  responsive: props.responsive,
-  cols: props.cols,
-  lastBreakpoint: state.lastBreakpoint,
-  colNum: props.colNum,
-  rowHeight: props.rowHeight,
-  width: state.width,
-  maxRows: props.maxRows,
-  isDraggable: props.isDraggable,
-  isResizable: props.isResizable,
-  isBounded: props.isBounded,
-  transformScale: props.transformScale,
-  useCssTransforms: props.useCssTransforms,
-  useStyleCursor: props.useStyleCursor,
-  isMirrored: props.isMirrored,
-}));
+provide('gridLayout', { props, state });
+// reactive({
+//   margin: props.margin,
+//   responsive: props.responsive,
+//   cols: props.cols,
+//   lastBreakpoint: state.lastBreakpoint,
+//   colNum: props.colNum,
+//   rowHeight: props.rowHeight,
+//   width: state.width,
+//   maxRows: props.maxRows,
+//   isDraggable: props.isDraggable,
+//   isResizable: props.isResizable,
+//   isBounded: props.isBounded,
+//   transformScale: props.transformScale,
+//   useCssTransforms: props.useCssTransforms,
+//   useStyleCursor: props.useStyleCursor,
+//   isMirrored: props.isMirrored,
+// }));
+
+defineExpose({
+  emitter,
+  placeholderRef,
+});
 
 // provide(eventBus, null)
 // provide(layout, state)
@@ -573,7 +580,7 @@ function findDifference(layout, originalLayout) {
 <template>
   <div ref="domRef" class="vue-grid-layout" :style="state.mergedStyle">
     <slot />
-    <grid-item
+    <grid-item ref="placeholderRef"
       v-show="state.isDragging"
       class="vue-grid-placeholder"
       :x="state.placeholder.x"

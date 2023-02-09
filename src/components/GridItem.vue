@@ -21,17 +21,17 @@ import {
   setTopRight,
   setTransformRtl,
   setTransform,
-} from '@/helpers/utils';
+} from '../helpers/utils';
 import {
   getControlPosition,
   createCoreData,
-} from '@/helpers/draggableUtils';
+} from '../helpers/draggableUtils';
 import {
   getColsFromBreakpoint,
-} from '@/helpers/responsiveUtils';
+} from '../helpers/responsiveUtils';
 import {
   getDocumentDir,
-} from '@/helpers/DOM';
+} from '../helpers/DOM';
 
 const props = defineProps({
   // cols: {
@@ -212,7 +212,8 @@ const classObj = computed(() => {
     cssTransforms: state.useCssTransforms,
     'render-rtl': unref(renderRtl),
     'disable-userselect': state.isDragging,
-    'no-touch': unref(isAndroid) && unref(draggableOrResizableAndNotStatic),
+    // 'no-touch': unref(isAndroid) && unref(draggableOrResizableAndNotStatic),
+    'no-touch': unref(draggableOrResizableAndNotStatic),
   };
 });
 
@@ -224,12 +225,12 @@ const draggableOrResizableAndNotStatic = computed(() => {
   return (state.draggable || state.resizable) && !props.static;
 });
 
-const isAndroid = computed(() => {
-  return navigator.userAgent.toLowerCase().indexOf('android') !== -1;
-});
+// const isAndroid = computed(() => {
+//   return navigator.userAgent.toLowerCase().indexOf('android') !== -1;
+// });
 
 const renderRtl = computed(() => {
-  return (gridLayout.isMirrored) ? !state.rtl : state.rtl;
+  return (gridLayout.props.isMirrored) ? !state.rtl : state.rtl;
 });
 
 const resizableHandleClass = computed(() => {
@@ -237,6 +238,11 @@ const resizableHandleClass = computed(() => {
     return 'vue-resizable-handle vue-rtl-resizable-handle';
   }
   return 'vue-resizable-handle';
+});
+
+defineExpose({
+  calcXY,
+  domRef,
 });
 
 function created() {
@@ -293,34 +299,35 @@ onBeforeUnmount(() => {
 });
 
 onMounted(() => {
-  if (gridLayout.responsive && gridLayout.lastBreakpoint) {
-    state.cols = getColsFromBreakpoint(gridLayout.lastBreakpoint, gridLayout.cols);
+  const parent = { ...gridLayout.props, ...gridLayout.state };
+  if (parent.responsive && parent.lastBreakpoint) {
+    state.cols = getColsFromBreakpoint(parent.lastBreakpoint, parent.cols);
   } else {
-    state.cols = gridLayout.colNum;
+    state.cols = parent.colNum;
   }
-  state.rowHeight = gridLayout.rowHeight;
-  state.containerWidth = gridLayout.width !== null ? gridLayout.width : 100;
-  state.margin = gridLayout.margin !== undefined ? gridLayout.margin : [10, 10];
-  state.maxRows = gridLayout.maxRows;
+  state.rowHeight = parent.rowHeight;
+  state.containerWidth = parent.width !== null ? parent.width : 100;
+  state.margin = parent.margin !== undefined ? parent.margin : [10, 10];
+  state.maxRows = parent.maxRows;
 
   if (props.isDraggable === null) {
-    state.draggable = gridLayout.isDraggable;
+    state.draggable = parent.isDraggable;
   } else {
     state.draggable = props.isDraggable;
   }
   if (props.isResizable === null) {
-    state.resizable = gridLayout.isResizable;
+    state.resizable = parent.isResizable;
   } else {
     state.resizable = props.isResizable;
   }
   if (props.isBounded === null) {
-    state.bounded = gridLayout.isBounded;
+    state.bounded = parent.isBounded;
   } else {
     state.bounded = props.isBounded;
   }
-  state.transformScale = gridLayout.transformScale;
-  state.useCssTransforms = gridLayout.useCssTransforms;
-  state.useStyleCursor = gridLayout.useStyleCursor;
+  state.transformScale = parent.transformScale;
+  state.useCssTransforms = parent.useCssTransforms;
+  state.useStyleCursor = parent.useStyleCursor;
   createStyle();
 });
 
@@ -410,7 +417,7 @@ watch(() => props.maxW, () => {
   tryMakeResizable();
 });
 
-watch(() => gridLayout.margin, (margin) => {
+watch(() => gridLayout.props.margin, (margin) => {
   if (!margin
     || (Number(margin[0]) === Number(state.margin[0])
       && Number(margin[1]) === Number(state.margin[1]))
@@ -541,7 +548,7 @@ function handleResize(event) {
       break;
     }
     case 'resizemove': {
-      //                        console.log("### resize => " + event.type + ", lastW=" + state.lastW + ", lastH=" + state.lastH);
+      // console.log("### resize => " + event.type + ", lastW=" + state.lastW + ", lastH=" + state.lastH);
       const coreEvent = createCoreData(state.lastW, state.lastH, x, y);
       if (unref(renderRtl)) {
         newSize.width = state.resizing.width - coreEvent.deltaX / state.transformScale;
@@ -550,7 +557,7 @@ function handleResize(event) {
       }
       newSize.height = state.resizing.height + coreEvent.deltaY / state.transformScale;
 
-      /// console.log("### resize => " + event.type + ", deltaX=" + coreEvent.deltaX + ", deltaY=" + coreEvent.deltaY);
+      // console.log("### resize => " + event.type + ", deltaX=" + coreEvent.deltaX + ", deltaY=" + coreEvent.deltaY);
       state.resizing = newSize;
       break;
     }
@@ -559,7 +566,7 @@ function handleResize(event) {
       pos = calcPosition(state.innerX, state.innerY, state.innerW, state.innerH);
       newSize.width = pos.width;
       newSize.height = pos.height;
-      //                        console.log("### resize end => " + JSON.stringify(newSize));
+      // console.log("### resize end => " + JSON.stringify(newSize));
       state.resizing = null;
       state.isResizing = false;
       break;
@@ -651,15 +658,15 @@ function handleDrag(event) {
       const cTop = clientRect.top / state.transformScale;
       const pTop = parentRect.top / state.transformScale;
 
-      //                        Add rtl support
+      // Add rtl support
       if (unref(renderRtl)) {
         newPosition.left = (cRight - pRight) * -1;
       } else {
         newPosition.left = cLeft - pLeft;
       }
       newPosition.top = cTop - pTop;
-      //                        console.log("### drag end => " + JSON.stringify(newPosition));
-      //                        console.log("### DROP: " + JSON.stringify(newPosition));
+      // console.log("### drag end => " + JSON.stringify(newPosition));
+      // console.log("### DROP: " + JSON.stringify(newPosition));
       state.dragging = null;
       state.isDragging = false;
       // shouldUpdate = true;
@@ -961,6 +968,7 @@ function tryMakeResizable() {
     class="vue-grid-item"
     :class="classObj"
     :style="state.style"
+    :id="i"
   >
     <slot />
     <span v-if="resizableAndNotStatic"
