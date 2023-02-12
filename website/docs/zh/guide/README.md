@@ -2,17 +2,17 @@
 
 ## NPM
 
-	npm install vue-grid-layout --save
-    
+	npm install vue-grid-layout-v3 --save
+
 ## Yarn
 
-    yarn add vue-grid-layout
+    yarn add vue-grid-layout-v3
 
 
 导入库
 
 ```javascript
-    import VueGridLayout from 'vue-grid-layout';
+    import VueGridLayout from 'vue-grid-layout-v3';
 ```
 
 添加到其他Vue组件
@@ -25,14 +25,14 @@
         },
     // ... data, methods, mounted (), etc.
     }
-    
+
 ```
 
 ## 浏览器
 
-包括可用于浏览器的软件包（[从发布版本](https://github.com/jbaysolutions/vue-grid-layout/releases)下载）。组件将自动可用。
+包括可用于浏览器的软件包（[从发布版本](https://github.com/merfais/vue-grid-layout-v3/releases)下载）。组件将自动可用。
 
 ```html
-    <script src="vue-grid-layout.umd.min.js"></script>
+    <script src="vue-grid-layout-v3.umd.min.js"></script>
 ```
 

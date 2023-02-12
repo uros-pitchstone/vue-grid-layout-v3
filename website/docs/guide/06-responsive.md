@@ -1,6 +1,6 @@
 # 06 - Responsive 
 
-[View source](https://github.com/jbaysolutions/vue-grid-layout/blob/master/website/docs/.vuepress/components/Example06Responsive.vue)
+[View source](https://github.com/merfais/vue-grid-layout-v3/blob/master/website/docs/.vuepress/components/Example06Responsive.vue)
 
 <ClientOnly>
 <!--iframe style="border:0;width: 100%;height:3000px;" src="../examples/06-responsive.html"></iframe-->

@@ -2,7 +2,7 @@ const description = 'A draggable and resizable grid layout, as a Vue component.'
 const title = 'Vue Grid Layout - ️A grid layout system for Vue.js'
 
 module.exports = {
-	base: "/vue-grid-layout/",
+	base: "/vue-grid-layout-v3/",
 	locales: {
 		'/': {
 		  lang: 'en-US',
@@ -25,7 +25,7 @@ module.exports = {
 	themeConfig: {
 		smoothScroll: true,
 		logo: '/assets/img/logo.png',
-		repo: 'jbaysolutions/vue-grid-layout',
+		repo: 'merfais/vue-grid-layout-v3',
 		docsDir: 'website/docs',
 		editLinks: true,
 		algolia: {

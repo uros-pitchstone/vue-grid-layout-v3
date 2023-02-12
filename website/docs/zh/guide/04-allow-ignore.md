@@ -4,7 +4,7 @@
 
 单击并拖动每个项目角上的点以重新定位
 
-[查看资料](https://github.com/jbaysolutions/vue-grid-layout/blob/master/website/docs/.vuepress/components/Example04AllowIgnore.vue)
+[查看资料](https://github.com/merfais/vue-grid-layout-v3/blob/master/website/docs/.vuepress/components/Example04AllowIgnore.vue)
 
 <ClientOnly>
 <Example04AllowIgnore></Example04AllowIgnore>

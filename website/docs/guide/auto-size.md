@@ -1,3 +1,3 @@
 # Auto Sizing Grid Items
 
-TODO: https://github.com/jbaysolutions/vue-grid-layout/issues/351
+TODO: https://github.com/merfais/vue-grid-layout-v3/issues/351

@@ -38,7 +38,7 @@ Or by wrapping your grid with a more [specific](https://developer.mozilla.org/en
 
 In this example we change the placeholder background color to green:
 
-[View source](https://github.com/jbaysolutions/vue-grid-layout/blob/master/website/docs/.vuepress/components/ExampleStylingPlaceholder.vue)
+[View source](https://github.com/merfais/vue-grid-layout-v3/blob/master/website/docs/.vuepress/components/ExampleStylingPlaceholder.vue)
 
 <ClientOnly>
 <ExampleStylingPlaceholder></ExampleStylingPlaceholder>
@@ -74,7 +74,7 @@ CSS calculations for grid lines:
 * width: calc(100% - (margin/2))
 * margin: margin / 2
 
-[View source](https://github.com/jbaysolutions/vue-grid-layout/blob/master/website/docs/.vuepress/components/ExampleStylingGridLines.vue)
+[View source](https://github.com/merfais/vue-grid-layout-v3/blob/master/website/docs/.vuepress/components/ExampleStylingGridLines.vue)
 
 <ClientOnly>
 <ExampleStylingGridLines></ExampleStylingGridLines>

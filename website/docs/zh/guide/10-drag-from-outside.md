@@ -4,7 +4,7 @@
 <br/>
 将部件放到栅格中后，您将获得其坐标/属性，并可以据此执行操作。
 
-[查看资料](https://github.com/jbaysolutions/vue-grid-layout/blob/master/website/docs/.vuepress/components/Example10DragFromOutside.vue)
+[查看资料](https://github.com/merfais/vue-grid-layout-v3/blob/master/website/docs/.vuepress/components/Example10DragFromOutside.vue)
 
 <ClientOnly>
 <Example10DragFromOutside></Example10DragFromOutside>

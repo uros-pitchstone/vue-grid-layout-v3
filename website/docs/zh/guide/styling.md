@@ -38,7 +38,7 @@
 
 在此示例中，我们将占位符的背景色更改为绿色：
 
-[查看资料](https://github.com/jbaysolutions/vue-grid-layout/blob/master/website/docs/.vuepress/components/ExampleStylingPlaceholder.vue)
+[查看资料](https://github.com/merfais/vue-grid-layout-v3/blob/master/website/docs/.vuepress/components/ExampleStylingPlaceholder.vue)
 
 <ClientOnly>
 <ExampleStylingPlaceholder></ExampleStylingPlaceholder>
