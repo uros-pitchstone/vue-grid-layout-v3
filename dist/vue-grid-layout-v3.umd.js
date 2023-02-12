@@ -1,4 +1,4 @@
-/*! vue-grid-layout-v3 - 3.0.0 | (c) 2015, 2022  coffeebi <merfais.bwq@163.com> | https://github.com/merfais/vue-grid-layout-v3 */
+/*! vue-grid-layout-v3 - 3.0.2 | (c) 2015, 2023  coffeebi <merfais.bwq@163.com> | https://github.com/merfais/vue-grid-layout-v3 */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("vue"));
@@ -283,23 +283,6 @@ module.exports = function (argument) {
 
 /***/ }),
 
-/***/ 9483:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var isConstructor = __webpack_require__(4411);
-var tryToString = __webpack_require__(6330);
-
-var $TypeError = TypeError;
-
-// `Assert: IsConstructor(argument) is true`
-module.exports = function (argument) {
-  if (isConstructor(argument)) return argument;
-  throw $TypeError(tryToString(argument) + ' is not a constructor');
-};
-
-
-/***/ }),
-
 /***/ 6077:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -354,21 +337,6 @@ var charAt = (__webpack_require__(8710).charAt);
 // https://tc39.es/ecma262/#sec-advancestringindex
 module.exports = function (S, index, unicode) {
   return index + (unicode ? charAt(S, index).length : 1);
-};
-
-
-/***/ }),
-
-/***/ 5787:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var isPrototypeOf = __webpack_require__(7976);
-
-var $TypeError = TypeError;
-
-module.exports = function (it, Prototype) {
-  if (isPrototypeOf(Prototype, it)) return it;
-  throw $TypeError('Incorrect invocation');
 };
 
 
@@ -1004,6 +972,28 @@ module.exports = function (object, key, value) {
 
 /***/ }),
 
+/***/ 8709:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+"use strict";
+
+var anObject = __webpack_require__(9670);
+var ordinaryToPrimitive = __webpack_require__(2140);
+
+var $TypeError = TypeError;
+
+// `Date.prototype[@@toPrimitive](hint)` method implementation
+// https://tc39.es/ecma262/#sec-date.prototype-@@toprimitive
+module.exports = function (hint) {
+  anObject(this);
+  if (hint === 'string' || hint === 'default') hint = 'string';
+  else if (hint !== 'number') throw $TypeError('Incorrect hint');
+  return ordinaryToPrimitive(this, hint);
+};
+
+
+/***/ }),
+
 /***/ 7045:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -1108,6 +1098,7 @@ module.exports = !fails(function () {
 var documentAll = typeof document == 'object' && document.all;
 
 // https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot
+// eslint-disable-next-line unicorn/no-typeof-undefined -- required for testing
 var IS_HTMLDDA = typeof documentAll == 'undefined' && documentAll !== undefined;
 
 module.exports = {
@@ -1217,28 +1208,6 @@ module.exports = !!firefox && +firefox[1];
 
 /***/ }),
 
-/***/ 7871:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var IS_DENO = __webpack_require__(3823);
-var IS_NODE = __webpack_require__(5268);
-
-module.exports = !IS_DENO && !IS_NODE
-  && typeof window == 'object'
-  && typeof document == 'object';
-
-
-/***/ }),
-
-/***/ 3823:
-/***/ (function(module) {
-
-/* global Deno -- Deno case */
-module.exports = typeof Deno == 'object' && Deno && typeof Deno.version == 'object';
-
-
-/***/ }),
-
 /***/ 256:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -1249,54 +1218,10 @@ module.exports = /MSIE|Trident/.test(UA);
 
 /***/ }),
 
-/***/ 1528:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var userAgent = __webpack_require__(8113);
-var global = __webpack_require__(7854);
-
-module.exports = /ipad|iphone|ipod/i.test(userAgent) && global.Pebble !== undefined;
-
-
-/***/ }),
-
-/***/ 6833:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var userAgent = __webpack_require__(8113);
-
-module.exports = /(?:ipad|iphone|ipod).*applewebkit/i.test(userAgent);
-
-
-/***/ }),
-
-/***/ 5268:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var classof = __webpack_require__(4326);
-var global = __webpack_require__(7854);
-
-module.exports = classof(global.process) == 'process';
-
-
-/***/ }),
-
-/***/ 1036:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var userAgent = __webpack_require__(8113);
-
-module.exports = /web0s(?!.*chrome)/i.test(userAgent);
-
-
-/***/ }),
-
 /***/ 8113:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+/***/ (function(module) {
 
-var getBuiltIn = __webpack_require__(5005);
-
-module.exports = getBuiltIn('navigator', 'userAgent') || '';
+module.exports = typeof navigator != 'undefined' && String(navigator.userAgent) || '';
 
 
 /***/ }),
@@ -1380,6 +1305,26 @@ module.exports = function (stack, dropEntries) {
   if (IS_V8_OR_CHAKRA_STACK && typeof stack == 'string' && !$Error.prepareStackTrace) {
     while (dropEntries--) stack = replace(stack, V8_OR_CHAKRA_STACK_ENTRY, '');
   } return stack;
+};
+
+
+/***/ }),
+
+/***/ 5392:
+/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
+
+var createNonEnumerableProperty = __webpack_require__(8880);
+var clearErrorStack = __webpack_require__(1060);
+var ERROR_STACK_INSTALLABLE = __webpack_require__(2914);
+
+// non-standard V8
+var captureStackTrace = Error.captureStackTrace;
+
+module.exports = function (error, C, stack, dropEntries) {
+  if (ERROR_STACK_INSTALLABLE) {
+    if (captureStackTrace) captureStackTrace(error, C);
+    else createNonEnumerableProperty(error, 'stack', clearErrorStack(stack, dropEntries));
+  }
 };
 
 
@@ -1854,21 +1799,6 @@ module.exports = {};
 
 /***/ }),
 
-/***/ 842:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var global = __webpack_require__(7854);
-
-module.exports = function (a, b) {
-  var console = global.console;
-  if (console && console.error) {
-    arguments.length == 1 ? console.error(a) : console.error(a, b);
-  }
-};
-
-
-/***/ }),
-
 /***/ 490:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -2254,81 +2184,6 @@ module.exports = USE_SYMBOL_AS_UID ? function (it) {
 
 /***/ }),
 
-/***/ 612:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var bind = __webpack_require__(9974);
-var call = __webpack_require__(6916);
-var anObject = __webpack_require__(9670);
-var tryToString = __webpack_require__(6330);
-var isArrayIteratorMethod = __webpack_require__(7659);
-var lengthOfArrayLike = __webpack_require__(6244);
-var isPrototypeOf = __webpack_require__(7976);
-var getIterator = __webpack_require__(4121);
-var getIteratorMethod = __webpack_require__(1246);
-var iteratorClose = __webpack_require__(9212);
-
-var $TypeError = TypeError;
-
-var Result = function (stopped, result) {
-  this.stopped = stopped;
-  this.result = result;
-};
-
-var ResultPrototype = Result.prototype;
-
-module.exports = function (iterable, unboundFunction, options) {
-  var that = options && options.that;
-  var AS_ENTRIES = !!(options && options.AS_ENTRIES);
-  var IS_RECORD = !!(options && options.IS_RECORD);
-  var IS_ITERATOR = !!(options && options.IS_ITERATOR);
-  var INTERRUPTED = !!(options && options.INTERRUPTED);
-  var fn = bind(unboundFunction, that);
-  var iterator, iterFn, index, length, result, next, step;
-
-  var stop = function (condition) {
-    if (iterator) iteratorClose(iterator, 'normal', condition);
-    return new Result(true, condition);
-  };
-
-  var callFn = function (value) {
-    if (AS_ENTRIES) {
-      anObject(value);
-      return INTERRUPTED ? fn(value[0], value[1], stop) : fn(value[0], value[1]);
-    } return INTERRUPTED ? fn(value, stop) : fn(value);
-  };
-
-  if (IS_RECORD) {
-    iterator = iterable.iterator;
-  } else if (IS_ITERATOR) {
-    iterator = iterable;
-  } else {
-    iterFn = getIteratorMethod(iterable);
-    if (!iterFn) throw $TypeError(tryToString(iterable) + ' is not iterable');
-    // optimisation for array iterators
-    if (isArrayIteratorMethod(iterFn)) {
-      for (index = 0, length = lengthOfArrayLike(iterable); length > index; index++) {
-        result = callFn(iterable[index]);
-        if (result && isPrototypeOf(ResultPrototype, result)) return result;
-      } return new Result(false);
-    }
-    iterator = getIterator(iterable, iterFn);
-  }
-
-  next = IS_RECORD ? iterable.next : iterator.next;
-  while (!(step = call(next, iterator)).done) {
-    try {
-      result = callFn(step.value);
-    } catch (error) {
-      iteratorClose(iterator, 'throw', error);
-    }
-    if (typeof result == 'object' && result && isPrototypeOf(ResultPrototype, result)) return result;
-  } return new Result(false);
-};
-
-
-/***/ }),
-
 /***/ 9212:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -2572,6 +2427,7 @@ module.exports = function (obj) {
 /***/ 6339:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
+var uncurryThis = __webpack_require__(1702);
 var fails = __webpack_require__(7293);
 var isCallable = __webpack_require__(614);
 var hasOwn = __webpack_require__(2597);
@@ -2582,8 +2438,12 @@ var InternalStateModule = __webpack_require__(9909);
 
 var enforceInternalState = InternalStateModule.enforce;
 var getInternalState = InternalStateModule.get;
+var $String = String;
 // eslint-disable-next-line es/no-object-defineproperty -- safe
 var defineProperty = Object.defineProperty;
+var stringSlice = uncurryThis(''.slice);
+var replace = uncurryThis(''.replace);
+var join = uncurryThis([].join);
 
 var CONFIGURABLE_LENGTH = DESCRIPTORS && !fails(function () {
   return defineProperty(function () { /* empty */ }, 'length', { value: 8 }).length !== 8;
@@ -2592,8 +2452,8 @@ var CONFIGURABLE_LENGTH = DESCRIPTORS && !fails(function () {
 var TEMPLATE = String(String).split('String');
 
 var makeBuiltIn = module.exports = function (value, name, options) {
-  if (String(name).slice(0, 7) === 'Symbol(') {
-    name = '[' + String(name).replace(/^Symbol\(([^)]*)\)/, '$1') + ']';
+  if (stringSlice($String(name), 0, 7) === 'Symbol(') {
+    name = '[' + replace($String(name), /^Symbol\(([^)]*)\)/, '$1') + ']';
   }
   if (options && options.getter) name = 'get ' + name;
   if (options && options.setter) name = 'set ' + name;
@@ -2612,7 +2472,7 @@ var makeBuiltIn = module.exports = function (value, name, options) {
   } catch (error) { /* empty */ }
   var state = enforceInternalState(value);
   if (!hasOwn(state, 'source')) {
-    state.source = TEMPLATE.join(typeof name == 'string' ? name : '');
+    state.source = join(TEMPLATE, typeof name == 'string' ? name : '');
   } return value;
 };
 
@@ -2637,127 +2497,6 @@ var floor = Math.floor;
 module.exports = Math.trunc || function trunc(x) {
   var n = +x;
   return (n > 0 ? floor : ceil)(n);
-};
-
-
-/***/ }),
-
-/***/ 5948:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var global = __webpack_require__(7854);
-var bind = __webpack_require__(9974);
-var getOwnPropertyDescriptor = (__webpack_require__(1236).f);
-var macrotask = (__webpack_require__(261).set);
-var IS_IOS = __webpack_require__(6833);
-var IS_IOS_PEBBLE = __webpack_require__(1528);
-var IS_WEBOS_WEBKIT = __webpack_require__(1036);
-var IS_NODE = __webpack_require__(5268);
-
-var MutationObserver = global.MutationObserver || global.WebKitMutationObserver;
-var document = global.document;
-var process = global.process;
-var Promise = global.Promise;
-// Node.js 11 shows ExperimentalWarning on getting `queueMicrotask`
-var queueMicrotaskDescriptor = getOwnPropertyDescriptor(global, 'queueMicrotask');
-var queueMicrotask = queueMicrotaskDescriptor && queueMicrotaskDescriptor.value;
-
-var flush, head, last, notify, toggle, node, promise, then;
-
-// modern engines have queueMicrotask method
-if (!queueMicrotask) {
-  flush = function () {
-    var parent, fn;
-    if (IS_NODE && (parent = process.domain)) parent.exit();
-    while (head) {
-      fn = head.fn;
-      head = head.next;
-      try {
-        fn();
-      } catch (error) {
-        if (head) notify();
-        else last = undefined;
-        throw error;
-      }
-    } last = undefined;
-    if (parent) parent.enter();
-  };
-
-  // browsers with MutationObserver, except iOS - https://github.com/zloirock/core-js/issues/339
-  // also except WebOS Webkit https://github.com/zloirock/core-js/issues/898
-  if (!IS_IOS && !IS_NODE && !IS_WEBOS_WEBKIT && MutationObserver && document) {
-    toggle = true;
-    node = document.createTextNode('');
-    new MutationObserver(flush).observe(node, { characterData: true });
-    notify = function () {
-      node.data = toggle = !toggle;
-    };
-  // environments with maybe non-completely correct, but existent Promise
-  } else if (!IS_IOS_PEBBLE && Promise && Promise.resolve) {
-    // Promise.resolve without an argument throws an error in LG WebOS 2
-    promise = Promise.resolve(undefined);
-    // workaround of WebKit ~ iOS Safari 10.1 bug
-    promise.constructor = Promise;
-    then = bind(promise.then, promise);
-    notify = function () {
-      then(flush);
-    };
-  // Node.js without promises
-  } else if (IS_NODE) {
-    notify = function () {
-      process.nextTick(flush);
-    };
-  // for other environments - macrotask based on:
-  // - setImmediate
-  // - MessageChannel
-  // - window.postMessage
-  // - onreadystatechange
-  // - setTimeout
-  } else {
-    // strange IE + webpack dev server bug - use .bind(global)
-    macrotask = bind(macrotask, global);
-    notify = function () {
-      macrotask(flush);
-    };
-  }
-}
-
-module.exports = queueMicrotask || function (fn) {
-  var task = { fn: fn, next: undefined };
-  if (last) last.next = task;
-  if (!head) {
-    head = task;
-    notify();
-  } last = task;
-};
-
-
-/***/ }),
-
-/***/ 8523:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-"use strict";
-
-var aCallable = __webpack_require__(9662);
-
-var $TypeError = TypeError;
-
-var PromiseCapability = function (C) {
-  var resolve, reject;
-  this.promise = new C(function ($$resolve, $$reject) {
-    if (resolve !== undefined || reject !== undefined) throw $TypeError('Bad Promise constructor');
-    resolve = $$resolve;
-    reject = $$reject;
-  });
-  this.resolve = aCallable(resolve);
-  this.reject = aCallable(reject);
-};
-
-// `NewPromiseCapability` abstract operation
-// https://tc39.es/ecma262/#sec-newpromisecapability
-module.exports.f = function (C) {
-  return new PromiseCapability(C);
 };
 
 
@@ -3252,117 +2991,6 @@ module.exports = global;
 
 /***/ }),
 
-/***/ 2534:
-/***/ (function(module) {
-
-module.exports = function (exec) {
-  try {
-    return { error: false, value: exec() };
-  } catch (error) {
-    return { error: true, value: error };
-  }
-};
-
-
-/***/ }),
-
-/***/ 3702:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var global = __webpack_require__(7854);
-var NativePromiseConstructor = __webpack_require__(2492);
-var isCallable = __webpack_require__(614);
-var isForced = __webpack_require__(4705);
-var inspectSource = __webpack_require__(2788);
-var wellKnownSymbol = __webpack_require__(5112);
-var IS_BROWSER = __webpack_require__(7871);
-var IS_DENO = __webpack_require__(3823);
-var IS_PURE = __webpack_require__(1913);
-var V8_VERSION = __webpack_require__(7392);
-
-var NativePromisePrototype = NativePromiseConstructor && NativePromiseConstructor.prototype;
-var SPECIES = wellKnownSymbol('species');
-var SUBCLASSING = false;
-var NATIVE_PROMISE_REJECTION_EVENT = isCallable(global.PromiseRejectionEvent);
-
-var FORCED_PROMISE_CONSTRUCTOR = isForced('Promise', function () {
-  var PROMISE_CONSTRUCTOR_SOURCE = inspectSource(NativePromiseConstructor);
-  var GLOBAL_CORE_JS_PROMISE = PROMISE_CONSTRUCTOR_SOURCE !== String(NativePromiseConstructor);
-  // V8 6.6 (Node 10 and Chrome 66) have a bug with resolving custom thenables
-  // https://bugs.chromium.org/p/chromium/issues/detail?id=830565
-  // We can't detect it synchronously, so just check versions
-  if (!GLOBAL_CORE_JS_PROMISE && V8_VERSION === 66) return true;
-  // We need Promise#{ catch, finally } in the pure version for preventing prototype pollution
-  if (IS_PURE && !(NativePromisePrototype['catch'] && NativePromisePrototype['finally'])) return true;
-  // We can't use @@species feature detection in V8 since it causes
-  // deoptimization and performance degradation
-  // https://github.com/zloirock/core-js/issues/679
-  if (!V8_VERSION || V8_VERSION < 51 || !/native code/.test(PROMISE_CONSTRUCTOR_SOURCE)) {
-    // Detect correctness of subclassing with @@species support
-    var promise = new NativePromiseConstructor(function (resolve) { resolve(1); });
-    var FakePromise = function (exec) {
-      exec(function () { /* empty */ }, function () { /* empty */ });
-    };
-    var constructor = promise.constructor = {};
-    constructor[SPECIES] = FakePromise;
-    SUBCLASSING = promise.then(function () { /* empty */ }) instanceof FakePromise;
-    if (!SUBCLASSING) return true;
-  // Unhandled rejections tracking support, NodeJS Promise without it fails @@species test
-  } return !GLOBAL_CORE_JS_PROMISE && (IS_BROWSER || IS_DENO) && !NATIVE_PROMISE_REJECTION_EVENT;
-});
-
-module.exports = {
-  CONSTRUCTOR: FORCED_PROMISE_CONSTRUCTOR,
-  REJECTION_EVENT: NATIVE_PROMISE_REJECTION_EVENT,
-  SUBCLASSING: SUBCLASSING
-};
-
-
-/***/ }),
-
-/***/ 2492:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var global = __webpack_require__(7854);
-
-module.exports = global.Promise;
-
-
-/***/ }),
-
-/***/ 9478:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var anObject = __webpack_require__(9670);
-var isObject = __webpack_require__(111);
-var newPromiseCapability = __webpack_require__(8523);
-
-module.exports = function (C, x) {
-  anObject(C);
-  if (isObject(x) && x.constructor === C) return x;
-  var promiseCapability = newPromiseCapability.f(C);
-  var resolve = promiseCapability.resolve;
-  resolve(x);
-  return promiseCapability.promise;
-};
-
-
-/***/ }),
-
-/***/ 8368:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var NativePromiseConstructor = __webpack_require__(2492);
-var checkCorrectnessOfIteration = __webpack_require__(7072);
-var FORCED_PROMISE_CONSTRUCTOR = (__webpack_require__(3702).CONSTRUCTOR);
-
-module.exports = FORCED_PROMISE_CONSTRUCTOR || !checkCorrectnessOfIteration(function (iterable) {
-  NativePromiseConstructor.all(iterable).then(undefined, function () { /* empty */ });
-});
-
-
-/***/ }),
-
 /***/ 2626:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -3375,36 +3003,6 @@ module.exports = function (Target, Source, key) {
     set: function (it) { Source[key] = it; }
   });
 };
-
-
-/***/ }),
-
-/***/ 8572:
-/***/ (function(module) {
-
-var Queue = function () {
-  this.head = null;
-  this.tail = null;
-};
-
-Queue.prototype = {
-  add: function (item) {
-    var entry = { item: item, next: null };
-    if (this.head) this.tail.next = entry;
-    else this.head = entry;
-    this.tail = entry;
-  },
-  get: function () {
-    var entry = this.head;
-    if (entry) {
-      this.head = entry.next;
-      if (this.tail === entry) this.tail = null;
-      return entry.item;
-    }
-  }
-};
-
-module.exports = Queue;
 
 
 /***/ }),
@@ -3676,33 +3274,6 @@ module.exports = function (it) {
 
 /***/ }),
 
-/***/ 6340:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-"use strict";
-
-var getBuiltIn = __webpack_require__(5005);
-var definePropertyModule = __webpack_require__(3070);
-var wellKnownSymbol = __webpack_require__(5112);
-var DESCRIPTORS = __webpack_require__(9781);
-
-var SPECIES = wellKnownSymbol('species');
-
-module.exports = function (CONSTRUCTOR_NAME) {
-  var Constructor = getBuiltIn(CONSTRUCTOR_NAME);
-  var defineProperty = definePropertyModule.f;
-
-  if (DESCRIPTORS && Constructor && !Constructor[SPECIES]) {
-    defineProperty(Constructor, SPECIES, {
-      configurable: true,
-      get: function () { return this; }
-    });
-  }
-};
-
-
-/***/ }),
-
 /***/ 8003:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -3760,33 +3331,12 @@ var store = __webpack_require__(5465);
 (module.exports = function (key, value) {
   return store[key] || (store[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.26.1',
+  version: '3.27.2',
   mode: IS_PURE ? 'pure' : 'global',
-  copyright: '© 2014-2022 Denis Pushkarev (zloirock.ru)',
-  license: 'https://github.com/zloirock/core-js/blob/v3.26.1/LICENSE',
+  copyright: '© 2014-2023 Denis Pushkarev (zloirock.ru)',
+  license: 'https://github.com/zloirock/core-js/blob/v3.27.2/LICENSE',
   source: 'https://github.com/zloirock/core-js'
 });
-
-
-/***/ }),
-
-/***/ 6707:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var anObject = __webpack_require__(9670);
-var aConstructor = __webpack_require__(9483);
-var isNullOrUndefined = __webpack_require__(8554);
-var wellKnownSymbol = __webpack_require__(5112);
-
-var SPECIES = wellKnownSymbol('species');
-
-// `SpeciesConstructor` abstract operation
-// https://tc39.es/ecma262/#sec-speciesconstructor
-module.exports = function (O, defaultConstructor) {
-  var C = anObject(O).constructor;
-  var S;
-  return C === undefined || isNullOrUndefined(S = anObject(C)[SPECIES]) ? defaultConstructor : aConstructor(S);
-};
 
 
 /***/ }),
@@ -3948,129 +3498,6 @@ var NATIVE_SYMBOL = __webpack_require__(6293);
 
 /* eslint-disable es/no-symbol -- safe */
 module.exports = NATIVE_SYMBOL && !!Symbol['for'] && !!Symbol.keyFor;
-
-
-/***/ }),
-
-/***/ 261:
-/***/ (function(module, __unused_webpack_exports, __webpack_require__) {
-
-var global = __webpack_require__(7854);
-var apply = __webpack_require__(2104);
-var bind = __webpack_require__(9974);
-var isCallable = __webpack_require__(614);
-var hasOwn = __webpack_require__(2597);
-var fails = __webpack_require__(7293);
-var html = __webpack_require__(490);
-var arraySlice = __webpack_require__(206);
-var createElement = __webpack_require__(317);
-var validateArgumentsLength = __webpack_require__(8053);
-var IS_IOS = __webpack_require__(6833);
-var IS_NODE = __webpack_require__(5268);
-
-var set = global.setImmediate;
-var clear = global.clearImmediate;
-var process = global.process;
-var Dispatch = global.Dispatch;
-var Function = global.Function;
-var MessageChannel = global.MessageChannel;
-var String = global.String;
-var counter = 0;
-var queue = {};
-var ONREADYSTATECHANGE = 'onreadystatechange';
-var $location, defer, channel, port;
-
-try {
-  // Deno throws a ReferenceError on `location` access without `--location` flag
-  $location = global.location;
-} catch (error) { /* empty */ }
-
-var run = function (id) {
-  if (hasOwn(queue, id)) {
-    var fn = queue[id];
-    delete queue[id];
-    fn();
-  }
-};
-
-var runner = function (id) {
-  return function () {
-    run(id);
-  };
-};
-
-var listener = function (event) {
-  run(event.data);
-};
-
-var post = function (id) {
-  // old engines have not location.origin
-  global.postMessage(String(id), $location.protocol + '//' + $location.host);
-};
-
-// Node.js 0.9+ & IE10+ has setImmediate, otherwise:
-if (!set || !clear) {
-  set = function setImmediate(handler) {
-    validateArgumentsLength(arguments.length, 1);
-    var fn = isCallable(handler) ? handler : Function(handler);
-    var args = arraySlice(arguments, 1);
-    queue[++counter] = function () {
-      apply(fn, undefined, args);
-    };
-    defer(counter);
-    return counter;
-  };
-  clear = function clearImmediate(id) {
-    delete queue[id];
-  };
-  // Node.js 0.8-
-  if (IS_NODE) {
-    defer = function (id) {
-      process.nextTick(runner(id));
-    };
-  // Sphere (JS game engine) Dispatch API
-  } else if (Dispatch && Dispatch.now) {
-    defer = function (id) {
-      Dispatch.now(runner(id));
-    };
-  // Browsers with MessageChannel, includes WebWorkers
-  // except iOS - https://github.com/zloirock/core-js/issues/624
-  } else if (MessageChannel && !IS_IOS) {
-    channel = new MessageChannel();
-    port = channel.port2;
-    channel.port1.onmessage = listener;
-    defer = bind(port.postMessage, port);
-  // Browsers with postMessage, skip WebWorkers
-  // IE8 has postMessage, but it's sync & typeof its postMessage is 'object'
-  } else if (
-    global.addEventListener &&
-    isCallable(global.postMessage) &&
-    !global.importScripts &&
-    $location && $location.protocol !== 'file:' &&
-    !fails(post)
-  ) {
-    defer = post;
-    global.addEventListener('message', listener, false);
-  // IE8-
-  } else if (ONREADYSTATECHANGE in createElement('script')) {
-    defer = function (id) {
-      html.appendChild(createElement('script'))[ONREADYSTATECHANGE] = function () {
-        html.removeChild(this);
-        run(id);
-      };
-    };
-  // Rest old browsers
-  } else {
-    defer = function (id) {
-      setTimeout(runner(id), 0);
-    };
-  }
-}
-
-module.exports = {
-  set: set,
-  clear: clear
-};
 
 
 /***/ }),
@@ -4310,19 +3737,6 @@ module.exports = DESCRIPTORS && fails(function () {
 
 /***/ }),
 
-/***/ 8053:
-/***/ (function(module) {
-
-var $TypeError = TypeError;
-
-module.exports = function (passed, required) {
-  if (passed < required) throw $TypeError('Not enough arguments');
-  return passed;
-};
-
-
-/***/ }),
-
 /***/ 4811:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
@@ -4374,21 +3788,15 @@ var uid = __webpack_require__(9711);
 var NATIVE_SYMBOL = __webpack_require__(6293);
 var USE_SYMBOL_AS_UID = __webpack_require__(3307);
 
-var WellKnownSymbolsStore = shared('wks');
 var Symbol = global.Symbol;
-var symbolFor = Symbol && Symbol['for'];
-var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol : Symbol && Symbol.withoutSetter || uid;
+var WellKnownSymbolsStore = shared('wks');
+var createWellKnownSymbol = USE_SYMBOL_AS_UID ? Symbol['for'] || Symbol : Symbol && Symbol.withoutSetter || uid;
 
 module.exports = function (name) {
-  if (!hasOwn(WellKnownSymbolsStore, name) || !(NATIVE_SYMBOL || typeof WellKnownSymbolsStore[name] == 'string')) {
-    var description = 'Symbol.' + name;
-    if (NATIVE_SYMBOL && hasOwn(Symbol, name)) {
-      WellKnownSymbolsStore[name] = Symbol[name];
-    } else if (USE_SYMBOL_AS_UID && symbolFor) {
-      WellKnownSymbolsStore[name] = symbolFor(description);
-    } else {
-      WellKnownSymbolsStore[name] = createWellKnownSymbol(description);
-    }
+  if (!hasOwn(WellKnownSymbolsStore, name)) {
+    WellKnownSymbolsStore[name] = NATIVE_SYMBOL && hasOwn(Symbol, name)
+      ? Symbol[name]
+      : createWellKnownSymbol('Symbol.' + name);
   } return WellKnownSymbolsStore[name];
 };
 
@@ -4420,8 +3828,7 @@ var proxyAccessor = __webpack_require__(2626);
 var inheritIfRequired = __webpack_require__(9587);
 var normalizeStringArgument = __webpack_require__(6277);
 var installErrorCause = __webpack_require__(8340);
-var clearErrorStack = __webpack_require__(1060);
-var ERROR_STACK_INSTALLABLE = __webpack_require__(2914);
+var installErrorStack = __webpack_require__(5392);
 var DESCRIPTORS = __webpack_require__(9781);
 var IS_PURE = __webpack_require__(1913);
 
@@ -4447,7 +3854,7 @@ module.exports = function (FULL_NAME, wrapper, FORCED, IS_AGGREGATE_ERROR) {
     var message = normalizeStringArgument(IS_AGGREGATE_ERROR ? b : a, undefined);
     var result = IS_AGGREGATE_ERROR ? new OriginalError(a) : new OriginalError();
     if (message !== undefined) createNonEnumerableProperty(result, 'message', message);
-    if (ERROR_STACK_INSTALLABLE) createNonEnumerableProperty(result, 'stack', clearErrorStack(result.stack, 2));
+    installErrorStack(result, WrappedError, result.stack, 2);
     if (this && isPrototypeOf(OriginalErrorPrototype, this)) inheritIfRequired(result, this, WrappedError);
     if (arguments.length > OPTIONS_POSITION) installErrorCause(result, arguments[OPTIONS_POSITION]);
     return result;
@@ -4508,15 +3915,13 @@ var IS_CONCAT_SPREADABLE_SUPPORT = V8_VERSION >= 51 || !fails(function () {
   return array.concat()[0] !== array;
 });
 
-var SPECIES_SUPPORT = arrayMethodHasSpeciesSupport('concat');
-
 var isConcatSpreadable = function (O) {
   if (!isObject(O)) return false;
   var spreadable = O[IS_CONCAT_SPREADABLE];
   return spreadable !== undefined ? !!spreadable : isArray(O);
 };
 
-var FORCED = !IS_CONCAT_SPREADABLE_SUPPORT || !SPECIES_SUPPORT;
+var FORCED = !IS_CONCAT_SPREADABLE_SUPPORT || !arrayMethodHasSpeciesSupport('concat');
 
 // `Array.prototype.concat` method
 // https://tc39.es/ecma262/#sec-array.prototype.concat
@@ -4702,18 +4107,20 @@ var INCORRECT_TO_LENGTH = fails(function () {
 
 // V8 and Safari <= 15.4, FF < 23 throws InternalError
 // https://bugs.chromium.org/p/v8/issues/detail?id=12681
-var SILENT_ON_NON_WRITABLE_LENGTH = !function () {
+var properErrorOnNonWritableLength = function () {
   try {
     // eslint-disable-next-line es/no-object-defineproperty -- safe
     Object.defineProperty([], 'length', { writable: false }).push();
   } catch (error) {
     return error instanceof TypeError;
   }
-}();
+};
+
+var FORCED = INCORRECT_TO_LENGTH || !properErrorOnNonWritableLength();
 
 // `Array.prototype.push` method
 // https://tc39.es/ecma262/#sec-array.prototype.push
-$({ target: 'Array', proto: true, arity: 1, forced: INCORRECT_TO_LENGTH || SILENT_ON_NON_WRITABLE_LENGTH }, {
+$({ target: 'Array', proto: true, arity: 1, forced: FORCED }, {
   // eslint-disable-next-line no-unused-vars -- required for `.length`
   push: function push(item) {
     var O = toObject(this);
@@ -4978,6 +4385,26 @@ $({ target: 'Array', proto: true, forced: !HAS_SPECIES_SUPPORT }, {
 
 /***/ }),
 
+/***/ 6078:
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+
+var hasOwn = __webpack_require__(2597);
+var defineBuiltIn = __webpack_require__(8052);
+var dateToPrimitive = __webpack_require__(8709);
+var wellKnownSymbol = __webpack_require__(5112);
+
+var TO_PRIMITIVE = wellKnownSymbol('toPrimitive');
+var DatePrototype = Date.prototype;
+
+// `Date.prototype[@@toPrimitive]` method
+// https://tc39.es/ecma262/#sec-date.prototype-@@toprimitive
+if (!hasOwn(DatePrototype, TO_PRIMITIVE)) {
+  defineBuiltIn(DatePrototype, TO_PRIMITIVE, dateToPrimitive);
+}
+
+
+/***/ }),
+
 /***/ 1703:
 /***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
@@ -5006,6 +4433,7 @@ var exportWebAssemblyErrorCauseWrapper = function (ERROR_NAME, wrapper) {
   }
 };
 
+// https://tc39.es/ecma262/#sec-nativeerror
 // https://github.com/tc39/proposal-error-cause
 exportGlobalErrorCauseWrapper('Error', function (init) {
   return function Error(message) { return apply(init, this, arguments); };
@@ -5182,11 +4610,13 @@ setToStringTag(Math, 'Math', true);
 
 "use strict";
 
+var $ = __webpack_require__(2109);
+var IS_PURE = __webpack_require__(1913);
 var DESCRIPTORS = __webpack_require__(9781);
 var global = __webpack_require__(7854);
+var path = __webpack_require__(857);
 var uncurryThis = __webpack_require__(1702);
 var isForced = __webpack_require__(4705);
-var defineBuiltIn = __webpack_require__(8052);
 var hasOwn = __webpack_require__(2597);
 var inheritIfRequired = __webpack_require__(9587);
 var isPrototypeOf = __webpack_require__(7976);
@@ -5201,9 +4631,10 @@ var trim = (__webpack_require__(3111).trim);
 
 var NUMBER = 'Number';
 var NativeNumber = global[NUMBER];
+var PureNumberNamespace = path[NUMBER];
 var NumberPrototype = NativeNumber.prototype;
 var TypeError = global.TypeError;
-var arraySlice = uncurryThis(''.slice);
+var stringSlice = uncurryThis(''.slice);
 var charCodeAt = uncurryThis(''.charCodeAt);
 
 // `ToNumeric` abstract operation
@@ -5231,7 +4662,7 @@ var toNumber = function (argument) {
         case 79: case 111: radix = 8; maxCode = 55; break; // fast equal of /^0o[0-7]+$/i
         default: return +it;
       }
-      digits = arraySlice(it, 2);
+      digits = stringSlice(it, 2);
       length = digits.length;
       for (index = 0; index < length; index++) {
         code = charCodeAt(digits, index);
@@ -5243,17 +4674,30 @@ var toNumber = function (argument) {
   } return +it;
 };
 
+var FORCED = isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumber('+0x1'));
+
+var calledWithNew = function (dummy) {
+  // includes check on 1..constructor(foo) case
+  return isPrototypeOf(NumberPrototype, dummy) && fails(function () { thisNumberValue(dummy); });
+};
+
 // `Number` constructor
 // https://tc39.es/ecma262/#sec-number-constructor
-if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumber('+0x1'))) {
-  var NumberWrapper = function Number(value) {
-    var n = arguments.length < 1 ? 0 : NativeNumber(toNumeric(value));
-    var dummy = this;
-    // check on 1..constructor(foo) case
-    return isPrototypeOf(NumberPrototype, dummy) && fails(function () { thisNumberValue(dummy); })
-      ? inheritIfRequired(Object(n), dummy, NumberWrapper) : n;
-  };
-  for (var keys = DESCRIPTORS ? getOwnPropertyNames(NativeNumber) : (
+var NumberWrapper = function Number(value) {
+  var n = arguments.length < 1 ? 0 : NativeNumber(toNumeric(value));
+  return calledWithNew(this) ? inheritIfRequired(Object(n), this, NumberWrapper) : n;
+};
+
+NumberWrapper.prototype = NumberPrototype;
+if (FORCED && !IS_PURE) NumberPrototype.constructor = NumberWrapper;
+
+$({ global: true, constructor: true, wrap: true, forced: FORCED }, {
+  Number: NumberWrapper
+});
+
+// Use `internal/copy-constructor-properties` helper in `core-js@4`
+var copyConstructorProperties = function (target, source) {
+  for (var keys = DESCRIPTORS ? getOwnPropertyNames(source) : (
     // ES3:
     'MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,' +
     // ES2015 (in case, if modules with ES2015 Number statics required before):
@@ -5261,14 +4705,14 @@ if (isForced(NUMBER, !NativeNumber(' 0o1') || !NativeNumber('0b1') || NativeNumb
     // ESNext
     'fromString,range'
   ).split(','), j = 0, key; keys.length > j; j++) {
-    if (hasOwn(NativeNumber, key = keys[j]) && !hasOwn(NumberWrapper, key)) {
-      defineProperty(NumberWrapper, key, getOwnPropertyDescriptor(NativeNumber, key));
+    if (hasOwn(source, key = keys[j]) && !hasOwn(target, key)) {
+      defineProperty(target, key, getOwnPropertyDescriptor(source, key));
     }
   }
-  NumberWrapper.prototype = NumberPrototype;
-  NumberPrototype.constructor = NumberWrapper;
-  defineBuiltIn(global, NUMBER, NumberWrapper, { constructor: true });
-}
+};
+
+if (IS_PURE && PureNumberNamespace) copyConstructorProperties(path[NUMBER], PureNumberNamespace);
+if (FORCED || IS_PURE) copyConstructorProperties(path[NUMBER], NativeNumber);
 
 
 /***/ }),
@@ -5312,8 +4756,7 @@ var toIndexedObject = __webpack_require__(5656);
 var nativeGetOwnPropertyDescriptor = (__webpack_require__(1236).f);
 var DESCRIPTORS = __webpack_require__(9781);
 
-var FAILS_ON_PRIMITIVES = fails(function () { nativeGetOwnPropertyDescriptor(1); });
-var FORCED = !DESCRIPTORS || FAILS_ON_PRIMITIVES;
+var FORCED = !DESCRIPTORS || fails(function () { nativeGetOwnPropertyDescriptor(1); });
 
 // `Object.getOwnPropertyDescriptor` method
 // https://tc39.es/ecma262/#sec-object.getownpropertydescriptor
@@ -5490,480 +4933,6 @@ var toString = __webpack_require__(288);
 if (!TO_STRING_TAG_SUPPORT) {
   defineBuiltIn(Object.prototype, 'toString', toString, { unsafe: true });
 }
-
-
-/***/ }),
-
-/***/ 821:
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__(2109);
-var call = __webpack_require__(6916);
-var aCallable = __webpack_require__(9662);
-var newPromiseCapabilityModule = __webpack_require__(8523);
-var perform = __webpack_require__(2534);
-var iterate = __webpack_require__(612);
-var PROMISE_STATICS_INCORRECT_ITERATION = __webpack_require__(8368);
-
-// `Promise.all` method
-// https://tc39.es/ecma262/#sec-promise.all
-$({ target: 'Promise', stat: true, forced: PROMISE_STATICS_INCORRECT_ITERATION }, {
-  all: function all(iterable) {
-    var C = this;
-    var capability = newPromiseCapabilityModule.f(C);
-    var resolve = capability.resolve;
-    var reject = capability.reject;
-    var result = perform(function () {
-      var $promiseResolve = aCallable(C.resolve);
-      var values = [];
-      var counter = 0;
-      var remaining = 1;
-      iterate(iterable, function (promise) {
-        var index = counter++;
-        var alreadyCalled = false;
-        remaining++;
-        call($promiseResolve, C, promise).then(function (value) {
-          if (alreadyCalled) return;
-          alreadyCalled = true;
-          values[index] = value;
-          --remaining || resolve(values);
-        }, reject);
-      });
-      --remaining || resolve(values);
-    });
-    if (result.error) reject(result.value);
-    return capability.promise;
-  }
-});
-
-
-/***/ }),
-
-/***/ 4164:
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__(2109);
-var IS_PURE = __webpack_require__(1913);
-var FORCED_PROMISE_CONSTRUCTOR = (__webpack_require__(3702).CONSTRUCTOR);
-var NativePromiseConstructor = __webpack_require__(2492);
-var getBuiltIn = __webpack_require__(5005);
-var isCallable = __webpack_require__(614);
-var defineBuiltIn = __webpack_require__(8052);
-
-var NativePromisePrototype = NativePromiseConstructor && NativePromiseConstructor.prototype;
-
-// `Promise.prototype.catch` method
-// https://tc39.es/ecma262/#sec-promise.prototype.catch
-$({ target: 'Promise', proto: true, forced: FORCED_PROMISE_CONSTRUCTOR, real: true }, {
-  'catch': function (onRejected) {
-    return this.then(undefined, onRejected);
-  }
-});
-
-// makes sure that native promise-based APIs `Promise#catch` properly works with patched `Promise#then`
-if (!IS_PURE && isCallable(NativePromiseConstructor)) {
-  var method = getBuiltIn('Promise').prototype['catch'];
-  if (NativePromisePrototype['catch'] !== method) {
-    defineBuiltIn(NativePromisePrototype, 'catch', method, { unsafe: true });
-  }
-}
-
-
-/***/ }),
-
-/***/ 3401:
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__(2109);
-var IS_PURE = __webpack_require__(1913);
-var IS_NODE = __webpack_require__(5268);
-var global = __webpack_require__(7854);
-var call = __webpack_require__(6916);
-var defineBuiltIn = __webpack_require__(8052);
-var setPrototypeOf = __webpack_require__(7674);
-var setToStringTag = __webpack_require__(8003);
-var setSpecies = __webpack_require__(6340);
-var aCallable = __webpack_require__(9662);
-var isCallable = __webpack_require__(614);
-var isObject = __webpack_require__(111);
-var anInstance = __webpack_require__(5787);
-var speciesConstructor = __webpack_require__(6707);
-var task = (__webpack_require__(261).set);
-var microtask = __webpack_require__(5948);
-var hostReportErrors = __webpack_require__(842);
-var perform = __webpack_require__(2534);
-var Queue = __webpack_require__(8572);
-var InternalStateModule = __webpack_require__(9909);
-var NativePromiseConstructor = __webpack_require__(2492);
-var PromiseConstructorDetection = __webpack_require__(3702);
-var newPromiseCapabilityModule = __webpack_require__(8523);
-
-var PROMISE = 'Promise';
-var FORCED_PROMISE_CONSTRUCTOR = PromiseConstructorDetection.CONSTRUCTOR;
-var NATIVE_PROMISE_REJECTION_EVENT = PromiseConstructorDetection.REJECTION_EVENT;
-var NATIVE_PROMISE_SUBCLASSING = PromiseConstructorDetection.SUBCLASSING;
-var getInternalPromiseState = InternalStateModule.getterFor(PROMISE);
-var setInternalState = InternalStateModule.set;
-var NativePromisePrototype = NativePromiseConstructor && NativePromiseConstructor.prototype;
-var PromiseConstructor = NativePromiseConstructor;
-var PromisePrototype = NativePromisePrototype;
-var TypeError = global.TypeError;
-var document = global.document;
-var process = global.process;
-var newPromiseCapability = newPromiseCapabilityModule.f;
-var newGenericPromiseCapability = newPromiseCapability;
-
-var DISPATCH_EVENT = !!(document && document.createEvent && global.dispatchEvent);
-var UNHANDLED_REJECTION = 'unhandledrejection';
-var REJECTION_HANDLED = 'rejectionhandled';
-var PENDING = 0;
-var FULFILLED = 1;
-var REJECTED = 2;
-var HANDLED = 1;
-var UNHANDLED = 2;
-
-var Internal, OwnPromiseCapability, PromiseWrapper, nativeThen;
-
-// helpers
-var isThenable = function (it) {
-  var then;
-  return isObject(it) && isCallable(then = it.then) ? then : false;
-};
-
-var callReaction = function (reaction, state) {
-  var value = state.value;
-  var ok = state.state == FULFILLED;
-  var handler = ok ? reaction.ok : reaction.fail;
-  var resolve = reaction.resolve;
-  var reject = reaction.reject;
-  var domain = reaction.domain;
-  var result, then, exited;
-  try {
-    if (handler) {
-      if (!ok) {
-        if (state.rejection === UNHANDLED) onHandleUnhandled(state);
-        state.rejection = HANDLED;
-      }
-      if (handler === true) result = value;
-      else {
-        if (domain) domain.enter();
-        result = handler(value); // can throw
-        if (domain) {
-          domain.exit();
-          exited = true;
-        }
-      }
-      if (result === reaction.promise) {
-        reject(TypeError('Promise-chain cycle'));
-      } else if (then = isThenable(result)) {
-        call(then, result, resolve, reject);
-      } else resolve(result);
-    } else reject(value);
-  } catch (error) {
-    if (domain && !exited) domain.exit();
-    reject(error);
-  }
-};
-
-var notify = function (state, isReject) {
-  if (state.notified) return;
-  state.notified = true;
-  microtask(function () {
-    var reactions = state.reactions;
-    var reaction;
-    while (reaction = reactions.get()) {
-      callReaction(reaction, state);
-    }
-    state.notified = false;
-    if (isReject && !state.rejection) onUnhandled(state);
-  });
-};
-
-var dispatchEvent = function (name, promise, reason) {
-  var event, handler;
-  if (DISPATCH_EVENT) {
-    event = document.createEvent('Event');
-    event.promise = promise;
-    event.reason = reason;
-    event.initEvent(name, false, true);
-    global.dispatchEvent(event);
-  } else event = { promise: promise, reason: reason };
-  if (!NATIVE_PROMISE_REJECTION_EVENT && (handler = global['on' + name])) handler(event);
-  else if (name === UNHANDLED_REJECTION) hostReportErrors('Unhandled promise rejection', reason);
-};
-
-var onUnhandled = function (state) {
-  call(task, global, function () {
-    var promise = state.facade;
-    var value = state.value;
-    var IS_UNHANDLED = isUnhandled(state);
-    var result;
-    if (IS_UNHANDLED) {
-      result = perform(function () {
-        if (IS_NODE) {
-          process.emit('unhandledRejection', value, promise);
-        } else dispatchEvent(UNHANDLED_REJECTION, promise, value);
-      });
-      // Browsers should not trigger `rejectionHandled` event if it was handled here, NodeJS - should
-      state.rejection = IS_NODE || isUnhandled(state) ? UNHANDLED : HANDLED;
-      if (result.error) throw result.value;
-    }
-  });
-};
-
-var isUnhandled = function (state) {
-  return state.rejection !== HANDLED && !state.parent;
-};
-
-var onHandleUnhandled = function (state) {
-  call(task, global, function () {
-    var promise = state.facade;
-    if (IS_NODE) {
-      process.emit('rejectionHandled', promise);
-    } else dispatchEvent(REJECTION_HANDLED, promise, state.value);
-  });
-};
-
-var bind = function (fn, state, unwrap) {
-  return function (value) {
-    fn(state, value, unwrap);
-  };
-};
-
-var internalReject = function (state, value, unwrap) {
-  if (state.done) return;
-  state.done = true;
-  if (unwrap) state = unwrap;
-  state.value = value;
-  state.state = REJECTED;
-  notify(state, true);
-};
-
-var internalResolve = function (state, value, unwrap) {
-  if (state.done) return;
-  state.done = true;
-  if (unwrap) state = unwrap;
-  try {
-    if (state.facade === value) throw TypeError("Promise can't be resolved itself");
-    var then = isThenable(value);
-    if (then) {
-      microtask(function () {
-        var wrapper = { done: false };
-        try {
-          call(then, value,
-            bind(internalResolve, wrapper, state),
-            bind(internalReject, wrapper, state)
-          );
-        } catch (error) {
-          internalReject(wrapper, error, state);
-        }
-      });
-    } else {
-      state.value = value;
-      state.state = FULFILLED;
-      notify(state, false);
-    }
-  } catch (error) {
-    internalReject({ done: false }, error, state);
-  }
-};
-
-// constructor polyfill
-if (FORCED_PROMISE_CONSTRUCTOR) {
-  // 25.4.3.1 Promise(executor)
-  PromiseConstructor = function Promise(executor) {
-    anInstance(this, PromisePrototype);
-    aCallable(executor);
-    call(Internal, this);
-    var state = getInternalPromiseState(this);
-    try {
-      executor(bind(internalResolve, state), bind(internalReject, state));
-    } catch (error) {
-      internalReject(state, error);
-    }
-  };
-
-  PromisePrototype = PromiseConstructor.prototype;
-
-  // eslint-disable-next-line no-unused-vars -- required for `.length`
-  Internal = function Promise(executor) {
-    setInternalState(this, {
-      type: PROMISE,
-      done: false,
-      notified: false,
-      parent: false,
-      reactions: new Queue(),
-      rejection: false,
-      state: PENDING,
-      value: undefined
-    });
-  };
-
-  // `Promise.prototype.then` method
-  // https://tc39.es/ecma262/#sec-promise.prototype.then
-  Internal.prototype = defineBuiltIn(PromisePrototype, 'then', function then(onFulfilled, onRejected) {
-    var state = getInternalPromiseState(this);
-    var reaction = newPromiseCapability(speciesConstructor(this, PromiseConstructor));
-    state.parent = true;
-    reaction.ok = isCallable(onFulfilled) ? onFulfilled : true;
-    reaction.fail = isCallable(onRejected) && onRejected;
-    reaction.domain = IS_NODE ? process.domain : undefined;
-    if (state.state == PENDING) state.reactions.add(reaction);
-    else microtask(function () {
-      callReaction(reaction, state);
-    });
-    return reaction.promise;
-  });
-
-  OwnPromiseCapability = function () {
-    var promise = new Internal();
-    var state = getInternalPromiseState(promise);
-    this.promise = promise;
-    this.resolve = bind(internalResolve, state);
-    this.reject = bind(internalReject, state);
-  };
-
-  newPromiseCapabilityModule.f = newPromiseCapability = function (C) {
-    return C === PromiseConstructor || C === PromiseWrapper
-      ? new OwnPromiseCapability(C)
-      : newGenericPromiseCapability(C);
-  };
-
-  if (!IS_PURE && isCallable(NativePromiseConstructor) && NativePromisePrototype !== Object.prototype) {
-    nativeThen = NativePromisePrototype.then;
-
-    if (!NATIVE_PROMISE_SUBCLASSING) {
-      // make `Promise#then` return a polyfilled `Promise` for native promise-based APIs
-      defineBuiltIn(NativePromisePrototype, 'then', function then(onFulfilled, onRejected) {
-        var that = this;
-        return new PromiseConstructor(function (resolve, reject) {
-          call(nativeThen, that, resolve, reject);
-        }).then(onFulfilled, onRejected);
-      // https://github.com/zloirock/core-js/issues/640
-      }, { unsafe: true });
-    }
-
-    // make `.constructor === Promise` work for native promise-based APIs
-    try {
-      delete NativePromisePrototype.constructor;
-    } catch (error) { /* empty */ }
-
-    // make `instanceof Promise` work for native promise-based APIs
-    if (setPrototypeOf) {
-      setPrototypeOf(NativePromisePrototype, PromisePrototype);
-    }
-  }
-}
-
-$({ global: true, constructor: true, wrap: true, forced: FORCED_PROMISE_CONSTRUCTOR }, {
-  Promise: PromiseConstructor
-});
-
-setToStringTag(PromiseConstructor, PROMISE, false, true);
-setSpecies(PROMISE);
-
-
-/***/ }),
-
-/***/ 8674:
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-// TODO: Remove this module from `core-js@4` since it's split to modules listed below
-__webpack_require__(3401);
-__webpack_require__(821);
-__webpack_require__(4164);
-__webpack_require__(6027);
-__webpack_require__(683);
-__webpack_require__(6294);
-
-
-/***/ }),
-
-/***/ 6027:
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__(2109);
-var call = __webpack_require__(6916);
-var aCallable = __webpack_require__(9662);
-var newPromiseCapabilityModule = __webpack_require__(8523);
-var perform = __webpack_require__(2534);
-var iterate = __webpack_require__(612);
-var PROMISE_STATICS_INCORRECT_ITERATION = __webpack_require__(8368);
-
-// `Promise.race` method
-// https://tc39.es/ecma262/#sec-promise.race
-$({ target: 'Promise', stat: true, forced: PROMISE_STATICS_INCORRECT_ITERATION }, {
-  race: function race(iterable) {
-    var C = this;
-    var capability = newPromiseCapabilityModule.f(C);
-    var reject = capability.reject;
-    var result = perform(function () {
-      var $promiseResolve = aCallable(C.resolve);
-      iterate(iterable, function (promise) {
-        call($promiseResolve, C, promise).then(capability.resolve, reject);
-      });
-    });
-    if (result.error) reject(result.value);
-    return capability.promise;
-  }
-});
-
-
-/***/ }),
-
-/***/ 683:
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__(2109);
-var call = __webpack_require__(6916);
-var newPromiseCapabilityModule = __webpack_require__(8523);
-var FORCED_PROMISE_CONSTRUCTOR = (__webpack_require__(3702).CONSTRUCTOR);
-
-// `Promise.reject` method
-// https://tc39.es/ecma262/#sec-promise.reject
-$({ target: 'Promise', stat: true, forced: FORCED_PROMISE_CONSTRUCTOR }, {
-  reject: function reject(r) {
-    var capability = newPromiseCapabilityModule.f(this);
-    call(capability.reject, undefined, r);
-    return capability.promise;
-  }
-});
-
-
-/***/ }),
-
-/***/ 6294:
-/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
-
-"use strict";
-
-var $ = __webpack_require__(2109);
-var getBuiltIn = __webpack_require__(5005);
-var IS_PURE = __webpack_require__(1913);
-var NativePromiseConstructor = __webpack_require__(2492);
-var FORCED_PROMISE_CONSTRUCTOR = (__webpack_require__(3702).CONSTRUCTOR);
-var promiseResolve = __webpack_require__(9478);
-
-var PromiseConstructorWrapper = getBuiltIn('Promise');
-var CHECK_WRAPPER = IS_PURE && !FORCED_PROMISE_CONSTRUCTOR;
-
-// `Promise.resolve` method
-// https://tc39.es/ecma262/#sec-promise.resolve
-$({ target: 'Promise', stat: true, forced: IS_PURE || FORCED_PROMISE_CONSTRUCTOR }, {
-  resolve: function resolve(x) {
-    return promiseResolve(CHECK_WRAPPER && this === PromiseConstructorWrapper ? NativePromiseConstructor : this, x);
-  }
-});
 
 
 /***/ }),
@@ -6705,6 +5674,23 @@ $({ target: 'Symbol', stat: true, forced: !NATIVE_SYMBOL_REGISTRY }, {
 
 /***/ }),
 
+/***/ 6649:
+/***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+
+var defineWellKnownSymbol = __webpack_require__(6800);
+var defineSymbolToPrimitive = __webpack_require__(6532);
+
+// `Symbol.toPrimitive` well-known symbol
+// https://tc39.es/ecma262/#sec-symbol.toprimitive
+defineWellKnownSymbol('toPrimitive');
+
+// `Symbol.prototype[@@toPrimitive]` method
+// https://tc39.es/ecma262/#sec-symbol.prototype-@@toprimitive
+defineSymbolToPrimitive();
+
+
+/***/ }),
+
 /***/ 3680:
 /***/ (function(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
 
@@ -6797,7 +5783,7 @@ handlePrototype(DOMTokenListPrototype, 'DOMTokenList');
 
 /***/ }),
 
-/***/ 2591:
+/***/ 3597:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -6825,7 +5811,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".vue-grid-item{-webkit-transition:all 
 
 /***/ }),
 
-/***/ 4344:
+/***/ 8562:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -8617,35 +7603,35 @@ module.exports = {
 
 /***/ }),
 
-/***/ 3344:
+/***/ 637:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(2591);
+var content = __webpack_require__(3597);
 if(content.__esModule) content = content.default;
 if(typeof content === 'string') content = [[module.id, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = (__webpack_require__(4402)/* ["default"] */ .Z)
-var update = add("7cc84a0e", content, true, {"sourceMap":false,"shadowMode":false});
+var update = add("6484183b", content, true, {"sourceMap":false,"shadowMode":false});
 
 /***/ }),
 
-/***/ 889:
+/***/ 3657:
 /***/ (function(module, __unused_webpack_exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(4344);
+var content = __webpack_require__(8562);
 if(content.__esModule) content = content.default;
 if(typeof content === 'string') content = [[module.id, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = (__webpack_require__(4402)/* ["default"] */ .Z)
-var update = add("8bc0c2c0", content, true, {"sourceMap":false,"shadowMode":false});
+var update = add("7a8a2eec", content, true, {"sourceMap":false,"shadowMode":false});
 
 /***/ }),
 
@@ -9115,8 +8101,68 @@ var es_object_get_own_property_descriptor = __webpack_require__(5003);
 var es_array_push = __webpack_require__(7658);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.get-own-property-descriptors.js
 var es_object_get_own_property_descriptors = __webpack_require__(9337);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
+var es_symbol_description = __webpack_require__(1817);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.iterator.js
+var es_symbol_iterator = __webpack_require__(2165);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
+var es_string_iterator = __webpack_require__(8783);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
+var web_dom_collections_iterator = __webpack_require__(3948);
+;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
+
+
+
+
+
+
+function _typeof(obj) {
+  "@babel/helpers - typeof";
+
+  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  }, _typeof(obj);
+}
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.to-primitive.js
+var es_symbol_to_primitive = __webpack_require__(6649);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.date.to-primitive.js
+var es_date_to_primitive = __webpack_require__(6078);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.error.cause.js
+var es_error_cause = __webpack_require__(1703);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
+var es_number_constructor = __webpack_require__(9653);
+;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/toPrimitive.js
+
+
+
+
+
+
+
+
+function _toPrimitive(input, hint) {
+  if (_typeof(input) !== "object" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== undefined) {
+    var res = prim.call(input, hint || "default");
+    if (_typeof(res) !== "object") return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/toPropertyKey.js
+
+
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return _typeof(key) === "symbol" ? key : String(key);
+}
 ;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
+
 function _defineProperty(obj, key, value) {
+  key = _toPropertyKey(key);
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -9160,8 +8206,6 @@ function _objectSpread2(target) {
   }
   return target;
 }
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.number.constructor.js
-var es_number_constructor = __webpack_require__(9653);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.map.js
 var es_array_map = __webpack_require__(1249);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.regexp.exec.js
@@ -15961,8 +15005,6 @@ var es_json_stringify = __webpack_require__(8862);
 var es_array_concat = __webpack_require__(2222);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.sort.js
 var es_array_sort = __webpack_require__(2707);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.error.cause.js
-var es_error_cause = __webpack_require__(1703);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.splice.js
 var es_array_splice = __webpack_require__(561);
 ;// CONCATENATED MODULE: ./src/helpers/utils.js
@@ -16822,6 +15864,7 @@ function removeWindowEventListener(event) {
 
 
 
+var _hoisted_1 = ["id"];
 
 
 
@@ -16957,7 +16000,8 @@ function removeWindowEventListener(event) {
   },
   emits: ['container-resized', 'resize', 'resized', 'move', 'moved', 'drag-event', 'resize-event'],
   setup: function setup(__props, _ref) {
-    var emit = _ref.emit;
+    var expose = _ref.expose,
+      emit = _ref.emit;
     var props = __props;
     var emitter = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.inject)('emitter');
     var gridLayout = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.inject)('gridLayout');
@@ -17007,7 +16051,8 @@ function removeWindowEventListener(event) {
         cssTransforms: state.useCssTransforms,
         'render-rtl': (0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(renderRtl),
         'disable-userselect': state.isDragging,
-        'no-touch': (0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(isAndroid) && (0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(draggableOrResizableAndNotStatic)
+        // 'no-touch': unref(isAndroid) && unref(draggableOrResizableAndNotStatic),
+        'no-touch': (0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(draggableOrResizableAndNotStatic)
       };
     });
     var resizableAndNotStatic = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(function () {
@@ -17016,17 +16061,23 @@ function removeWindowEventListener(event) {
     var draggableOrResizableAndNotStatic = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(function () {
       return (state.draggable || state.resizable) && !props.static;
     });
-    var isAndroid = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(function () {
-      return navigator.userAgent.toLowerCase().indexOf('android') !== -1;
-    });
+
+    // const isAndroid = computed(() => {
+    //   return navigator.userAgent.toLowerCase().indexOf('android') !== -1;
+    // });
+
     var renderRtl = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(function () {
-      return gridLayout.isMirrored ? !state.rtl : state.rtl;
+      return gridLayout.props.isMirrored ? !state.rtl : state.rtl;
     });
     var resizableHandleClass = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.computed)(function () {
       if ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(renderRtl)) {
         return 'vue-resizable-handle vue-rtl-resizable-handle';
       }
       return 'vue-resizable-handle';
+    });
+    expose({
+      calcXY: calcXY,
+      domRef: domRef
     });
     function created() {
       // // Accessible refernces of functions for removing in beforeDestroy
@@ -17079,33 +16130,34 @@ function removeWindowEventListener(event) {
     });
 
     (0,external_commonjs_vue_commonjs2_vue_root_Vue_.onMounted)(function () {
-      if (gridLayout.responsive && gridLayout.lastBreakpoint) {
-        state.cols = getColsFromBreakpoint(gridLayout.lastBreakpoint, gridLayout.cols);
+      var parent = _objectSpread2(_objectSpread2({}, gridLayout.props), gridLayout.state);
+      if (parent.responsive && parent.lastBreakpoint) {
+        state.cols = getColsFromBreakpoint(parent.lastBreakpoint, parent.cols);
       } else {
-        state.cols = gridLayout.colNum;
+        state.cols = parent.colNum;
       }
-      state.rowHeight = gridLayout.rowHeight;
-      state.containerWidth = gridLayout.width !== null ? gridLayout.width : 100;
-      state.margin = gridLayout.margin !== undefined ? gridLayout.margin : [10, 10];
-      state.maxRows = gridLayout.maxRows;
+      state.rowHeight = parent.rowHeight;
+      state.containerWidth = parent.width !== null ? parent.width : 100;
+      state.margin = parent.margin !== undefined ? parent.margin : [10, 10];
+      state.maxRows = parent.maxRows;
       if (props.isDraggable === null) {
-        state.draggable = gridLayout.isDraggable;
+        state.draggable = parent.isDraggable;
       } else {
         state.draggable = props.isDraggable;
       }
       if (props.isResizable === null) {
-        state.resizable = gridLayout.isResizable;
+        state.resizable = parent.isResizable;
       } else {
         state.resizable = props.isResizable;
       }
       if (props.isBounded === null) {
-        state.bounded = gridLayout.isBounded;
+        state.bounded = parent.isBounded;
       } else {
         state.bounded = props.isBounded;
       }
-      state.transformScale = gridLayout.transformScale;
-      state.useCssTransforms = gridLayout.useCssTransforms;
-      state.useStyleCursor = gridLayout.useStyleCursor;
+      state.transformScale = parent.transformScale;
+      state.useCssTransforms = parent.useCssTransforms;
+      state.useStyleCursor = parent.useStyleCursor;
       createStyle();
     });
     (0,external_commonjs_vue_commonjs2_vue_root_Vue_.watch)(function () {
@@ -17215,7 +16267,7 @@ function removeWindowEventListener(event) {
       tryMakeResizable();
     });
     (0,external_commonjs_vue_commonjs2_vue_root_Vue_.watch)(function () {
-      return gridLayout.margin;
+      return gridLayout.props.margin;
     }, function (margin) {
       if (!margin || Number(margin[0]) === Number(state.margin[0]) && Number(margin[1]) === Number(state.margin[1])) {
         return;
@@ -17339,7 +16391,7 @@ function removeWindowEventListener(event) {
           }
         case 'resizemove':
           {
-            //                        console.log("### resize => " + event.type + ", lastW=" + state.lastW + ", lastH=" + state.lastH);
+            // console.log("### resize => " + event.type + ", lastW=" + state.lastW + ", lastH=" + state.lastH);
             var coreEvent = createCoreData(state.lastW, state.lastH, x, y);
             if ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(renderRtl)) {
               newSize.width = state.resizing.width - coreEvent.deltaX / state.transformScale;
@@ -17348,7 +16400,7 @@ function removeWindowEventListener(event) {
             }
             newSize.height = state.resizing.height + coreEvent.deltaY / state.transformScale;
 
-            /// console.log("### resize => " + event.type + ", deltaX=" + coreEvent.deltaX + ", deltaY=" + coreEvent.deltaY);
+            // console.log("### resize => " + event.type + ", deltaX=" + coreEvent.deltaX + ", deltaY=" + coreEvent.deltaY);
             state.resizing = newSize;
             break;
           }
@@ -17358,7 +16410,7 @@ function removeWindowEventListener(event) {
             pos = calcPosition(state.innerX, state.innerY, state.innerW, state.innerH);
             newSize.width = pos.width;
             newSize.height = pos.height;
-            //                        console.log("### resize end => " + JSON.stringify(newSize));
+            // console.log("### resize end => " + JSON.stringify(newSize));
             state.resizing = null;
             state.isResizing = false;
             break;
@@ -17445,15 +16497,15 @@ function removeWindowEventListener(event) {
             var _cTop = _clientRect.top / state.transformScale;
             var _pTop = _parentRect.top / state.transformScale;
 
-            //                        Add rtl support
+            // Add rtl support
             if ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(renderRtl)) {
               newPosition.left = (_cRight - _pRight) * -1;
             } else {
               newPosition.left = _cLeft - _pLeft;
             }
             newPosition.top = _cTop - _pTop;
-            //                        console.log("### drag end => " + JSON.stringify(newPosition));
-            //                        console.log("### DROP: " + JSON.stringify(newPosition));
+            // console.log("### drag end => " + JSON.stringify(newPosition));
+            // console.log("### DROP: " + JSON.stringify(newPosition));
             state.dragging = null;
             state.isDragging = false;
             // shouldUpdate = true;
@@ -17744,19 +16796,20 @@ function removeWindowEventListener(event) {
         ref_key: "domRef",
         ref: domRef,
         class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(["vue-grid-item", (0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(classObj)]),
-        style: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeStyle)(state.style)
+        style: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeStyle)(state.style),
+        id: __props.i
       }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.renderSlot)(_ctx.$slots, "default"), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(resizableAndNotStatic) ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", {
         key: 0,
         class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(resizableHandleClass))
-      }, null, 2)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)], 6);
+      }, null, 2)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)], 14, _hoisted_1);
     };
   }
 });
 ;// CONCATENATED MODULE: ./src/components/GridItem.vue?vue&type=script&setup=true&lang=js
  
-// EXTERNAL MODULE: ./node_modules/vue-style-loader/index.js??clonedRuleSet-54.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-54.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-54.use[2]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-54.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/GridItem.vue?vue&type=style&index=0&id=d7808e40&lang=css
-var GridItemvue_type_style_index_0_id_d7808e40_lang_css = __webpack_require__(3344);
-;// CONCATENATED MODULE: ./src/components/GridItem.vue?vue&type=style&index=0&id=d7808e40&lang=css
+// EXTERNAL MODULE: ./node_modules/vue-style-loader/index.js??clonedRuleSet-54.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-54.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-54.use[2]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-54.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/GridItem.vue?vue&type=style&index=0&id=3380633e&lang=css
+var GridItemvue_type_style_index_0_id_3380633e_lang_css = __webpack_require__(637);
+;// CONCATENATED MODULE: ./src/components/GridItem.vue?vue&type=style&index=0&id=3380633e&lang=css
 
 ;// CONCATENATED MODULE: ./src/components/GridItem.vue
 
@@ -17771,16 +16824,6 @@ const __exports__ = GridItemvue_type_script_setup_true_lang_js;
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.description.js
-var es_symbol_description = __webpack_require__(1817);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.iterator.js
-var es_symbol_iterator = __webpack_require__(2165);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
-var es_array_iterator = __webpack_require__(6992);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
-var es_string_iterator = __webpack_require__(8783);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
-var web_dom_collections_iterator = __webpack_require__(3948);
 ;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js
 
 
@@ -17789,30 +16832,32 @@ var web_dom_collections_iterator = __webpack_require__(3948);
 
 
 
-
 function _iterableToArrayLimit(arr, i) {
-  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
-  if (_i == null) return;
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _s, _e;
-  try {
-    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
+  var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
+  if (null != _i) {
+    var _s,
+      _e,
+      _x,
+      _r,
+      _arr = [],
+      _n = !0,
+      _d = !1;
     try {
-      if (!_n && _i["return"] != null) _i["return"]();
+      if (_x = (_i = _i.call(arr)).next, 0 === i) {
+        if (Object(_i) !== _i) return;
+        _n = !1;
+      } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0);
+    } catch (err) {
+      _d = !0, _e = err;
     } finally {
-      if (_d) throw _e;
+      try {
+        if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return;
+      } finally {
+        if (_d) throw _e;
+      }
     }
+    return _arr;
   }
-  return _arr;
 }
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.function.name.js
 var es_function_name = __webpack_require__(8309);
@@ -17823,9 +16868,7 @@ var es_regexp_test = __webpack_require__(7601);
 ;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js
 function _arrayLikeToArray(arr, len) {
   if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) {
-    arr2[i] = arr[i];
-  }
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
   return arr2;
 }
 ;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js
@@ -17872,28 +16915,7 @@ var es_object_get_prototype_of = __webpack_require__(489);
 var es_object_set_prototype_of = __webpack_require__(8304);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.proto.js
 var es_object_proto = __webpack_require__(7987);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
-var es_promise = __webpack_require__(8674);
-;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
-
-
-
-
-
-
-
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  }, _typeof(obj);
-}
 ;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js
-
-
 
 
 
@@ -18051,14 +17073,9 @@ function _regeneratorRuntime() {
     };
   }
   function maybeInvokeDelegate(delegate, context) {
-    var method = delegate.iterator[context.method];
-    if (undefined === method) {
-      if (context.delegate = null, "throw" === context.method) {
-        if (delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel;
-        context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method");
-      }
-      return ContinueSentinel;
-    }
+    var methodName = context.method,
+      method = delegate.iterator[methodName];
+    if (undefined === method) return context.delegate = null, "throw" === methodName && delegate.iterator["return"] && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method) || "return" !== methodName && (context.method = "throw", context.arg = new TypeError("The iterator does not provide a '" + methodName + "' method")), ContinueSentinel;
     var record = tryCatch(method, delegate.iterator, context.arg);
     if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel;
     var info = record.arg;
@@ -18087,9 +17104,7 @@ function _regeneratorRuntime() {
       if (!isNaN(iterable.length)) {
         var i = -1,
           next = function next() {
-            for (; ++i < iterable.length;) {
-              if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next;
-            }
+            for (; ++i < iterable.length;) if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next;
             return next.value = undefined, next.done = !0, next;
           };
         return next.next = next;
@@ -18135,9 +17150,7 @@ function _regeneratorRuntime() {
   }), exports.keys = function (val) {
     var object = Object(val),
       keys = [];
-    for (var key in object) {
-      keys.push(key);
-    }
+    for (var key in object) keys.push(key);
     return keys.reverse(), function next() {
       for (; keys.length;) {
         var key = keys.pop();
@@ -18148,9 +17161,7 @@ function _regeneratorRuntime() {
   }, exports.values = values, Context.prototype = {
     constructor: Context,
     reset: function reset(skipTempReset) {
-      if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) {
-        "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined);
-      }
+      if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined);
     },
     stop: function stop() {
       this.done = !0;
@@ -18229,7 +17240,6 @@ function _regeneratorRuntime() {
   }, exports;
 }
 ;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
-
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
@@ -18395,7 +17405,8 @@ var element_resize_detector_default = /*#__PURE__*/__webpack_require__.n(element
   },
   emits: ['update:layout', 'layout-ready', 'layout-created', 'layout-before-mount', 'layout-mounted', 'layout-updated', 'breakpoint-changed', 'container-resized', 'item-resize', 'item-resized', 'item-move', 'item-moved', 'intersection-observe', 'intersection-unobserve'],
   setup: function setup(__props, _ref) {
-    var emit = _ref.emit;
+    var expose = _ref.expose,
+      emit = _ref.emit;
     var props = __props;
     var emitter = mitt();
     var erd;
@@ -18420,24 +17431,34 @@ var element_resize_detector_default = /*#__PURE__*/__webpack_require__.n(element
     });
 
     var domRef = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)();
+    var placeholderRef = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.ref)();
     (0,external_commonjs_vue_commonjs2_vue_root_Vue_.provide)('emitter', emitter);
-    (0,external_commonjs_vue_commonjs2_vue_root_Vue_.provide)('gridLayout', (0,external_commonjs_vue_commonjs2_vue_root_Vue_.reactive)({
-      margin: props.margin,
-      responsive: props.responsive,
-      cols: props.cols,
-      lastBreakpoint: state.lastBreakpoint,
-      colNum: props.colNum,
-      rowHeight: props.rowHeight,
-      width: state.width,
-      maxRows: props.maxRows,
-      isDraggable: props.isDraggable,
-      isResizable: props.isResizable,
-      isBounded: props.isBounded,
-      transformScale: props.transformScale,
-      useCssTransforms: props.useCssTransforms,
-      useStyleCursor: props.useStyleCursor,
-      isMirrored: props.isMirrored
-    }));
+    (0,external_commonjs_vue_commonjs2_vue_root_Vue_.provide)('gridLayout', {
+      props: props,
+      state: state
+    });
+    // reactive({
+    //   margin: props.margin,
+    //   responsive: props.responsive,
+    //   cols: props.cols,
+    //   lastBreakpoint: state.lastBreakpoint,
+    //   colNum: props.colNum,
+    //   rowHeight: props.rowHeight,
+    //   width: state.width,
+    //   maxRows: props.maxRows,
+    //   isDraggable: props.isDraggable,
+    //   isResizable: props.isResizable,
+    //   isBounded: props.isBounded,
+    //   transformScale: props.transformScale,
+    //   useCssTransforms: props.useCssTransforms,
+    //   useStyleCursor: props.useStyleCursor,
+    //   isMirrored: props.isMirrored,
+    // }));
+
+    expose({
+      emitter: emitter,
+      placeholderRef: placeholderRef
+    });
 
     // provide(eventBus, null)
     // provide(layout, state)
@@ -18471,43 +17492,41 @@ var element_resize_detector_default = /*#__PURE__*/__webpack_require__.n(element
     });
     (0,external_commonjs_vue_commonjs2_vue_root_Vue_.onMounted)( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
       return _regeneratorRuntime().wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              emit('layout-mounted', props.layout);
-              _context.next = 3;
-              return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.nextTick)();
-            case 3:
-              validateLayout(props.layout);
-              state.originalLayout = props.layout;
-              _context.next = 7;
-              return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.nextTick)();
-            case 7:
-              initResponsiveFeatures();
-              onWindowResize();
+        while (1) switch (_context.prev = _context.next) {
+          case 0:
+            emit('layout-mounted', props.layout);
+            _context.next = 3;
+            return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.nextTick)();
+          case 3:
+            validateLayout(props.layout);
+            state.originalLayout = props.layout;
+            _context.next = 7;
+            return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.nextTick)();
+          case 7:
+            initResponsiveFeatures();
+            onWindowResize();
 
-              // self.width = self.$el.offsetWidth;
-              addWindowEventListener('resize', onWindowResize);
-              utils_compact(props.layout, props.verticalCompact);
-              emit('layout-updated', props.layout);
-              emit('update:layout', props.layout);
-              updateHeight();
-              _context.next = 16;
-              return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.nextTick)();
-            case 16:
-              erd = element_resize_detector_default()({
-                strategy: 'scroll',
-                // <- For ultra performance.
-                // See https://github.com/wnr/element-resize-detector/issues/110 about callOnAdd.
-                callOnAdd: false
-              });
-              erd.listenTo((0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(domRef), function () {
-                onWindowResize();
-              });
-            case 18:
-            case "end":
-              return _context.stop();
-          }
+            // self.width = self.$el.offsetWidth;
+            addWindowEventListener('resize', onWindowResize);
+            utils_compact(props.layout, props.verticalCompact);
+            emit('layout-updated', props.layout);
+            emit('update:layout', props.layout);
+            updateHeight();
+            _context.next = 16;
+            return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.nextTick)();
+          case 16:
+            erd = element_resize_detector_default()({
+              strategy: 'scroll',
+              // <- For ultra performance.
+              // See https://github.com/wnr/element-resize-detector/issues/110 about callOnAdd.
+              callOnAdd: false
+            });
+            erd.listenTo((0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(domRef), function () {
+              onWindowResize();
+            });
+          case 18:
+          case "end":
+            return _context.stop();
         }
       }, _callee);
     })));
@@ -18525,43 +17544,41 @@ var element_resize_detector_default = /*#__PURE__*/__webpack_require__.n(element
     }, /*#__PURE__*/function () {
       var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(newval, oldval) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.nextTick)();
-              case 2:
-                // this.$broadcast("updateWidth", state.width);
-                emitter.emit('updateWidth', state.width);
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.nextTick)();
+            case 2:
+              // this.$broadcast("updateWidth", state.width);
+              emitter.emit('updateWidth', state.width);
 
-                /**
-                 * If oldval == null is when the width has never been
-                 * set before. That only occurs when mouting is
-                 * finished, and onWindowResize has been called and
-                 * state.width has been changed the first time after it
-                 * got set to null in the constructor. It is now time
-                 * to issue layout-ready events as the GridItems have
-                 * their sizes configured properly.
-                  * The reason for emitting the layout-ready events on
-                 * the next tick is to allow for the newly-emitted
-                 * updateWidth event (above) to have reached the
-                 * children GridItem-s and had their effect, so we're
-                 * sure that they have the final size before we emit
-                 * layout-ready (for this GridLayout) and
-                 * item-layout-ready (for the GridItem-s).
-                  * This way any client event handlers can reliably
-                 * invistigate stable sizes of GridItem-s.
-                 */
-                if (oldval === null) {
-                  (0,external_commonjs_vue_commonjs2_vue_root_Vue_.nextTick)(function () {
-                    emit('layout-ready', props.layout);
-                  });
-                }
-                updateHeight();
-              case 5:
-              case "end":
-                return _context2.stop();
-            }
+              /**
+               * If oldval == null is when the width has never been
+               * set before. That only occurs when mouting is
+               * finished, and onWindowResize has been called and
+               * state.width has been changed the first time after it
+               * got set to null in the constructor. It is now time
+               * to issue layout-ready events as the GridItems have
+               * their sizes configured properly.
+                * The reason for emitting the layout-ready events on
+               * the next tick is to allow for the newly-emitted
+               * updateWidth event (above) to have reached the
+               * children GridItem-s and had their effect, so we're
+               * sure that they have the final size before we emit
+               * layout-ready (for this GridLayout) and
+               * item-layout-ready (for the GridItem-s).
+                * This way any client event handlers can reliably
+               * invistigate stable sizes of GridItem-s.
+               */
+              if (oldval === null) {
+                (0,external_commonjs_vue_commonjs2_vue_root_Vue_.nextTick)(function () {
+                  emit('layout-ready', props.layout);
+                });
+              }
+              updateHeight();
+            case 5:
+            case "end":
+              return _context2.stop();
           }
         }, _callee2);
       }));
@@ -18873,6 +17890,8 @@ var element_resize_detector_default = /*#__PURE__*/__webpack_require__.n(element
         class: "vue-grid-layout",
         style: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeStyle)(state.mergedStyle)
       }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.renderSlot)(_ctx.$slots, "default"), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.withDirectives)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.createVNode)(GridItem, {
+        ref_key: "placeholderRef",
+        ref: placeholderRef,
         class: "vue-grid-placeholder",
         x: state.placeholder.x,
         y: state.placeholder.y,
@@ -18885,9 +17904,9 @@ var element_resize_detector_default = /*#__PURE__*/__webpack_require__.n(element
 });
 ;// CONCATENATED MODULE: ./src/components/GridLayout.vue?vue&type=script&setup=true&lang=js
  
-// EXTERNAL MODULE: ./node_modules/vue-style-loader/index.js??clonedRuleSet-54.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-54.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-54.use[2]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-54.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/GridLayout.vue?vue&type=style&index=0&id=514b3834&lang=css
-var GridLayoutvue_type_style_index_0_id_514b3834_lang_css = __webpack_require__(889);
-;// CONCATENATED MODULE: ./src/components/GridLayout.vue?vue&type=style&index=0&id=514b3834&lang=css
+// EXTERNAL MODULE: ./node_modules/vue-style-loader/index.js??clonedRuleSet-54.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-54.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-54.use[2]!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-54.use[3]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./src/components/GridLayout.vue?vue&type=style&index=0&id=68ffd5f9&lang=css
+var GridLayoutvue_type_style_index_0_id_68ffd5f9_lang_css = __webpack_require__(3657);
+;// CONCATENATED MODULE: ./src/components/GridLayout.vue?vue&type=style&index=0&id=68ffd5f9&lang=css
 
 ;// CONCATENATED MODULE: ./src/components/GridLayout.vue
 
