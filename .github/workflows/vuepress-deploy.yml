@@ -16,9 +16,10 @@ jobs:
 
       - name: vuepress-deploy
         uses: jenkey2011/vuepress-deploy@master
-        with:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        env:
           TARGET_REPO: merfais/vue-grid-layout-v3
           TARGET_BRANCH: gh-pages
           BUILD_SCRIPT: cd website && yarn && yarn build
           BUILD_DIR: public
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
