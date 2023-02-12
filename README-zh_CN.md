@@ -1,7 +1,7 @@
 <h1 align="center">vue-grid-layout</h1>
 
 <p align="center">
-<a href="https://www.npmjs.com/package/vue-grid-layout-v3"><img src="https://img.shields.io/npm/v/vue-grid-layout.svg"/> <img src="https://img.shields.io/npm/dm/vue-grid-layout.svg"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.2.x-brightgreen.svg"/></a>
+<a href="https://www.npmjs.com/package/vue-grid-layout-v3"><img src="https://img.shields.io/npm/v/vue-grid-layout-v3.svg"/> <img src="https://img.shields.io/npm/dm/vue-grid-layout-v3.svg"/></a> <a href="https://vuejs.org/"><img src="https://img.shields.io/badge/vue-2.2.x-brightgreen.svg"/></a>
 </p>
 
 vue-grid-layout是一个类似于[Gridster](http://dsmorse.github.io/gridster.js/)的栅格布局系统, 适用于Vue.js。 **灵感源自于 [React-Grid-Layout](https://github.com/STRML/react-grid-layout)**
@@ -92,7 +92,7 @@ Also check https://cli.vuejs.org/guide/build-targets.html#library
 
 #### 浏览器
 
-在页面中使用已打包好的 [文件](https://github.com/jbaysolutions/vue-grid-layout/releases)。 此时组件已为可用状态。
+在页面中使用已打包好的 [文件](https://github.com/merfais/vue-grid-layout-v3/releases)。 此时组件已为可用状态。
 
 ```html
     <script src="vue-grid-layout-v3.umd.min.js"></script>

@@ -4,11 +4,11 @@
 
 <p align="center">
 <a href="https://www.npmjs.com/package/vue-grid-layout-v3">
-    <img src="https://img.shields.io/npm/v/vue-grid-layout.svg"/>
-    <img src="https://img.shields.io/npm/dm/vue-grid-layout.svg"/>
+    <img src="https://img.shields.io/npm/v/vue-grid-layout-v3.svg"/>
+    <img src="https://img.shields.io/npm/dm/vue-grid-layout-v3.svg"/>
 </a>
-<a href="https://github.com/jbaysolutions/vue-grid-layout/releases">
-    <img src="https://img.shields.io/github/size/jbaysolutions/vue-grid-layout/dist/vue-grid-layout.umd.min.js"/>
+<a href="https://github.com/merfais/vue-grid-layout-v3/releases">
+    <img src="https://img.shields.io/github/size/merfais/vue-grid-layout-v3/dist/vue-grid-layout.umd.min.js"/>
 </a>
 <!--a href="https://vuejs.org/">
     <img src="https://img.shields.io/badge/vue-2.2.x-brightgreen.svg"/>
