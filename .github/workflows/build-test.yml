@@ -27,6 +27,6 @@ jobs:
     - name: Lint check
       run: yarn lint
     - name: Build
-      run: yarn build
+      run: yarn build-lib
     - name: Unit test
       run: yarn test:unit

@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const PACKAGE = require('./package.json');
 
 const banner = `${PACKAGE.name} - ${PACKAGE.version} | `
-    + `(c) 2015, ${new Date().getFullYear()}  ${PACKAGE.author} | ${
+    + `(c) 2022, ${new Date().getFullYear()}  ${PACKAGE.author} | ${
       PACKAGE.homepage}`;
 
 module.exports = {

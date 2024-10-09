@@ -18,7 +18,8 @@
   },
   "author": "coffeebi <merfais.bwq@163.com>",
   "homepage": "https://github.com/merfais/vue-grid-layout-v3",
-  "main": "src/components/index.js",
+  "main": "dist/vue-grid-layout-v3.common.js",
+  "module": "dist/vue-grid-layout-v3.umd.js",
   "unpkg": "dist/vue-grid-layout-v3.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",

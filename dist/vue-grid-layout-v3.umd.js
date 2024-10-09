@@ -1,4 +1,4 @@
-/*! vue-grid-layout-v3 - 3.0.2 | (c) 2015, 2023  coffeebi <merfais.bwq@163.com> | https://github.com/merfais/vue-grid-layout-v3 */
+/*! vue-grid-layout-v3 - 3.0.3 | (c) 2022, 2024  coffeebi <merfais.bwq@163.com> | https://github.com/merfais/vue-grid-layout-v3 */
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
 		module.exports = factory(require("vue"));
@@ -16000,9 +16000,10 @@ var _hoisted_1 = ["id"];
   },
   emits: ['container-resized', 'resize', 'resized', 'move', 'moved', 'drag-event', 'resize-event'],
   setup: function setup(__props, _ref) {
-    var expose = _ref.expose,
-      emit = _ref.emit;
+    var __expose = _ref.expose,
+      __emit = _ref.emit;
     var props = __props;
+    var emit = __emit;
     var emitter = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.inject)('emitter');
     var gridLayout = (0,external_commonjs_vue_commonjs2_vue_root_Vue_.inject)('gridLayout');
     // inject: ["eventBus", "layout"],
@@ -16075,7 +16076,7 @@ var _hoisted_1 = ["id"];
       }
       return 'vue-resizable-handle';
     });
-    expose({
+    __expose({
       calcXY: calcXY,
       domRef: domRef
     });
@@ -16795,12 +16796,12 @@ var _hoisted_1 = ["id"];
       return (0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("div", {
         ref_key: "domRef",
         ref: domRef,
-        class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(["vue-grid-item", (0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(classObj)]),
+        class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(["vue-grid-item", classObj.value]),
         style: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeStyle)(state.style),
         id: __props.i
-      }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.renderSlot)(_ctx.$slots, "default"), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(resizableAndNotStatic) ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", {
+      }, [(0,external_commonjs_vue_commonjs2_vue_root_Vue_.renderSlot)(_ctx.$slots, "default"), resizableAndNotStatic.value ? ((0,external_commonjs_vue_commonjs2_vue_root_Vue_.openBlock)(), (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createElementBlock)("span", {
         key: 0,
-        class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)((0,external_commonjs_vue_commonjs2_vue_root_Vue_.unref)(resizableHandleClass))
+        class: (0,external_commonjs_vue_commonjs2_vue_root_Vue_.normalizeClass)(resizableHandleClass.value)
       }, null, 2)) : (0,external_commonjs_vue_commonjs2_vue_root_Vue_.createCommentVNode)("", true)], 14, _hoisted_1);
     };
   }
@@ -17405,9 +17406,10 @@ var element_resize_detector_default = /*#__PURE__*/__webpack_require__.n(element
   },
   emits: ['update:layout', 'layout-ready', 'layout-created', 'layout-before-mount', 'layout-mounted', 'layout-updated', 'breakpoint-changed', 'container-resized', 'item-resize', 'item-resized', 'item-move', 'item-moved', 'intersection-observe', 'intersection-unobserve'],
   setup: function setup(__props, _ref) {
-    var expose = _ref.expose,
-      emit = _ref.emit;
+    var __expose = _ref.expose,
+      __emit = _ref.emit;
     var props = __props;
+    var emit = __emit;
     var emitter = mitt();
     var erd;
     var positionsBeforeDrag;
@@ -17455,7 +17457,7 @@ var element_resize_detector_default = /*#__PURE__*/__webpack_require__.n(element
     //   isMirrored: props.isMirrored,
     // }));
 
-    expose({
+    __expose({
       emitter: emitter,
       placeholderRef: placeholderRef
     });
