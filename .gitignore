@@ -22,5 +22,4 @@ yarn-error.log*
 *.sw*
 
 yarn-error.log
-
-website/docs/dist
+cache/**

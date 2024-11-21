@@ -6,12 +6,16 @@ const config = {
     'eslint:recommended',
     'airbnb-base',
   ],
-  env: {
-    'vue/setup-compiler-macros': true,
-  },
+  // env: {
+  //   // 'vue/setup-compiler-macros': true,
+  //   es6: true,
+  // },
+  // parserOptions: {
+  // },
   parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: '@babel/eslint-parser',
+    ecmaVersion: 'latest',
+    // parser: '@babel/eslint-parser',
     ecmaFeatures: {
       jsx: true,
     },
@@ -22,6 +26,8 @@ const config = {
 
     // 关闭vue的规则
     'vue/multi-word-component-names': 0,
+    'vue/require-component-is': 0,
+    'vue/no-v-for-template-key-on-child': 0,
     'vue/no-v-text-v-html-on-component': 0,
 
     // 关闭import规则
@@ -67,8 +73,9 @@ const config = {
   ignorePatterns: [
     'coverage/**',
     'public/**',
-    'node_modules/**',
-    'old/**',
+    'dist/**',
+    'website/**',
+    'test/**/*',
   ],
 };
 

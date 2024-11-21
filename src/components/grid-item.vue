@@ -1,7 +1,6 @@
 <script setup>
 import {
   reactive,
-  ref,
   unref,
   watch,
   computed,
@@ -25,15 +24,51 @@ import {
 import {
   getControlPosition,
   createCoreData,
-} from '../helpers/draggableUtils';
+} from '../helpers/draggable-utils';
 import {
   getColsFromBreakpoint,
-} from '../helpers/responsiveUtils';
-import {
-  getDocumentDir,
-} from '../helpers/DOM';
+} from '../helpers/responsive-utils';
 
 const props = defineProps({
+  i: {
+    required: true,
+  },
+  x: {
+    type: Number,
+    required: true,
+  },
+  y: {
+    type: Number,
+    required: true,
+  },
+  w: {
+    type: Number,
+    required: true,
+  },
+  h: {
+    type: Number,
+    required: true,
+  },
+  minW: {
+    type: Number,
+    required: false,
+    default: 1,
+  },
+  minH: {
+    type: Number,
+    required: false,
+    default: 1,
+  },
+  maxW: {
+    type: Number,
+    required: false,
+    default: Infinity,
+  },
+  maxH: {
+    type: Number,
+    required: false,
+    default: Infinity,
+  },
   // cols: {
   //   type: Number,
   //   required: true
@@ -78,45 +113,6 @@ const props = defineProps({
     required: false,
     default: false,
   },
-  minH: {
-    type: Number,
-    required: false,
-    default: 1,
-  },
-  minW: {
-    type: Number,
-    required: false,
-    default: 1,
-  },
-  maxH: {
-    type: Number,
-    required: false,
-    default: Infinity,
-  },
-  maxW: {
-    type: Number,
-    required: false,
-    default: Infinity,
-  },
-  x: {
-    type: Number,
-    required: true,
-  },
-  y: {
-    type: Number,
-    required: true,
-  },
-  w: {
-    type: Number,
-    required: true,
-  },
-  h: {
-    type: Number,
-    required: true,
-  },
-  i: {
-    required: true,
-  },
   dragIgnoreFrom: {
     type: String,
     required: false,
@@ -155,9 +151,13 @@ const emit = defineEmits([
   'resized',
   'move',
   'moved',
-  'drag-event',
-  'resize-event',
 ]);
+
+const exposeObj = {
+  el: undefined,
+  calcXY,
+};
+defineExpose(exposeObj);
 
 const emitter = inject('emitter');
 const gridLayout = inject('gridLayout');
@@ -165,7 +165,6 @@ const gridLayout = inject('gridLayout');
 
 let interactObj;
 
-const domRef = ref();
 const state = reactive({
   cols: 1,
   containerWidth: 100,
@@ -188,7 +187,6 @@ const state = reactive({
   lastW: NaN,
   lastH: NaN,
   style: {},
-  rtl: false,
 
   dragEventSet: false,
   resizeEventSet: false,
@@ -230,7 +228,7 @@ const draggableOrResizableAndNotStatic = computed(() => {
 // });
 
 const renderRtl = computed(() => {
-  return (gridLayout.props.isMirrored) ? !state.rtl : state.rtl;
+  return gridLayout.props.isMirrored;
 });
 
 const resizableHandleClass = computed(() => {
@@ -240,33 +238,8 @@ const resizableHandleClass = computed(() => {
   return 'vue-resizable-handle';
 });
 
-defineExpose({
-  calcXY,
-  domRef,
-});
-
 function created() {
-  // // Accessible refernces of functions for removing in beforeDestroy
-  // self.updateWidthHandler = function (width) {
-  //   self.updateWidth(width);
-  // };
-  //
-  // self.compactHandler = function (layout) {
-  //   self.compact(layout);
-  // };
-  // emitter.on('updateWidth', self.updateWidthHandler);
-  // emitter.on('compact', self.compactHandler);
-  // emitter.on('setDraggable', self.setDraggableHandler);
-  // emitter.on('setResizable', self.setResizableHandler);
-  // emitter.on('setBounded', self.setBoundedHandler);
-  // emitter.on('setTransformScale', self.setTransformScaleHandler)
-  // emitter.on('setRowHeight', self.setRowHeightHandler);
-  // emitter.on('setMaxRows', self.setMaxRowsHandler);
-  // emitter.on('directionchange', self.directionchangeHandler);
-  // emitter.on('setColNum', self.setColNum)
-
   emitter.on('updateWidth', updateWidth);
-  emitter.on('compact', compact);
   emitter.on('setDraggable', setDraggableHandler);
   emitter.on('setResizable', setResizableHandler);
   emitter.on('setBounded', setBoundedHandler);
@@ -275,8 +248,6 @@ function created() {
   emitter.on('setMaxRows', setMaxRowsHandler);
   emitter.on('directionchange', directionchangeHandler);
   emitter.on('setColNum', setColNum);
-
-  state.rtl = getDocumentDir() === 'rtl';
 }
 
 created();
@@ -284,7 +255,6 @@ created();
 onBeforeUnmount(() => {
   // Remove listeners
   emitter.off('updateWidth', updateWidth);
-  emitter.off('compact', compact);
   emitter.off('setDraggable', setDraggableHandler);
   emitter.off('setResizable', setResizableHandler);
   emitter.off('setBounded', setBoundedHandler);
@@ -386,17 +356,14 @@ watch(() => props.y, (newVal) => {
 watch(() => props.h, (newVal) => {
   state.innerH = newVal;
   createStyle();
-  // emitContainerResized();
 });
 
 watch(() => props.w, (newVal) => {
   state.innerW = newVal;
   createStyle();
-  // emitContainerResized();
 });
 
-watch(() => renderRtl, () => {
-  // console.log("### renderRtl");
+watch(renderRtl, () => {
   tryMakeResizable();
   createStyle();
 });
@@ -424,7 +391,7 @@ watch(() => gridLayout.props.margin, (margin) => {
   ) {
     return;
   }
-  state.margin = margin.map(m => Number(m));
+  state.margin = margin.map(m => Number(m) || 0);
   createStyle();
   emitContainerResized();
 });
@@ -460,8 +427,7 @@ function setMaxRowsHandler(maxRows) {
 }
 
 function directionchangeHandler() {
-  state.rtl = getDocumentDir() === 'rtl';
-  compact();
+  createStyle();
 }
 
 function setColNum(colNum) {
@@ -548,7 +514,6 @@ function handleResize(event) {
       break;
     }
     case 'resizemove': {
-      // console.log("### resize => " + event.type + ", lastW=" + state.lastW + ", lastH=" + state.lastH);
       const coreEvent = createCoreData(state.lastW, state.lastH, x, y);
       if (unref(renderRtl)) {
         newSize.width = state.resizing.width - coreEvent.deltaX / state.transformScale;
@@ -557,21 +522,19 @@ function handleResize(event) {
       }
       newSize.height = state.resizing.height + coreEvent.deltaY / state.transformScale;
 
-      // console.log("### resize => " + event.type + ", deltaX=" + coreEvent.deltaX + ", deltaY=" + coreEvent.deltaY);
       state.resizing = newSize;
       break;
     }
     case 'resizeend': {
-      // console.log("### resize end => x=" +state.innerX + " y=" + state.innerY + " w=" + state.innerW + " h=" + state.innerH);
       pos = calcPosition(state.innerX, state.innerY, state.innerW, state.innerH);
       newSize.width = pos.width;
       newSize.height = pos.height;
-      // console.log("### resize end => " + JSON.stringify(newSize));
       state.resizing = null;
       state.isResizing = false;
       break;
     }
   }
+  createStyle();
 
   // Get new WH
   pos = calcWH(newSize.height, newSize.width);
@@ -665,8 +628,6 @@ function handleDrag(event) {
         newPosition.left = cLeft - pLeft;
       }
       newPosition.top = cTop - pTop;
-      // console.log("### drag end => " + JSON.stringify(newPosition));
-      // console.log("### DROP: " + JSON.stringify(newPosition));
       state.dragging = null;
       state.isDragging = false;
       // shouldUpdate = true;
@@ -688,14 +649,11 @@ function handleDrag(event) {
         const rightBoundary = state.containerWidth - calcGridItemWHPx(props.w, colWidth, state.margin[0]);
         newPosition.left = clamp(newPosition.left, 0, rightBoundary);
       }
-      // console.log("### drag => " + event.type + ", x=" + x + ", y=" + y);
-      // console.log("### drag => " + event.type + ", deltaX=" + coreEvent.deltaX + ", deltaY=" + coreEvent.deltaY);
-      // console.log("### drag end => " + JSON.stringify(newPosition));
       state.dragging = newPosition;
       break;
     }
   }
-
+  createStyle();
   // Get new XY
   let pos;
   if (unref(renderRtl)) {
@@ -777,7 +735,6 @@ function calcXY(top, left) {
 // Helper for generating column width
 function calcColWidth() {
   const colWidth = (state.containerWidth - (state.margin[0] * (state.cols + 1))) / state.cols;
-  // console.log("### COLS=" + state.cols + " COL WIDTH=" + colWidth + " MARGIN " + state.margin[0]);
   return colWidth;
 }
 
@@ -832,13 +789,9 @@ function updateWidth(width, colNum) {
   }
 }
 
-function compact() {
-  createStyle();
-}
-
 function tryMakeDraggable() {
   if (interactObj === null || interactObj === undefined) {
-    interactObj = interact(unref(domRef));
+    interactObj = interact(exposeObj.el);
     if (!state.useStyleCursor) {
       interactObj.styleCursor(false);
     }
@@ -866,7 +819,7 @@ function tryMakeDraggable() {
 
 function tryMakeResizable() {
   if (interactObj === null || interactObj === undefined) {
-    interactObj = interact(unref(domRef));
+    interactObj = interact(exposeObj.el);
     if (!state.useStyleCursor) {
       interactObj.styleCursor(false);
     }
@@ -874,9 +827,6 @@ function tryMakeResizable() {
   if (state.resizable && !props.static) {
     const maximum = calcPosition(0, 0, props.maxW, props.maxH);
     const minimum = calcPosition(0, 0, props.minW, props.minH);
-
-    // console.log("### MAX " + JSON.stringify(maximum));
-    // console.log("### MIN " + JSON.stringify(minimum));
 
     const opts = {
       // allowFrom: "." + unref(resizableHandleClass).trim().replace(" ", "."),
@@ -922,135 +872,95 @@ function tryMakeResizable() {
   }
 }
 
-// function autoSize() {
-//   // ok here we want to calculate if a resize is needed
-//   state.previousW = state.innerW;
-//   state.previousH = state.innerH;
-//
-//   let newSize=this.$slots.default[0].elm.getBoundingClientRect();
-//   let pos = calcWH(newSize.height, newSize.width, true);
-//   if (pos.w < props.minW) {
-//     pos.w = props.minW;
-//   }
-//   if (pos.w > props.maxW) {
-//     pos.w = props.maxW;
-//   }
-//   if (pos.h < props.minH) {
-//     pos.h = props.minH;
-//   }
-//   if (pos.h > props.maxH) {
-//     pos.h = props.maxH;
-//   }
-//
-//   if (pos.h < 1) {
-//     pos.h = 1;
-//   }
-//   if (pos.w < 1) {
-//     pos.w = 1;
-//   }
-//
-//   // state.lastW = x; // basically, this is copied from resizehandler, but shouldn't be needed
-//   // state.lastH = y;
-//
-//   if (state.innerW !== pos.w || state.innerH !== pos.h) {
-//     emit("resize", props.i, pos.h, pos.w, newSize.height, newSize.width);
-//   }
-//   if (state.previousW !== pos.w || state.previousH !== pos.h) {
-//     emit("resized", props.i, pos.h, pos.w, newSize.height, newSize.width);
-//     emitter.emit("resizeEvent", [
-//       "resizeend", props.i, state.innerX, state.innerY, pos.h, pos.w,
-//     ]);
-//   }
-// }
+function setRef(e) {
+  exposeObj.el = e;
+}
+
 </script>
 <template>
-  <div ref="domRef"
+  <div :ref="setRef"
     class="vue-grid-item"
     :class="classObj"
     :style="state.style"
     :id="i"
+    :key="i"
   >
-    <slot />
+    <slot :class="{ rtl: renderRtl }"/>
     <span v-if="resizableAndNotStatic"
       :class="resizableHandleClass"
     />
     <!--<span v-if="draggable" ref="dragHandle" class="vue-draggable-handle"></span>-->
   </div>
 </template>
-<style>
-  .vue-grid-item {
-    transition: all 200ms ease;
-    transition-property: left, top, right;
-    /* add right for rtl */
-  }
+<style scoped>
+.vue-grid-item {
+  transition: all 200ms ease;
+  transition-property: left, top, right;
+  /* add right for rtl */
+}
 
-  .vue-grid-item.no-touch {
-    -ms-touch-action: none;
-    touch-action: none;
-  }
+.vue-grid-item.no-touch {
+  touch-action: none;
+}
 
-  .vue-grid-item.cssTransforms {
-    transition-property: transform;
-    left: 0;
-    right: auto;
-  }
+.vue-grid-item.cssTransforms {
+  transition-property: transform;
+  left: 0;
+  right: auto;
+}
 
-  .vue-grid-item.cssTransforms.render-rtl {
-    left: auto;
-    right: 0;
-  }
+.vue-grid-item.cssTransforms.render-rtl {
+  left: auto;
+  right: 0;
+}
 
-  .vue-grid-item.resizing {
-    opacity: 0.6;
-    z-index: 3;
-  }
+.vue-grid-item.resizing {
+  opacity: 0.6;
+  z-index: 3;
+}
 
-  .vue-grid-item.vue-draggable-dragging {
-    transition:none;
-    z-index: 3;
-  }
+.vue-grid-item.vue-draggable-dragging {
+  transition:none;
+  z-index: 3;
+}
 
-  .vue-grid-item.vue-grid-placeholder {
-    background: red;
-    opacity: 0.2;
-    transition-duration: 100ms;
-    z-index: 2;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -o-user-select: none;
-    user-select: none;
-  }
+.vue-grid-item.vue-grid-placeholder {
+  background: red;
+  opacity: 0.2;
+  transition-duration: 100ms;
+  z-index: 2;
+  user-select: none;
+}
 
-  .vue-grid-item > .vue-resizable-handle {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    bottom: 0;
-    right: 0;
-    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg08IS0tIEdlbmVyYXRvcjogQWRvYmUgRmlyZXdvcmtzIENTNiwgRXhwb3J0IFNWRyBFeHRlbnNpb24gYnkgQWFyb24gQmVhbGwgKGh0dHA6Ly9maXJld29ya3MuYWJlYWxsLmNvbSkgLiBWZXJzaW9uOiAwLjYuMSAgLS0+DTwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DTxzdmcgaWQ9IlVudGl0bGVkLVBhZ2UlMjAxIiB2aWV3Qm94PSIwIDAgNiA2IiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjojZmZmZmZmMDAiIHZlcnNpb249IjEuMSINCXhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiDQl4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjZweCIgaGVpZ2h0PSI2cHgiDT4NCTxnIG9wYWNpdHk9IjAuMzAyIj4NCQk8cGF0aCBkPSJNIDYgNiBMIDAgNiBMIDAgNC4yIEwgNCA0LjIgTCA0LjIgNC4yIEwgNC4yIDAgTCA2IDAgTCA2IDYgTCA2IDYgWiIgZmlsbD0iIzAwMDAwMCIvPg0JPC9nPg08L3N2Zz4=');
-    background-position: bottom right;
-    padding: 0 3px 3px 0;
-    background-repeat: no-repeat;
-    background-origin: content-box;
-    box-sizing: border-box;
-    cursor: se-resize;
-  }
+.vue-grid-item > .vue-resizable-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  bottom: 0;
+  right: 0;
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg08IS0tIEdlbmVyYXRvcjogQWRvYmUgRmlyZXdvcmtzIENTNiwgRXhwb3J0IFNWRyBFeHRlbnNpb24gYnkgQWFyb24gQmVhbGwgKGh0dHA6Ly9maXJld29ya3MuYWJlYWxsLmNvbSkgLiBWZXJzaW9uOiAwLjYuMSAgLS0+DTwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DTxzdmcgaWQ9IlVudGl0bGVkLVBhZ2UlMjAxIiB2aWV3Qm94PSIwIDAgNiA2IiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjojZmZmZmZmMDAiIHZlcnNpb249IjEuMSINCXhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiDQl4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjZweCIgaGVpZ2h0PSI2cHgiDT4NCTxnIG9wYWNpdHk9IjAuMzAyIj4NCQk8cGF0aCBkPSJNIDYgNiBMIDAgNiBMIDAgNC4yIEwgNCA0LjIgTCA0LjIgNC4yIEwgNC4yIDAgTCA2IDAgTCA2IDYgTCA2IDYgWiIgZmlsbD0iIzAwMDAwMCIvPg0JPC9nPg08L3N2Zz4=');
+  background-position: bottom right;
+  padding: 0 3px 3px 0;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  box-sizing: border-box;
+  cursor: se-resize;
+}
 
-  .vue-grid-item > .vue-rtl-resizable-handle {
-    bottom: 0;
-    left: 0;
-    background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAuMDAwMDAwMDAwMDAwMDAyIiBoZWlnaHQ9IjEwLjAwMDAwMDAwMDAwMDAwMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIE1ldGhvZCBEcmF3IC0gaHR0cDovL2dpdGh1Yi5jb20vZHVvcGl4ZWwvTWV0aG9kLURyYXcvIC0tPgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSIxMiIgd2lkdGg9IjEyIiB5PSItMSIgeD0iLTEiLz4KICA8ZyBkaXNwbGF5PSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgeT0iMCIgeD0iMCIgaGVpZ2h0PSIxMDAlIiB3aWR0aD0iMTAwJSIgaWQ9ImNhbnZhc0dyaWQiPgogICA8cmVjdCBmaWxsPSJ1cmwoI2dyaWRwYXR0ZXJuKSIgc3Ryb2tlLXdpZHRoPSIwIiB5PSIwIiB4PSIwIiBoZWlnaHQ9IjEwMCUiIHdpZHRoPSIxMDAlIi8+CiAgPC9nPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxsaW5lIGNhbnZhcz0iI2ZmZmZmZiIgY2FudmFzLW9wYWNpdHk9IjEiIHN0cm9rZS1saW5lY2FwPSJ1bmRlZmluZWQiIHN0cm9rZS1saW5lam9pbj0idW5kZWZpbmVkIiBpZD0ic3ZnXzEiIHkyPSItNzAuMTc4NDA3IiB4Mj0iMTI0LjQ2NDE3NSIgeTE9Ii0zOC4zOTI3MzciIHgxPSIxNDQuODIxMjg5IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlPSIjMDAwIiBmaWxsPSJub25lIi8+CiAgPGxpbmUgc3Ryb2tlPSIjNjY2NjY2IiBzdHJva2UtbGluZWNhcD0idW5kZWZpbmVkIiBzdHJva2UtbGluZWpvaW49InVuZGVmaW5lZCIgaWQ9InN2Z181IiB5Mj0iOS4xMDY5NTciIHgyPSIwLjk0NzI0NyIgeTE9Ii0wLjAxODEyOCIgeDE9IjAuOTQ3MjQ3IiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz4KICA8bGluZSBzdHJva2UtbGluZWNhcD0idW5kZWZpbmVkIiBzdHJva2UtbGluZWpvaW49InVuZGVmaW5lZCIgaWQ9InN2Z183IiB5Mj0iOSIgeDI9IjEwLjA3MzUyOSIgeTE9IjkiIHgxPSItMC42NTU2NCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiM2NjY2NjYiIGZpbGw9Im5vbmUiLz4KIDwvZz4KPC9zdmc+);
-    background-position: bottom left;
-    padding-left: 3px;
-    background-repeat: no-repeat;
-    background-origin: content-box;
-    cursor: sw-resize;
-    right: auto;
-  }
+.vue-grid-item > .vue-rtl-resizable-handle {
+  bottom: 0;
+  left: 0;
+  background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAuMDAwMDAwMDAwMDAwMDAyIiBoZWlnaHQ9IjEwLjAwMDAwMDAwMDAwMDAwMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIE1ldGhvZCBEcmF3IC0gaHR0cDovL2dpdGh1Yi5jb20vZHVvcGl4ZWwvTWV0aG9kLURyYXcvIC0tPgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSIxMiIgd2lkdGg9IjEyIiB5PSItMSIgeD0iLTEiLz4KICA8ZyBkaXNwbGF5PSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgeT0iMCIgeD0iMCIgaGVpZ2h0PSIxMDAlIiB3aWR0aD0iMTAwJSIgaWQ9ImNhbnZhc0dyaWQiPgogICA8cmVjdCBmaWxsPSJ1cmwoI2dyaWRwYXR0ZXJuKSIgc3Ryb2tlLXdpZHRoPSIwIiB5PSIwIiB4PSIwIiBoZWlnaHQ9IjEwMCUiIHdpZHRoPSIxMDAlIi8+CiAgPC9nPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxsaW5lIGNhbnZhcz0iI2ZmZmZmZiIgY2FudmFzLW9wYWNpdHk9IjEiIHN0cm9rZS1saW5lY2FwPSJ1bmRlZmluZWQiIHN0cm9rZS1saW5lam9pbj0idW5kZWZpbmVkIiBpZD0ic3ZnXzEiIHkyPSItNzAuMTc4NDA3IiB4Mj0iMTI0LjQ2NDE3NSIgeTE9Ii0zOC4zOTI3MzciIHgxPSIxNDQuODIxMjg5IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlPSIjMDAwIiBmaWxsPSJub25lIi8+CiAgPGxpbmUgc3Ryb2tlPSIjNjY2NjY2IiBzdHJva2UtbGluZWNhcD0idW5kZWZpbmVkIiBzdHJva2UtbGluZWpvaW49InVuZGVmaW5lZCIgaWQ9InN2Z181IiB5Mj0iOS4xMDY5NTciIHgyPSIwLjk0NzI0NyIgeTE9Ii0wLjAxODEyOCIgeDE9IjAuOTQ3MjQ3IiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz4KICA8bGluZSBzdHJva2UtbGluZWNhcD0idW5kZWZpbmVkIiBzdHJva2UtbGluZWpvaW49InVuZGVmaW5lZCIgaWQ9InN2Z183IiB5Mj0iOSIgeDI9IjEwLjA3MzUyOSIgeTE9IjkiIHgxPSItMC42NTU2NCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiM2NjY2NjYiIGZpbGw9Im5vbmUiLz4KIDwvZz4KPC9zdmc+);
+  background-position: bottom left;
+  padding-left: 3px;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  cursor: sw-resize;
+  right: auto;
+}
 
-  .vue-grid-item.disable-userselect {
-    user-select: none;
-  }
+.vue-grid-item.disable-userselect {
+  user-select: none;
+}
 </style>
 

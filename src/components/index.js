@@ -1,5 +1,5 @@
-import GridItem from './GridItem.vue';
-import GridLayout from './GridLayout.vue';
+import GridItem from './grid-item.vue';
+import GridLayout from './grid-layout.vue';
 // import ResponsiveGridLayout from './ResponsiveGridLayout.vue';
 
 const VueGridLayout = {

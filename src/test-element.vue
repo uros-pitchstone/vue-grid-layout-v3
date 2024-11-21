@@ -3,7 +3,7 @@ import {
   onMounted,
 } from 'vue';
 
-const props = defineProps({
+defineProps({
   text: {
     type: String,
     default: 'x',
@@ -14,7 +14,7 @@ const emit = defineEmits([
   'removeItem',
 ]);
 onMounted(() => {
-  console.log(`### ${props.text} ready!`);
+  // console.log(`### ${props.text} ready!`);
 });
 </script>
 <template>
@@ -25,7 +25,7 @@ onMounted(() => {
     <span class="remove" @click="emit('removeItem', text)">x</span>
   </div>
 </template>
-<style>
+<style scoped>
 .remove {
   position: absolute;
   right: 2px;

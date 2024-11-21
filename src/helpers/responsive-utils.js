@@ -63,7 +63,6 @@ export function findOrGenerateResponsiveLayout(
   layouts,
   breakpoints,
   breakpoint,
-  lastBreakpoint,
   cols,
   verticalCompact,
 ) {
@@ -85,33 +84,33 @@ export function findOrGenerateResponsiveLayout(
   return compact(correctBounds(layout, { cols }), verticalCompact);
 }
 
-// export function generateResponsiveLayout(layout: Layout, breakpoints: Breakpoints,
-//                                                breakpoint: Breakpoint, lastBreakpoint: Breakpoint,
-//                                                cols: number, verticalCompact: boolean): Layout {
-export function generateResponsiveLayout(
-  layout,
-  breakpoints,
-  breakpoint,
-  lastBreakpoint,
-  cols,
-  verticalCompact,
-) {
-  // If it already exists, just return it.
-  /* if (layouts[breakpoint]) return cloneLayout(layouts[breakpoint]);
-  // Find or generate the next layout
-  let layout = layouts[lastBreakpoint]; */
-  /* const breakpointsSorted = sortBreakpoints(breakpoints);
-  const breakpointsAbove = breakpointsSorted.slice(breakpointsSorted.indexOf(breakpoint));
-  for (let i = 0, len = breakpointsAbove.length; i < len; i++) {
-    const b = breakpointsAbove[i];
-    if (layouts[b]) {
-      layout = layouts[b];
-      break;
-    }
-  } */
-  layout = cloneLayout(layout || []); // clone layout so we don't modify existing items
-  return compact(correctBounds(layout, { cols }), verticalCompact);
-}
+// // export function generateResponsiveLayout(layout: Layout, breakpoints: Breakpoints,
+// //                                                breakpoint: Breakpoint, lastBreakpoint: Breakpoint,
+// //                                                cols: number, verticalCompact: boolean): Layout {
+// export function generateResponsiveLayout(
+//   layout,
+//   breakpoints,
+//   breakpoint,
+//   lastBreakpoint,
+//   cols,
+//   verticalCompact,
+// ) {
+//   // If it already exists, just return it.
+//   /* if (layouts[breakpoint]) return cloneLayout(layouts[breakpoint]);
+//   // Find or generate the next layout
+//   let layout = layouts[lastBreakpoint]; */
+//   /* const breakpointsSorted = sortBreakpoints(breakpoints);
+//   const breakpointsAbove = breakpointsSorted.slice(breakpointsSorted.indexOf(breakpoint));
+//   for (let i = 0, len = breakpointsAbove.length; i < len; i++) {
+//     const b = breakpointsAbove[i];
+//     if (layouts[b]) {
+//       layout = layouts[b];
+//       break;
+//     }
+//   } */
+//   layout = cloneLayout(layout || []); // clone layout so we don't modify existing items
+//   return compact(correctBounds(layout, { cols }), verticalCompact);
+// }
 
 /**
  * Given breakpoints, return an array of breakpoints sorted by width. This is usually
