@@ -2,26 +2,31 @@
   "name": "vue-grid-layout-website",
   "version": "1.0.0",
   "description": "vue-grid-layout website",
-  "author": "Gustavo Santos (gustavo@jbaysolutions.com)",
+  "author": "coffeebi (merfais.bwq@163.com)",
   "license": "MIT",
   "private": false,
   "scripts": {
-    "dev": "vuepress dev docs",
-    "build": "vuepress build docs",
-    "serve": "vuepress serve docs"
-  },
-  "dependencies": {
+    "dev": "vite",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs",
+    "lint:fix": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix",
+    "docs:dev": "vitepress dev",
+    "docs:build": "vitepress build",
+    "docs:preview": "vitepress preview"
   },
   "devDependencies": {
-    "@vuepress/plugin-back-to-top": "^1.6.0",
-    "@vuepress/plugin-google-analytics": "^1.6.0",
-    "vue-grid-layout": "^2.4.0",
-    "vuepress-plugin-seo": "^0.1.4",
-    "vuepress-plugin-sitemap": "^2.3.1",
-    "vuepress": "^1.7.1",
-    "vuepress-plugin-serve": "^2.0.4"
+    "@rollup/plugin-eslint": "^9.0.5",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-vue": "^9.23.0",
+    "vite": "^5.3.1",
+    "vitepress": "^1.3.4",
+    "vitepress-plugin-back-to-top": "^1.0.1",
+    "vitepress-plugin-google-analytics": "^1.0.2",
+    "vue-eslint-parser": "^9.4.3"
   },
-  "resolutions": {
-    "watchpack": "1.6.1"
+  "resolutions": {},
+  "dependencies": {
+    "vue": "^3.5.11",
+    "vue-grid-layout-v3": "^4.0.0"
   }
 }
