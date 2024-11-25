@@ -13,7 +13,7 @@ hero:
   actions:
     - theme: brand
       text: Get Started →
-      link: /guide/installation
+      link: /guide
 
 features:
   - title: Draggable
