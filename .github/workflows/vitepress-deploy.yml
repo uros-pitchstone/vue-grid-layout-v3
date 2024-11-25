@@ -41,11 +41,11 @@ jobs:
       - name: Install dependencies
         run: cd website && npm install # 或 pnpm install / yarn install / bun install
       - name: Build with VitePress
-        run: npm run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
+        run: cd website && npm run docs:build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .vitepress/dist
+          path: website/.vitepress/dist
 
   # 部署工作
   deploy:
