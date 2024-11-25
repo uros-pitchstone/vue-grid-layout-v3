@@ -4,7 +4,9 @@ import Example03MultipleGrids from '@/example/03-multiple-grids.vue'
 
 # 03 - Multiple grids
 
-<Example03MultipleGrids />
+<ClientOnly>
+  <Example03MultipleGrids />
+</ClientOnly>
 
 <<< @/example/03-multiple-grids.vue
 

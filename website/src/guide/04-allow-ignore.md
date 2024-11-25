@@ -8,7 +8,9 @@ Ignore drag on certain elements and allow on others.
 
 Click and drag the dots on the corner of each item to reposition
 
-<Example04AllowIgnore />
+<ClientOnly>
+  <Example04AllowIgnore />
+</ClientOnly>
 
 <<< @/example/04-allow-ignore.vue
 

@@ -4,7 +4,9 @@ import Example07PreventCollision from '@/example/07-prevent-collision.vue'
 
 # 07 - Prevent Collision
 
-<Example07PreventCollision />
+<ClientOnly>
+  <Example07PreventCollision />
+</ClientOnly>
 
 <<< @/example/07-prevent-collision.vue
 

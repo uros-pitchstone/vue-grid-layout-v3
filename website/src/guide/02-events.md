@@ -4,7 +4,9 @@ import Example02Events from '@/example/02-events.vue'
 
 # 02 - Move and resize events
 
-<Example02Events />
+<ClientOnly>
+  <Example02Events />
+</ClientOnly>
 
 <<< @/example/02-events.vue
 

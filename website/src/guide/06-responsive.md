@@ -4,7 +4,9 @@ import Example06Responsive from '@/example/06-responsive.vue'
 
 # 06 - Responsive
 
-<Example06Responsive />
+<ClientOnly>
+  <Example06Responsive />
+</ClientOnly>
 
 <<< @/example/06-responsive.vue
 

@@ -7,6 +7,8 @@ import ExampleUsage from '@/example/usage.vue'
 
 <<< @/example/usage.vue
 
-<ExampleUsage />
+<ClientOnly>
+  <ExampleUsage />
+</ClientOnly>
 
 

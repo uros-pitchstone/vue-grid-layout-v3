@@ -4,7 +4,9 @@ import Example05Mirrored from '@/example/05-mirrored.vue'
 
 # 05 - Mirrored grid layout
 
-<Example05Mirrored />
+<ClientOnly>
+  <Example05Mirrored />
+</ClientOnly>
 
 <<< @/example/05-mirrored.vue
 

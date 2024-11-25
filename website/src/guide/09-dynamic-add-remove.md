@@ -4,7 +4,9 @@ import Example09DynamicAddRemove from '@/example/09-dynamic-add-remove.vue'
 
 # 09 - Dynamic Add/Remove
 
-<Example09DynamicAddRemove />
+<ClientOnly>
+  <Example09DynamicAddRemove />
+</ClientOnly>
 
 <<< @/example/09-dynamic-add-remove.vue
 

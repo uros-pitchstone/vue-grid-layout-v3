@@ -4,7 +4,9 @@ import Example01Basic from '@/example/01-basic.vue'
 
 # 01 - Basic
 
-<Example01Basic />
+<ClientOnly>
+  <Example01Basic />
+</ClientOnly>
 
 <<< @/example/01-basic.vue
 

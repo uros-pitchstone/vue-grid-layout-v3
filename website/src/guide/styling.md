@@ -52,7 +52,9 @@ in scoped
 
 In this example we change the placeholder background color to green:
 
-<ExampleStylingPlaceholder />
+<ClientOnly>
+    <ExampleStylingPlaceholder />
+</ClientOnly>
 
 <<< @/example/styling-placeholder.vue
 
@@ -88,7 +90,10 @@ CSS calculations for grid lines:
 * width: calc(100% - (margin/2))
 * margin: margin / 2
 
-<ExampleStylingGridLines />
+<ClientOnly>
+    <ExampleStylingGridLines />
+</ClientOnly>
+
 <<< @/example/styling-grid-lines.vue
 
 [View source](https://github.com/merfais/vue-grid-layout-v3/blob/master/website/src/example/styling-grid-lines.vue)

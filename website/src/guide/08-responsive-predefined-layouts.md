@@ -4,7 +4,9 @@ import Example08ResponsivePredefinedLayouts from '@/example/08-responsive-predef
 
 # 08 - Responsive with predefined layouts
 
-<Example08ResponsivePredefinedLayouts />
+<ClientOnly>
+  <Example08ResponsivePredefinedLayouts />
+</ClientOnly>
 
 <<< @/example/08-responsive-predefined-layouts.vue
 

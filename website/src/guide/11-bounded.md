@@ -4,7 +4,9 @@ import Example11Bounded from '@/example/11-bounded.vue'
 
 # 11 - Dragging grid items bounded to grid container
 
-<Example11Bounded />
+<ClientOnly>
+  <Example11Bounded />
+</ClientOnly>
 
 <<< @/example/11-bounded.vue
 
