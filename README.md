@@ -33,7 +33,11 @@ vue-grid-layout is a grid layout system, like [Gridster](http://dsmorse.github.i
 * Automatic RTL support (resizing not working with RTL on 2.2.0)
 * Responsive
 
-## **Current version:** 3.0.3 (Supports Vue 3.2+)
+## **Current version:** 3.1.0 (Supports Vue 3.2+)
+
+#### **upgrading from version 3.0 to version 3.1 has some break change**
+  + GridLayout expose changed: `{ placeholderRef, emitter }` -> `{ el, placeholderEl, emitter, placeholder }`
+  + GridItem expose changed: `{ calcXY, domRef }` -> `{ calcXY, el }`
 
 #### **For legacy browsers**, like IE11, use version [2.3.12-legacy](https://github.com/jbaysolutions/vue-grid-layout/tree/legacy)
 #### **For Vue 2.1.10+ use version [2.4.0](https://github.com/jbaysolutions/vue-grid-layout/tree/2.4.0)**

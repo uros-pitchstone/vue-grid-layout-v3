@@ -19,9 +19,9 @@
   "author": "coffeebi <merfais.bwq@163.com>",
   "homepage": "https://github.com/merfais/vue-grid-layout-v3",
   "type": "module",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "unpkg": "dist/index.umd.cjs",
+  "main": "dist/vue-grid-layout-v3.js",
+  "module": "dist/vue-grid-layout-v3.js",
+  "unpkg": "dist/vue-grid-layout-v3.umd.cjs",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

@@ -30,7 +30,7 @@ export default defineConfig(() => ({
       entry: resolve(__dirname, 'src/components/index.js'),
       name: 'VueGridLayout',
       // the proper extensions will be added
-      fileName: 'index',
+      fileName: 'vue-grid-layout-v3',
       formats: ['iife', 'es', 'umd', 'cjs'],
     },
     rollupOptions: {
