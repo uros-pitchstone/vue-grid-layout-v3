@@ -1,18 +1,11 @@
-(function() {
-  "use strict";
-  try {
-    if (typeof document != "undefined") {
-      var elementStyle = document.createElement("style");
-      elementStyle.appendChild(document.createTextNode(".vue-grid-item[data-v-99aff433] {\n  -webkit-transition: all 200ms ease;\n  transition: all 200ms ease;\n  -webkit-transition-property: left, top, right;\n  transition-property: left, top, right;\n  /* add right for rtl */\n}\n.vue-grid-item.no-touch[data-v-99aff433] {\n  -ms-touch-action: none;\n      touch-action: none;\n}\n.vue-grid-item.cssTransforms[data-v-99aff433] {\n  -webkit-transition-property: -webkit-transform;\n  transition-property: -webkit-transform;\n  transition-property: transform;\n  transition-property: transform, -webkit-transform;\n  left: 0;\n  right: auto;\n}\n.vue-grid-item.cssTransforms.render-rtl[data-v-99aff433] {\n  left: auto;\n  right: 0;\n}\n.vue-grid-item.resizing[data-v-99aff433] {\n  opacity: 0.6;\n  z-index: 3;\n}\n.vue-grid-item.vue-draggable-dragging[data-v-99aff433] {\n  -webkit-transition:none;\n  transition:none;\n  z-index: 3;\n}\n.vue-grid-item.vue-grid-placeholder[data-v-99aff433] {\n  background: red;\n  opacity: 0.2;\n  -webkit-transition-duration: 100ms;\n          transition-duration: 100ms;\n  z-index: 2;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n.vue-grid-item > .vue-resizable-handle[data-v-99aff433] {\n  position: absolute;\n  width: 20px;\n  height: 20px;\n  bottom: 0;\n  right: 0;\n  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg08IS0tIEdlbmVyYXRvcjogQWRvYmUgRmlyZXdvcmtzIENTNiwgRXhwb3J0IFNWRyBFeHRlbnNpb24gYnkgQWFyb24gQmVhbGwgKGh0dHA6Ly9maXJld29ya3MuYWJlYWxsLmNvbSkgLiBWZXJzaW9uOiAwLjYuMSAgLS0+DTwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DTxzdmcgaWQ9IlVudGl0bGVkLVBhZ2UlMjAxIiB2aWV3Qm94PSIwIDAgNiA2IiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjojZmZmZmZmMDAiIHZlcnNpb249IjEuMSINCXhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiDQl4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjZweCIgaGVpZ2h0PSI2cHgiDT4NCTxnIG9wYWNpdHk9IjAuMzAyIj4NCQk8cGF0aCBkPSJNIDYgNiBMIDAgNiBMIDAgNC4yIEwgNCA0LjIgTCA0LjIgNC4yIEwgNC4yIDAgTCA2IDAgTCA2IDYgTCA2IDYgWiIgZmlsbD0iIzAwMDAwMCIvPg0JPC9nPg08L3N2Zz4=');\n  background-position: bottom right;\n  padding: 0 3px 3px 0;\n  background-repeat: no-repeat;\n  background-origin: content-box;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  cursor: se-resize;\n}\n.vue-grid-item > .vue-rtl-resizable-handle[data-v-99aff433] {\n  bottom: 0;\n  left: 0;\n  background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAuMDAwMDAwMDAwMDAwMDAyIiBoZWlnaHQ9IjEwLjAwMDAwMDAwMDAwMDAwMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KIDwhLS0gQ3JlYXRlZCB3aXRoIE1ldGhvZCBEcmF3IC0gaHR0cDovL2dpdGh1Yi5jb20vZHVvcGl4ZWwvTWV0aG9kLURyYXcvIC0tPgogPGc+CiAgPHRpdGxlPmJhY2tncm91bmQ8L3RpdGxlPgogIDxyZWN0IGZpbGw9Im5vbmUiIGlkPSJjYW52YXNfYmFja2dyb3VuZCIgaGVpZ2h0PSIxMiIgd2lkdGg9IjEyIiB5PSItMSIgeD0iLTEiLz4KICA8ZyBkaXNwbGF5PSJub25lIiBvdmVyZmxvdz0idmlzaWJsZSIgeT0iMCIgeD0iMCIgaGVpZ2h0PSIxMDAlIiB3aWR0aD0iMTAwJSIgaWQ9ImNhbnZhc0dyaWQiPgogICA8cmVjdCBmaWxsPSJ1cmwoI2dyaWRwYXR0ZXJuKSIgc3Ryb2tlLXdpZHRoPSIwIiB5PSIwIiB4PSIwIiBoZWlnaHQ9IjEwMCUiIHdpZHRoPSIxMDAlIi8+CiAgPC9nPgogPC9nPgogPGc+CiAgPHRpdGxlPkxheWVyIDE8L3RpdGxlPgogIDxsaW5lIGNhbnZhcz0iI2ZmZmZmZiIgY2FudmFzLW9wYWNpdHk9IjEiIHN0cm9rZS1saW5lY2FwPSJ1bmRlZmluZWQiIHN0cm9rZS1saW5lam9pbj0idW5kZWZpbmVkIiBpZD0ic3ZnXzEiIHkyPSItNzAuMTc4NDA3IiB4Mj0iMTI0LjQ2NDE3NSIgeTE9Ii0zOC4zOTI3MzciIHgxPSIxNDQuODIxMjg5IiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlPSIjMDAwIiBmaWxsPSJub25lIi8+CiAgPGxpbmUgc3Ryb2tlPSIjNjY2NjY2IiBzdHJva2UtbGluZWNhcD0idW5kZWZpbmVkIiBzdHJva2UtbGluZWpvaW49InVuZGVmaW5lZCIgaWQ9InN2Z181IiB5Mj0iOS4xMDY5NTciIHgyPSIwLjk0NzI0NyIgeTE9Ii0wLjAxODEyOCIgeDE9IjAuOTQ3MjQ3IiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz4KICA8bGluZSBzdHJva2UtbGluZWNhcD0idW5kZWZpbmVkIiBzdHJva2UtbGluZWpvaW49InVuZGVmaW5lZCIgaWQ9InN2Z183IiB5Mj0iOSIgeDI9IjEwLjA3MzUyOSIgeTE9IjkiIHgxPSItMC42NTU2NCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2U9IiM2NjY2NjYiIGZpbGw9Im5vbmUiLz4KIDwvZz4KPC9zdmc+);\n  background-position: bottom left;\n  padding-left: 3px;\n  background-repeat: no-repeat;\n  background-origin: content-box;\n  cursor: sw-resize;\n  right: auto;\n}\n.vue-grid-item.disable-userselect[data-v-99aff433] {\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n}\n\n.vue-grid-layout[data-v-a10aee95] {\n  position: relative;\n  -webkit-transition: height 200ms ease;\n  transition: height 200ms ease;\n}"));
-      document.head.appendChild(elementStyle);
-    }
-  } catch (e) {
-    console.error("vite-plugin-css-injected-by-js", e);
-  }
-})();
-import { inject, reactive, computed, unref, onBeforeUnmount, onMounted, watch, openBlock, createElementBlock, normalizeClass, normalizeStyle, renderSlot, createCommentVNode, provide, onBeforeMount, nextTick, withDirectives, createVNode, vShow } from "vue";
-const domObjects = {
-  init: init$3,
+/**
+ * vue-grid-layout-v3 3.1.1-rc.1
+ * coffeebi <merfais.bwq@163.com>
+ * https://github.com/merfais/vue-grid-layout-v3
+ */
+import { inject as Le, reactive as hn, computed as kt, unref as J, onBeforeUnmount as pn, onMounted as gn, watch as W, openBlock as ve, createElementBlock as ye, normalizeClass as ue, normalizeStyle as mn, renderSlot as vn, createCommentVNode as di, provide as We, onBeforeMount as hi, nextTick as pi, withDirectives as gi, createVNode as mi, vShow as vi } from "vue";
+import './index.css';const q = {
+  init: yi,
   document: null,
   DocumentFragment: null,
   SVGElement: null,
@@ -24,72 +17,43 @@ const domObjects = {
   Touch: null,
   PointerEvent: null
 };
-function blank() {
+function Pt() {
 }
-function init$3(window2) {
-  const win2 = window2;
-  domObjects.document = win2.document;
-  domObjects.DocumentFragment = win2.DocumentFragment || blank;
-  domObjects.SVGElement = win2.SVGElement || blank;
-  domObjects.SVGSVGElement = win2.SVGSVGElement || blank;
-  domObjects.SVGElementInstance = win2.SVGElementInstance || blank;
-  domObjects.Element = win2.Element || blank;
-  domObjects.HTMLElement = win2.HTMLElement || domObjects.Element;
-  domObjects.Event = win2.Event;
-  domObjects.Touch = win2.Touch || blank;
-  domObjects.PointerEvent = win2.PointerEvent || win2.MSPointerEvent;
+function yi(e) {
+  const t = e;
+  q.document = t.document, q.DocumentFragment = t.DocumentFragment || Pt, q.SVGElement = t.SVGElement || Pt, q.SVGSVGElement = t.SVGSVGElement || Pt, q.SVGElementInstance = t.SVGElementInstance || Pt, q.Element = t.Element || Pt, q.HTMLElement = t.HTMLElement || q.Element, q.Event = t.Event, q.Touch = t.Touch || Pt, q.PointerEvent = t.PointerEvent || t.MSPointerEvent;
 }
-var isWindow = (thing) => !!(thing && thing.Window) && thing instanceof thing.Window;
-let realWindow = void 0;
-let win = void 0;
-function init$2(window2) {
-  realWindow = window2;
-  const el = window2.document.createTextNode("");
-  if (el.ownerDocument !== window2.document && typeof window2.wrap === "function" && window2.wrap(el) === el) {
-    window2 = window2.wrap(window2);
-  }
-  win = window2;
+var yn = (e) => !!(e && e.Window) && e instanceof e.Window;
+let bn, pt;
+function xn(e) {
+  bn = e;
+  const t = e.document.createTextNode("");
+  t.ownerDocument !== e.document && typeof e.wrap == "function" && e.wrap(t) === t && (e = e.wrap(e)), pt = e;
 }
-if (typeof window !== "undefined" && !!window) {
-  init$2(window);
+typeof window < "u" && window && xn(window);
+function It(e) {
+  return yn(e) ? e : (e.ownerDocument || e).defaultView || pt.window;
 }
-function getWindow(node) {
-  if (isWindow(node)) {
-    return node;
-  }
-  const rootNode = node.ownerDocument || node;
-  return rootNode.defaultView || win.window;
-}
-const window$1 = (thing) => thing === win || isWindow(thing);
-const docFrag = (thing) => object$1(thing) && thing.nodeType === 11;
-const object$1 = (thing) => !!thing && typeof thing === "object";
-const func = (thing) => typeof thing === "function";
-const number = (thing) => typeof thing === "number";
-const bool = (thing) => typeof thing === "boolean";
-const string = (thing) => typeof thing === "string";
-const element = (thing) => {
-  if (!thing || typeof thing !== "object") {
-    return false;
-  }
-  const _window = getWindow(thing) || win;
-  return /object|function/.test(typeof Element) ? thing instanceof Element || thing instanceof _window.Element : thing.nodeType === 1 && typeof thing.nodeName === "string";
+const bi = (e) => e === pt || yn(e), xi = (e) => ie(e) && e.nodeType === 11, ie = (e) => !!e && typeof e == "object", wn = (e) => typeof e == "function", wi = (e) => typeof e == "number", Si = (e) => typeof e == "boolean", Ei = (e) => typeof e == "string", zi = (e) => {
+  if (!e || typeof e != "object")
+    return !1;
+  const t = It(e) || pt;
+  return /object|function/.test(typeof Element) ? e instanceof Element || e instanceof t.Element : e.nodeType === 1 && typeof e.nodeName == "string";
+}, Ii = (e) => ie(e) && !!e.constructor && /function Object\b/.test(e.constructor.toString()), Ti = (e) => ie(e) && typeof e.length < "u" && wn(e.splice);
+var p = {
+  window: bi,
+  docFrag: xi,
+  object: ie,
+  func: wn,
+  number: wi,
+  bool: Si,
+  string: Ei,
+  element: zi,
+  plainObject: Ii,
+  array: Ti
 };
-const plainObject = (thing) => object$1(thing) && !!thing.constructor && /function Object\b/.test(thing.constructor.toString());
-const array = (thing) => object$1(thing) && typeof thing.length !== "undefined" && func(thing.splice);
-var is = {
-  window: window$1,
-  docFrag,
-  object: object$1,
-  func,
-  number,
-  bool,
-  string,
-  element,
-  plainObject,
-  array
-};
-const browser = {
-  init: init$1,
+const G = {
+  init: Di,
   supportsTouch: null,
   supportsPointerEvent: null,
   isIOS7: null,
@@ -100,17 +64,9 @@ const browser = {
   pEventTypes: null,
   wheelEvent: null
 };
-function init$1(window2) {
-  const Element2 = domObjects.Element;
-  const navigator2 = window2.navigator || {};
-  browser.supportsTouch = "ontouchstart" in window2 || is.func(window2.DocumentTouch) && domObjects.document instanceof window2.DocumentTouch;
-  browser.supportsPointerEvent = navigator2.pointerEnabled !== false && !!domObjects.PointerEvent;
-  browser.isIOS = /iP(hone|od|ad)/.test(navigator2.platform);
-  browser.isIOS7 = /iP(hone|od|ad)/.test(navigator2.platform) && /OS 7[^\d]/.test(navigator2.appVersion);
-  browser.isIe9 = /MSIE 9/.test(navigator2.userAgent);
-  browser.isOperaMobile = navigator2.appName === "Opera" && browser.supportsTouch && /Presto/.test(navigator2.userAgent);
-  browser.prefixedMatchesSelector = "matches" in Element2.prototype ? "matches" : "webkitMatchesSelector" in Element2.prototype ? "webkitMatchesSelector" : "mozMatchesSelector" in Element2.prototype ? "mozMatchesSelector" : "oMatchesSelector" in Element2.prototype ? "oMatchesSelector" : "msMatchesSelector";
-  browser.pEventTypes = browser.supportsPointerEvent ? domObjects.PointerEvent === window2.MSPointerEvent ? {
+function Di(e) {
+  const t = q.Element, n = e.navigator || {};
+  G.supportsTouch = "ontouchstart" in e || p.func(e.DocumentTouch) && q.document instanceof e.DocumentTouch, G.supportsPointerEvent = n.pointerEnabled !== !1 && !!q.PointerEvent, G.isIOS = /iP(hone|od|ad)/.test(n.platform), G.isIOS7 = /iP(hone|od|ad)/.test(n.platform) && /OS 7[^\d]/.test(n.appVersion), G.isIe9 = /MSIE 9/.test(n.userAgent), G.isOperaMobile = n.appName === "Opera" && G.supportsTouch && /Presto/.test(n.userAgent), G.prefixedMatchesSelector = "matches" in t.prototype ? "matches" : "webkitMatchesSelector" in t.prototype ? "webkitMatchesSelector" : "mozMatchesSelector" in t.prototype ? "mozMatchesSelector" : "oMatchesSelector" in t.prototype ? "oMatchesSelector" : "msMatchesSelector", G.pEventTypes = G.supportsPointerEvent ? q.PointerEvent === e.MSPointerEvent ? {
     up: "MSPointerUp",
     down: "MSPointerDown",
     over: "mouseover",
@@ -124,368 +80,232 @@ function init$1(window2) {
     out: "pointerout",
     move: "pointermove",
     cancel: "pointercancel"
-  } : null;
-  browser.wheelEvent = domObjects.document && "onmousewheel" in domObjects.document ? "mousewheel" : "wheel";
+  } : null, G.wheelEvent = q.document && "onmousewheel" in q.document ? "mousewheel" : "wheel";
 }
-const merge = (target, source) => {
-  for (const item of source) {
-    target.push(item);
-  }
-  return target;
-};
-const from = (source) => merge([], source);
-const findIndex = (array2, func2) => {
-  for (let i = 0; i < array2.length; i++) {
-    if (func2(array2[i], i, array2)) {
-      return i;
-    }
-  }
+const Sn = (e, t) => {
+  for (const n of t)
+    e.push(n);
+  return e;
+}, En = (e) => Sn([], e), re = (e, t) => {
+  for (let n = 0; n < e.length; n++)
+    if (t(e[n], n, e))
+      return n;
   return -1;
+}, Jt = (e, t) => e[re(e, t)];
+function Rt(e) {
+  const t = {};
+  for (const n in e) {
+    const i = e[n];
+    p.plainObject(i) ? t[n] = Rt(i) : p.array(i) ? t[n] = En(i) : t[n] = i;
+  }
+  return t;
+}
+function I(e, t) {
+  for (const i in t)
+    e[i] = t[i];
+  return e;
+}
+let Be = 0, ct, wt;
+function Mi(e) {
+  if (ct = e.requestAnimationFrame, wt = e.cancelAnimationFrame, !ct) {
+    const t = ["ms", "moz", "webkit", "o"];
+    for (const n of t)
+      ct = e[`${n}RequestAnimationFrame`], wt = e[`${n}CancelAnimationFrame`] || e[`${n}CancelRequestAnimationFrame`];
+  }
+  ct = ct && ct.bind(e), wt = wt && wt.bind(e), ct || (ct = (t) => {
+    const n = Date.now(), i = Math.max(0, 16 - (n - Be)), o = e.setTimeout(() => {
+      t(n + i);
+    }, i);
+    return Be = n + i, o;
+  }, wt = (t) => clearTimeout(t));
+}
+var Ot = {
+  request: (e) => ct(e),
+  cancel: (e) => wt(e),
+  init: Mi
 };
-const find = (array2, func2) => array2[findIndex(array2, func2)];
-function clone(source) {
-  const dest = {};
-  for (const prop2 in source) {
-    const value = source[prop2];
-    if (is.plainObject(value)) {
-      dest[prop2] = clone(value);
-    } else if (is.array(value)) {
-      dest[prop2] = from(value);
-    } else {
-      dest[prop2] = value;
+function Et(e, t) {
+  let n = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : (o) => !0, i = arguments.length > 3 ? arguments[3] : void 0;
+  if (i = i || {}, p.string(e) && e.search(" ") !== -1 && (e = Ne(e)), p.array(e))
+    return e.forEach((o) => Et(o, t, n, i)), i;
+  if (p.object(e) && (t = e, e = ""), p.func(t) && n(e))
+    i[e] = i[e] || [], i[e].push(t);
+  else if (p.array(t))
+    for (const o of t)
+      Et(e, o, n, i);
+  else if (p.object(t))
+    for (const o in t) {
+      const s = Ne(o).map((a) => `${e}${a}`);
+      Et(s, t[o], n, i);
     }
-  }
-  return dest;
+  return i;
 }
-function extend(dest, source) {
-  for (const prop2 in source) {
-    dest[prop2] = source[prop2];
-  }
-  const ret = dest;
-  return ret;
+function Ne(e) {
+  return e.trim().split(/ +/);
 }
-let lastTime = 0;
-let request;
-let cancel;
-function init(global2) {
-  request = global2.requestAnimationFrame;
-  cancel = global2.cancelAnimationFrame;
-  if (!request) {
-    const vendors = ["ms", "moz", "webkit", "o"];
-    for (const vendor of vendors) {
-      request = global2[`${vendor}RequestAnimationFrame`];
-      cancel = global2[`${vendor}CancelAnimationFrame`] || global2[`${vendor}CancelRequestAnimationFrame`];
-    }
-  }
-  request = request && request.bind(global2);
-  cancel = cancel && cancel.bind(global2);
-  if (!request) {
-    request = (callback) => {
-      const currTime = Date.now();
-      const timeToCall = Math.max(0, 16 - (currTime - lastTime));
-      const token = global2.setTimeout(() => {
-        callback(currTime + timeToCall);
-      }, timeToCall);
-      lastTime = currTime + timeToCall;
-      return token;
-    };
-    cancel = (token) => clearTimeout(token);
-  }
-}
-var raf = {
-  request: (callback) => request(callback),
-  cancel: (token) => cancel(token),
-  init
-};
-function normalize(type, listeners) {
-  let filter = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : (_typeOrPrefix) => true;
-  let result = arguments.length > 3 ? arguments[3] : void 0;
-  result = result || {};
-  if (is.string(type) && type.search(" ") !== -1) {
-    type = split(type);
-  }
-  if (is.array(type)) {
-    type.forEach((t) => normalize(t, listeners, filter, result));
-    return result;
-  }
-  if (is.object(type)) {
-    listeners = type;
-    type = "";
-  }
-  if (is.func(listeners) && filter(type)) {
-    result[type] = result[type] || [];
-    result[type].push(listeners);
-  } else if (is.array(listeners)) {
-    for (const l of listeners) {
-      normalize(type, l, filter, result);
-    }
-  } else if (is.object(listeners)) {
-    for (const prefix2 in listeners) {
-      const combinedTypes = split(prefix2).map((p) => `${type}${p}`);
-      normalize(combinedTypes, listeners[prefix2], filter, result);
-    }
-  }
-  return result;
-}
-function split(type) {
-  return type.trim().split(/ +/);
-}
-function fireUntilImmediateStopped(event, listeners) {
-  for (const listener of listeners) {
-    if (event.immediatePropagationStopped) {
+function Fe(e, t) {
+  for (const n of t) {
+    if (e.immediatePropagationStopped)
       break;
-    }
-    listener(event);
+    n(e);
   }
 }
-class Eventable {
-  constructor(options) {
-    this.options = void 0;
-    this.types = {};
-    this.propagationStopped = false;
-    this.immediatePropagationStopped = false;
-    this.global = void 0;
-    this.options = extend({}, options || {});
+class zn {
+  constructor(t) {
+    this.options = void 0, this.types = {}, this.propagationStopped = !1, this.immediatePropagationStopped = !1, this.global = void 0, this.options = I({}, t || {});
   }
-  fire(event) {
-    let listeners;
-    const global2 = this.global;
-    if (listeners = this.types[event.type]) {
-      fireUntilImmediateStopped(event, listeners);
-    }
-    if (!event.propagationStopped && global2 && (listeners = global2[event.type])) {
-      fireUntilImmediateStopped(event, listeners);
-    }
+  fire(t) {
+    let n;
+    const i = this.global;
+    (n = this.types[t.type]) && Fe(t, n), !t.propagationStopped && i && (n = i[t.type]) && Fe(t, n);
   }
-  on(type, listener) {
-    const listeners = normalize(type, listener);
-    for (type in listeners) {
-      this.types[type] = merge(this.types[type] || [], listeners[type]);
-    }
+  on(t, n) {
+    const i = Et(t, n);
+    for (t in i)
+      this.types[t] = Sn(this.types[t] || [], i[t]);
   }
-  off(type, listener) {
-    const listeners = normalize(type, listener);
-    for (type in listeners) {
-      const eventList = this.types[type];
-      if (!eventList || !eventList.length) {
-        continue;
-      }
-      for (const subListener of listeners[type]) {
-        const index = eventList.indexOf(subListener);
-        if (index !== -1) {
-          eventList.splice(index, 1);
+  off(t, n) {
+    const i = Et(t, n);
+    for (t in i) {
+      const o = this.types[t];
+      if (!(!o || !o.length))
+        for (const s of i[t]) {
+          const a = o.indexOf(s);
+          a !== -1 && o.splice(a, 1);
         }
-      }
     }
   }
-  getRect(_element) {
+  getRect(t) {
     return null;
   }
 }
-function nodeContains(parent, child) {
-  if (parent.contains) {
-    return parent.contains(child);
+function zt(e, t) {
+  if (e.contains)
+    return e.contains(t);
+  for (; t; ) {
+    if (t === e)
+      return !0;
+    t = t.parentNode;
   }
-  while (child) {
-    if (child === parent) {
-      return true;
-    }
-    child = child.parentNode;
-  }
-  return false;
+  return !1;
 }
-function closest(element2, selector) {
-  while (is.element(element2)) {
-    if (matchesSelector(element2, selector)) {
-      return element2;
-    }
-    element2 = parentNode(element2);
+function In(e, t) {
+  for (; p.element(e); ) {
+    if (Tt(e, t))
+      return e;
+    e = gt(e);
   }
   return null;
 }
-function parentNode(node) {
-  let parent = node.parentNode;
-  if (is.docFrag(parent)) {
-    while ((parent = parent.host) && is.docFrag(parent)) {
-      continue;
-    }
-    return parent;
+function gt(e) {
+  let t = e.parentNode;
+  if (p.docFrag(t)) {
+    for (; (t = t.host) && p.docFrag(t); )
+      ;
+    return t;
   }
-  return parent;
+  return t;
 }
-function matchesSelector(element2, selector) {
-  if (win !== realWindow) {
-    selector = selector.replace(/\/deep\//g, " ");
+function Tt(e, t) {
+  return pt !== bn && (t = t.replace(/\/deep\//g, " ")), e[G.prefixedMatchesSelector](t);
+}
+function be(e, t, n) {
+  for (; p.element(e); ) {
+    if (Tt(e, t))
+      return !0;
+    if (e = gt(e), e === n)
+      return Tt(e, t);
   }
-  return element2[browser.prefixedMatchesSelector](selector);
+  return !1;
 }
-function matchesUpTo(element2, selector, limit) {
-  while (is.element(element2)) {
-    if (matchesSelector(element2, selector)) {
-      return true;
-    }
-    element2 = parentNode(element2);
-    if (element2 === limit) {
-      return matchesSelector(element2, selector);
-    }
-  }
-  return false;
+function je(e) {
+  return e.correspondingUseElement || e;
 }
-function getActualElement(element2) {
-  return element2.correspondingUseElement || element2;
-}
-function getScrollXY(relevantWindow) {
-  relevantWindow = relevantWindow || win;
-  return {
-    x: relevantWindow.scrollX || relevantWindow.document.documentElement.scrollLeft,
-    y: relevantWindow.scrollY || relevantWindow.document.documentElement.scrollTop
+function Ci(e) {
+  return e = e || pt, {
+    x: e.scrollX || e.document.documentElement.scrollLeft,
+    y: e.scrollY || e.document.documentElement.scrollTop
   };
 }
-function getElementClientRect(element2) {
-  const clientRect = element2 instanceof domObjects.SVGElement ? element2.getBoundingClientRect() : element2.getClientRects()[0];
-  return clientRect && {
-    left: clientRect.left,
-    right: clientRect.right,
-    top: clientRect.top,
-    bottom: clientRect.bottom,
-    width: clientRect.width || clientRect.right - clientRect.left,
-    height: clientRect.height || clientRect.bottom - clientRect.top
+function Ie(e) {
+  const t = e instanceof q.SVGElement ? e.getBoundingClientRect() : e.getClientRects()[0];
+  return t && {
+    left: t.left,
+    right: t.right,
+    top: t.top,
+    bottom: t.bottom,
+    width: t.width || t.right - t.left,
+    height: t.height || t.bottom - t.top
   };
 }
-function getElementRect(element2) {
-  const clientRect = getElementClientRect(element2);
-  if (!browser.isIOS7 && clientRect) {
-    const scroll2 = getScrollXY(getWindow(element2));
-    clientRect.left += scroll2.x;
-    clientRect.right += scroll2.x;
-    clientRect.top += scroll2.y;
-    clientRect.bottom += scroll2.y;
+function Te(e) {
+  const t = Ie(e);
+  if (!G.isIOS7 && t) {
+    const n = Ci(It(e));
+    t.left += n.x, t.right += n.x, t.top += n.y, t.bottom += n.y;
   }
-  return clientRect;
+  return t;
 }
-function trySelector(value) {
-  if (!is.string(value)) {
-    return false;
-  }
-  domObjects.document.querySelector(value);
-  return true;
+function Xe(e) {
+  return p.string(e) ? (q.document.querySelector(e), !0) : !1;
 }
-const VENDOR_PREFIXES = ["webkit", "moz"];
-function pointerExtend(dest, source) {
-  dest.__set || (dest.__set = {});
-  for (const prop2 in source) {
-    if (VENDOR_PREFIXES.some((prefix2) => prop2.indexOf(prefix2) === 0)) continue;
-    if (typeof dest[prop2] !== "function" && prop2 !== "__set") {
-      Object.defineProperty(dest, prop2, {
-        get() {
-          if (prop2 in dest.__set) return dest.__set[prop2];
-          return dest.__set[prop2] = source[prop2];
-        },
-        set(value) {
-          dest.__set[prop2] = value;
-        },
-        configurable: true
-      });
-    }
-  }
-  return dest;
+const _i = ["webkit", "moz"];
+function Tn(e, t) {
+  e.__set || (e.__set = {});
+  for (const n in t)
+    _i.some((i) => n.indexOf(i) === 0) || typeof e[n] != "function" && n !== "__set" && Object.defineProperty(e, n, {
+      get() {
+        return n in e.__set ? e.__set[n] : e.__set[n] = t[n];
+      },
+      set(i) {
+        e.__set[n] = i;
+      },
+      configurable: !0
+    });
+  return e;
 }
-var hypot = (x, y) => Math.sqrt(x * x + y * y);
-function copyCoords(dest, src) {
-  dest.page = dest.page || {};
-  dest.page.x = src.page.x;
-  dest.page.y = src.page.y;
-  dest.client = dest.client || {};
-  dest.client.x = src.client.x;
-  dest.client.y = src.client.y;
-  dest.timeStamp = src.timeStamp;
+var oe = (e, t) => Math.sqrt(e * e + t * t);
+function fe(e, t) {
+  e.page = e.page || {}, e.page.x = t.page.x, e.page.y = t.page.y, e.client = e.client || {}, e.client.x = t.client.x, e.client.y = t.client.y, e.timeStamp = t.timeStamp;
 }
-function setCoordDeltas(targetObj, prev, cur) {
-  targetObj.page.x = cur.page.x - prev.page.x;
-  targetObj.page.y = cur.page.y - prev.page.y;
-  targetObj.client.x = cur.client.x - prev.client.x;
-  targetObj.client.y = cur.client.y - prev.client.y;
-  targetObj.timeStamp = cur.timeStamp - prev.timeStamp;
+function Pi(e, t, n) {
+  e.page.x = n.page.x - t.page.x, e.page.y = n.page.y - t.page.y, e.client.x = n.client.x - t.client.x, e.client.y = n.client.y - t.client.y, e.timeStamp = n.timeStamp - t.timeStamp;
 }
-function setCoordVelocity(targetObj, delta) {
-  const dt = Math.max(delta.timeStamp / 1e3, 1e-3);
-  targetObj.page.x = delta.page.x / dt;
-  targetObj.page.y = delta.page.y / dt;
-  targetObj.client.x = delta.client.x / dt;
-  targetObj.client.y = delta.client.y / dt;
-  targetObj.timeStamp = dt;
+function Oi(e, t) {
+  const n = Math.max(t.timeStamp / 1e3, 1e-3);
+  e.page.x = t.page.x / n, e.page.y = t.page.y / n, e.client.x = t.client.x / n, e.client.y = t.client.y / n, e.timeStamp = n;
 }
-function setZeroCoords(targetObj) {
-  targetObj.page.x = 0;
-  targetObj.page.y = 0;
-  targetObj.client.x = 0;
-  targetObj.client.y = 0;
+function Ri(e) {
+  e.page.x = 0, e.page.y = 0, e.client.x = 0, e.client.y = 0;
 }
-function isNativePointer(pointer) {
-  return pointer instanceof domObjects.Event || pointer instanceof domObjects.Touch;
+function Dn(e) {
+  return e instanceof q.Event || e instanceof q.Touch;
 }
-function getXY(type, pointer, xy) {
-  xy = xy || {};
-  type = type || "page";
-  xy.x = pointer[type + "X"];
-  xy.y = pointer[type + "Y"];
-  return xy;
+function Qt(e, t, n) {
+  return n = n || {}, e = e || "page", n.x = t[e + "X"], n.y = t[e + "Y"], n;
 }
-function getPageXY(pointer, page) {
-  page = page || {
+function ki(e, t) {
+  return t = t || {
     x: 0,
     y: 0
-  };
-  if (browser.isOperaMobile && isNativePointer(pointer)) {
-    getXY("screen", pointer, page);
-    page.x += window.scrollX;
-    page.y += window.scrollY;
-  } else {
-    getXY("page", pointer, page);
-  }
-  return page;
+  }, G.isOperaMobile && Dn(e) ? (Qt("screen", e, t), t.x += window.scrollX, t.y += window.scrollY) : Qt("page", e, t), t;
 }
-function getClientXY(pointer, client) {
-  client = client || {};
-  if (browser.isOperaMobile && isNativePointer(pointer)) {
-    getXY("screen", pointer, client);
-  } else {
-    getXY("client", pointer, client);
-  }
-  return client;
+function Ai(e, t) {
+  return t = t || {}, G.isOperaMobile && Dn(e) ? Qt("screen", e, t) : Qt("client", e, t), t;
 }
-function getPointerId(pointer) {
-  return is.number(pointer.pointerId) ? pointer.pointerId : pointer.identifier;
+function te(e) {
+  return p.number(e.pointerId) ? e.pointerId : e.identifier;
 }
-function setCoords(dest, pointers, timeStamp) {
-  const pointer = pointers.length > 1 ? pointerAverage(pointers) : pointers[0];
-  getPageXY(pointer, dest.page);
-  getClientXY(pointer, dest.client);
-  dest.timeStamp = timeStamp;
+function $i(e, t, n) {
+  const i = t.length > 1 ? Mn(t) : t[0];
+  ki(i, e.page), Ai(i, e.client), e.timeStamp = n;
 }
-function getTouchPair(event) {
-  const touches = [];
-  if (is.array(event)) {
-    touches[0] = event[0];
-    touches[1] = event[1];
-  } else {
-    if (event.type === "touchend") {
-      if (event.touches.length === 1) {
-        touches[0] = event.touches[0];
-        touches[1] = event.changedTouches[0];
-      } else if (event.touches.length === 0) {
-        touches[0] = event.changedTouches[0];
-        touches[1] = event.changedTouches[1];
-      }
-    } else {
-      touches[0] = event.touches[0];
-      touches[1] = event.touches[1];
-    }
-  }
-  return touches;
+function De(e) {
+  const t = [];
+  return p.array(e) ? (t[0] = e[0], t[1] = e[1]) : e.type === "touchend" ? e.touches.length === 1 ? (t[0] = e.touches[0], t[1] = e.changedTouches[0]) : e.touches.length === 0 && (t[0] = e.changedTouches[0], t[1] = e.changedTouches[1]) : (t[0] = e.touches[0], t[1] = e.touches[1]), t;
 }
-function pointerAverage(pointers) {
-  const average = {
+function Mn(e) {
+  const t = {
     pageX: 0,
     pageY: 0,
     clientX: 0,
@@ -493,65 +313,48 @@ function pointerAverage(pointers) {
     screenX: 0,
     screenY: 0
   };
-  for (const pointer of pointers) {
-    for (const prop2 in average) {
-      average[prop2] += pointer[prop2];
-    }
-  }
-  for (const prop2 in average) {
-    average[prop2] /= pointers.length;
-  }
-  return average;
+  for (const n of e)
+    for (const i in t)
+      t[i] += n[i];
+  for (const n in t)
+    t[n] /= e.length;
+  return t;
 }
-function touchBBox(event) {
-  if (!event.length) {
+function Hi(e) {
+  if (!e.length)
     return null;
-  }
-  const touches = getTouchPair(event);
-  const minX = Math.min(touches[0].pageX, touches[1].pageX);
-  const minY = Math.min(touches[0].pageY, touches[1].pageY);
-  const maxX = Math.max(touches[0].pageX, touches[1].pageX);
-  const maxY = Math.max(touches[0].pageY, touches[1].pageY);
+  const t = De(e), n = Math.min(t[0].pageX, t[1].pageX), i = Math.min(t[0].pageY, t[1].pageY), o = Math.max(t[0].pageX, t[1].pageX), s = Math.max(t[0].pageY, t[1].pageY);
   return {
-    x: minX,
-    y: minY,
-    left: minX,
-    top: minY,
-    right: maxX,
-    bottom: maxY,
-    width: maxX - minX,
-    height: maxY - minY
+    x: n,
+    y: i,
+    left: n,
+    top: i,
+    right: o,
+    bottom: s,
+    width: o - n,
+    height: s - i
   };
 }
-function touchDistance(event, deltaSource) {
-  const sourceX = deltaSource + "X";
-  const sourceY = deltaSource + "Y";
-  const touches = getTouchPair(event);
-  const dx = touches[0][sourceX] - touches[1][sourceX];
-  const dy = touches[0][sourceY] - touches[1][sourceY];
-  return hypot(dx, dy);
+function Li(e, t) {
+  const n = t + "X", i = t + "Y", o = De(e), s = o[0][n] - o[1][n], a = o[0][i] - o[1][i];
+  return oe(s, a);
 }
-function touchAngle(event, deltaSource) {
-  const sourceX = deltaSource + "X";
-  const sourceY = deltaSource + "Y";
-  const touches = getTouchPair(event);
-  const dx = touches[1][sourceX] - touches[0][sourceX];
-  const dy = touches[1][sourceY] - touches[0][sourceY];
-  const angle = 180 * Math.atan2(dy, dx) / Math.PI;
-  return angle;
+function Wi(e, t) {
+  const n = t + "X", i = t + "Y", o = De(e), s = o[1][n] - o[0][n], a = o[1][i] - o[0][i];
+  return 180 * Math.atan2(a, s) / Math.PI;
 }
-function getPointerType(pointer) {
-  return is.string(pointer.pointerType) ? pointer.pointerType : is.number(pointer.pointerType) ? [void 0, void 0, "touch", "pen", "mouse"][pointer.pointerType] : (
+function Bi(e) {
+  return p.string(e.pointerType) ? e.pointerType : p.number(e.pointerType) ? [void 0, void 0, "touch", "pen", "mouse"][e.pointerType] : (
     // if the PointerEvent API isn't available, then the "pointer" must
     // be either a MouseEvent, TouchEvent, or Touch object
-    /touch/.test(pointer.type || "") || pointer instanceof domObjects.Touch ? "touch" : "mouse"
+    /touch/.test(e.type || "") || e instanceof q.Touch ? "touch" : "mouse"
   );
 }
-function getEventTargets(event) {
-  const path = is.func(event.composedPath) ? event.composedPath() : event.path;
-  return [getActualElement(path ? path[0] : event.target), getActualElement(event.currentTarget)];
+function Cn(e) {
+  const t = p.func(e.composedPath) ? e.composedPath() : e.path;
+  return [je(t ? t[0] : e.target), je(e.currentTarget)];
 }
-function newCoords() {
+function At() {
   return {
     page: {
       x: 0,
@@ -564,194 +367,141 @@ function newCoords() {
     timeStamp: 0
   };
 }
-function install$a(scope2) {
-  var _scope$document;
-  const targets = [];
-  const delegatedEvents = {};
-  const documents = [];
-  const eventsMethods = {
-    add,
-    remove,
-    addDelegate,
-    removeDelegate,
-    delegateListener,
-    delegateUseCapture,
-    delegatedEvents,
-    documents,
-    targets,
-    supportsOptions: false,
-    supportsPassive: false
+function Ni(e) {
+  var t;
+  const n = [], i = {}, o = [], s = {
+    add: a,
+    remove: l,
+    addDelegate: c,
+    removeDelegate: r,
+    delegateListener: f,
+    delegateUseCapture: d,
+    delegatedEvents: i,
+    documents: o,
+    targets: n,
+    supportsOptions: !1,
+    supportsPassive: !1
   };
-  (_scope$document = scope2.document) == null ? void 0 : _scope$document.createElement("div").addEventListener("test", null, {
+  (t = e.document) == null || t.createElement("div").addEventListener("test", null, {
     get capture() {
-      return eventsMethods.supportsOptions = true;
+      return s.supportsOptions = !0;
     },
     get passive() {
-      return eventsMethods.supportsPassive = true;
+      return s.supportsPassive = !0;
     }
-  });
-  scope2.events = eventsMethods;
-  function add(eventTarget, type, listener, optionalArg) {
-    if (!eventTarget.addEventListener) return;
-    const options = getOptions(optionalArg);
-    let target = find(targets, (t) => t.eventTarget === eventTarget);
-    if (!target) {
-      target = {
-        eventTarget,
-        events: {}
-      };
-      targets.push(target);
-    }
-    if (!target.events[type]) {
-      target.events[type] = [];
-    }
-    if (!find(target.events[type], (l) => l.func === listener && optionsMatch(l.options, options))) {
-      eventTarget.addEventListener(type, listener, eventsMethods.supportsOptions ? options : options.capture);
-      target.events[type].push({
-        func: listener,
-        options
-      });
-    }
+  }), e.events = s;
+  function a(m, g, b, C) {
+    if (!m.addEventListener) return;
+    const k = $t(C);
+    let A = Jt(n, (S) => S.eventTarget === m);
+    A || (A = {
+      eventTarget: m,
+      events: {}
+    }, n.push(A)), A.events[g] || (A.events[g] = []), Jt(A.events[g], (S) => S.func === b && Vt(S.options, k)) || (m.addEventListener(g, b, s.supportsOptions ? k : k.capture), A.events[g].push({
+      func: b,
+      options: k
+    }));
   }
-  function remove(eventTarget, type, listener, optionalArg) {
-    if (!eventTarget.addEventListener || !eventTarget.removeEventListener) return;
-    const targetIndex = findIndex(targets, (t) => t.eventTarget === eventTarget);
-    const target = targets[targetIndex];
-    if (!target || !target.events) {
+  function l(m, g, b, C) {
+    if (!m.addEventListener || !m.removeEventListener) return;
+    const k = re(n, (v) => v.eventTarget === m), A = n[k];
+    if (!A || !A.events)
+      return;
+    if (g === "all") {
+      for (g in A.events)
+        A.events.hasOwnProperty(g) && l(m, g, "all");
       return;
     }
-    if (type === "all") {
-      for (type in target.events) {
-        if (target.events.hasOwnProperty(type)) {
-          remove(eventTarget, type, "all");
-        }
-      }
-      return;
-    }
-    let typeIsEmpty = false;
-    const typeListeners = target.events[type];
-    if (typeListeners) {
-      if (listener === "all") {
-        for (let i = typeListeners.length - 1; i >= 0; i--) {
-          const entry = typeListeners[i];
-          remove(eventTarget, type, entry.func, entry.options);
+    let S = !1;
+    const _ = A.events[g];
+    if (_)
+      if (b === "all") {
+        for (let v = _.length - 1; v >= 0; v--) {
+          const u = _[v];
+          l(m, g, u.func, u.options);
         }
         return;
       } else {
-        const options = getOptions(optionalArg);
-        for (let i = 0; i < typeListeners.length; i++) {
-          const entry = typeListeners[i];
-          if (entry.func === listener && optionsMatch(entry.options, options)) {
-            eventTarget.removeEventListener(type, listener, eventsMethods.supportsOptions ? options : options.capture);
-            typeListeners.splice(i, 1);
-            if (typeListeners.length === 0) {
-              delete target.events[type];
-              typeIsEmpty = true;
-            }
+        const v = $t(C);
+        for (let u = 0; u < _.length; u++) {
+          const w = _[u];
+          if (w.func === b && Vt(w.options, v)) {
+            m.removeEventListener(g, b, s.supportsOptions ? v : v.capture), _.splice(u, 1), _.length === 0 && (delete A.events[g], S = !0);
             break;
           }
         }
       }
-    }
-    if (typeIsEmpty && !Object.keys(target.events).length) {
-      targets.splice(targetIndex, 1);
-    }
+    S && !Object.keys(A.events).length && n.splice(k, 1);
   }
-  function addDelegate(selector, context, type, listener, optionalArg) {
-    const options = getOptions(optionalArg);
-    if (!delegatedEvents[type]) {
-      delegatedEvents[type] = [];
-      for (const doc of documents) {
-        add(doc, type, delegateListener);
-        add(doc, type, delegateUseCapture, true);
-      }
+  function c(m, g, b, C, k) {
+    const A = $t(k);
+    if (!i[b]) {
+      i[b] = [];
+      for (const v of o)
+        a(v, b, f), a(v, b, d, !0);
     }
-    const delegates = delegatedEvents[type];
-    let delegate = find(delegates, (d) => d.selector === selector && d.context === context);
-    if (!delegate) {
-      delegate = {
-        selector,
-        context,
-        listeners: []
-      };
-      delegates.push(delegate);
-    }
-    delegate.listeners.push({
-      func: listener,
-      options
+    const S = i[b];
+    let _ = Jt(S, (v) => v.selector === m && v.context === g);
+    _ || (_ = {
+      selector: m,
+      context: g,
+      listeners: []
+    }, S.push(_)), _.listeners.push({
+      func: C,
+      options: A
     });
   }
-  function removeDelegate(selector, context, type, listener, optionalArg) {
-    const options = getOptions(optionalArg);
-    const delegates = delegatedEvents[type];
-    let matchFound = false;
-    let index;
-    if (!delegates) return;
-    for (index = delegates.length - 1; index >= 0; index--) {
-      const cur = delegates[index];
-      if (cur.selector === selector && cur.context === context) {
-        const {
-          listeners
-        } = cur;
-        for (let i = listeners.length - 1; i >= 0; i--) {
-          const entry = listeners[i];
-          if (entry.func === listener && optionsMatch(entry.options, options)) {
-            listeners.splice(i, 1);
-            if (!listeners.length) {
-              delegates.splice(index, 1);
-              remove(context, type, delegateListener);
-              remove(context, type, delegateUseCapture, true);
-            }
-            matchFound = true;
-            break;
-          }
-        }
-        if (matchFound) {
-          break;
-        }
-      }
-    }
-  }
-  function delegateListener(event, optionalArg) {
-    const options = getOptions(optionalArg);
-    const fakeEvent = new FakeEvent(event);
-    const delegates = delegatedEvents[event.type];
-    const [eventTarget] = getEventTargets(event);
-    let element2 = eventTarget;
-    while (is.element(element2)) {
-      for (let i = 0; i < delegates.length; i++) {
-        const cur = delegates[i];
-        const {
-          selector,
-          context
-        } = cur;
-        if (matchesSelector(element2, selector) && nodeContains(context, eventTarget) && nodeContains(context, element2)) {
+  function r(m, g, b, C, k) {
+    const A = $t(k), S = i[b];
+    let _ = !1, v;
+    if (S)
+      for (v = S.length - 1; v >= 0; v--) {
+        const u = S[v];
+        if (u.selector === m && u.context === g) {
           const {
-            listeners
-          } = cur;
-          fakeEvent.currentTarget = element2;
-          for (const entry of listeners) {
-            if (optionsMatch(entry.options, options)) {
-              entry.func(fakeEvent);
+            listeners: w
+          } = u;
+          for (let y = w.length - 1; y >= 0; y--) {
+            const T = w[y];
+            if (T.func === C && Vt(T.options, A)) {
+              w.splice(y, 1), w.length || (S.splice(v, 1), l(g, b, f), l(g, b, d, !0)), _ = !0;
+              break;
             }
           }
+          if (_)
+            break;
         }
       }
-      element2 = parentNode(element2);
+  }
+  function f(m, g) {
+    const b = $t(g), C = new Fi(m), k = i[m.type], [A] = Cn(m);
+    let S = A;
+    for (; p.element(S); ) {
+      for (let _ = 0; _ < k.length; _++) {
+        const v = k[_], {
+          selector: u,
+          context: w
+        } = v;
+        if (Tt(S, u) && zt(w, A) && zt(w, S)) {
+          const {
+            listeners: y
+          } = v;
+          C.currentTarget = S;
+          for (const T of y)
+            Vt(T.options, b) && T.func(C);
+        }
+      }
+      S = gt(S);
     }
   }
-  function delegateUseCapture(event) {
-    return delegateListener.call(this, event, true);
+  function d(m) {
+    return f.call(this, m, !0);
   }
-  return eventsMethods;
+  return s;
 }
-class FakeEvent {
-  constructor(originalEvent) {
-    this.currentTarget = void 0;
-    this.originalEvent = void 0;
-    this.type = void 0;
-    this.originalEvent = originalEvent;
-    pointerExtend(this, originalEvent);
+class Fi {
+  constructor(t) {
+    this.currentTarget = void 0, this.originalEvent = void 0, this.type = void 0, this.originalEvent = t, Tn(this, t);
   }
   preventOriginalDefault() {
     this.originalEvent.preventDefault();
@@ -763,191 +513,110 @@ class FakeEvent {
     this.originalEvent.stopImmediatePropagation();
   }
 }
-function getOptions(param) {
-  if (!is.object(param)) {
-    return {
-      capture: !!param,
-      passive: false
-    };
-  }
-  return {
-    capture: !!param.capture,
-    passive: !!param.passive
+function $t(e) {
+  return p.object(e) ? {
+    capture: !!e.capture,
+    passive: !!e.passive
+  } : {
+    capture: !!e,
+    passive: !1
   };
 }
-function optionsMatch(a, b) {
-  if (a === b) return true;
-  if (typeof a === "boolean") return !!b.capture === a && !!b.passive === false;
-  return !!a.capture === !!b.capture && !!a.passive === !!b.passive;
+function Vt(e, t) {
+  return e === t ? !0 : typeof e == "boolean" ? !!t.capture === e && !t.passive : !!e.capture == !!t.capture && !!e.passive == !!t.passive;
 }
-var events = {
+var ji = {
   id: "events",
-  install: install$a
+  install: Ni
 };
-const preventDefault = function preventDefault2(newValue) {
-  if (/^(always|never|auto)$/.test(newValue)) {
-    this.options.preventDefault = newValue;
-    return this;
-  }
-  if (is.bool(newValue)) {
-    this.options.preventDefault = newValue ? "always" : "never";
-    return this;
-  }
-  return this.options.preventDefault;
+const Xi = function(t) {
+  return /^(always|never|auto)$/.test(t) ? (this.options.preventDefault = t, this) : p.bool(t) ? (this.options.preventDefault = t ? "always" : "never", this) : this.options.preventDefault;
 };
-function checkAndPreventDefault(interactable, scope2, event) {
-  const setting = interactable.options.preventDefault;
-  if (setting === "never") return;
-  if (setting === "always") {
-    event.preventDefault();
-    return;
-  }
-  if (scope2.events.supportsPassive && /^touch(start|move)$/.test(event.type)) {
-    const doc = getWindow(event.target).document;
-    const docOptions = scope2.getDocOptions(doc);
-    if (!(docOptions && docOptions.events) || docOptions.events.passive !== false) {
+function Yi(e, t, n) {
+  const i = e.options.preventDefault;
+  if (i !== "never") {
+    if (i === "always") {
+      n.preventDefault();
       return;
     }
+    if (t.events.supportsPassive && /^touch(start|move)$/.test(n.type)) {
+      const o = It(n.target).document, s = t.getDocOptions(o);
+      if (!(s && s.events) || s.events.passive !== !1)
+        return;
+    }
+    /^(mouse|pointer|touch)*(down|start)/i.test(n.type) || p.element(n.target) && Tt(n.target, "input,select,textarea,[contenteditable=true],[contenteditable=true] *") || n.preventDefault();
   }
-  if (/^(mouse|pointer|touch)*(down|start)/i.test(event.type)) {
-    return;
-  }
-  if (is.element(event.target) && matchesSelector(event.target, "input,select,textarea,[contenteditable=true],[contenteditable=true] *")) {
-    return;
-  }
-  event.preventDefault();
 }
-function onInteractionEvent(_ref) {
+function qi(e) {
   let {
-    interaction,
-    event
-  } = _ref;
-  if (interaction.interactable) {
-    interaction.interactable.checkAndPreventDefault(event);
-  }
+    interaction: t,
+    event: n
+  } = e;
+  t.interactable && t.interactable.checkAndPreventDefault(n);
 }
-function install$9(scope2) {
+function Gi(e) {
   const {
-    Interactable: Interactable2
-  } = scope2;
-  Interactable2.prototype.preventDefault = preventDefault;
-  Interactable2.prototype.checkAndPreventDefault = function(event) {
-    return checkAndPreventDefault(this, scope2, event);
-  };
-  scope2.interactions.docEvents.push({
+    Interactable: t
+  } = e;
+  t.prototype.preventDefault = Xi, t.prototype.checkAndPreventDefault = function(n) {
+    return Yi(this, e, n);
+  }, e.interactions.docEvents.push({
     type: "dragstart",
-    listener(event) {
-      for (const interaction of scope2.interactions.list) {
-        if (interaction.element && (interaction.element === event.target || nodeContains(interaction.element, event.target))) {
-          interaction.interactable.checkAndPreventDefault(event);
+    listener(n) {
+      for (const i of e.interactions.list)
+        if (i.element && (i.element === n.target || zt(i.element, n.target))) {
+          i.interactable.checkAndPreventDefault(n);
           return;
         }
-      }
     }
   });
 }
-var interactablePreventDefault = {
+var Ui = {
   id: "core/interactablePreventDefault",
-  install: install$9,
-  listeners: ["down", "move", "up", "cancel"].reduce((acc, eventType) => {
-    acc[`interactions:${eventType}`] = onInteractionEvent;
-    return acc;
-  }, {})
+  install: Gi,
+  listeners: ["down", "move", "up", "cancel"].reduce((e, t) => (e[`interactions:${t}`] = qi, e), {})
 };
-function warnOnce(method, message) {
-  let warned = false;
+function Xt(e, t) {
+  let n = !1;
   return function() {
-    if (!warned) {
-      win.console.warn(message);
-      warned = true;
-    }
-    return method.apply(this, arguments);
+    return n || (pt.console.warn(t), n = !0), e.apply(this, arguments);
   };
 }
-function copyAction(dest, src) {
-  dest.name = src.name;
-  dest.axis = src.axis;
-  dest.edges = src.edges;
-  return dest;
+function _n(e, t) {
+  return e.name = t.name, e.axis = t.axis, e.edges = t.edges, e;
 }
-function getStringOptionResult(value, target, element2) {
-  if (value === "parent") {
-    return parentNode(element2);
-  }
-  if (value === "self") {
-    return target.getRect(element2);
-  }
-  return closest(element2, value);
+function Pn(e, t, n) {
+  return e === "parent" ? gt(n) : e === "self" ? t.getRect(n) : In(n, e);
 }
-function resolveRectLike(value, target, element2, functionArgs) {
-  let returnValue = value;
-  if (is.string(returnValue)) {
-    returnValue = getStringOptionResult(returnValue, target, element2);
-  } else if (is.func(returnValue)) {
-    returnValue = returnValue(...functionArgs);
-  }
-  if (is.element(returnValue)) {
-    returnValue = getElementRect(returnValue);
-  }
-  return returnValue;
+function Yt(e, t, n, i) {
+  let o = e;
+  return p.string(o) ? o = Pn(o, t, n) : p.func(o) && (o = o(...i)), p.element(o) && (o = Te(o)), o;
 }
-function rectToXY(rect) {
-  return rect && {
-    x: "x" in rect ? rect.x : rect.left,
-    y: "y" in rect ? rect.y : rect.top
+function se(e) {
+  return e && {
+    x: "x" in e ? e.x : e.left,
+    y: "y" in e ? e.y : e.top
   };
 }
-function xywhToTlbr(rect) {
-  if (rect && !("left" in rect && "top" in rect)) {
-    rect = extend({}, rect);
-    rect.left = rect.x || 0;
-    rect.top = rect.y || 0;
-    rect.right = rect.right || rect.left + rect.width;
-    rect.bottom = rect.bottom || rect.top + rect.height;
-  }
-  return rect;
+function Vi(e) {
+  return e && !("left" in e && "top" in e) && (e = I({}, e), e.left = e.x || 0, e.top = e.y || 0, e.right = e.right || e.left + e.width, e.bottom = e.bottom || e.top + e.height), e;
 }
-function tlbrToXywh(rect) {
-  if (rect && !("x" in rect && "y" in rect)) {
-    rect = extend({}, rect);
-    rect.x = rect.left || 0;
-    rect.y = rect.top || 0;
-    rect.width = rect.width || (rect.right || 0) - rect.x;
-    rect.height = rect.height || (rect.bottom || 0) - rect.y;
-  }
-  return rect;
+function Ye(e) {
+  return e && !("x" in e && "y" in e) && (e = I({}, e), e.x = e.left || 0, e.y = e.top || 0, e.width = e.width || (e.right || 0) - e.x, e.height = e.height || (e.bottom || 0) - e.y), e;
 }
-function addEdges(edges, rect, delta) {
-  if (edges.left) {
-    rect.left += delta.x;
-  }
-  if (edges.right) {
-    rect.right += delta.x;
-  }
-  if (edges.top) {
-    rect.top += delta.y;
-  }
-  if (edges.bottom) {
-    rect.bottom += delta.y;
-  }
-  rect.width = rect.right - rect.left;
-  rect.height = rect.bottom - rect.top;
+function Me(e, t, n) {
+  e.left && (t.left += n.x), e.right && (t.right += n.x), e.top && (t.top += n.y), e.bottom && (t.bottom += n.y), t.width = t.right - t.left, t.height = t.bottom - t.top;
 }
-function getOriginXY(target, element2, actionName) {
-  const actionOptions = actionName && target.options[actionName];
-  const actionOrigin = actionOptions && actionOptions.origin;
-  const origin = actionOrigin || target.options.origin;
-  const originRect = resolveRectLike(origin, target, element2, [target && element2]);
-  return rectToXY(originRect) || {
+function Ce(e, t, n) {
+  const i = n && e.options[n], s = i && i.origin || e.options.origin, a = Yt(s, e, t, [e && t]);
+  return se(a) || {
     x: 0,
     y: 0
   };
 }
-class BaseEvent {
-  constructor(interaction) {
-    this.immediatePropagationStopped = false;
-    this.propagationStopped = false;
-    this._interaction = interaction;
+class On {
+  constructor(t) {
+    this.immediatePropagationStopped = !1, this.propagationStopped = !1, this._interaction = t;
   }
   preventDefault() {
   }
@@ -955,29 +624,29 @@ class BaseEvent {
    * Don't call any other listeners (even on the current target)
    */
   stopPropagation() {
-    this.propagationStopped = true;
+    this.propagationStopped = !0;
   }
   /**
    * Don't call listeners on the remaining targets
    */
   stopImmediatePropagation() {
-    this.immediatePropagationStopped = this.propagationStopped = true;
+    this.immediatePropagationStopped = this.propagationStopped = !0;
   }
 }
-Object.defineProperty(BaseEvent.prototype, "interaction", {
+Object.defineProperty(On.prototype, "interaction", {
   get() {
     return this._interaction._proxy;
   },
   set() {
   }
 });
-const defaults$6 = {
+const Rn = {
   base: {
     preventDefault: "auto",
     deltaSource: "page"
   },
   perAction: {
-    enabled: false,
+    enabled: !1,
     origin: {
       x: 0,
       y: 0
@@ -985,113 +654,40 @@ const defaults$6 = {
   },
   actions: {}
 };
-class InteractEvent extends BaseEvent {
-  constructor(interaction, event, actionName, phase, element2, preEnd, type) {
-    super(interaction);
-    this.relatedTarget = null;
-    this.screenX = void 0;
-    this.screenY = void 0;
-    this.button = void 0;
-    this.buttons = void 0;
-    this.ctrlKey = void 0;
-    this.shiftKey = void 0;
-    this.altKey = void 0;
-    this.metaKey = void 0;
-    this.page = void 0;
-    this.client = void 0;
-    this.delta = void 0;
-    this.rect = void 0;
-    this.x0 = void 0;
-    this.y0 = void 0;
-    this.t0 = void 0;
-    this.dt = void 0;
-    this.duration = void 0;
-    this.clientX0 = void 0;
-    this.clientY0 = void 0;
-    this.velocity = void 0;
-    this.speed = void 0;
-    this.swipe = void 0;
-    this.axes = void 0;
-    this.preEnd = void 0;
-    element2 = element2 || interaction.element;
-    const target = interaction.interactable;
-    const deltaSource = (target && target.options || defaults$6).deltaSource;
-    const origin = getOriginXY(target, element2, actionName);
-    const starting = phase === "start";
-    const ending = phase === "end";
-    const prevEvent = starting ? this : interaction.prevEvent;
-    const coords = starting ? interaction.coords.start : ending ? {
-      page: prevEvent.page,
-      client: prevEvent.client,
-      timeStamp: interaction.coords.cur.timeStamp
-    } : interaction.coords.cur;
-    this.page = extend({}, coords.page);
-    this.client = extend({}, coords.client);
-    this.rect = extend({}, interaction.rect);
-    this.timeStamp = coords.timeStamp;
-    if (!ending) {
-      this.page.x -= origin.x;
-      this.page.y -= origin.y;
-      this.client.x -= origin.x;
-      this.client.y -= origin.y;
-    }
-    this.ctrlKey = event.ctrlKey;
-    this.altKey = event.altKey;
-    this.shiftKey = event.shiftKey;
-    this.metaKey = event.metaKey;
-    this.button = event.button;
-    this.buttons = event.buttons;
-    this.target = element2;
-    this.currentTarget = element2;
-    this.preEnd = preEnd;
-    this.type = type || actionName + (phase || "");
-    this.interactable = target;
-    this.t0 = starting ? interaction.pointers[interaction.pointers.length - 1].downTime : prevEvent.t0;
-    this.x0 = interaction.coords.start.page.x - origin.x;
-    this.y0 = interaction.coords.start.page.y - origin.y;
-    this.clientX0 = interaction.coords.start.client.x - origin.x;
-    this.clientY0 = interaction.coords.start.client.y - origin.y;
-    if (starting || ending) {
-      this.delta = {
-        x: 0,
-        y: 0
-      };
-    } else {
-      this.delta = {
-        x: this[deltaSource].x - prevEvent[deltaSource].x,
-        y: this[deltaSource].y - prevEvent[deltaSource].y
-      };
-    }
-    this.dt = interaction.coords.delta.timeStamp;
-    this.duration = this.timeStamp - this.t0;
-    this.velocity = extend({}, interaction.coords.velocity[deltaSource]);
-    this.speed = hypot(this.velocity.x, this.velocity.y);
-    this.swipe = ending || phase === "inertiastart" ? this.getSwipe() : null;
+class _e extends On {
+  constructor(t, n, i, o, s, a, l) {
+    super(t), this.relatedTarget = null, this.screenX = void 0, this.screenY = void 0, this.button = void 0, this.buttons = void 0, this.ctrlKey = void 0, this.shiftKey = void 0, this.altKey = void 0, this.metaKey = void 0, this.page = void 0, this.client = void 0, this.delta = void 0, this.rect = void 0, this.x0 = void 0, this.y0 = void 0, this.t0 = void 0, this.dt = void 0, this.duration = void 0, this.clientX0 = void 0, this.clientY0 = void 0, this.velocity = void 0, this.speed = void 0, this.swipe = void 0, this.axes = void 0, this.preEnd = void 0, s = s || t.element;
+    const c = t.interactable, r = (c && c.options || Rn).deltaSource, f = Ce(c, s, i), d = o === "start", m = o === "end", g = d ? this : t.prevEvent, b = d ? t.coords.start : m ? {
+      page: g.page,
+      client: g.client,
+      timeStamp: t.coords.cur.timeStamp
+    } : t.coords.cur;
+    this.page = I({}, b.page), this.client = I({}, b.client), this.rect = I({}, t.rect), this.timeStamp = b.timeStamp, m || (this.page.x -= f.x, this.page.y -= f.y, this.client.x -= f.x, this.client.y -= f.y), this.ctrlKey = n.ctrlKey, this.altKey = n.altKey, this.shiftKey = n.shiftKey, this.metaKey = n.metaKey, this.button = n.button, this.buttons = n.buttons, this.target = s, this.currentTarget = s, this.preEnd = a, this.type = l || i + (o || ""), this.interactable = c, this.t0 = d ? t.pointers[t.pointers.length - 1].downTime : g.t0, this.x0 = t.coords.start.page.x - f.x, this.y0 = t.coords.start.page.y - f.y, this.clientX0 = t.coords.start.client.x - f.x, this.clientY0 = t.coords.start.client.y - f.y, d || m ? this.delta = {
+      x: 0,
+      y: 0
+    } : this.delta = {
+      x: this[r].x - g[r].x,
+      y: this[r].y - g[r].y
+    }, this.dt = t.coords.delta.timeStamp, this.duration = this.timeStamp - this.t0, this.velocity = I({}, t.coords.velocity[r]), this.speed = oe(this.velocity.x, this.velocity.y), this.swipe = m || o === "inertiastart" ? this.getSwipe() : null;
   }
   getSwipe() {
-    const interaction = this._interaction;
-    if (interaction.prevEvent.speed < 600 || this.timeStamp - interaction.prevEvent.timeStamp > 150) {
+    const t = this._interaction;
+    if (t.prevEvent.speed < 600 || this.timeStamp - t.prevEvent.timeStamp > 150)
       return null;
-    }
-    let angle = 180 * Math.atan2(interaction.prevEvent.velocityY, interaction.prevEvent.velocityX) / Math.PI;
-    const overlap = 22.5;
-    if (angle < 0) {
-      angle += 360;
-    }
-    const left = 135 - overlap <= angle && angle < 225 + overlap;
-    const up = 225 - overlap <= angle && angle < 315 + overlap;
-    const right = !left && (315 - overlap <= angle || angle < 45 + overlap);
-    const down = !up && 45 - overlap <= angle && angle < 135 + overlap;
+    let n = 180 * Math.atan2(t.prevEvent.velocityY, t.prevEvent.velocityX) / Math.PI;
+    const i = 22.5;
+    n < 0 && (n += 360);
+    const o = 135 - i <= n && n < 225 + i, s = 225 - i <= n && n < 315 + i, a = !o && (315 - i <= n || n < 45 + i), l = !s && 45 - i <= n && n < 135 + i;
     return {
-      up,
-      down,
-      left,
-      right,
-      angle,
-      speed: interaction.prevEvent.speed,
+      up: s,
+      down: l,
+      left: o,
+      right: a,
+      angle: n,
+      speed: t.prevEvent.speed,
       velocity: {
-        x: interaction.prevEvent.velocityX,
-        y: interaction.prevEvent.velocityY
+        x: t.prevEvent.velocityX,
+        y: t.prevEvent.velocityY
       }
     };
   }
@@ -1101,198 +697,150 @@ class InteractEvent extends BaseEvent {
    * Don't call listeners on the remaining targets
    */
   stopImmediatePropagation() {
-    this.immediatePropagationStopped = this.propagationStopped = true;
+    this.immediatePropagationStopped = this.propagationStopped = !0;
   }
   /**
    * Don't call any other listeners (even on the current target)
    */
   stopPropagation() {
-    this.propagationStopped = true;
+    this.propagationStopped = !0;
   }
 }
-Object.defineProperties(InteractEvent.prototype, {
+Object.defineProperties(_e.prototype, {
   pageX: {
     get() {
       return this.page.x;
     },
-    set(value) {
-      this.page.x = value;
+    set(e) {
+      this.page.x = e;
     }
   },
   pageY: {
     get() {
       return this.page.y;
     },
-    set(value) {
-      this.page.y = value;
+    set(e) {
+      this.page.y = e;
     }
   },
   clientX: {
     get() {
       return this.client.x;
     },
-    set(value) {
-      this.client.x = value;
+    set(e) {
+      this.client.x = e;
     }
   },
   clientY: {
     get() {
       return this.client.y;
     },
-    set(value) {
-      this.client.y = value;
+    set(e) {
+      this.client.y = e;
     }
   },
   dx: {
     get() {
       return this.delta.x;
     },
-    set(value) {
-      this.delta.x = value;
+    set(e) {
+      this.delta.x = e;
     }
   },
   dy: {
     get() {
       return this.delta.y;
     },
-    set(value) {
-      this.delta.y = value;
+    set(e) {
+      this.delta.y = e;
     }
   },
   velocityX: {
     get() {
       return this.velocity.x;
     },
-    set(value) {
-      this.velocity.x = value;
+    set(e) {
+      this.velocity.x = e;
     }
   },
   velocityY: {
     get() {
       return this.velocity.y;
     },
-    set(value) {
-      this.velocity.y = value;
+    set(e) {
+      this.velocity.y = e;
     }
   }
 });
-class PointerInfo {
-  constructor(id2, pointer, event, downTime, downTarget) {
-    this.id = void 0;
-    this.pointer = void 0;
-    this.event = void 0;
-    this.downTime = void 0;
-    this.downTarget = void 0;
-    this.id = id2;
-    this.pointer = pointer;
-    this.event = event;
-    this.downTime = downTime;
-    this.downTarget = downTarget;
+class Ki {
+  constructor(t, n, i, o, s) {
+    this.id = void 0, this.pointer = void 0, this.event = void 0, this.downTime = void 0, this.downTarget = void 0, this.id = t, this.pointer = n, this.event = i, this.downTime = o, this.downTarget = s;
   }
 }
-let _ProxyValues = /* @__PURE__ */ function(_ProxyValues2) {
-  _ProxyValues2["interactable"] = "";
-  _ProxyValues2["element"] = "";
-  _ProxyValues2["prepared"] = "";
-  _ProxyValues2["pointerIsDown"] = "";
-  _ProxyValues2["pointerWasMoved"] = "";
-  _ProxyValues2["_proxy"] = "";
-  return _ProxyValues2;
-}({});
-let _ProxyMethods = /* @__PURE__ */ function(_ProxyMethods2) {
-  _ProxyMethods2["start"] = "";
-  _ProxyMethods2["move"] = "";
-  _ProxyMethods2["end"] = "";
-  _ProxyMethods2["stop"] = "";
-  _ProxyMethods2["interacting"] = "";
-  return _ProxyMethods2;
-}({});
-let idCounter = 0;
-class Interaction {
+let Ji = /* @__PURE__ */ function(e) {
+  return e.interactable = "", e.element = "", e.prepared = "", e.pointerIsDown = "", e.pointerWasMoved = "", e._proxy = "", e;
+}({}), Zi = /* @__PURE__ */ function(e) {
+  return e.start = "", e.move = "", e.end = "", e.stop = "", e.interacting = "", e;
+}({}), Qi = 0;
+class tr {
   /** @internal */
   get pointerMoveTolerance() {
     return 1;
   }
-  constructor(_ref) {
-    this.interactable = null;
-    this.element = null;
-    this.rect = null;
-    this._rects = void 0;
-    this.edges = null;
-    this._scopeFire = void 0;
-    this.prepared = {
+  constructor(t) {
+    this.interactable = null, this.element = null, this.rect = null, this._rects = void 0, this.edges = null, this._scopeFire = void 0, this.prepared = {
       name: null,
       axis: null,
       edges: null
-    };
-    this.pointerType = void 0;
-    this.pointers = [];
-    this.downEvent = null;
-    this.downPointer = {};
-    this._latestPointer = {
+    }, this.pointerType = void 0, this.pointers = [], this.downEvent = null, this.downPointer = {}, this._latestPointer = {
       pointer: null,
       event: null,
       eventTarget: null
-    };
-    this.prevEvent = null;
-    this.pointerIsDown = false;
-    this.pointerWasMoved = false;
-    this._interacting = false;
-    this._ending = false;
-    this._stopped = true;
-    this._proxy = void 0;
-    this.simulation = null;
-    this.doMove = warnOnce(function(signalArg) {
-      this.move(signalArg);
-    }, "The interaction.doMove() method has been renamed to interaction.move()");
-    this.coords = {
+    }, this.prevEvent = null, this.pointerIsDown = !1, this.pointerWasMoved = !1, this._interacting = !1, this._ending = !1, this._stopped = !0, this._proxy = void 0, this.simulation = null, this.doMove = Xt(function(s) {
+      this.move(s);
+    }, "The interaction.doMove() method has been renamed to interaction.move()"), this.coords = {
       // Starting InteractEvent pointer coordinates
-      start: newCoords(),
+      start: At(),
       // Previous native pointer move event coordinates
-      prev: newCoords(),
+      prev: At(),
       // current native pointer move event coordinates
-      cur: newCoords(),
+      cur: At(),
       // Change in coordinates and time of the pointer
-      delta: newCoords(),
+      delta: At(),
       // pointer velocity
-      velocity: newCoords()
-    };
-    this._id = idCounter++;
+      velocity: At()
+    }, this._id = Qi++;
     let {
-      pointerType,
-      scopeFire
-    } = _ref;
-    this._scopeFire = scopeFire;
-    this.pointerType = pointerType;
-    const that = this;
+      pointerType: n,
+      scopeFire: i
+    } = t;
+    this._scopeFire = i, this.pointerType = n;
+    const o = this;
     this._proxy = {};
-    for (const key in _ProxyValues) {
-      Object.defineProperty(this._proxy, key, {
+    for (const s in Ji)
+      Object.defineProperty(this._proxy, s, {
         get() {
-          return that[key];
+          return o[s];
         }
       });
-    }
-    for (const key in _ProxyMethods) {
-      Object.defineProperty(this._proxy, key, {
+    for (const s in Zi)
+      Object.defineProperty(this._proxy, s, {
         value: function() {
-          return that[key](...arguments);
+          return o[s](...arguments);
         }
       });
-    }
     this._scopeFire("interactions:new", {
       interaction: this
     });
   }
-  pointerDown(pointer, event, eventTarget) {
-    const pointerIndex = this.updatePointer(pointer, event, eventTarget, true);
-    const pointerInfo = this.pointers[pointerIndex];
+  pointerDown(t, n, i) {
+    const o = this.updatePointer(t, n, i, !0), s = this.pointers[o];
     this._scopeFire("interactions:down", {
-      pointer,
-      event,
-      eventTarget,
-      pointerIndex,
-      pointerInfo,
+      pointer: t,
+      event: n,
+      eventTarget: i,
+      pointerIndex: o,
+      pointerInfo: s,
       type: "down",
       interaction: this
     });
@@ -1328,66 +876,36 @@ class Interaction {
    * @param element - The DOM Element to target
    * @returns Whether the interaction was successfully started
    */
-  start(action, interactable, element2) {
-    if (this.interacting() || !this.pointerIsDown || this.pointers.length < (action.name === "gesture" ? 2 : 1) || !interactable.options[action.name].enabled) {
-      return false;
-    }
-    copyAction(this.prepared, action);
-    this.interactable = interactable;
-    this.element = element2;
-    this.rect = interactable.getRect(element2);
-    this.edges = this.prepared.edges ? extend({}, this.prepared.edges) : {
-      left: true,
-      right: true,
-      top: true,
-      bottom: true
-    };
-    this._stopped = false;
-    this._interacting = this._doPhase({
+  start(t, n, i) {
+    return this.interacting() || !this.pointerIsDown || this.pointers.length < (t.name === "gesture" ? 2 : 1) || !n.options[t.name].enabled ? !1 : (_n(this.prepared, t), this.interactable = n, this.element = i, this.rect = n.getRect(i), this.edges = this.prepared.edges ? I({}, this.prepared.edges) : {
+      left: !0,
+      right: !0,
+      top: !0,
+      bottom: !0
+    }, this._stopped = !1, this._interacting = this._doPhase({
       interaction: this,
       event: this.downEvent,
       phase: "start"
-    }) && !this._stopped;
-    return this._interacting;
+    }) && !this._stopped, this._interacting);
   }
-  pointerMove(pointer, event, eventTarget) {
-    if (!this.simulation && !(this.modification && this.modification.endResult)) {
-      this.updatePointer(pointer, event, eventTarget, false);
-    }
-    const duplicateMove = this.coords.cur.page.x === this.coords.prev.page.x && this.coords.cur.page.y === this.coords.prev.page.y && this.coords.cur.client.x === this.coords.prev.client.x && this.coords.cur.client.y === this.coords.prev.client.y;
-    let dx;
-    let dy;
-    if (this.pointerIsDown && !this.pointerWasMoved) {
-      dx = this.coords.cur.client.x - this.coords.start.client.x;
-      dy = this.coords.cur.client.y - this.coords.start.client.y;
-      this.pointerWasMoved = hypot(dx, dy) > this.pointerMoveTolerance;
-    }
-    const pointerIndex = this.getPointerIndex(pointer);
-    const signalArg = {
-      pointer,
-      pointerIndex,
-      pointerInfo: this.pointers[pointerIndex],
-      event,
+  pointerMove(t, n, i) {
+    !this.simulation && !(this.modification && this.modification.endResult) && this.updatePointer(t, n, i, !1);
+    const o = this.coords.cur.page.x === this.coords.prev.page.x && this.coords.cur.page.y === this.coords.prev.page.y && this.coords.cur.client.x === this.coords.prev.client.x && this.coords.cur.client.y === this.coords.prev.client.y;
+    let s, a;
+    this.pointerIsDown && !this.pointerWasMoved && (s = this.coords.cur.client.x - this.coords.start.client.x, a = this.coords.cur.client.y - this.coords.start.client.y, this.pointerWasMoved = oe(s, a) > this.pointerMoveTolerance);
+    const l = this.getPointerIndex(t), c = {
+      pointer: t,
+      pointerIndex: l,
+      pointerInfo: this.pointers[l],
+      event: n,
       type: "move",
-      eventTarget,
-      dx,
-      dy,
-      duplicate: duplicateMove,
+      eventTarget: i,
+      dx: s,
+      dy: a,
+      duplicate: o,
       interaction: this
     };
-    if (!duplicateMove) {
-      setCoordVelocity(this.coords.velocity, this.coords.delta);
-    }
-    this._scopeFire("interactions:move", signalArg);
-    if (!duplicateMove && !this.simulation) {
-      if (this.interacting()) {
-        signalArg.type = null;
-        this.move(signalArg);
-      }
-      if (this.pointerWasMoved) {
-        copyCoords(this.coords.prev, this.coords.cur);
-      }
-    }
+    o || Oi(this.coords.velocity, this.coords.delta), this._scopeFire("interactions:move", c), !o && !this.simulation && (this.interacting() && (c.type = null, this.move(c)), this.pointerWasMoved && fe(this.coords.prev, this.coords.cur));
   }
   /**
    * ```js
@@ -1407,49 +925,37 @@ class Interaction {
    * snap/restrict has been changed and you want a movement with the new
    * settings.
    */
-  move(signalArg) {
-    if (!signalArg || !signalArg.event) {
-      setZeroCoords(this.coords.delta);
-    }
-    signalArg = extend({
+  move(t) {
+    (!t || !t.event) && Ri(this.coords.delta), t = I({
       pointer: this._latestPointer.pointer,
       event: this._latestPointer.event,
       eventTarget: this._latestPointer.eventTarget,
       interaction: this
-    }, signalArg || {});
-    signalArg.phase = "move";
-    this._doPhase(signalArg);
+    }, t || {}), t.phase = "move", this._doPhase(t);
   }
   /**
    * @internal
    * End interact move events and stop auto-scroll unless simulation is running
    */
-  pointerUp(pointer, event, eventTarget, curEventTarget) {
-    let pointerIndex = this.getPointerIndex(pointer);
-    if (pointerIndex === -1) {
-      pointerIndex = this.updatePointer(pointer, event, eventTarget, false);
-    }
-    const type = /cancel$/i.test(event.type) ? "cancel" : "up";
-    this._scopeFire(`interactions:${type}`, {
-      pointer,
-      pointerIndex,
-      pointerInfo: this.pointers[pointerIndex],
-      event,
-      eventTarget,
-      type,
-      curEventTarget,
+  pointerUp(t, n, i, o) {
+    let s = this.getPointerIndex(t);
+    s === -1 && (s = this.updatePointer(t, n, i, !1));
+    const a = /cancel$/i.test(n.type) ? "cancel" : "up";
+    this._scopeFire(`interactions:${a}`, {
+      pointer: t,
+      pointerIndex: s,
+      pointerInfo: this.pointers[s],
+      event: n,
+      eventTarget: i,
+      type: a,
+      curEventTarget: o,
       interaction: this
-    });
-    if (!this.simulation) {
-      this.end(event);
-    }
-    this.removePointer(pointer, event);
+    }), this.simulation || this.end(n), this.removePointer(t, n);
   }
   /** @internal */
-  documentBlur(event) {
-    this.end(event);
-    this._scopeFire("interactions:blur", {
-      event,
+  documentBlur(t) {
+    this.end(t), this._scopeFire("interactions:blur", {
+      event: t,
       type: "blur",
       interaction: this
     });
@@ -1468,21 +974,14 @@ class Interaction {
    *   })
    * ```
    */
-  end(event) {
-    this._ending = true;
-    event = event || this._latestPointer.event;
-    let endPhaseResult;
-    if (this.interacting()) {
-      endPhaseResult = this._doPhase({
-        event,
-        interaction: this,
-        phase: "end"
-      });
-    }
-    this._ending = false;
-    if (endPhaseResult === true) {
-      this.stop();
-    }
+  end(t) {
+    this._ending = !0, t = t || this._latestPointer.event;
+    let n;
+    this.interacting() && (n = this._doPhase({
+      event: t,
+      interaction: this,
+      phase: "end"
+    })), this._ending = !1, n === !0 && this.stop();
   }
   currentAction() {
     return this._interacting ? this.prepared.name : null;
@@ -1493,492 +992,375 @@ class Interaction {
   stop() {
     this._scopeFire("interactions:stop", {
       interaction: this
-    });
-    this.interactable = this.element = null;
-    this._interacting = false;
-    this._stopped = true;
-    this.prepared.name = this.prevEvent = null;
+    }), this.interactable = this.element = null, this._interacting = !1, this._stopped = !0, this.prepared.name = this.prevEvent = null;
   }
   /** @internal */
-  getPointerIndex(pointer) {
-    const pointerId = getPointerId(pointer);
-    return this.pointerType === "mouse" || this.pointerType === "pen" ? this.pointers.length - 1 : findIndex(this.pointers, (curPointer) => curPointer.id === pointerId);
+  getPointerIndex(t) {
+    const n = te(t);
+    return this.pointerType === "mouse" || this.pointerType === "pen" ? this.pointers.length - 1 : re(this.pointers, (i) => i.id === n);
   }
   /** @internal */
-  getPointerInfo(pointer) {
-    return this.pointers[this.getPointerIndex(pointer)];
+  getPointerInfo(t) {
+    return this.pointers[this.getPointerIndex(t)];
   }
   /** @internal */
-  updatePointer(pointer, event, eventTarget, down) {
-    const id2 = getPointerId(pointer);
-    let pointerIndex = this.getPointerIndex(pointer);
-    let pointerInfo = this.pointers[pointerIndex];
-    down = down === false ? false : down || /(down|start)$/i.test(event.type);
-    if (!pointerInfo) {
-      pointerInfo = new PointerInfo(id2, pointer, event, null, null);
-      pointerIndex = this.pointers.length;
-      this.pointers.push(pointerInfo);
-    } else {
-      pointerInfo.pointer = pointer;
-    }
-    setCoords(this.coords.cur, this.pointers.map((p) => p.pointer), this._now());
-    setCoordDeltas(this.coords.delta, this.coords.prev, this.coords.cur);
-    if (down) {
-      this.pointerIsDown = true;
-      pointerInfo.downTime = this.coords.cur.timeStamp;
-      pointerInfo.downTarget = eventTarget;
-      pointerExtend(this.downPointer, pointer);
-      if (!this.interacting()) {
-        copyCoords(this.coords.start, this.coords.cur);
-        copyCoords(this.coords.prev, this.coords.cur);
-        this.downEvent = event;
-        this.pointerWasMoved = false;
-      }
-    }
-    this._updateLatestPointer(pointer, event, eventTarget);
-    this._scopeFire("interactions:update-pointer", {
-      pointer,
-      event,
-      eventTarget,
-      down,
-      pointerInfo,
-      pointerIndex,
+  updatePointer(t, n, i, o) {
+    const s = te(t);
+    let a = this.getPointerIndex(t), l = this.pointers[a];
+    return o = o === !1 ? !1 : o || /(down|start)$/i.test(n.type), l ? l.pointer = t : (l = new Ki(s, t, n, null, null), a = this.pointers.length, this.pointers.push(l)), $i(this.coords.cur, this.pointers.map((c) => c.pointer), this._now()), Pi(this.coords.delta, this.coords.prev, this.coords.cur), o && (this.pointerIsDown = !0, l.downTime = this.coords.cur.timeStamp, l.downTarget = i, Tn(this.downPointer, t), this.interacting() || (fe(this.coords.start, this.coords.cur), fe(this.coords.prev, this.coords.cur), this.downEvent = n, this.pointerWasMoved = !1)), this._updateLatestPointer(t, n, i), this._scopeFire("interactions:update-pointer", {
+      pointer: t,
+      event: n,
+      eventTarget: i,
+      down: o,
+      pointerInfo: l,
+      pointerIndex: a,
       interaction: this
-    });
-    return pointerIndex;
+    }), a;
   }
   /** @internal */
-  removePointer(pointer, event) {
-    const pointerIndex = this.getPointerIndex(pointer);
-    if (pointerIndex === -1) return;
-    const pointerInfo = this.pointers[pointerIndex];
+  removePointer(t, n) {
+    const i = this.getPointerIndex(t);
+    if (i === -1) return;
+    const o = this.pointers[i];
     this._scopeFire("interactions:remove-pointer", {
-      pointer,
-      event,
+      pointer: t,
+      event: n,
       eventTarget: null,
-      pointerIndex,
-      pointerInfo,
+      pointerIndex: i,
+      pointerInfo: o,
       interaction: this
-    });
-    this.pointers.splice(pointerIndex, 1);
-    this.pointerIsDown = false;
+    }), this.pointers.splice(i, 1), this.pointerIsDown = !1;
   }
   /** @internal */
-  _updateLatestPointer(pointer, event, eventTarget) {
-    this._latestPointer.pointer = pointer;
-    this._latestPointer.event = event;
-    this._latestPointer.eventTarget = eventTarget;
+  _updateLatestPointer(t, n, i) {
+    this._latestPointer.pointer = t, this._latestPointer.event = n, this._latestPointer.eventTarget = i;
   }
   destroy() {
-    this._latestPointer.pointer = null;
-    this._latestPointer.event = null;
-    this._latestPointer.eventTarget = null;
+    this._latestPointer.pointer = null, this._latestPointer.event = null, this._latestPointer.eventTarget = null;
   }
   /** @internal */
-  _createPreparedEvent(event, phase, preEnd, type) {
-    return new InteractEvent(this, event, this.prepared.name, phase, this.element, preEnd, type);
+  _createPreparedEvent(t, n, i, o) {
+    return new _e(this, t, this.prepared.name, n, this.element, i, o);
   }
   /** @internal */
-  _fireEvent(iEvent) {
-    var _this$interactable;
-    (_this$interactable = this.interactable) == null ? void 0 : _this$interactable.fire(iEvent);
-    if (!this.prevEvent || iEvent.timeStamp >= this.prevEvent.timeStamp) {
-      this.prevEvent = iEvent;
-    }
+  _fireEvent(t) {
+    var n;
+    (n = this.interactable) == null || n.fire(t), (!this.prevEvent || t.timeStamp >= this.prevEvent.timeStamp) && (this.prevEvent = t);
   }
   /** @internal */
-  _doPhase(signalArg) {
+  _doPhase(t) {
     const {
-      event,
-      phase,
-      preEnd,
-      type
-    } = signalArg;
-    const {
-      rect
+      event: n,
+      phase: i,
+      preEnd: o,
+      type: s
+    } = t, {
+      rect: a
     } = this;
-    if (rect && phase === "move") {
-      addEdges(this.edges, rect, this.coords.delta[this.interactable.options.deltaSource]);
-      rect.width = rect.right - rect.left;
-      rect.height = rect.bottom - rect.top;
-    }
-    const beforeResult = this._scopeFire(`interactions:before-action-${phase}`, signalArg);
-    if (beforeResult === false) {
-      return false;
-    }
-    const iEvent = signalArg.iEvent = this._createPreparedEvent(event, phase, preEnd, type);
-    this._scopeFire(`interactions:action-${phase}`, signalArg);
-    if (phase === "start") {
-      this.prevEvent = iEvent;
-    }
-    this._fireEvent(iEvent);
-    this._scopeFire(`interactions:after-action-${phase}`, signalArg);
-    return true;
+    if (a && i === "move" && (Me(this.edges, a, this.coords.delta[this.interactable.options.deltaSource]), a.width = a.right - a.left, a.height = a.bottom - a.top), this._scopeFire(`interactions:before-action-${i}`, t) === !1)
+      return !1;
+    const c = t.iEvent = this._createPreparedEvent(n, i, o, s);
+    return this._scopeFire(`interactions:action-${i}`, t), i === "start" && (this.prevEvent = c), this._fireEvent(c), this._scopeFire(`interactions:after-action-${i}`, t), !0;
   }
   /** @internal */
   _now() {
     return Date.now();
   }
 }
-const finder = {
+const xe = {
   methodOrder: ["simulationResume", "mouseOrPen", "hasPointer", "idle"],
-  search(details) {
-    for (const method of finder.methodOrder) {
-      const interaction = finder[method](details);
-      if (interaction) {
-        return interaction;
-      }
+  search(e) {
+    for (const t of xe.methodOrder) {
+      const n = xe[t](e);
+      if (n)
+        return n;
     }
     return null;
   },
   // try to resume simulation with a new pointer
-  simulationResume(_ref) {
+  simulationResume(e) {
     let {
-      pointerType,
-      eventType,
-      eventTarget,
-      scope: scope2
-    } = _ref;
-    if (!/down|start/i.test(eventType)) {
+      pointerType: t,
+      eventType: n,
+      eventTarget: i,
+      scope: o
+    } = e;
+    if (!/down|start/i.test(n))
       return null;
-    }
-    for (const interaction of scope2.interactions.list) {
-      let element2 = eventTarget;
-      if (interaction.simulation && interaction.simulation.allowResume && interaction.pointerType === pointerType) {
-        while (element2) {
-          if (element2 === interaction.element) {
-            return interaction;
-          }
-          element2 = parentNode(element2);
+    for (const s of o.interactions.list) {
+      let a = i;
+      if (s.simulation && s.simulation.allowResume && s.pointerType === t)
+        for (; a; ) {
+          if (a === s.element)
+            return s;
+          a = gt(a);
         }
-      }
     }
     return null;
   },
   // if it's a mouse or pen interaction
-  mouseOrPen(_ref2) {
+  mouseOrPen(e) {
     let {
-      pointerId,
-      pointerType,
-      eventType,
-      scope: scope2
-    } = _ref2;
-    if (pointerType !== "mouse" && pointerType !== "pen") {
+      pointerId: t,
+      pointerType: n,
+      eventType: i,
+      scope: o
+    } = e;
+    if (n !== "mouse" && n !== "pen")
       return null;
-    }
-    let firstNonActive;
-    for (const interaction of scope2.interactions.list) {
-      if (interaction.pointerType === pointerType) {
-        if (interaction.simulation && !hasPointerId(interaction, pointerId)) {
+    let s;
+    for (const a of o.interactions.list)
+      if (a.pointerType === n) {
+        if (a.simulation && !qe(a, t))
           continue;
-        }
-        if (interaction.interacting()) {
-          return interaction;
-        } else if (!firstNonActive) {
-          firstNonActive = interaction;
-        }
+        if (a.interacting())
+          return a;
+        s || (s = a);
       }
-    }
-    if (firstNonActive) {
-      return firstNonActive;
-    }
-    for (const interaction of scope2.interactions.list) {
-      if (interaction.pointerType === pointerType && !(/down/i.test(eventType) && interaction.simulation)) {
-        return interaction;
-      }
-    }
+    if (s)
+      return s;
+    for (const a of o.interactions.list)
+      if (a.pointerType === n && !(/down/i.test(i) && a.simulation))
+        return a;
     return null;
   },
   // get interaction that has this pointer
-  hasPointer(_ref3) {
+  hasPointer(e) {
     let {
-      pointerId,
-      scope: scope2
-    } = _ref3;
-    for (const interaction of scope2.interactions.list) {
-      if (hasPointerId(interaction, pointerId)) {
-        return interaction;
-      }
-    }
+      pointerId: t,
+      scope: n
+    } = e;
+    for (const i of n.interactions.list)
+      if (qe(i, t))
+        return i;
     return null;
   },
   // get first idle interaction with a matching pointerType
-  idle(_ref4) {
+  idle(e) {
     let {
-      pointerType,
-      scope: scope2
-    } = _ref4;
-    for (const interaction of scope2.interactions.list) {
-      if (interaction.pointers.length === 1) {
-        const target = interaction.interactable;
-        if (target && !(target.options.gesture && target.options.gesture.enabled)) {
+      pointerType: t,
+      scope: n
+    } = e;
+    for (const i of n.interactions.list) {
+      if (i.pointers.length === 1) {
+        const o = i.interactable;
+        if (o && !(o.options.gesture && o.options.gesture.enabled))
           continue;
-        }
-      } else if (interaction.pointers.length >= 2) {
+      } else if (i.pointers.length >= 2)
         continue;
-      }
-      if (!interaction.interacting() && pointerType === interaction.pointerType) {
-        return interaction;
-      }
+      if (!i.interacting() && t === i.pointerType)
+        return i;
     }
     return null;
   }
 };
-function hasPointerId(interaction, pointerId) {
-  return interaction.pointers.some((_ref5) => {
+function qe(e, t) {
+  return e.pointers.some((n) => {
     let {
-      id: id2
-    } = _ref5;
-    return id2 === pointerId;
+      id: i
+    } = n;
+    return i === t;
   });
 }
-const methodNames = ["pointerDown", "pointerMove", "pointerUp", "updatePointer", "removePointer", "windowBlur"];
-function install$8(scope2) {
-  const listeners = {};
-  for (const method of methodNames) {
-    listeners[method] = doOnInteractions(method, scope2);
-  }
-  const pEventTypes = browser.pEventTypes;
-  let docEvents;
-  if (domObjects.PointerEvent) {
-    docEvents = [{
-      type: pEventTypes.down,
-      listener: releasePointersOnRemovedEls
-    }, {
-      type: pEventTypes.down,
-      listener: listeners.pointerDown
-    }, {
-      type: pEventTypes.move,
-      listener: listeners.pointerMove
-    }, {
-      type: pEventTypes.up,
-      listener: listeners.pointerUp
-    }, {
-      type: pEventTypes.cancel,
-      listener: listeners.pointerUp
-    }];
-  } else {
-    docEvents = [{
-      type: "mousedown",
-      listener: listeners.pointerDown
-    }, {
-      type: "mousemove",
-      listener: listeners.pointerMove
-    }, {
-      type: "mouseup",
-      listener: listeners.pointerUp
-    }, {
-      type: "touchstart",
-      listener: releasePointersOnRemovedEls
-    }, {
-      type: "touchstart",
-      listener: listeners.pointerDown
-    }, {
-      type: "touchmove",
-      listener: listeners.pointerMove
-    }, {
-      type: "touchend",
-      listener: listeners.pointerUp
-    }, {
-      type: "touchcancel",
-      listener: listeners.pointerUp
-    }];
-  }
-  docEvents.push({
+const kn = ["pointerDown", "pointerMove", "pointerUp", "updatePointer", "removePointer", "windowBlur"];
+function er(e) {
+  const t = {};
+  for (const s of kn)
+    t[s] = An(s, e);
+  const n = G.pEventTypes;
+  let i;
+  q.PointerEvent ? i = [{
+    type: n.down,
+    listener: o
+  }, {
+    type: n.down,
+    listener: t.pointerDown
+  }, {
+    type: n.move,
+    listener: t.pointerMove
+  }, {
+    type: n.up,
+    listener: t.pointerUp
+  }, {
+    type: n.cancel,
+    listener: t.pointerUp
+  }] : i = [{
+    type: "mousedown",
+    listener: t.pointerDown
+  }, {
+    type: "mousemove",
+    listener: t.pointerMove
+  }, {
+    type: "mouseup",
+    listener: t.pointerUp
+  }, {
+    type: "touchstart",
+    listener: o
+  }, {
+    type: "touchstart",
+    listener: t.pointerDown
+  }, {
+    type: "touchmove",
+    listener: t.pointerMove
+  }, {
+    type: "touchend",
+    listener: t.pointerUp
+  }, {
+    type: "touchcancel",
+    listener: t.pointerUp
+  }], i.push({
     type: "blur",
-    listener(event) {
-      for (const interaction of scope2.interactions.list) {
-        interaction.documentBlur(event);
-      }
+    listener(s) {
+      for (const a of e.interactions.list)
+        a.documentBlur(s);
     }
-  });
-  scope2.prevTouchTime = 0;
-  scope2.Interaction = class extends Interaction {
+  }), e.prevTouchTime = 0, e.Interaction = class extends tr {
     get pointerMoveTolerance() {
-      return scope2.interactions.pointerMoveTolerance;
+      return e.interactions.pointerMoveTolerance;
     }
-    set pointerMoveTolerance(value) {
-      scope2.interactions.pointerMoveTolerance = value;
+    set pointerMoveTolerance(s) {
+      e.interactions.pointerMoveTolerance = s;
     }
     _now() {
-      return scope2.now();
+      return e.now();
     }
-  };
-  scope2.interactions = {
+  }, e.interactions = {
     // all active and idle interactions
     list: [],
-    new(options) {
-      options.scopeFire = (name, arg) => scope2.fire(name, arg);
-      const interaction = new scope2.Interaction(options);
-      scope2.interactions.list.push(interaction);
-      return interaction;
+    new(s) {
+      s.scopeFire = (l, c) => e.fire(l, c);
+      const a = new e.Interaction(s);
+      return e.interactions.list.push(a), a;
     },
-    listeners,
-    docEvents,
+    listeners: t,
+    docEvents: i,
     pointerMoveTolerance: 1
   };
-  function releasePointersOnRemovedEls() {
-    for (const interaction of scope2.interactions.list) {
-      if (!interaction.pointerIsDown || interaction.pointerType !== "touch" || interaction._interacting) {
-        continue;
-      }
-      for (const pointer of interaction.pointers) {
-        if (!scope2.documents.some((_ref) => {
-          let {
-            doc
-          } = _ref;
-          return nodeContains(doc, pointer.downTarget);
-        })) {
-          interaction.removePointer(pointer.pointer, pointer.event);
-        }
-      }
-    }
+  function o() {
+    for (const s of e.interactions.list)
+      if (!(!s.pointerIsDown || s.pointerType !== "touch" || s._interacting))
+        for (const a of s.pointers)
+          e.documents.some((l) => {
+            let {
+              doc: c
+            } = l;
+            return zt(c, a.downTarget);
+          }) || s.removePointer(a.pointer, a.event);
   }
-  scope2.usePlugin(interactablePreventDefault);
+  e.usePlugin(Ui);
 }
-function doOnInteractions(method, scope2) {
-  return function(event) {
-    const interactions2 = scope2.interactions.list;
-    const pointerType = getPointerType(event);
-    const [eventTarget, curEventTarget] = getEventTargets(event);
-    const matches = [];
-    if (/^touch/.test(event.type)) {
-      scope2.prevTouchTime = scope2.now();
-      for (const changedTouch of event.changedTouches) {
-        const pointer = changedTouch;
-        const pointerId = getPointerId(pointer);
-        const searchDetails = {
-          pointer,
-          pointerId,
-          pointerType,
-          eventType: event.type,
-          eventTarget,
-          curEventTarget,
-          scope: scope2
-        };
-        const interaction = getInteraction(searchDetails);
-        matches.push([searchDetails.pointer, searchDetails.eventTarget, searchDetails.curEventTarget, interaction]);
+function An(e, t) {
+  return function(n) {
+    const i = t.interactions.list, o = Bi(n), [s, a] = Cn(n), l = [];
+    if (/^touch/.test(n.type)) {
+      t.prevTouchTime = t.now();
+      for (const c of n.changedTouches) {
+        const r = c, f = te(r), d = {
+          pointer: r,
+          pointerId: f,
+          pointerType: o,
+          eventType: n.type,
+          eventTarget: s,
+          curEventTarget: a,
+          scope: t
+        }, m = Ge(d);
+        l.push([d.pointer, d.eventTarget, d.curEventTarget, m]);
       }
     } else {
-      let invalidPointer = false;
-      if (!browser.supportsPointerEvent && /mouse/.test(event.type)) {
-        for (let i = 0; i < interactions2.length && !invalidPointer; i++) {
-          invalidPointer = interactions2[i].pointerType !== "mouse" && interactions2[i].pointerIsDown;
-        }
-        invalidPointer = invalidPointer || scope2.now() - scope2.prevTouchTime < 500 || // on iOS and Firefox Mobile, MouseEvent.timeStamp is zero if simulated
-        event.timeStamp === 0;
+      let c = !1;
+      if (!G.supportsPointerEvent && /mouse/.test(n.type)) {
+        for (let r = 0; r < i.length && !c; r++)
+          c = i[r].pointerType !== "mouse" && i[r].pointerIsDown;
+        c = c || t.now() - t.prevTouchTime < 500 || // on iOS and Firefox Mobile, MouseEvent.timeStamp is zero if simulated
+        n.timeStamp === 0;
       }
-      if (!invalidPointer) {
-        const searchDetails = {
-          pointer: event,
-          pointerId: getPointerId(event),
-          pointerType,
-          eventType: event.type,
-          curEventTarget,
-          eventTarget,
-          scope: scope2
-        };
-        const interaction = getInteraction(searchDetails);
-        matches.push([searchDetails.pointer, searchDetails.eventTarget, searchDetails.curEventTarget, interaction]);
+      if (!c) {
+        const r = {
+          pointer: n,
+          pointerId: te(n),
+          pointerType: o,
+          eventType: n.type,
+          curEventTarget: a,
+          eventTarget: s,
+          scope: t
+        }, f = Ge(r);
+        l.push([r.pointer, r.eventTarget, r.curEventTarget, f]);
       }
     }
-    for (const [pointer, eventTarget2, curEventTarget2, interaction] of matches) {
-      interaction[method](pointer, event, eventTarget2, curEventTarget2);
-    }
+    for (const [c, r, f, d] of l)
+      d[e](c, n, r, f);
   };
 }
-function getInteraction(searchDetails) {
+function Ge(e) {
   const {
-    pointerType,
-    scope: scope2
-  } = searchDetails;
-  const foundInteraction = finder.search(searchDetails);
-  const signalArg = {
-    interaction: foundInteraction,
-    searchDetails
+    pointerType: t,
+    scope: n
+  } = e, o = {
+    interaction: xe.search(e),
+    searchDetails: e
   };
-  scope2.fire("interactions:find", signalArg);
-  return signalArg.interaction || scope2.interactions.new({
-    pointerType
+  return n.fire("interactions:find", o), o.interaction || n.interactions.new({
+    pointerType: t
   });
 }
-function onDocSignal(_ref2, eventMethodName) {
+function de(e, t) {
   let {
-    doc,
-    scope: scope2,
-    options
-  } = _ref2;
+    doc: n,
+    scope: i,
+    options: o
+  } = e;
   const {
     interactions: {
-      docEvents
+      docEvents: s
     },
-    events: events2
-  } = scope2;
-  const eventMethod = events2[eventMethodName];
-  if (scope2.browser.isIOS && !options.events) {
-    options.events = {
-      passive: false
-    };
-  }
-  for (const eventType in events2.delegatedEvents) {
-    eventMethod(doc, eventType, events2.delegateListener);
-    eventMethod(doc, eventType, events2.delegateUseCapture, true);
-  }
-  const eventOptions = options && options.events;
+    events: a
+  } = i, l = a[t];
+  i.browser.isIOS && !o.events && (o.events = {
+    passive: !1
+  });
+  for (const r in a.delegatedEvents)
+    l(n, r, a.delegateListener), l(n, r, a.delegateUseCapture, !0);
+  const c = o && o.events;
   for (const {
-    type,
-    listener
-  } of docEvents) {
-    eventMethod(doc, type, listener, eventOptions);
-  }
+    type: r,
+    listener: f
+  } of s)
+    l(n, r, f, c);
 }
-const interactions = {
+const nr = {
   id: "core/interactions",
-  install: install$8,
+  install: er,
   listeners: {
-    "scope:add-document": (arg) => onDocSignal(arg, "add"),
-    "scope:remove-document": (arg) => onDocSignal(arg, "remove"),
-    "interactable:unset": (_ref3, scope2) => {
+    "scope:add-document": (e) => de(e, "add"),
+    "scope:remove-document": (e) => de(e, "remove"),
+    "interactable:unset": (e, t) => {
       let {
-        interactable
-      } = _ref3;
-      for (let i = scope2.interactions.list.length - 1; i >= 0; i--) {
-        const interaction = scope2.interactions.list[i];
-        if (interaction.interactable !== interactable) {
-          continue;
-        }
-        interaction.stop();
-        scope2.fire("interactions:destroy", {
-          interaction
-        });
-        interaction.destroy();
-        if (scope2.interactions.list.length > 2) {
-          scope2.interactions.list.splice(i, 1);
-        }
+        interactable: n
+      } = e;
+      for (let i = t.interactions.list.length - 1; i >= 0; i--) {
+        const o = t.interactions.list[i];
+        o.interactable === n && (o.stop(), t.fire("interactions:destroy", {
+          interaction: o
+        }), o.destroy(), t.interactions.list.length > 2 && t.interactions.list.splice(i, 1));
       }
     }
   },
-  onDocSignal,
-  doOnInteractions,
-  methodNames
+  onDocSignal: de,
+  doOnInteractions: An,
+  methodNames: kn
 };
-function isNonNativeEvent(type, actions) {
-  if (actions.phaselessTypes[type]) {
-    return true;
-  }
-  for (const name in actions.map) {
-    if (type.indexOf(name) === 0 && type.substr(name.length) in actions.phases) {
-      return true;
-    }
-  }
-  return false;
+function qt(e, t) {
+  if (t.phaselessTypes[e])
+    return !0;
+  for (const n in t.map)
+    if (e.indexOf(n) === 0 && e.substr(n.length) in t.phases)
+      return !0;
+  return !1;
 }
-var OnOffMethod = /* @__PURE__ */ function(OnOffMethod2) {
-  OnOffMethod2[OnOffMethod2["On"] = 0] = "On";
-  OnOffMethod2[OnOffMethod2["Off"] = 1] = "Off";
-  return OnOffMethod2;
-}(OnOffMethod || {});
-class Interactable {
+var ht = /* @__PURE__ */ function(e) {
+  return e[e.On = 0] = "On", e[e.Off = 1] = "Off", e;
+}(ht || {});
+class ir {
   /** @internal */
   get _defaults() {
     return {
@@ -1987,70 +1369,22 @@ class Interactable {
       actions: {}
     };
   }
-  constructor(target, options, defaultContext, scopeEvents) {
-    this.target = void 0;
-    this.options = void 0;
-    this._actions = void 0;
-    this.events = new Eventable();
-    this._context = void 0;
-    this._win = void 0;
-    this._doc = void 0;
-    this._scopeEvents = void 0;
-    this._actions = options.actions;
-    this.target = target;
-    this._context = options.context || defaultContext;
-    this._win = getWindow(trySelector(target) ? this._context : target);
-    this._doc = this._win.document;
-    this._scopeEvents = scopeEvents;
-    this.set(options);
+  constructor(t, n, i, o) {
+    this.target = void 0, this.options = void 0, this._actions = void 0, this.events = new zn(), this._context = void 0, this._win = void 0, this._doc = void 0, this._scopeEvents = void 0, this._actions = n.actions, this.target = t, this._context = n.context || i, this._win = It(Xe(t) ? this._context : t), this._doc = this._win.document, this._scopeEvents = o, this.set(n);
   }
-  setOnEvents(actionName, phases) {
-    if (is.func(phases.onstart)) {
-      this.on(`${actionName}start`, phases.onstart);
-    }
-    if (is.func(phases.onmove)) {
-      this.on(`${actionName}move`, phases.onmove);
-    }
-    if (is.func(phases.onend)) {
-      this.on(`${actionName}end`, phases.onend);
-    }
-    if (is.func(phases.oninertiastart)) {
-      this.on(`${actionName}inertiastart`, phases.oninertiastart);
-    }
-    return this;
+  setOnEvents(t, n) {
+    return p.func(n.onstart) && this.on(`${t}start`, n.onstart), p.func(n.onmove) && this.on(`${t}move`, n.onmove), p.func(n.onend) && this.on(`${t}end`, n.onend), p.func(n.oninertiastart) && this.on(`${t}inertiastart`, n.oninertiastart), this;
   }
-  updatePerActionListeners(actionName, prev, cur) {
-    var _this$_actions$map$ac;
-    const actionFilter = (_this$_actions$map$ac = this._actions.map[actionName]) == null ? void 0 : _this$_actions$map$ac.filterEventType;
-    const filter = (type) => (actionFilter == null || actionFilter(type)) && isNonNativeEvent(type, this._actions);
-    if (is.array(prev) || is.object(prev)) {
-      this._onOff(OnOffMethod.Off, actionName, prev, void 0, filter);
-    }
-    if (is.array(cur) || is.object(cur)) {
-      this._onOff(OnOffMethod.On, actionName, cur, void 0, filter);
-    }
+  updatePerActionListeners(t, n, i) {
+    var o;
+    const s = (o = this._actions.map[t]) == null ? void 0 : o.filterEventType, a = (l) => (s == null || s(l)) && qt(l, this._actions);
+    (p.array(n) || p.object(n)) && this._onOff(ht.Off, t, n, void 0, a), (p.array(i) || p.object(i)) && this._onOff(ht.On, t, i, void 0, a);
   }
-  setPerAction(actionName, options) {
-    const defaults2 = this._defaults;
-    for (const optionName_ in options) {
-      const optionName = optionName_;
-      const actionOptions = this.options[actionName];
-      const optionValue = options[optionName];
-      if (optionName === "listeners") {
-        this.updatePerActionListeners(actionName, actionOptions.listeners, optionValue);
-      }
-      if (is.array(optionValue)) {
-        actionOptions[optionName] = from(optionValue);
-      } else if (is.plainObject(optionValue)) {
-        actionOptions[optionName] = extend(actionOptions[optionName] || {}, clone(optionValue));
-        if (is.object(defaults2.perAction[optionName]) && "enabled" in defaults2.perAction[optionName]) {
-          actionOptions[optionName].enabled = optionValue.enabled !== false;
-        }
-      } else if (is.bool(optionValue) && is.object(defaults2.perAction[optionName])) {
-        actionOptions[optionName].enabled = optionValue;
-      } else {
-        actionOptions[optionName] = optionValue;
-      }
+  setPerAction(t, n) {
+    const i = this._defaults;
+    for (const o in n) {
+      const s = o, a = this.options[t], l = n[s];
+      s === "listeners" && this.updatePerActionListeners(t, a.listeners, l), p.array(l) ? a[s] = En(l) : p.plainObject(l) ? (a[s] = I(a[s] || {}, Rt(l)), p.object(i.perAction[s]) && "enabled" in i.perAction[s] && (a[s].enabled = l.enabled !== !1)) : p.bool(l) && p.object(i.perAction[s]) ? a[s].enabled = l : a[s] = l;
     }
   }
   /**
@@ -2060,12 +1394,8 @@ class Interactable {
    * @param {Element} [element] The element to measure.
    * @return {Rect} The object's bounding rectangle.
    */
-  getRect(element2) {
-    element2 = element2 || (is.element(this.target) ? this.target : null);
-    if (is.string(this.target)) {
-      element2 = element2 || this._context.querySelector(this.target);
-    }
-    return getElementRect(element2);
+  getRect(t) {
+    return t = t || (p.element(this.target) ? this.target : null), p.string(this.target) && (t = t || this._context.querySelector(this.target)), Te(t);
   }
   /**
    * Returns or sets the function used to calculate the interactable's
@@ -2075,34 +1405,21 @@ class Interactable {
    * bounding rectangle. See {@link Interactable.getRect}
    * @return {function | object} The checker function or this Interactable
    */
-  rectChecker(checker) {
-    if (is.func(checker)) {
-      this.getRect = (element2) => {
-        const rect = extend({}, checker.apply(this, element2));
-        if (!("width" in rect)) {
-          rect.width = rect.right - rect.left;
-          rect.height = rect.bottom - rect.top;
-        }
-        return rect;
-      };
-      return this;
-    }
-    if (checker === null) {
-      delete this.getRect;
-      return this;
-    }
-    return this.getRect;
+  rectChecker(t) {
+    return p.func(t) ? (this.getRect = (n) => {
+      const i = I({}, t.apply(this, n));
+      return "width" in i || (i.width = i.right - i.left, i.height = i.bottom - i.top), i;
+    }, this) : t === null ? (delete this.getRect, this) : this.getRect;
   }
   /** @internal */
-  _backCompatOption(optionName, newValue) {
-    if (trySelector(newValue) || is.object(newValue)) {
-      this.options[optionName] = newValue;
-      for (const action in this._actions.map) {
-        this.options[action][optionName] = newValue;
-      }
+  _backCompatOption(t, n) {
+    if (Xe(n) || p.object(n)) {
+      this.options[t] = n;
+      for (const i in this._actions.map)
+        this.options[i][t] = n;
       return this;
     }
-    return this.options[optionName];
+    return this.options[t];
   }
   /**
    * Gets or sets the origin of the Interactable's element.  The x and y
@@ -2114,8 +1431,8 @@ class Interactable {
    *
    * @return {object} The current origin or this Interactable
    */
-  origin(newValue) {
-    return this._backCompatOption("origin", newValue);
+  origin(t) {
+    return this._backCompatOption("origin", t);
   }
   /**
    * Returns or sets the mouse coordinate types used to calculate the
@@ -2125,25 +1442,15 @@ class Interactable {
    * interacting; Use 'page' if you want autoScroll to work
    * @return {string | object} The current deltaSource or this Interactable
    */
-  deltaSource(newValue) {
-    if (newValue === "page" || newValue === "client") {
-      this.options.deltaSource = newValue;
-      return this;
-    }
-    return this.options.deltaSource;
+  deltaSource(t) {
+    return t === "page" || t === "client" ? (this.options.deltaSource = t, this) : this.options.deltaSource;
   }
   /** @internal */
   getAllElements() {
     const {
-      target
+      target: t
     } = this;
-    if (is.string(target)) {
-      return Array.from(this._context.querySelectorAll(target));
-    }
-    if (is.func(target) && target.getAllElements) {
-      return target.getAllElements();
-    }
-    return is.element(target) ? [target] : [];
+    return p.string(t) ? Array.from(this._context.querySelectorAll(t)) : p.func(t) && t.getAllElements ? t.getAllElements() : p.element(t) ? [t] : [];
   }
   /**
    * Gets the selector context Node of the Interactable. The default is
@@ -2154,39 +1461,20 @@ class Interactable {
   context() {
     return this._context;
   }
-  inContext(element2) {
-    return this._context === element2.ownerDocument || nodeContains(this._context, element2);
+  inContext(t) {
+    return this._context === t.ownerDocument || zt(this._context, t);
   }
   /** @internal */
-  testIgnoreAllow(options, targetNode, eventTarget) {
-    return !this.testIgnore(options.ignoreFrom, targetNode, eventTarget) && this.testAllow(options.allowFrom, targetNode, eventTarget);
+  testIgnoreAllow(t, n, i) {
+    return !this.testIgnore(t.ignoreFrom, n, i) && this.testAllow(t.allowFrom, n, i);
   }
   /** @internal */
-  testAllow(allowFrom, targetNode, element2) {
-    if (!allowFrom) {
-      return true;
-    }
-    if (!is.element(element2)) {
-      return false;
-    }
-    if (is.string(allowFrom)) {
-      return matchesUpTo(element2, allowFrom, targetNode);
-    } else if (is.element(allowFrom)) {
-      return nodeContains(allowFrom, element2);
-    }
-    return false;
+  testAllow(t, n, i) {
+    return t ? p.element(i) ? p.string(t) ? be(i, t, n) : p.element(t) ? zt(t, i) : !1 : !1 : !0;
   }
   /** @internal */
-  testIgnore(ignoreFrom, targetNode, element2) {
-    if (!ignoreFrom || !is.element(element2)) {
-      return false;
-    }
-    if (is.string(ignoreFrom)) {
-      return matchesUpTo(element2, ignoreFrom, targetNode);
-    } else if (is.element(ignoreFrom)) {
-      return nodeContains(ignoreFrom, element2);
-    }
-    return false;
+  testIgnore(t, n, i) {
+    return !t || !p.element(i) ? !1 : p.string(t) ? be(i, t, n) : p.element(t) ? zt(t, i) : !1;
   }
   /**
    * Calls listeners for the given InteractEvent type bound globally
@@ -2196,30 +1484,17 @@ class Interactable {
    * Interactable
    * @return {Interactable} this Interactable
    */
-  fire(iEvent) {
-    this.events.fire(iEvent);
-    return this;
+  fire(t) {
+    return this.events.fire(t), this;
   }
   /** @internal */
-  _onOff(method, typeArg, listenerArg, options, filter) {
-    if (is.object(typeArg) && !is.array(typeArg)) {
-      options = listenerArg;
-      listenerArg = null;
-    }
-    const listeners = normalize(typeArg, listenerArg, filter);
-    for (let type in listeners) {
-      if (type === "wheel") {
-        type = browser.wheelEvent;
-      }
-      for (const listener of listeners[type]) {
-        if (isNonNativeEvent(type, this._actions)) {
-          this.events[method === OnOffMethod.On ? "on" : "off"](type, listener);
-        } else if (is.string(this.target)) {
-          this._scopeEvents[method === OnOffMethod.On ? "addDelegate" : "removeDelegate"](this.target, this._context, type, listener, options);
-        } else {
-          this._scopeEvents[method === OnOffMethod.On ? "add" : "remove"](this.target, type, listener, options);
-        }
-      }
+  _onOff(t, n, i, o, s) {
+    p.object(n) && !p.array(n) && (o = i, i = null);
+    const a = Et(n, i, s);
+    for (let l in a) {
+      l === "wheel" && (l = G.wheelEvent);
+      for (const c of a[l])
+        qt(l, this._actions) ? this.events[t === ht.On ? "on" : "off"](l, c) : p.string(this.target) ? this._scopeEvents[t === ht.On ? "addDelegate" : "removeDelegate"](this.target, this._context, l, c, o) : this._scopeEvents[t === ht.On ? "add" : "remove"](this.target, l, c, o);
     }
     return this;
   }
@@ -2233,8 +1508,8 @@ class Interactable {
    * addEventListener
    * @return {Interactable} This Interactable
    */
-  on(types, listener, options) {
-    return this._onOff(OnOffMethod.On, types, listener, options);
+  on(t, n, i) {
+    return this._onOff(ht.On, t, n, i);
   }
   /**
    * Removes an InteractEvent, pointerEvent or DOM event listener.
@@ -2246,8 +1521,8 @@ class Interactable {
    * removeEventListener
    * @return {Interactable} This Interactable
    */
-  off(types, listener, options) {
-    return this._onOff(OnOffMethod.Off, types, listener, options);
+  off(t, n, i) {
+    return this._onOff(ht.Off, t, n, i);
   }
   /**
    * Reset the options of this Interactable
@@ -2255,27 +1530,19 @@ class Interactable {
    * @param {object} options The new settings to apply
    * @return {object} This Interactable
    */
-  set(options) {
-    const defaults2 = this._defaults;
-    if (!is.object(options)) {
-      options = {};
+  set(t) {
+    const n = this._defaults;
+    p.object(t) || (t = {}), this.options = Rt(n.base);
+    for (const i in this._actions.methodDict) {
+      const o = i, s = this._actions.methodDict[o];
+      this.options[o] = {}, this.setPerAction(o, I(I({}, n.perAction), n.actions[o])), this[s](t[o]);
     }
-    this.options = clone(defaults2.base);
-    for (const actionName_ in this._actions.methodDict) {
-      const actionName = actionName_;
-      const methodName = this._actions.methodDict[actionName];
-      this.options[actionName] = {};
-      this.setPerAction(actionName, extend(extend({}, defaults2.perAction), defaults2.actions[actionName]));
-      this[methodName](options[actionName]);
-    }
-    for (const setting in options) {
-      if (setting === "getRect") {
-        this.rectChecker(options.getRect);
+    for (const i in t) {
+      if (i === "getRect") {
+        this.rectChecker(t.getRect);
         continue;
       }
-      if (is.func(this[setting])) {
-        this[setting](options[setting]);
-      }
+      p.func(this[i]) && this[i](t[i]);
     }
     return this;
   }
@@ -2284,576 +1551,377 @@ class Interactable {
    * action capabilities and event listeners
    */
   unset() {
-    if (is.string(this.target)) {
-      for (const type in this._scopeEvents.delegatedEvents) {
-        const delegated = this._scopeEvents.delegatedEvents[type];
-        for (let i = delegated.length - 1; i >= 0; i--) {
+    if (p.string(this.target))
+      for (const t in this._scopeEvents.delegatedEvents) {
+        const n = this._scopeEvents.delegatedEvents[t];
+        for (let i = n.length - 1; i >= 0; i--) {
           const {
-            selector,
-            context,
-            listeners
-          } = delegated[i];
-          if (selector === this.target && context === this._context) {
-            delegated.splice(i, 1);
-          }
-          for (let l = listeners.length - 1; l >= 0; l--) {
-            this._scopeEvents.removeDelegate(this.target, this._context, type, listeners[l][0], listeners[l][1]);
-          }
+            selector: o,
+            context: s,
+            listeners: a
+          } = n[i];
+          o === this.target && s === this._context && n.splice(i, 1);
+          for (let l = a.length - 1; l >= 0; l--)
+            this._scopeEvents.removeDelegate(this.target, this._context, t, a[l][0], a[l][1]);
         }
       }
-    } else {
+    else
       this._scopeEvents.remove(this.target, "all");
-    }
   }
 }
-class InteractableSet {
-  constructor(scope2) {
-    this.list = [];
-    this.selectorMap = {};
-    this.scope = void 0;
-    this.scope = scope2;
-    scope2.addListeners({
-      "interactable:unset": (_ref) => {
+class rr {
+  constructor(t) {
+    this.list = [], this.selectorMap = {}, this.scope = void 0, this.scope = t, t.addListeners({
+      "interactable:unset": (n) => {
         let {
-          interactable
-        } = _ref;
+          interactable: i
+        } = n;
         const {
-          target
-        } = interactable;
-        const interactablesOnTarget = is.string(target) ? this.selectorMap[target] : target[this.scope.id];
-        const targetIndex = findIndex(interactablesOnTarget, (i) => i === interactable);
-        interactablesOnTarget.splice(targetIndex, 1);
+          target: o
+        } = i, s = p.string(o) ? this.selectorMap[o] : o[this.scope.id], a = re(s, (l) => l === i);
+        s.splice(a, 1);
       }
     });
   }
-  new(target, options) {
-    options = extend(options || {}, {
+  new(t, n) {
+    n = I(n || {}, {
       actions: this.scope.actions
     });
-    const interactable = new this.scope.Interactable(target, options, this.scope.document, this.scope.events);
-    this.scope.addDocument(interactable._doc);
-    this.list.push(interactable);
-    if (is.string(target)) {
-      if (!this.selectorMap[target]) {
-        this.selectorMap[target] = [];
-      }
-      this.selectorMap[target].push(interactable);
-    } else {
-      if (!interactable.target[this.scope.id]) {
-        Object.defineProperty(target, this.scope.id, {
-          value: [],
-          configurable: true
-        });
-      }
-      target[this.scope.id].push(interactable);
-    }
-    this.scope.fire("interactable:new", {
-      target,
-      options,
-      interactable,
+    const i = new this.scope.Interactable(t, n, this.scope.document, this.scope.events);
+    return this.scope.addDocument(i._doc), this.list.push(i), p.string(t) ? (this.selectorMap[t] || (this.selectorMap[t] = []), this.selectorMap[t].push(i)) : (i.target[this.scope.id] || Object.defineProperty(t, this.scope.id, {
+      value: [],
+      configurable: !0
+    }), t[this.scope.id].push(i)), this.scope.fire("interactable:new", {
+      target: t,
+      options: n,
+      interactable: i,
       win: this.scope._win
-    });
-    return interactable;
+    }), i;
   }
-  getExisting(target, options) {
-    const context = options && options.context || this.scope.document;
-    const isSelector = is.string(target);
-    const interactablesOnTarget = isSelector ? this.selectorMap[target] : target[this.scope.id];
-    if (!interactablesOnTarget) return void 0;
-    return find(interactablesOnTarget, (interactable) => interactable._context === context && (isSelector || interactable.inContext(target)));
+  getExisting(t, n) {
+    const i = n && n.context || this.scope.document, o = p.string(t), s = o ? this.selectorMap[t] : t[this.scope.id];
+    if (s)
+      return Jt(s, (a) => a._context === i && (o || a.inContext(t)));
   }
-  forEachMatch(node, callback) {
-    for (const interactable of this.list) {
-      let ret;
-      if ((is.string(interactable.target) ? (
+  forEachMatch(t, n) {
+    for (const i of this.list) {
+      let o;
+      if ((p.string(i.target) ? (
         // target is a selector and the element matches
-        is.element(node) && matchesSelector(node, interactable.target)
+        p.element(t) && Tt(t, i.target)
       ) : (
         // target is the element
-        node === interactable.target
+        t === i.target
       )) && // the element is in context
-      interactable.inContext(node)) {
-        ret = callback(interactable);
-      }
-      if (ret !== void 0) {
-        return ret;
-      }
+      i.inContext(t) && (o = n(i)), o !== void 0)
+        return o;
     }
   }
 }
-function createInteractStatic(scope2) {
-  const interact2 = (target, options) => {
-    let interactable = scope2.interactables.getExisting(target, options);
-    if (!interactable) {
-      interactable = scope2.interactables.new(target, options);
-      interactable.events.global = interact2.globalEvents;
-    }
-    return interactable;
+function or(e) {
+  const t = (n, i) => {
+    let o = e.interactables.getExisting(n, i);
+    return o || (o = e.interactables.new(n, i), o.events.global = t.globalEvents), o;
   };
-  interact2.getPointerAverage = pointerAverage;
-  interact2.getTouchBBox = touchBBox;
-  interact2.getTouchDistance = touchDistance;
-  interact2.getTouchAngle = touchAngle;
-  interact2.getElementRect = getElementRect;
-  interact2.getElementClientRect = getElementClientRect;
-  interact2.matchesSelector = matchesSelector;
-  interact2.closest = closest;
-  interact2.globalEvents = {};
-  interact2.version = "1.10.27";
-  interact2.scope = scope2;
-  interact2.use = function(plugin2, options) {
-    this.scope.usePlugin(plugin2, options);
+  return t.getPointerAverage = Mn, t.getTouchBBox = Hi, t.getTouchDistance = Li, t.getTouchAngle = Wi, t.getElementRect = Te, t.getElementClientRect = Ie, t.matchesSelector = Tt, t.closest = In, t.globalEvents = {}, t.version = "1.10.27", t.scope = e, t.use = function(n, i) {
+    return this.scope.usePlugin(n, i), this;
+  }, t.isSet = function(n, i) {
+    return !!this.scope.interactables.get(n, i && i.context);
+  }, t.on = Xt(function(i, o, s) {
+    if (p.string(i) && i.search(" ") !== -1 && (i = i.trim().split(/ +/)), p.array(i)) {
+      for (const a of i)
+        this.on(a, o, s);
+      return this;
+    }
+    if (p.object(i)) {
+      for (const a in i)
+        this.on(a, i[a], o);
+      return this;
+    }
+    return qt(i, this.scope.actions) ? this.globalEvents[i] ? this.globalEvents[i].push(o) : this.globalEvents[i] = [o] : this.scope.events.add(this.scope.document, i, o, {
+      options: s
+    }), this;
+  }, "The interact.on() method is being deprecated"), t.off = Xt(function(i, o, s) {
+    if (p.string(i) && i.search(" ") !== -1 && (i = i.trim().split(/ +/)), p.array(i)) {
+      for (const a of i)
+        this.off(a, o, s);
+      return this;
+    }
+    if (p.object(i)) {
+      for (const a in i)
+        this.off(a, i[a], o);
+      return this;
+    }
+    if (qt(i, this.scope.actions)) {
+      let a;
+      i in this.globalEvents && (a = this.globalEvents[i].indexOf(o)) !== -1 && this.globalEvents[i].splice(a, 1);
+    } else
+      this.scope.events.remove(this.scope.document, i, o, s);
     return this;
-  };
-  interact2.isSet = function(target, options) {
-    return !!this.scope.interactables.get(target, options && options.context);
-  };
-  interact2.on = warnOnce(function on(type, listener, options) {
-    if (is.string(type) && type.search(" ") !== -1) {
-      type = type.trim().split(/ +/);
-    }
-    if (is.array(type)) {
-      for (const eventType of type) {
-        this.on(eventType, listener, options);
-      }
-      return this;
-    }
-    if (is.object(type)) {
-      for (const prop2 in type) {
-        this.on(prop2, type[prop2], listener);
-      }
-      return this;
-    }
-    if (isNonNativeEvent(type, this.scope.actions)) {
-      if (!this.globalEvents[type]) {
-        this.globalEvents[type] = [listener];
-      } else {
-        this.globalEvents[type].push(listener);
-      }
-    } else {
-      this.scope.events.add(this.scope.document, type, listener, {
-        options
-      });
-    }
-    return this;
-  }, "The interact.on() method is being deprecated");
-  interact2.off = warnOnce(function off(type, listener, options) {
-    if (is.string(type) && type.search(" ") !== -1) {
-      type = type.trim().split(/ +/);
-    }
-    if (is.array(type)) {
-      for (const eventType of type) {
-        this.off(eventType, listener, options);
-      }
-      return this;
-    }
-    if (is.object(type)) {
-      for (const prop2 in type) {
-        this.off(prop2, type[prop2], listener);
-      }
-      return this;
-    }
-    if (isNonNativeEvent(type, this.scope.actions)) {
-      let index;
-      if (type in this.globalEvents && (index = this.globalEvents[type].indexOf(listener)) !== -1) {
-        this.globalEvents[type].splice(index, 1);
-      }
-    } else {
-      this.scope.events.remove(this.scope.document, type, listener, options);
-    }
-    return this;
-  }, "The interact.off() method is being deprecated");
-  interact2.debug = function() {
+  }, "The interact.off() method is being deprecated"), t.debug = function() {
     return this.scope;
-  };
-  interact2.supportsTouch = function() {
-    return browser.supportsTouch;
-  };
-  interact2.supportsPointerEvent = function() {
-    return browser.supportsPointerEvent;
-  };
-  interact2.stop = function() {
-    for (const interaction of this.scope.interactions.list) {
-      interaction.stop();
-    }
+  }, t.supportsTouch = function() {
+    return G.supportsTouch;
+  }, t.supportsPointerEvent = function() {
+    return G.supportsPointerEvent;
+  }, t.stop = function() {
+    for (const n of this.scope.interactions.list)
+      n.stop();
     return this;
-  };
-  interact2.pointerMoveTolerance = function(newValue) {
-    if (is.number(newValue)) {
-      this.scope.interactions.pointerMoveTolerance = newValue;
-      return this;
-    }
-    return this.scope.interactions.pointerMoveTolerance;
-  };
-  interact2.addDocument = function(doc, options) {
-    this.scope.addDocument(doc, options);
-  };
-  interact2.removeDocument = function(doc) {
-    this.scope.removeDocument(doc);
-  };
-  return interact2;
+  }, t.pointerMoveTolerance = function(n) {
+    return p.number(n) ? (this.scope.interactions.pointerMoveTolerance = n, this) : this.scope.interactions.pointerMoveTolerance;
+  }, t.addDocument = function(n, i) {
+    this.scope.addDocument(n, i);
+  }, t.removeDocument = function(n) {
+    this.scope.removeDocument(n);
+  }, t;
 }
-class Scope {
+class sr {
   constructor() {
-    this.id = `__interact_scope_${Math.floor(Math.random() * 100)}`;
-    this.isInitialized = false;
-    this.listenerMaps = [];
-    this.browser = browser;
-    this.defaults = clone(defaults$6);
-    this.Eventable = Eventable;
-    this.actions = {
+    this.id = `__interact_scope_${Math.floor(Math.random() * 100)}`, this.isInitialized = !1, this.listenerMaps = [], this.browser = G, this.defaults = Rt(Rn), this.Eventable = zn, this.actions = {
       map: {},
       phases: {
-        start: true,
-        move: true,
-        end: true
+        start: !0,
+        move: !0,
+        end: !0
       },
       methodDict: {},
       phaselessTypes: {}
-    };
-    this.interactStatic = createInteractStatic(this);
-    this.InteractEvent = InteractEvent;
-    this.Interactable = void 0;
-    this.interactables = new InteractableSet(this);
-    this._win = void 0;
-    this.document = void 0;
-    this.window = void 0;
-    this.documents = [];
-    this._plugins = {
+    }, this.interactStatic = or(this), this.InteractEvent = _e, this.Interactable = void 0, this.interactables = new rr(this), this._win = void 0, this.document = void 0, this.window = void 0, this.documents = [], this._plugins = {
       list: [],
       map: {}
-    };
-    this.onWindowUnload = (event) => this.removeDocument(event.target);
-    const scope2 = this;
-    this.Interactable = class extends Interactable {
+    }, this.onWindowUnload = (n) => this.removeDocument(n.target);
+    const t = this;
+    this.Interactable = class extends ir {
       get _defaults() {
-        return scope2.defaults;
+        return t.defaults;
       }
-      set(options) {
-        super.set(options);
-        scope2.fire("interactable:set", {
-          options,
+      set(n) {
+        return super.set(n), t.fire("interactable:set", {
+          options: n,
           interactable: this
-        });
-        return this;
+        }), this;
       }
       unset() {
         super.unset();
-        const index = scope2.interactables.list.indexOf(this);
-        if (index < 0) return;
-        scope2.interactables.list.splice(index, 1);
-        scope2.fire("interactable:unset", {
+        const n = t.interactables.list.indexOf(this);
+        n < 0 || (t.interactables.list.splice(n, 1), t.fire("interactable:unset", {
           interactable: this
-        });
+        }));
       }
     };
   }
-  addListeners(map, id2) {
+  addListeners(t, n) {
     this.listenerMaps.push({
-      id: id2,
-      map
+      id: n,
+      map: t
     });
   }
-  fire(name, arg) {
+  fire(t, n) {
     for (const {
       map: {
-        [name]: listener
+        [t]: i
       }
-    } of this.listenerMaps) {
-      if (!!listener && listener(arg, this, name) === false) {
-        return false;
-      }
-    }
+    } of this.listenerMaps)
+      if (i && i(n, this, t) === !1)
+        return !1;
   }
-  init(window2) {
-    return this.isInitialized ? this : initScope(this, window2);
+  init(t) {
+    return this.isInitialized ? this : ar(this, t);
   }
-  pluginIsInstalled(plugin2) {
+  pluginIsInstalled(t) {
     const {
-      id: id2
-    } = plugin2;
-    return id2 ? !!this._plugins.map[id2] : this._plugins.list.indexOf(plugin2) !== -1;
+      id: n
+    } = t;
+    return n ? !!this._plugins.map[n] : this._plugins.list.indexOf(t) !== -1;
   }
-  usePlugin(plugin2, options) {
-    if (!this.isInitialized) {
+  usePlugin(t, n) {
+    if (!this.isInitialized)
       return this;
-    }
-    if (this.pluginIsInstalled(plugin2)) {
+    if (this.pluginIsInstalled(t))
       return this;
-    }
-    if (plugin2.id) {
-      this._plugins.map[plugin2.id] = plugin2;
-    }
-    this._plugins.list.push(plugin2);
-    if (plugin2.install) {
-      plugin2.install(this, options);
-    }
-    if (plugin2.listeners && plugin2.before) {
-      let index = 0;
-      const len = this.listenerMaps.length;
-      const before = plugin2.before.reduce((acc, id2) => {
-        acc[id2] = true;
-        acc[pluginIdRoot(id2)] = true;
-        return acc;
-      }, {});
-      for (; index < len; index++) {
-        const otherId = this.listenerMaps[index].id;
-        if (otherId && (before[otherId] || before[pluginIdRoot(otherId)])) {
+    if (t.id && (this._plugins.map[t.id] = t), this._plugins.list.push(t), t.install && t.install(this, n), t.listeners && t.before) {
+      let i = 0;
+      const o = this.listenerMaps.length, s = t.before.reduce((a, l) => (a[l] = !0, a[Ue(l)] = !0, a), {});
+      for (; i < o; i++) {
+        const a = this.listenerMaps[i].id;
+        if (a && (s[a] || s[Ue(a)]))
           break;
-        }
       }
-      this.listenerMaps.splice(index, 0, {
-        id: plugin2.id,
-        map: plugin2.listeners
+      this.listenerMaps.splice(i, 0, {
+        id: t.id,
+        map: t.listeners
       });
-    } else if (plugin2.listeners) {
-      this.listenerMaps.push({
-        id: plugin2.id,
-        map: plugin2.listeners
-      });
-    }
+    } else t.listeners && this.listenerMaps.push({
+      id: t.id,
+      map: t.listeners
+    });
     return this;
   }
-  addDocument(doc, options) {
-    if (this.getDocIndex(doc) !== -1) {
-      return false;
-    }
-    const window2 = getWindow(doc);
-    options = options ? extend({}, options) : {};
-    this.documents.push({
-      doc,
-      options
-    });
-    this.events.documents.push(doc);
-    if (doc !== this.document) {
-      this.events.add(window2, "unload", this.onWindowUnload);
-    }
-    this.fire("scope:add-document", {
-      doc,
-      window: window2,
+  addDocument(t, n) {
+    if (this.getDocIndex(t) !== -1)
+      return !1;
+    const i = It(t);
+    n = n ? I({}, n) : {}, this.documents.push({
+      doc: t,
+      options: n
+    }), this.events.documents.push(t), t !== this.document && this.events.add(i, "unload", this.onWindowUnload), this.fire("scope:add-document", {
+      doc: t,
+      window: i,
       scope: this,
-      options
+      options: n
     });
   }
-  removeDocument(doc) {
-    const index = this.getDocIndex(doc);
-    const window2 = getWindow(doc);
-    const options = this.documents[index].options;
-    this.events.remove(window2, "unload", this.onWindowUnload);
-    this.documents.splice(index, 1);
-    this.events.documents.splice(index, 1);
-    this.fire("scope:remove-document", {
-      doc,
-      window: window2,
+  removeDocument(t) {
+    const n = this.getDocIndex(t), i = It(t), o = this.documents[n].options;
+    this.events.remove(i, "unload", this.onWindowUnload), this.documents.splice(n, 1), this.events.documents.splice(n, 1), this.fire("scope:remove-document", {
+      doc: t,
+      window: i,
       scope: this,
-      options
+      options: o
     });
   }
-  getDocIndex(doc) {
-    for (let i = 0; i < this.documents.length; i++) {
-      if (this.documents[i].doc === doc) {
-        return i;
-      }
-    }
+  getDocIndex(t) {
+    for (let n = 0; n < this.documents.length; n++)
+      if (this.documents[n].doc === t)
+        return n;
     return -1;
   }
-  getDocOptions(doc) {
-    const docIndex = this.getDocIndex(doc);
-    return docIndex === -1 ? null : this.documents[docIndex].options;
+  getDocOptions(t) {
+    const n = this.getDocIndex(t);
+    return n === -1 ? null : this.documents[n].options;
   }
   now() {
     return (this.window.Date || Date).now();
   }
 }
-function initScope(scope2, window2) {
-  scope2.isInitialized = true;
-  if (is.window(window2)) {
-    init$2(window2);
-  }
-  domObjects.init(window2);
-  browser.init(window2);
-  raf.init(window2);
-  scope2.window = window2;
-  scope2.document = window2.document;
-  scope2.usePlugin(interactions);
-  scope2.usePlugin(events);
-  return scope2;
+function ar(e, t) {
+  return e.isInitialized = !0, p.window(t) && xn(t), q.init(t), G.init(t), Ot.init(t), e.window = t, e.document = t.document, e.usePlugin(nr), e.usePlugin(ji), e;
 }
-function pluginIdRoot(id2) {
-  return id2 && id2.replace(/\/.*$/, "");
+function Ue(e) {
+  return e && e.replace(/\/.*$/, "");
 }
-const scope = new Scope();
-const interact = scope.interactStatic;
-const _global = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : window;
-scope.init(_global);
-function install$7(scope2) {
+const $n = new sr(), ut = $n.interactStatic, cr = typeof globalThis < "u" ? globalThis : window;
+$n.init(cr);
+function lr(e) {
   const {
-    Interactable: Interactable2
+    Interactable: t
     // tslint:disable-line no-shadowed-variable
-  } = scope2;
-  Interactable2.prototype.getAction = function getAction(pointer, event, interaction, element2) {
-    const action = defaultActionChecker(this, event, interaction, element2, scope2);
-    if (this.options.actionChecker) {
-      return this.options.actionChecker(pointer, event, action, this, element2, interaction);
-    }
-    return action;
-  };
-  Interactable2.prototype.ignoreFrom = warnOnce(function(newValue) {
-    return this._backCompatOption("ignoreFrom", newValue);
-  }, "Interactable.ignoreFrom() has been deprecated. Use Interactble.draggable({ignoreFrom: newValue}).");
-  Interactable2.prototype.allowFrom = warnOnce(function(newValue) {
-    return this._backCompatOption("allowFrom", newValue);
-  }, "Interactable.allowFrom() has been deprecated. Use Interactble.draggable({allowFrom: newValue}).");
-  Interactable2.prototype.actionChecker = actionChecker;
-  Interactable2.prototype.styleCursor = styleCursor;
+  } = e;
+  t.prototype.getAction = function(i, o, s, a) {
+    const l = ur(this, o, s, a, e);
+    return this.options.actionChecker ? this.options.actionChecker(i, o, l, this, a, s) : l;
+  }, t.prototype.ignoreFrom = Xt(function(n) {
+    return this._backCompatOption("ignoreFrom", n);
+  }, "Interactable.ignoreFrom() has been deprecated. Use Interactble.draggable({ignoreFrom: newValue})."), t.prototype.allowFrom = Xt(function(n) {
+    return this._backCompatOption("allowFrom", n);
+  }, "Interactable.allowFrom() has been deprecated. Use Interactble.draggable({allowFrom: newValue})."), t.prototype.actionChecker = dr, t.prototype.styleCursor = fr;
 }
-function defaultActionChecker(interactable, event, interaction, element2, scope2) {
-  const rect = interactable.getRect(element2);
-  const buttons = event.buttons || {
+function ur(e, t, n, i, o) {
+  const s = e.getRect(i), a = t.buttons || {
     0: 1,
     1: 4,
     3: 8,
     4: 16
-  }[event.button];
-  const arg = {
+  }[t.button], l = {
     action: null,
-    interactable,
-    interaction,
-    element: element2,
-    rect,
-    buttons
+    interactable: e,
+    interaction: n,
+    element: i,
+    rect: s,
+    buttons: a
   };
-  scope2.fire("auto-start:check", arg);
-  return arg.action;
+  return o.fire("auto-start:check", l), l.action;
 }
-function styleCursor(newValue) {
-  if (is.bool(newValue)) {
-    this.options.styleCursor = newValue;
-    return this;
-  }
-  if (newValue === null) {
-    delete this.options.styleCursor;
-    return this;
-  }
-  return this.options.styleCursor;
+function fr(e) {
+  return p.bool(e) ? (this.options.styleCursor = e, this) : e === null ? (delete this.options.styleCursor, this) : this.options.styleCursor;
 }
-function actionChecker(checker) {
-  if (is.func(checker)) {
-    this.options.actionChecker = checker;
-    return this;
-  }
-  if (checker === null) {
-    delete this.options.actionChecker;
-    return this;
-  }
-  return this.options.actionChecker;
+function dr(e) {
+  return p.func(e) ? (this.options.actionChecker = e, this) : e === null ? (delete this.options.actionChecker, this) : this.options.actionChecker;
 }
-var InteractableMethods = {
+var hr = {
   id: "auto-start/interactableMethods",
-  install: install$7
+  install: lr
 };
-function install$6(scope2) {
+function pr(e) {
   const {
-    interactStatic: interact2,
-    defaults: defaults2
-  } = scope2;
-  scope2.usePlugin(InteractableMethods);
-  defaults2.base.actionChecker = null;
-  defaults2.base.styleCursor = true;
-  extend(defaults2.perAction, {
-    manualStart: false,
-    max: Infinity,
+    interactStatic: t,
+    defaults: n
+  } = e;
+  e.usePlugin(hr), n.base.actionChecker = null, n.base.styleCursor = !0, I(n.perAction, {
+    manualStart: !1,
+    max: 1 / 0,
     maxPerElement: 1,
     allowFrom: null,
     ignoreFrom: null,
     // only allow left button by default
     // see https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent/buttons#Return_value
     mouseButtons: 1
-  });
-  interact2.maxInteractions = (newValue) => maxInteractions(newValue, scope2);
-  scope2.autoStart = {
+  }), t.maxInteractions = (i) => Bn(i, e), e.autoStart = {
     // Allow this many interactions to happen simultaneously
-    maxInteractions: Infinity,
-    withinInteractionLimit,
+    maxInteractions: 1 / 0,
+    withinInteractionLimit: ae,
     cursorElement: null
   };
 }
-function prepareOnDown(_ref, scope2) {
+function gr(e, t) {
   let {
-    interaction,
-    pointer,
-    event,
-    eventTarget
-  } = _ref;
-  if (interaction.interacting()) return;
-  const actionInfo = getActionInfo(interaction, pointer, event, eventTarget, scope2);
-  prepare(interaction, actionInfo, scope2);
+    interaction: n,
+    pointer: i,
+    event: o,
+    eventTarget: s
+  } = e;
+  if (n.interacting()) return;
+  const a = Ln(n, i, o, s, t);
+  Wn(n, a, t);
 }
-function prepareOnMove(_ref2, scope2) {
+function mr(e, t) {
   let {
-    interaction,
-    pointer,
-    event,
-    eventTarget
-  } = _ref2;
-  if (interaction.pointerType !== "mouse" || interaction.pointerIsDown || interaction.interacting()) return;
-  const actionInfo = getActionInfo(interaction, pointer, event, eventTarget, scope2);
-  prepare(interaction, actionInfo, scope2);
+    interaction: n,
+    pointer: i,
+    event: o,
+    eventTarget: s
+  } = e;
+  if (n.pointerType !== "mouse" || n.pointerIsDown || n.interacting()) return;
+  const a = Ln(n, i, o, s, t);
+  Wn(n, a, t);
 }
-function startOnMove(arg, scope2) {
+function vr(e, t) {
   const {
-    interaction
-  } = arg;
-  if (!interaction.pointerIsDown || interaction.interacting() || !interaction.pointerWasMoved || !interaction.prepared.name) {
+    interaction: n
+  } = e;
+  if (!n.pointerIsDown || n.interacting() || !n.pointerWasMoved || !n.prepared.name)
     return;
-  }
-  scope2.fire("autoStart:before-start", arg);
+  t.fire("autoStart:before-start", e);
   const {
-    interactable
-  } = interaction;
-  const actionName = interaction.prepared.name;
-  if (actionName && interactable) {
-    if (interactable.options[actionName].manualStart || !withinInteractionLimit(interactable, interaction.element, interaction.prepared, scope2)) {
-      interaction.stop();
-    } else {
-      interaction.start(interaction.prepared, interactable, interaction.element);
-      setInteractionCursor(interaction, scope2);
-    }
-  }
+    interactable: i
+  } = n, o = n.prepared.name;
+  o && i && (i.options[o].manualStart || !ae(i, n.element, n.prepared, t) ? n.stop() : (n.start(n.prepared, i, n.element), Nn(n, t)));
 }
-function clearCursorOnStop(_ref3, scope2) {
+function yr(e, t) {
   let {
-    interaction
-  } = _ref3;
+    interaction: n
+  } = e;
   const {
-    interactable
-  } = interaction;
-  if (interactable && interactable.options.styleCursor) {
-    setCursor(interaction.element, "", scope2);
-  }
+    interactable: i
+  } = n;
+  i && i.options.styleCursor && we(n.element, "", t);
 }
-function validateAction(action, interactable, element2, eventTarget, scope2) {
-  if (interactable.testIgnoreAllow(interactable.options[action.name], element2, eventTarget) && interactable.options[action.name].enabled && withinInteractionLimit(interactable, element2, action, scope2)) {
-    return action;
-  }
-  return null;
+function Hn(e, t, n, i, o) {
+  return t.testIgnoreAllow(t.options[e.name], n, i) && t.options[e.name].enabled && ae(t, n, e, o) ? e : null;
 }
-function validateMatches(interaction, pointer, event, matches, matchElements, eventTarget, scope2) {
-  for (let i = 0, len = matches.length; i < len; i++) {
-    const match = matches[i];
-    const matchElement = matchElements[i];
-    const matchAction = match.getAction(pointer, event, interaction, matchElement);
-    if (!matchAction) {
+function br(e, t, n, i, o, s, a) {
+  for (let l = 0, c = i.length; l < c; l++) {
+    const r = i[l], f = o[l], d = r.getAction(t, n, e, f);
+    if (!d)
       continue;
-    }
-    const action = validateAction(matchAction, match, matchElement, eventTarget, scope2);
-    if (action) {
+    const m = Hn(d, r, f, s, a);
+    if (m)
       return {
-        action,
-        interactable: match,
-        element: matchElement
+        action: m,
+        interactable: r,
+        element: f
       };
-    }
   }
   return {
     action: null,
@@ -2861,23 +1929,17 @@ function validateMatches(interaction, pointer, event, matches, matchElements, ev
     element: null
   };
 }
-function getActionInfo(interaction, pointer, event, eventTarget, scope2) {
-  let matches = [];
-  let matchElements = [];
-  let element2 = eventTarget;
-  function pushMatches(interactable) {
-    matches.push(interactable);
-    matchElements.push(element2);
+function Ln(e, t, n, i, o) {
+  let s = [], a = [], l = i;
+  function c(r) {
+    s.push(r), a.push(l);
   }
-  while (is.element(element2)) {
-    matches = [];
-    matchElements = [];
-    scope2.interactables.forEachMatch(element2, pushMatches);
-    const actionInfo = validateMatches(interaction, pointer, event, matches, matchElements, eventTarget, scope2);
-    if (actionInfo.action && !actionInfo.interactable.options[actionInfo.action.name].manualStart) {
-      return actionInfo;
-    }
-    element2 = parentNode(element2);
+  for (; p.element(l); ) {
+    s = [], a = [], o.interactables.forEachMatch(l, c);
+    const r = br(e, t, n, s, a, i, o);
+    if (r.action && !r.interactable.options[r.action.name].manualStart)
+      return r;
+    l = gt(l);
   }
   return {
     action: null,
@@ -2885,251 +1947,184 @@ function getActionInfo(interaction, pointer, event, eventTarget, scope2) {
     element: null
   };
 }
-function prepare(interaction, _ref4, scope2) {
+function Wn(e, t, n) {
   let {
-    action,
-    interactable,
-    element: element2
-  } = _ref4;
-  action = action || {
+    action: i,
+    interactable: o,
+    element: s
+  } = t;
+  i = i || {
     name: null
-  };
-  interaction.interactable = interactable;
-  interaction.element = element2;
-  copyAction(interaction.prepared, action);
-  interaction.rect = interactable && action.name ? interactable.getRect(element2) : null;
-  setInteractionCursor(interaction, scope2);
-  scope2.fire("autoStart:prepared", {
-    interaction
+  }, e.interactable = o, e.element = s, _n(e.prepared, i), e.rect = o && i.name ? o.getRect(s) : null, Nn(e, n), n.fire("autoStart:prepared", {
+    interaction: e
   });
 }
-function withinInteractionLimit(interactable, element2, action, scope2) {
-  const options = interactable.options;
-  const maxActions = options[action.name].max;
-  const maxPerElement = options[action.name].maxPerElement;
-  const autoStartMax = scope2.autoStart.maxInteractions;
-  let activeInteractions = 0;
-  let interactableCount = 0;
-  let elementCount = 0;
-  if (!(maxActions && maxPerElement && autoStartMax)) {
-    return false;
-  }
-  for (const interaction of scope2.interactions.list) {
-    const otherAction = interaction.prepared.name;
-    if (!interaction.interacting()) {
-      continue;
-    }
-    activeInteractions++;
-    if (activeInteractions >= autoStartMax) {
-      return false;
-    }
-    if (interaction.interactable !== interactable) {
-      continue;
-    }
-    interactableCount += otherAction === action.name ? 1 : 0;
-    if (interactableCount >= maxActions) {
-      return false;
-    }
-    if (interaction.element === element2) {
-      elementCount++;
-      if (otherAction === action.name && elementCount >= maxPerElement) {
-        return false;
-      }
+function ae(e, t, n, i) {
+  const o = e.options, s = o[n.name].max, a = o[n.name].maxPerElement, l = i.autoStart.maxInteractions;
+  let c = 0, r = 0, f = 0;
+  if (!(s && a && l))
+    return !1;
+  for (const d of i.interactions.list) {
+    const m = d.prepared.name;
+    if (d.interacting()) {
+      if (c++, c >= l)
+        return !1;
+      if (d.interactable === e && (r += m === n.name ? 1 : 0, r >= s || d.element === t && (f++, m === n.name && f >= a)))
+        return !1;
     }
   }
-  return autoStartMax > 0;
+  return l > 0;
 }
-function maxInteractions(newValue, scope2) {
-  if (is.number(newValue)) {
-    scope2.autoStart.maxInteractions = newValue;
-    return this;
-  }
-  return scope2.autoStart.maxInteractions;
+function Bn(e, t) {
+  return p.number(e) ? (t.autoStart.maxInteractions = e, this) : t.autoStart.maxInteractions;
 }
-function setCursor(element2, cursor, scope2) {
+function we(e, t, n) {
   const {
-    cursorElement: prevCursorElement
-  } = scope2.autoStart;
-  if (prevCursorElement && prevCursorElement !== element2) {
-    prevCursorElement.style.cursor = "";
-  }
-  element2.ownerDocument.documentElement.style.cursor = cursor;
-  element2.style.cursor = cursor;
-  scope2.autoStart.cursorElement = cursor ? element2 : null;
+    cursorElement: i
+  } = n.autoStart;
+  i && i !== e && (i.style.cursor = ""), e.ownerDocument.documentElement.style.cursor = t, e.style.cursor = t, n.autoStart.cursorElement = t ? e : null;
 }
-function setInteractionCursor(interaction, scope2) {
+function Nn(e, t) {
   const {
-    interactable,
-    element: element2,
-    prepared
-  } = interaction;
-  if (!(interaction.pointerType === "mouse" && interactable && interactable.options.styleCursor)) {
-    if (scope2.autoStart.cursorElement) {
-      setCursor(scope2.autoStart.cursorElement, "", scope2);
-    }
+    interactable: n,
+    element: i,
+    prepared: o
+  } = e;
+  if (!(e.pointerType === "mouse" && n && n.options.styleCursor)) {
+    t.autoStart.cursorElement && we(t.autoStart.cursorElement, "", t);
     return;
   }
-  let cursor = "";
-  if (prepared.name) {
-    const cursorChecker = interactable.options[prepared.name].cursorChecker;
-    if (is.func(cursorChecker)) {
-      cursor = cursorChecker(prepared, interactable, element2, interaction._interacting);
-    } else {
-      cursor = scope2.actions.map[prepared.name].getCursor(prepared);
-    }
+  let s = "";
+  if (o.name) {
+    const a = n.options[o.name].cursorChecker;
+    p.func(a) ? s = a(o, n, i, e._interacting) : s = t.actions.map[o.name].getCursor(o);
   }
-  setCursor(interaction.element, cursor || "", scope2);
+  we(e.element, s || "", t);
 }
-const autoStart = {
+const Pe = {
   id: "auto-start/base",
   before: ["actions"],
-  install: install$6,
+  install: pr,
   listeners: {
-    "interactions:down": prepareOnDown,
-    "interactions:move": (arg, scope2) => {
-      prepareOnMove(arg, scope2);
-      startOnMove(arg, scope2);
+    "interactions:down": gr,
+    "interactions:move": (e, t) => {
+      mr(e, t), vr(e, t);
     },
-    "interactions:stop": clearCursorOnStop
+    "interactions:stop": yr
   },
-  maxInteractions,
-  withinInteractionLimit,
-  validateAction
+  maxInteractions: Bn,
+  withinInteractionLimit: ae,
+  validateAction: Hn
 };
-function beforeStart(_ref, scope2) {
+function xr(e, t) {
   let {
-    interaction,
-    eventTarget,
-    dx,
-    dy
-  } = _ref;
-  if (interaction.prepared.name !== "drag") return;
-  const absX = Math.abs(dx);
-  const absY = Math.abs(dy);
-  const targetOptions = interaction.interactable.options.drag;
-  const startAxis = targetOptions.startAxis;
-  const currentAxis = absX > absY ? "x" : absX < absY ? "y" : "xy";
-  interaction.prepared.axis = targetOptions.lockAxis === "start" ? currentAxis[0] : targetOptions.lockAxis;
-  if (currentAxis !== "xy" && startAxis !== "xy" && startAxis !== currentAxis) {
-    interaction.prepared.name = null;
-    let element2 = eventTarget;
-    const getDraggable = function(interactable) {
-      if (interactable === interaction.interactable) return;
-      const options = interaction.interactable.options.drag;
-      if (!options.manualStart && interactable.testIgnoreAllow(options, element2, eventTarget)) {
-        const action = interactable.getAction(interaction.downPointer, interaction.downEvent, interaction, element2);
-        if (action && action.name === "drag" && checkStartAxis(currentAxis, interactable) && autoStart.validateAction(action, interactable, element2, eventTarget, scope2)) {
-          return interactable;
-        }
+    interaction: n,
+    eventTarget: i,
+    dx: o,
+    dy: s
+  } = e;
+  if (n.prepared.name !== "drag") return;
+  const a = Math.abs(o), l = Math.abs(s), c = n.interactable.options.drag, r = c.startAxis, f = a > l ? "x" : a < l ? "y" : "xy";
+  if (n.prepared.axis = c.lockAxis === "start" ? f[0] : c.lockAxis, f !== "xy" && r !== "xy" && r !== f) {
+    n.prepared.name = null;
+    let d = i;
+    const m = function(g) {
+      if (g === n.interactable) return;
+      const b = n.interactable.options.drag;
+      if (!b.manualStart && g.testIgnoreAllow(b, d, i)) {
+        const C = g.getAction(n.downPointer, n.downEvent, n, d);
+        if (C && C.name === "drag" && wr(f, g) && Pe.validateAction(C, g, d, i, t))
+          return g;
       }
     };
-    while (is.element(element2)) {
-      const interactable = scope2.interactables.forEachMatch(element2, getDraggable);
-      if (interactable) {
-        interaction.prepared.name = "drag";
-        interaction.interactable = interactable;
-        interaction.element = element2;
+    for (; p.element(d); ) {
+      const g = t.interactables.forEachMatch(d, m);
+      if (g) {
+        n.prepared.name = "drag", n.interactable = g, n.element = d;
         break;
       }
-      element2 = parentNode(element2);
+      d = gt(d);
     }
   }
 }
-function checkStartAxis(startAxis, interactable) {
-  if (!interactable) {
-    return false;
-  }
-  const thisAxis = interactable.options.drag.startAxis;
-  return startAxis === "xy" || thisAxis === "xy" || thisAxis === startAxis;
+function wr(e, t) {
+  if (!t)
+    return !1;
+  const n = t.options.drag.startAxis;
+  return e === "xy" || n === "xy" || n === e;
 }
-var dragAxis = {
+var Sr = {
   id: "auto-start/dragAxis",
   listeners: {
-    "autoStart:before-start": beforeStart
+    "autoStart:before-start": xr
   }
 };
-function install$5(scope2) {
+function Er(e) {
   const {
-    defaults: defaults2
-  } = scope2;
-  scope2.usePlugin(autoStart);
-  defaults2.perAction.hold = 0;
-  defaults2.perAction.delay = 0;
+    defaults: t
+  } = e;
+  e.usePlugin(Pe), t.perAction.hold = 0, t.perAction.delay = 0;
 }
-function getHoldDuration(interaction) {
-  const actionName = interaction.prepared && interaction.prepared.name;
-  if (!actionName) {
+function he(e) {
+  const t = e.prepared && e.prepared.name;
+  if (!t)
     return null;
-  }
-  const options = interaction.interactable.options;
-  return options[actionName].hold || options[actionName].delay;
+  const n = e.interactable.options;
+  return n[t].hold || n[t].delay;
 }
-const hold = {
+const zr = {
   id: "auto-start/hold",
-  install: install$5,
+  install: Er,
   listeners: {
-    "interactions:new": (_ref) => {
+    "interactions:new": (e) => {
       let {
-        interaction
-      } = _ref;
-      interaction.autoStartHoldTimer = null;
+        interaction: t
+      } = e;
+      t.autoStartHoldTimer = null;
     },
-    "autoStart:prepared": (_ref2) => {
+    "autoStart:prepared": (e) => {
       let {
-        interaction
-      } = _ref2;
-      const hold2 = getHoldDuration(interaction);
-      if (hold2 > 0) {
-        interaction.autoStartHoldTimer = setTimeout(() => {
-          interaction.start(interaction.prepared, interaction.interactable, interaction.element);
-        }, hold2);
-      }
+        interaction: t
+      } = e;
+      const n = he(t);
+      n > 0 && (t.autoStartHoldTimer = setTimeout(() => {
+        t.start(t.prepared, t.interactable, t.element);
+      }, n));
     },
-    "interactions:move": (_ref3) => {
+    "interactions:move": (e) => {
       let {
-        interaction,
-        duplicate
-      } = _ref3;
-      if (interaction.autoStartHoldTimer && interaction.pointerWasMoved && !duplicate) {
-        clearTimeout(interaction.autoStartHoldTimer);
-        interaction.autoStartHoldTimer = null;
-      }
+        interaction: t,
+        duplicate: n
+      } = e;
+      t.autoStartHoldTimer && t.pointerWasMoved && !n && (clearTimeout(t.autoStartHoldTimer), t.autoStartHoldTimer = null);
     },
     // prevent regular down->move autoStart
-    "autoStart:before-start": (_ref4) => {
+    "autoStart:before-start": (e) => {
       let {
-        interaction
-      } = _ref4;
-      const holdDuration = getHoldDuration(interaction);
-      if (holdDuration > 0) {
-        interaction.prepared.name = null;
-      }
+        interaction: t
+      } = e;
+      he(t) > 0 && (t.prepared.name = null);
     }
   },
-  getHoldDuration
+  getHoldDuration: he
 };
-var plugin$1 = {
+var Ir = {
   id: "auto-start",
-  install(scope2) {
-    scope2.usePlugin(autoStart);
-    scope2.usePlugin(hold);
-    scope2.usePlugin(dragAxis);
+  install(e) {
+    e.usePlugin(Pe), e.usePlugin(zr), e.usePlugin(Sr);
   }
 };
-interact.use(plugin$1);
-function install$4(scope2) {
+ut.use(Ir);
+function Tr(e) {
   const {
-    defaults: defaults2,
-    actions
-  } = scope2;
-  scope2.autoScroll = autoScroll;
-  autoScroll.now = () => scope2.now();
-  actions.phaselessTypes.autoscroll = true;
-  defaults2.perAction.autoScroll = autoScroll.defaults;
+    defaults: t,
+    actions: n
+  } = e;
+  e.autoScroll = M, M.now = () => e.now(), n.phaselessTypes.autoscroll = !0, t.perAction.autoScroll = M.defaults;
 }
-const autoScroll = {
+const M = {
   defaults: {
-    enabled: false,
+    enabled: !1,
     margin: 60,
     // the item that is scrolled (Window or HTMLElement)
     container: null,
@@ -3143,253 +2138,163 @@ const autoScroll = {
   // Direction each pulse is to scroll in
   x: 0,
   y: 0,
-  isScrolling: false,
+  isScrolling: !1,
   prevTime: 0,
   margin: 0,
   speed: 0,
-  start(interaction) {
-    autoScroll.isScrolling = true;
-    raf.cancel(autoScroll.i);
-    interaction.autoScroll = autoScroll;
-    autoScroll.interaction = interaction;
-    autoScroll.prevTime = autoScroll.now();
-    autoScroll.i = raf.request(autoScroll.scroll);
+  start(e) {
+    M.isScrolling = !0, Ot.cancel(M.i), e.autoScroll = M, M.interaction = e, M.prevTime = M.now(), M.i = Ot.request(M.scroll);
   },
   stop() {
-    autoScroll.isScrolling = false;
-    if (autoScroll.interaction) {
-      autoScroll.interaction.autoScroll = null;
-    }
-    raf.cancel(autoScroll.i);
+    M.isScrolling = !1, M.interaction && (M.interaction.autoScroll = null), Ot.cancel(M.i);
   },
   // scroll the window by the values in scroll.x/y
   scroll() {
     const {
-      interaction
-    } = autoScroll;
-    const {
-      interactable,
-      element: element2
-    } = interaction;
-    const actionName = interaction.prepared.name;
-    const options = interactable.options[actionName].autoScroll;
-    const container = getContainer(options.container, interactable, element2);
-    const now = autoScroll.now();
-    const dt = (now - autoScroll.prevTime) / 1e3;
-    const s = options.speed * dt;
-    if (s >= 1) {
-      const scrollBy = {
-        x: autoScroll.x * s,
-        y: autoScroll.y * s
+      interaction: e
+    } = M, {
+      interactable: t,
+      element: n
+    } = e, i = e.prepared.name, o = t.options[i].autoScroll, s = Ve(o.container, t, n), a = M.now(), l = (a - M.prevTime) / 1e3, c = o.speed * l;
+    if (c >= 1) {
+      const r = {
+        x: M.x * c,
+        y: M.y * c
       };
-      if (scrollBy.x || scrollBy.y) {
-        const prevScroll = getScroll(container);
-        if (is.window(container)) {
-          container.scrollBy(scrollBy.x, scrollBy.y);
-        } else if (container) {
-          container.scrollLeft += scrollBy.x;
-          container.scrollTop += scrollBy.y;
-        }
-        const curScroll = getScroll(container);
-        const delta = {
-          x: curScroll.x - prevScroll.x,
-          y: curScroll.y - prevScroll.y
+      if (r.x || r.y) {
+        const f = Ke(s);
+        p.window(s) ? s.scrollBy(r.x, r.y) : s && (s.scrollLeft += r.x, s.scrollTop += r.y);
+        const d = Ke(s), m = {
+          x: d.x - f.x,
+          y: d.y - f.y
         };
-        if (delta.x || delta.y) {
-          interactable.fire({
-            type: "autoscroll",
-            target: element2,
-            interactable,
-            delta,
-            interaction,
-            container
-          });
-        }
+        (m.x || m.y) && t.fire({
+          type: "autoscroll",
+          target: n,
+          interactable: t,
+          delta: m,
+          interaction: e,
+          container: s
+        });
       }
-      autoScroll.prevTime = now;
+      M.prevTime = a;
     }
-    if (autoScroll.isScrolling) {
-      raf.cancel(autoScroll.i);
-      autoScroll.i = raf.request(autoScroll.scroll);
-    }
+    M.isScrolling && (Ot.cancel(M.i), M.i = Ot.request(M.scroll));
   },
-  check(interactable, actionName) {
-    var _options$actionName$a;
-    const options = interactable.options;
-    return (_options$actionName$a = options[actionName].autoScroll) == null ? void 0 : _options$actionName$a.enabled;
+  check(e, t) {
+    var n;
+    return (n = e.options[t].autoScroll) == null ? void 0 : n.enabled;
   },
-  onInteractionMove(_ref) {
+  onInteractionMove(e) {
     let {
-      interaction,
-      pointer
-    } = _ref;
-    if (!(interaction.interacting() && autoScroll.check(interaction.interactable, interaction.prepared.name))) {
+      interaction: t,
+      pointer: n
+    } = e;
+    if (!(t.interacting() && M.check(t.interactable, t.prepared.name)))
+      return;
+    if (t.simulation) {
+      M.x = M.y = 0;
       return;
     }
-    if (interaction.simulation) {
-      autoScroll.x = autoScroll.y = 0;
-      return;
-    }
-    let top;
-    let right;
-    let bottom2;
-    let left;
+    let i, o, s, a;
     const {
-      interactable,
-      element: element2
-    } = interaction;
-    const actionName = interaction.prepared.name;
-    const options = interactable.options[actionName].autoScroll;
-    const container = getContainer(options.container, interactable, element2);
-    if (is.window(container)) {
-      left = pointer.clientX < autoScroll.margin;
-      top = pointer.clientY < autoScroll.margin;
-      right = pointer.clientX > container.innerWidth - autoScroll.margin;
-      bottom2 = pointer.clientY > container.innerHeight - autoScroll.margin;
-    } else {
-      const rect = getElementClientRect(container);
-      left = pointer.clientX < rect.left + autoScroll.margin;
-      top = pointer.clientY < rect.top + autoScroll.margin;
-      right = pointer.clientX > rect.right - autoScroll.margin;
-      bottom2 = pointer.clientY > rect.bottom - autoScroll.margin;
+      interactable: l,
+      element: c
+    } = t, r = t.prepared.name, f = l.options[r].autoScroll, d = Ve(f.container, l, c);
+    if (p.window(d))
+      a = n.clientX < M.margin, i = n.clientY < M.margin, o = n.clientX > d.innerWidth - M.margin, s = n.clientY > d.innerHeight - M.margin;
+    else {
+      const m = Ie(d);
+      a = n.clientX < m.left + M.margin, i = n.clientY < m.top + M.margin, o = n.clientX > m.right - M.margin, s = n.clientY > m.bottom - M.margin;
     }
-    autoScroll.x = right ? 1 : left ? -1 : 0;
-    autoScroll.y = bottom2 ? 1 : top ? -1 : 0;
-    if (!autoScroll.isScrolling) {
-      autoScroll.margin = options.margin;
-      autoScroll.speed = options.speed;
-      autoScroll.start(interaction);
-    }
+    M.x = o ? 1 : a ? -1 : 0, M.y = s ? 1 : i ? -1 : 0, M.isScrolling || (M.margin = f.margin, M.speed = f.speed, M.start(t));
   }
 };
-function getContainer(value, interactable, element2) {
-  return (is.string(value) ? getStringOptionResult(value, interactable, element2) : value) || getWindow(element2);
+function Ve(e, t, n) {
+  return (p.string(e) ? Pn(e, t, n) : e) || It(n);
 }
-function getScroll(container) {
-  if (is.window(container)) {
-    container = window.document.body;
-  }
-  return {
-    x: container.scrollLeft,
-    y: container.scrollTop
+function Ke(e) {
+  return p.window(e) && (e = window.document.body), {
+    x: e.scrollLeft,
+    y: e.scrollTop
   };
 }
-const autoScrollPlugin = {
+const Dr = {
   id: "auto-scroll",
-  install: install$4,
+  install: Tr,
   listeners: {
-    "interactions:new": (_ref3) => {
+    "interactions:new": (e) => {
       let {
-        interaction
-      } = _ref3;
-      interaction.autoScroll = null;
+        interaction: t
+      } = e;
+      t.autoScroll = null;
     },
-    "interactions:destroy": (_ref4) => {
+    "interactions:destroy": (e) => {
       let {
-        interaction
-      } = _ref4;
-      interaction.autoScroll = null;
-      autoScroll.stop();
-      if (autoScroll.interaction) {
-        autoScroll.interaction = null;
-      }
+        interaction: t
+      } = e;
+      t.autoScroll = null, M.stop(), M.interaction && (M.interaction = null);
     },
-    "interactions:stop": autoScroll.stop,
-    "interactions:action-move": (arg) => autoScroll.onInteractionMove(arg)
+    "interactions:stop": M.stop,
+    "interactions:action-move": (e) => M.onInteractionMove(e)
   }
 };
-interact.use(autoScrollPlugin);
-function install$3(scope2) {
+ut.use(Dr);
+function Mr(e) {
   const {
-    actions,
-    Interactable: Interactable2,
-    defaults: defaults2
-  } = scope2;
-  Interactable2.prototype.draggable = drag.draggable;
-  actions.map.drag = drag;
-  actions.methodDict.drag = "draggable";
-  defaults2.actions.drag = drag.defaults;
+    actions: t,
+    Interactable: n,
+    defaults: i
+  } = e;
+  n.prototype.draggable = Zt.draggable, t.map.drag = Zt, t.methodDict.drag = "draggable", i.actions.drag = Zt.defaults;
 }
-function beforeMove(_ref) {
+function pe(e) {
   let {
-    interaction
-  } = _ref;
-  if (interaction.prepared.name !== "drag") return;
-  const axis = interaction.prepared.axis;
-  if (axis === "x") {
-    interaction.coords.cur.page.y = interaction.coords.start.page.y;
-    interaction.coords.cur.client.y = interaction.coords.start.client.y;
-    interaction.coords.velocity.client.y = 0;
-    interaction.coords.velocity.page.y = 0;
-  } else if (axis === "y") {
-    interaction.coords.cur.page.x = interaction.coords.start.page.x;
-    interaction.coords.cur.client.x = interaction.coords.start.client.x;
-    interaction.coords.velocity.client.x = 0;
-    interaction.coords.velocity.page.x = 0;
-  }
+    interaction: t
+  } = e;
+  if (t.prepared.name !== "drag") return;
+  const n = t.prepared.axis;
+  n === "x" ? (t.coords.cur.page.y = t.coords.start.page.y, t.coords.cur.client.y = t.coords.start.client.y, t.coords.velocity.client.y = 0, t.coords.velocity.page.y = 0) : n === "y" && (t.coords.cur.page.x = t.coords.start.page.x, t.coords.cur.client.x = t.coords.start.client.x, t.coords.velocity.client.x = 0, t.coords.velocity.page.x = 0);
 }
-function move$1(_ref2) {
+function Je(e) {
   let {
-    iEvent,
-    interaction
-  } = _ref2;
-  if (interaction.prepared.name !== "drag") return;
-  const axis = interaction.prepared.axis;
-  if (axis === "x" || axis === "y") {
-    const opposite = axis === "x" ? "y" : "x";
-    iEvent.page[opposite] = interaction.coords.start.page[opposite];
-    iEvent.client[opposite] = interaction.coords.start.client[opposite];
-    iEvent.delta[opposite] = 0;
+    iEvent: t,
+    interaction: n
+  } = e;
+  if (n.prepared.name !== "drag") return;
+  const i = n.prepared.axis;
+  if (i === "x" || i === "y") {
+    const o = i === "x" ? "y" : "x";
+    t.page[o] = n.coords.start.page[o], t.client[o] = n.coords.start.client[o], t.delta[o] = 0;
   }
 }
-const draggable = function draggable2(options) {
-  if (is.object(options)) {
-    this.options.drag.enabled = options.enabled !== false;
-    this.setPerAction("drag", options);
-    this.setOnEvents("drag", options);
-    if (/^(xy|x|y|start)$/.test(options.lockAxis)) {
-      this.options.drag.lockAxis = options.lockAxis;
-    }
-    if (/^(xy|x|y)$/.test(options.startAxis)) {
-      this.options.drag.startAxis = options.startAxis;
-    }
-    return this;
-  }
-  if (is.bool(options)) {
-    this.options.drag.enabled = options;
-    return this;
-  }
-  return this.options.drag;
-};
-const drag = {
+const Cr = function(t) {
+  return p.object(t) ? (this.options.drag.enabled = t.enabled !== !1, this.setPerAction("drag", t), this.setOnEvents("drag", t), /^(xy|x|y|start)$/.test(t.lockAxis) && (this.options.drag.lockAxis = t.lockAxis), /^(xy|x|y)$/.test(t.startAxis) && (this.options.drag.startAxis = t.startAxis), this) : p.bool(t) ? (this.options.drag.enabled = t, this) : this.options.drag;
+}, Zt = {
   id: "actions/drag",
-  install: install$3,
+  install: Mr,
   listeners: {
-    "interactions:before-action-move": beforeMove,
-    "interactions:action-resume": beforeMove,
+    "interactions:before-action-move": pe,
+    "interactions:action-resume": pe,
     // dragmove
-    "interactions:action-move": move$1,
-    "auto-start:check": (arg) => {
+    "interactions:action-move": Je,
+    "auto-start:check": (e) => {
       const {
-        interaction,
-        interactable,
-        buttons
-      } = arg;
-      const dragOptions = interactable.options.drag;
-      if (!(dragOptions && dragOptions.enabled) || // check mouseButton setting if the pointer is down
-      interaction.pointerIsDown && /mouse|pointer/.test(interaction.pointerType) && (buttons & interactable.options.drag.mouseButtons) === 0) {
-        return void 0;
-      }
-      arg.action = {
-        name: "drag",
-        axis: dragOptions.lockAxis === "start" ? dragOptions.startAxis : dragOptions.lockAxis
-      };
-      return false;
+        interaction: t,
+        interactable: n,
+        buttons: i
+      } = e, o = n.options.drag;
+      if (!(!(o && o.enabled) || // check mouseButton setting if the pointer is down
+      t.pointerIsDown && /mouse|pointer/.test(t.pointerType) && !(i & n.options.drag.mouseButtons)))
+        return e.action = {
+          name: "drag",
+          axis: o.lockAxis === "start" ? o.startAxis : o.lockAxis
+        }, !1;
     }
   },
-  draggable,
-  beforeMove,
-  move: move$1,
+  draggable: Cr,
+  beforeMove: pe,
+  move: Je,
   defaults: {
     startAxis: "xy",
     lockAxis: "xy"
@@ -3397,146 +2302,88 @@ const drag = {
   getCursor() {
     return "move";
   },
-  filterEventType: (type) => type.search("drag") === 0
+  filterEventType: (e) => e.search("drag") === 0
 };
-interact.use(drag);
-function install$2(scope2) {
+ut.use(Zt);
+function _r(e) {
   const {
-    actions,
-    browser: browser2,
-    Interactable: Interactable2,
+    actions: t,
+    browser: n,
+    Interactable: i,
     // tslint:disable-line no-shadowed-variable
-    defaults: defaults2
-  } = scope2;
-  resize.cursors = initCursors(browser2);
-  resize.defaultMargin = browser2.supportsTouch || browser2.supportsPointerEvent ? 20 : 10;
-  Interactable2.prototype.resizable = function(options) {
-    return resizable(this, options, scope2);
-  };
-  actions.map.resize = resize;
-  actions.methodDict.resize = "resizable";
-  defaults2.actions.resize = resize.defaults;
+    defaults: o
+  } = e;
+  lt.cursors = kr(n), lt.defaultMargin = n.supportsTouch || n.supportsPointerEvent ? 20 : 10, i.prototype.resizable = function(s) {
+    return Or(this, s, e);
+  }, t.map.resize = lt, t.methodDict.resize = "resizable", o.actions.resize = lt.defaults;
 }
-function resizeChecker(arg) {
+function Pr(e) {
   const {
-    interaction,
-    interactable,
-    element: element2,
-    rect,
-    buttons
-  } = arg;
-  if (!rect) {
-    return void 0;
-  }
-  const page = extend({}, interaction.coords.cur.page);
-  const resizeOptions = interactable.options.resize;
-  if (!(resizeOptions && resizeOptions.enabled) || // check mouseButton setting if the pointer is down
-  interaction.pointerIsDown && /mouse|pointer/.test(interaction.pointerType) && (buttons & resizeOptions.mouseButtons) === 0) {
-    return void 0;
-  }
-  if (is.object(resizeOptions.edges)) {
-    const resizeEdges = {
-      left: false,
-      right: false,
-      top: false,
-      bottom: false
-    };
-    for (const edge in resizeEdges) {
-      resizeEdges[edge] = checkResizeEdge(edge, resizeOptions.edges[edge], page, interaction._latestPointer.eventTarget, element2, rect, resizeOptions.margin || resize.defaultMargin);
-    }
-    resizeEdges.left = resizeEdges.left && !resizeEdges.right;
-    resizeEdges.top = resizeEdges.top && !resizeEdges.bottom;
-    if (resizeEdges.left || resizeEdges.right || resizeEdges.top || resizeEdges.bottom) {
-      arg.action = {
-        name: "resize",
-        edges: resizeEdges
+    interaction: t,
+    interactable: n,
+    element: i,
+    rect: o,
+    buttons: s
+  } = e;
+  if (!o)
+    return;
+  const a = I({}, t.coords.cur.page), l = n.options.resize;
+  if (!(!(l && l.enabled) || // check mouseButton setting if the pointer is down
+  t.pointerIsDown && /mouse|pointer/.test(t.pointerType) && !(s & l.mouseButtons))) {
+    if (p.object(l.edges)) {
+      const c = {
+        left: !1,
+        right: !1,
+        top: !1,
+        bottom: !1
       };
-    }
-  } else {
-    const right = resizeOptions.axis !== "y" && page.x > rect.right - resize.defaultMargin;
-    const bottom2 = resizeOptions.axis !== "x" && page.y > rect.bottom - resize.defaultMargin;
-    if (right || bottom2) {
-      arg.action = {
+      for (const r in c)
+        c[r] = Rr(r, l.edges[r], a, t._latestPointer.eventTarget, i, o, l.margin || lt.defaultMargin);
+      c.left = c.left && !c.right, c.top = c.top && !c.bottom, (c.left || c.right || c.top || c.bottom) && (e.action = {
         name: "resize",
-        axes: (right ? "x" : "") + (bottom2 ? "y" : "")
-      };
+        edges: c
+      });
+    } else {
+      const c = l.axis !== "y" && a.x > o.right - lt.defaultMargin, r = l.axis !== "x" && a.y > o.bottom - lt.defaultMargin;
+      (c || r) && (e.action = {
+        name: "resize",
+        axes: (c ? "x" : "") + (r ? "y" : "")
+      });
     }
+    return e.action ? !1 : void 0;
   }
-  return arg.action ? false : void 0;
 }
-function resizable(interactable, options, scope2) {
-  if (is.object(options)) {
-    interactable.options.resize.enabled = options.enabled !== false;
-    interactable.setPerAction("resize", options);
-    interactable.setOnEvents("resize", options);
-    if (is.string(options.axis) && /^x$|^y$|^xy$/.test(options.axis)) {
-      interactable.options.resize.axis = options.axis;
-    } else if (options.axis === null) {
-      interactable.options.resize.axis = scope2.defaults.actions.resize.axis;
-    }
-    if (is.bool(options.preserveAspectRatio)) {
-      interactable.options.resize.preserveAspectRatio = options.preserveAspectRatio;
-    } else if (is.bool(options.square)) {
-      interactable.options.resize.square = options.square;
-    }
-    return interactable;
-  }
-  if (is.bool(options)) {
-    interactable.options.resize.enabled = options;
-    return interactable;
-  }
-  return interactable.options.resize;
+function Or(e, t, n) {
+  return p.object(t) ? (e.options.resize.enabled = t.enabled !== !1, e.setPerAction("resize", t), e.setOnEvents("resize", t), p.string(t.axis) && /^x$|^y$|^xy$/.test(t.axis) ? e.options.resize.axis = t.axis : t.axis === null && (e.options.resize.axis = n.defaults.actions.resize.axis), p.bool(t.preserveAspectRatio) ? e.options.resize.preserveAspectRatio = t.preserveAspectRatio : p.bool(t.square) && (e.options.resize.square = t.square), e) : p.bool(t) ? (e.options.resize.enabled = t, e) : e.options.resize;
 }
-function checkResizeEdge(name, value, page, element2, interactableElement, rect, margin) {
-  if (!value) {
-    return false;
+function Rr(e, t, n, i, o, s, a) {
+  if (!t)
+    return !1;
+  if (t === !0) {
+    const l = p.number(s.width) ? s.width : s.right - s.left, c = p.number(s.height) ? s.height : s.bottom - s.top;
+    if (a = Math.min(a, Math.abs((e === "left" || e === "right" ? l : c) / 2)), l < 0 && (e === "left" ? e = "right" : e === "right" && (e = "left")), c < 0 && (e === "top" ? e = "bottom" : e === "bottom" && (e = "top")), e === "left") {
+      const r = l >= 0 ? s.left : s.right;
+      return n.x < r + a;
+    }
+    if (e === "top") {
+      const r = c >= 0 ? s.top : s.bottom;
+      return n.y < r + a;
+    }
+    if (e === "right")
+      return n.x > (l >= 0 ? s.right : s.left) - a;
+    if (e === "bottom")
+      return n.y > (c >= 0 ? s.bottom : s.top) - a;
   }
-  if (value === true) {
-    const width = is.number(rect.width) ? rect.width : rect.right - rect.left;
-    const height = is.number(rect.height) ? rect.height : rect.bottom - rect.top;
-    margin = Math.min(margin, Math.abs((name === "left" || name === "right" ? width : height) / 2));
-    if (width < 0) {
-      if (name === "left") {
-        name = "right";
-      } else if (name === "right") {
-        name = "left";
-      }
-    }
-    if (height < 0) {
-      if (name === "top") {
-        name = "bottom";
-      } else if (name === "bottom") {
-        name = "top";
-      }
-    }
-    if (name === "left") {
-      const edge = width >= 0 ? rect.left : rect.right;
-      return page.x < edge + margin;
-    }
-    if (name === "top") {
-      const edge = height >= 0 ? rect.top : rect.bottom;
-      return page.y < edge + margin;
-    }
-    if (name === "right") {
-      return page.x > (width >= 0 ? rect.right : rect.left) - margin;
-    }
-    if (name === "bottom") {
-      return page.y > (height >= 0 ? rect.bottom : rect.top) - margin;
-    }
-  }
-  if (!is.element(element2)) {
-    return false;
-  }
-  return is.element(value) ? (
+  return p.element(i) ? p.element(t) ? (
     // the value is an element to use as a resize handle
-    value === element2
+    t === i
   ) : (
     // otherwise check if element matches value as selector
-    matchesUpTo(element2, value, interactableElement)
-  );
+    be(i, t, o)
+  ) : !1;
 }
-function initCursors(browser2) {
-  return browser2.isIe9 ? {
+function kr(e) {
+  return e.isIe9 ? {
     x: "e-resize",
     y: "s-resize",
     xy: "se-resize",
@@ -3562,20 +2409,18 @@ function initCursors(browser2) {
     bottomleft: "nesw-resize"
   };
 }
-function start$6(_ref) {
+function Ar(e) {
   let {
-    iEvent,
-    interaction
-  } = _ref;
-  if (interaction.prepared.name !== "resize" || !interaction.prepared.edges) {
+    iEvent: t,
+    interaction: n
+  } = e;
+  if (n.prepared.name !== "resize" || !n.prepared.edges)
     return;
-  }
-  const resizeEvent = iEvent;
-  const rect = interaction.rect;
-  interaction._rects = {
-    start: extend({}, rect),
-    corrected: extend({}, rect),
-    previous: extend({}, rect),
+  const i = t, o = n.rect;
+  n._rects = {
+    start: I({}, o),
+    corrected: I({}, o),
+    previous: I({}, o),
     delta: {
       left: 0,
       right: 0,
@@ -3584,118 +2429,79 @@ function start$6(_ref) {
       bottom: 0,
       height: 0
     }
-  };
-  resizeEvent.edges = interaction.prepared.edges;
-  resizeEvent.rect = interaction._rects.corrected;
-  resizeEvent.deltaRect = interaction._rects.delta;
+  }, i.edges = n.prepared.edges, i.rect = n._rects.corrected, i.deltaRect = n._rects.delta;
 }
-function move(_ref2) {
+function $r(e) {
   let {
-    iEvent,
-    interaction
-  } = _ref2;
-  if (interaction.prepared.name !== "resize" || !interaction.prepared.edges) return;
-  const resizeEvent = iEvent;
-  const resizeOptions = interaction.interactable.options.resize;
-  const invert = resizeOptions.invert;
-  const invertible = invert === "reposition" || invert === "negate";
-  const current = interaction.rect;
-  const {
-    start: startRect,
-    corrected,
-    delta: deltaRect,
-    previous
-  } = interaction._rects;
-  extend(previous, corrected);
-  if (invertible) {
-    extend(corrected, current);
-    if (invert === "reposition") {
-      if (corrected.top > corrected.bottom) {
-        const swap = corrected.top;
-        corrected.top = corrected.bottom;
-        corrected.bottom = swap;
+    iEvent: t,
+    interaction: n
+  } = e;
+  if (n.prepared.name !== "resize" || !n.prepared.edges) return;
+  const i = t, s = n.interactable.options.resize.invert, a = s === "reposition" || s === "negate", l = n.rect, {
+    start: c,
+    corrected: r,
+    delta: f,
+    previous: d
+  } = n._rects;
+  if (I(d, r), a) {
+    if (I(r, l), s === "reposition") {
+      if (r.top > r.bottom) {
+        const m = r.top;
+        r.top = r.bottom, r.bottom = m;
       }
-      if (corrected.left > corrected.right) {
-        const swap = corrected.left;
-        corrected.left = corrected.right;
-        corrected.right = swap;
+      if (r.left > r.right) {
+        const m = r.left;
+        r.left = r.right, r.right = m;
       }
     }
-  } else {
-    corrected.top = Math.min(current.top, startRect.bottom);
-    corrected.bottom = Math.max(current.bottom, startRect.top);
-    corrected.left = Math.min(current.left, startRect.right);
-    corrected.right = Math.max(current.right, startRect.left);
-  }
-  corrected.width = corrected.right - corrected.left;
-  corrected.height = corrected.bottom - corrected.top;
-  for (const edge in corrected) {
-    deltaRect[edge] = corrected[edge] - previous[edge];
-  }
-  resizeEvent.edges = interaction.prepared.edges;
-  resizeEvent.rect = corrected;
-  resizeEvent.deltaRect = deltaRect;
+  } else
+    r.top = Math.min(l.top, c.bottom), r.bottom = Math.max(l.bottom, c.top), r.left = Math.min(l.left, c.right), r.right = Math.max(l.right, c.left);
+  r.width = r.right - r.left, r.height = r.bottom - r.top;
+  for (const m in r)
+    f[m] = r[m] - d[m];
+  i.edges = n.prepared.edges, i.rect = r, i.deltaRect = f;
 }
-function end(_ref3) {
+function Hr(e) {
   let {
-    iEvent,
-    interaction
-  } = _ref3;
-  if (interaction.prepared.name !== "resize" || !interaction.prepared.edges) return;
-  const resizeEvent = iEvent;
-  resizeEvent.edges = interaction.prepared.edges;
-  resizeEvent.rect = interaction._rects.corrected;
-  resizeEvent.deltaRect = interaction._rects.delta;
+    iEvent: t,
+    interaction: n
+  } = e;
+  if (n.prepared.name !== "resize" || !n.prepared.edges) return;
+  const i = t;
+  i.edges = n.prepared.edges, i.rect = n._rects.corrected, i.deltaRect = n._rects.delta;
 }
-function updateEventAxes(_ref4) {
+function Ze(e) {
   let {
-    iEvent,
-    interaction
-  } = _ref4;
-  if (interaction.prepared.name !== "resize" || !interaction.resizeAxes) return;
-  const options = interaction.interactable.options;
-  const resizeEvent = iEvent;
-  if (options.resize.square) {
-    if (interaction.resizeAxes === "y") {
-      resizeEvent.delta.x = resizeEvent.delta.y;
-    } else {
-      resizeEvent.delta.y = resizeEvent.delta.x;
-    }
-    resizeEvent.axes = "xy";
-  } else {
-    resizeEvent.axes = interaction.resizeAxes;
-    if (interaction.resizeAxes === "x") {
-      resizeEvent.delta.y = 0;
-    } else if (interaction.resizeAxes === "y") {
-      resizeEvent.delta.x = 0;
-    }
-  }
+    iEvent: t,
+    interaction: n
+  } = e;
+  if (n.prepared.name !== "resize" || !n.resizeAxes) return;
+  const i = n.interactable.options, o = t;
+  i.resize.square ? (n.resizeAxes === "y" ? o.delta.x = o.delta.y : o.delta.y = o.delta.x, o.axes = "xy") : (o.axes = n.resizeAxes, n.resizeAxes === "x" ? o.delta.y = 0 : n.resizeAxes === "y" && (o.delta.x = 0));
 }
-const resize = {
+const lt = {
   id: "actions/resize",
   before: ["actions/drag"],
-  install: install$2,
+  install: _r,
   listeners: {
-    "interactions:new": (_ref5) => {
+    "interactions:new": (e) => {
       let {
-        interaction
-      } = _ref5;
-      interaction.resizeAxes = "xy";
+        interaction: t
+      } = e;
+      t.resizeAxes = "xy";
     },
-    "interactions:action-start": (arg) => {
-      start$6(arg);
-      updateEventAxes(arg);
+    "interactions:action-start": (e) => {
+      Ar(e), Ze(e);
     },
-    "interactions:action-move": (arg) => {
-      move(arg);
-      updateEventAxes(arg);
+    "interactions:action-move": (e) => {
+      $r(e), Ze(e);
     },
-    "interactions:action-end": end,
-    "auto-start:check": resizeChecker
+    "interactions:action-end": Hr,
+    "auto-start:check": Pr
   },
   defaults: {
-    square: false,
-    preserveAspectRatio: false,
+    square: !1,
+    preserveAspectRatio: !1,
     axis: "xy",
     // use default margin
     margin: NaN,
@@ -3711,398 +2517,285 @@ const resize = {
     invert: "none"
   },
   cursors: null,
-  getCursor(_ref6) {
+  getCursor(e) {
     let {
-      edges,
-      axis,
-      name
-    } = _ref6;
-    const cursors = resize.cursors;
-    let result = null;
-    if (axis) {
-      result = cursors[name + axis];
-    } else if (edges) {
-      let cursorKey = "";
-      for (const edge of ["top", "bottom", "left", "right"]) {
-        if (edges[edge]) {
-          cursorKey += edge;
-        }
-      }
-      result = cursors[cursorKey];
+      edges: t,
+      axis: n,
+      name: i
+    } = e;
+    const o = lt.cursors;
+    let s = null;
+    if (n)
+      s = o[i + n];
+    else if (t) {
+      let a = "";
+      for (const l of ["top", "bottom", "left", "right"])
+        t[l] && (a += l);
+      s = o[a];
     }
-    return result;
+    return s;
   },
-  filterEventType: (type) => type.search("resize") === 0,
+  filterEventType: (e) => e.search("resize") === 0,
   defaultMargin: null
 };
-interact.use(resize);
-var edgeTarget = () => {
-};
-var elements = () => {
-};
-var grid = (grid2) => {
-  const coordFields = [["x", "y"], ["left", "top"], ["right", "bottom"], ["width", "height"]].filter((_ref) => {
-    let [xField, yField] = _ref;
-    return xField in grid2 || yField in grid2;
-  });
-  const gridFunc = (x, y) => {
+ut.use(lt);
+var Lr = () => {
+}, Wr = () => {
+}, Br = (e) => {
+  const t = [["x", "y"], ["left", "top"], ["right", "bottom"], ["width", "height"]].filter((i) => {
+    let [o, s] = i;
+    return o in e || s in e;
+  }), n = (i, o) => {
     const {
-      range,
-      limits = {
-        left: -Infinity,
-        right: Infinity,
-        top: -Infinity,
-        bottom: Infinity
+      range: s,
+      limits: a = {
+        left: -1 / 0,
+        right: 1 / 0,
+        top: -1 / 0,
+        bottom: 1 / 0
       },
-      offset = {
+      offset: l = {
         x: 0,
         y: 0
       }
-    } = grid2;
-    const result = {
-      range,
-      grid: grid2,
+    } = e, c = {
+      range: s,
+      grid: e,
       x: null,
       y: null
     };
-    for (const [xField, yField] of coordFields) {
-      const gridx = Math.round((x - offset.x) / grid2[xField]);
-      const gridy = Math.round((y - offset.y) / grid2[yField]);
-      result[xField] = Math.max(limits.left, Math.min(limits.right, gridx * grid2[xField] + offset.x));
-      result[yField] = Math.max(limits.top, Math.min(limits.bottom, gridy * grid2[yField] + offset.y));
+    for (const [r, f] of t) {
+      const d = Math.round((i - l.x) / e[r]), m = Math.round((o - l.y) / e[f]);
+      c[r] = Math.max(a.left, Math.min(a.right, d * e[r] + l.x)), c[f] = Math.max(a.top, Math.min(a.bottom, m * e[f] + l.y));
     }
-    return result;
+    return c;
   };
-  gridFunc.grid = grid2;
-  gridFunc.coordFields = coordFields;
-  return gridFunc;
-};
-var allSnappers = /* @__PURE__ */ Object.freeze({
+  return n.grid = e, n.coordFields = t, n;
+}, Nr = /* @__PURE__ */ Object.freeze({
   __proto__: null,
-  edgeTarget,
-  elements,
-  grid
+  edgeTarget: Lr,
+  elements: Wr,
+  grid: Br
 });
-const snappersPlugin = {
+const Fr = {
   id: "snappers",
-  install(scope2) {
+  install(e) {
     const {
-      interactStatic: interact2
-    } = scope2;
-    interact2.snappers = extend(interact2.snappers || {}, allSnappers);
-    interact2.createSnapGrid = interact2.snappers.grid;
+      interactStatic: t
+    } = e;
+    t.snappers = I(t.snappers || {}, Nr), t.createSnapGrid = t.snappers.grid;
   }
 };
-class Modification {
-  constructor(interaction) {
-    this.states = [];
-    this.startOffset = {
+class Fn {
+  constructor(t) {
+    this.states = [], this.startOffset = {
       left: 0,
       right: 0,
       top: 0,
       bottom: 0
-    };
-    this.startDelta = void 0;
-    this.result = void 0;
-    this.endResult = void 0;
-    this.startEdges = void 0;
-    this.edges = void 0;
-    this.interaction = void 0;
-    this.interaction = interaction;
-    this.result = createResult();
-    this.edges = {
-      left: false,
-      right: false,
-      top: false,
-      bottom: false
+    }, this.startDelta = void 0, this.result = void 0, this.endResult = void 0, this.startEdges = void 0, this.edges = void 0, this.interaction = void 0, this.interaction = t, this.result = Kt(), this.edges = {
+      left: !1,
+      right: !1,
+      top: !1,
+      bottom: !1
     };
   }
-  start(_ref, pageCoords) {
+  start(t, n) {
     let {
-      phase
-    } = _ref;
+      phase: i
+    } = t;
     const {
-      interaction
-    } = this;
-    const modifierList = getModifierList(interaction);
-    this.prepareStates(modifierList);
-    this.startEdges = extend({}, interaction.edges);
-    this.edges = extend({}, this.startEdges);
-    this.startOffset = getRectOffset(interaction.rect, pageCoords);
-    this.startDelta = {
+      interaction: o
+    } = this, s = jr(o);
+    this.prepareStates(s), this.startEdges = I({}, o.edges), this.edges = I({}, this.startEdges), this.startOffset = Xr(o.rect, n), this.startDelta = {
       x: 0,
       y: 0
     };
-    const arg = this.fillArg({
-      phase,
-      pageCoords,
-      preEnd: false
+    const a = this.fillArg({
+      phase: i,
+      pageCoords: n,
+      preEnd: !1
     });
-    this.result = createResult();
-    this.startAll(arg);
-    const result = this.result = this.setAll(arg);
-    return result;
+    return this.result = Kt(), this.startAll(a), this.result = this.setAll(a);
   }
-  fillArg(arg) {
+  fillArg(t) {
     const {
-      interaction
+      interaction: n
     } = this;
-    arg.interaction = interaction;
-    arg.interactable = interaction.interactable;
-    arg.element = interaction.element;
-    arg.rect || (arg.rect = interaction.rect);
-    arg.edges || (arg.edges = this.startEdges);
-    arg.startOffset = this.startOffset;
-    return arg;
+    return t.interaction = n, t.interactable = n.interactable, t.element = n.element, t.rect || (t.rect = n.rect), t.edges || (t.edges = this.startEdges), t.startOffset = this.startOffset, t;
   }
-  startAll(arg) {
-    for (const state of this.states) {
-      if (state.methods.start) {
-        arg.state = state;
-        state.methods.start(arg);
-      }
-    }
+  startAll(t) {
+    for (const n of this.states)
+      n.methods.start && (t.state = n, n.methods.start(t));
   }
-  setAll(arg) {
+  setAll(t) {
     const {
-      phase,
-      preEnd,
-      skipModifiers,
-      rect: unmodifiedRect,
-      edges: unmodifiedEdges
-    } = arg;
-    arg.coords = extend({}, arg.pageCoords);
-    arg.rect = extend({}, unmodifiedRect);
-    arg.edges = extend({}, unmodifiedEdges);
-    const states = skipModifiers ? this.states.slice(skipModifiers) : this.states;
-    const newResult = createResult(arg.coords, arg.rect);
-    for (const state of states) {
-      var _state$methods;
+      phase: n,
+      preEnd: i,
+      skipModifiers: o,
+      rect: s,
+      edges: a
+    } = t;
+    t.coords = I({}, t.pageCoords), t.rect = I({}, s), t.edges = I({}, a);
+    const l = o ? this.states.slice(o) : this.states, c = Kt(t.coords, t.rect);
+    for (const m of l) {
+      var r;
       const {
-        options
-      } = state;
-      const lastModifierCoords = extend({}, arg.coords);
-      let returnValue = null;
-      if ((_state$methods = state.methods) != null && _state$methods.set && this.shouldDo(options, preEnd, phase)) {
-        arg.state = state;
-        returnValue = state.methods.set(arg);
-        addEdges(arg.edges, arg.rect, {
-          x: arg.coords.x - lastModifierCoords.x,
-          y: arg.coords.y - lastModifierCoords.y
-        });
-      }
-      newResult.eventProps.push(returnValue);
+        options: g
+      } = m, b = I({}, t.coords);
+      let C = null;
+      (r = m.methods) != null && r.set && this.shouldDo(g, i, n) && (t.state = m, C = m.methods.set(t), Me(t.edges, t.rect, {
+        x: t.coords.x - b.x,
+        y: t.coords.y - b.y
+      })), c.eventProps.push(C);
     }
-    extend(this.edges, arg.edges);
-    newResult.delta.x = arg.coords.x - arg.pageCoords.x;
-    newResult.delta.y = arg.coords.y - arg.pageCoords.y;
-    newResult.rectDelta.left = arg.rect.left - unmodifiedRect.left;
-    newResult.rectDelta.right = arg.rect.right - unmodifiedRect.right;
-    newResult.rectDelta.top = arg.rect.top - unmodifiedRect.top;
-    newResult.rectDelta.bottom = arg.rect.bottom - unmodifiedRect.bottom;
-    const prevCoords = this.result.coords;
-    const prevRect = this.result.rect;
-    if (prevCoords && prevRect) {
-      const rectChanged = newResult.rect.left !== prevRect.left || newResult.rect.right !== prevRect.right || newResult.rect.top !== prevRect.top || newResult.rect.bottom !== prevRect.bottom;
-      newResult.changed = rectChanged || prevCoords.x !== newResult.coords.x || prevCoords.y !== newResult.coords.y;
+    I(this.edges, t.edges), c.delta.x = t.coords.x - t.pageCoords.x, c.delta.y = t.coords.y - t.pageCoords.y, c.rectDelta.left = t.rect.left - s.left, c.rectDelta.right = t.rect.right - s.right, c.rectDelta.top = t.rect.top - s.top, c.rectDelta.bottom = t.rect.bottom - s.bottom;
+    const f = this.result.coords, d = this.result.rect;
+    if (f && d) {
+      const m = c.rect.left !== d.left || c.rect.right !== d.right || c.rect.top !== d.top || c.rect.bottom !== d.bottom;
+      c.changed = m || f.x !== c.coords.x || f.y !== c.coords.y;
     }
-    return newResult;
+    return c;
   }
-  applyToInteraction(arg) {
+  applyToInteraction(t) {
     const {
-      interaction
-    } = this;
+      interaction: n
+    } = this, {
+      phase: i
+    } = t, o = n.coords.cur, s = n.coords.start, {
+      result: a,
+      startDelta: l
+    } = this, c = a.delta;
+    i === "start" && I(this.startDelta, a.delta);
+    for (const [d, m] of [[s, l], [o, c]])
+      d.page.x += m.x, d.page.y += m.y, d.client.x += m.x, d.client.y += m.y;
     const {
-      phase
-    } = arg;
-    const curCoords = interaction.coords.cur;
-    const startCoords = interaction.coords.start;
-    const {
-      result,
-      startDelta
-    } = this;
-    const curDelta = result.delta;
-    if (phase === "start") {
-      extend(this.startDelta, result.delta);
-    }
-    for (const [coordsSet, delta] of [[startCoords, startDelta], [curCoords, curDelta]]) {
-      coordsSet.page.x += delta.x;
-      coordsSet.page.y += delta.y;
-      coordsSet.client.x += delta.x;
-      coordsSet.client.y += delta.y;
-    }
-    const {
-      rectDelta
-    } = this.result;
-    const rect = arg.rect || interaction.rect;
-    rect.left += rectDelta.left;
-    rect.right += rectDelta.right;
-    rect.top += rectDelta.top;
-    rect.bottom += rectDelta.bottom;
-    rect.width = rect.right - rect.left;
-    rect.height = rect.bottom - rect.top;
+      rectDelta: r
+    } = this.result, f = t.rect || n.rect;
+    f.left += r.left, f.right += r.right, f.top += r.top, f.bottom += r.bottom, f.width = f.right - f.left, f.height = f.bottom - f.top;
   }
-  setAndApply(arg) {
+  setAndApply(t) {
     const {
-      interaction
-    } = this;
-    const {
-      phase,
-      preEnd,
-      skipModifiers
-    } = arg;
-    const result = this.setAll(this.fillArg({
-      preEnd,
-      phase,
-      pageCoords: arg.modifiedCoords || interaction.coords.cur.page
+      interaction: n
+    } = this, {
+      phase: i,
+      preEnd: o,
+      skipModifiers: s
+    } = t, a = this.setAll(this.fillArg({
+      preEnd: o,
+      phase: i,
+      pageCoords: t.modifiedCoords || n.coords.cur.page
     }));
-    this.result = result;
-    if (!result.changed && (!skipModifiers || skipModifiers < this.states.length) && interaction.interacting()) {
-      return false;
-    }
-    if (arg.modifiedCoords) {
+    if (this.result = a, !a.changed && (!s || s < this.states.length) && n.interacting())
+      return !1;
+    if (t.modifiedCoords) {
       const {
-        page
-      } = interaction.coords.cur;
-      const adjustment = {
-        x: arg.modifiedCoords.x - page.x,
-        y: arg.modifiedCoords.y - page.y
+        page: l
+      } = n.coords.cur, c = {
+        x: t.modifiedCoords.x - l.x,
+        y: t.modifiedCoords.y - l.y
       };
-      result.coords.x += adjustment.x;
-      result.coords.y += adjustment.y;
-      result.delta.x += adjustment.x;
-      result.delta.y += adjustment.y;
+      a.coords.x += c.x, a.coords.y += c.y, a.delta.x += c.x, a.delta.y += c.y;
     }
-    this.applyToInteraction(arg);
+    this.applyToInteraction(t);
   }
-  beforeEnd(arg) {
+  beforeEnd(t) {
     const {
-      interaction,
-      event
-    } = arg;
-    const states = this.states;
-    if (!states || !states.length) {
+      interaction: n,
+      event: i
+    } = t, o = this.states;
+    if (!o || !o.length)
       return;
-    }
-    let doPreend = false;
-    for (const state of states) {
-      arg.state = state;
+    let s = !1;
+    for (const a of o) {
+      t.state = a;
       const {
-        options,
-        methods
-      } = state;
-      const endPosition = methods.beforeEnd && methods.beforeEnd(arg);
-      if (endPosition) {
-        this.endResult = endPosition;
-        return false;
-      }
-      doPreend = doPreend || !doPreend && this.shouldDo(options, true, arg.phase, true);
+        options: l,
+        methods: c
+      } = a, r = c.beforeEnd && c.beforeEnd(t);
+      if (r)
+        return this.endResult = r, !1;
+      s = s || !s && this.shouldDo(l, !0, t.phase, !0);
     }
-    if (doPreend) {
-      interaction.move({
-        event,
-        preEnd: true
-      });
-    }
+    s && n.move({
+      event: i,
+      preEnd: !0
+    });
   }
-  stop(arg) {
+  stop(t) {
     const {
-      interaction
-    } = arg;
-    if (!this.states || !this.states.length) {
+      interaction: n
+    } = t;
+    if (!this.states || !this.states.length)
       return;
-    }
-    const modifierArg = extend({
+    const i = I({
       states: this.states,
-      interactable: interaction.interactable,
-      element: interaction.element,
+      interactable: n.interactable,
+      element: n.element,
       rect: null
-    }, arg);
-    this.fillArg(modifierArg);
-    for (const state of this.states) {
-      modifierArg.state = state;
-      if (state.methods.stop) {
-        state.methods.stop(modifierArg);
-      }
-    }
-    this.states = null;
-    this.endResult = null;
+    }, t);
+    this.fillArg(i);
+    for (const o of this.states)
+      i.state = o, o.methods.stop && o.methods.stop(i);
+    this.states = null, this.endResult = null;
   }
-  prepareStates(modifierList) {
+  prepareStates(t) {
     this.states = [];
-    for (let index = 0; index < modifierList.length; index++) {
+    for (let n = 0; n < t.length; n++) {
       const {
-        options,
-        methods,
-        name
-      } = modifierList[index];
+        options: i,
+        methods: o,
+        name: s
+      } = t[n];
       this.states.push({
-        options,
-        methods,
-        index,
-        name
+        options: i,
+        methods: o,
+        index: n,
+        name: s
       });
     }
     return this.states;
   }
-  restoreInteractionCoords(_ref2) {
+  restoreInteractionCoords(t) {
     let {
       interaction: {
-        coords,
-        rect,
-        modification
+        coords: n,
+        rect: i,
+        modification: o
       }
-    } = _ref2;
-    if (!modification.result) return;
+    } = t;
+    if (!o.result) return;
     const {
-      startDelta
-    } = modification;
-    const {
-      delta: curDelta,
-      rectDelta
-    } = modification.result;
-    const coordsAndDeltas = [[coords.start, startDelta], [coords.cur, curDelta]];
-    for (const [coordsSet, delta] of coordsAndDeltas) {
-      coordsSet.page.x -= delta.x;
-      coordsSet.page.y -= delta.y;
-      coordsSet.client.x -= delta.x;
-      coordsSet.client.y -= delta.y;
-    }
-    rect.left -= rectDelta.left;
-    rect.right -= rectDelta.right;
-    rect.top -= rectDelta.top;
-    rect.bottom -= rectDelta.bottom;
+      startDelta: s
+    } = o, {
+      delta: a,
+      rectDelta: l
+    } = o.result, c = [[n.start, s], [n.cur, a]];
+    for (const [r, f] of c)
+      r.page.x -= f.x, r.page.y -= f.y, r.client.x -= f.x, r.client.y -= f.y;
+    i.left -= l.left, i.right -= l.right, i.top -= l.top, i.bottom -= l.bottom;
   }
-  shouldDo(options, preEnd, phase, requireEndOnly) {
-    if (
+  shouldDo(t, n, i, o) {
+    return (
       // ignore disabled modifiers
-      !options || options.enabled === false || // check if we require endOnly option to fire move before end
-      requireEndOnly && !options.endOnly || // don't apply endOnly modifiers when not ending
-      options.endOnly && !preEnd || // check if modifier should run be applied on start
-      phase === "start" && !options.setStart
-    ) {
-      return false;
-    }
-    return true;
+      !(!t || t.enabled === !1 || // check if we require endOnly option to fire move before end
+      o && !t.endOnly || // don't apply endOnly modifiers when not ending
+      t.endOnly && !n || // check if modifier should run be applied on start
+      i === "start" && !t.setStart)
+    );
   }
-  copyFrom(other) {
-    this.startOffset = other.startOffset;
-    this.startDelta = other.startDelta;
-    this.startEdges = other.startEdges;
-    this.edges = other.edges;
-    this.states = other.states.map((s) => clone(s));
-    this.result = createResult(extend({}, other.result.coords), extend({}, other.result.rect));
+  copyFrom(t) {
+    this.startOffset = t.startOffset, this.startDelta = t.startDelta, this.startEdges = t.startEdges, this.edges = t.edges, this.states = t.states.map((n) => Rt(n)), this.result = Kt(I({}, t.result.coords), I({}, t.result.rect));
   }
   destroy() {
-    for (const prop2 in this) {
-      this[prop2] = null;
-    }
+    for (const t in this)
+      this[t] = null;
   }
 }
-function createResult(coords, rect) {
+function Kt(e, t) {
   return {
-    rect,
-    coords,
+    rect: t,
+    coords: e,
     delta: {
       x: 0,
       y: 0
@@ -4114,29 +2807,25 @@ function createResult(coords, rect) {
       bottom: 0
     },
     eventProps: [],
-    changed: true
+    changed: !0
   };
 }
-function getModifierList(interaction) {
-  const actionOptions = interaction.interactable.options[interaction.prepared.name];
-  const actionModifiers = actionOptions.modifiers;
-  if (actionModifiers && actionModifiers.length) {
-    return actionModifiers;
-  }
-  return ["snap", "snapSize", "snapEdges", "restrict", "restrictEdges", "restrictSize"].map((type) => {
-    const options = actionOptions[type];
-    return options && options.enabled && {
-      options,
-      methods: options._methods
+function jr(e) {
+  const t = e.interactable.options[e.prepared.name], n = t.modifiers;
+  return n && n.length ? n : ["snap", "snapSize", "snapEdges", "restrict", "restrictEdges", "restrictSize"].map((i) => {
+    const o = t[i];
+    return o && o.enabled && {
+      options: o,
+      methods: o._methods
     };
-  }).filter((m) => !!m);
+  }).filter((i) => !!i);
 }
-function getRectOffset(rect, coords) {
-  return rect ? {
-    left: coords.x - rect.left,
-    top: coords.y - rect.top,
-    right: rect.right - coords.x,
-    bottom: rect.bottom - coords.y
+function Xr(e, t) {
+  return e ? {
+    left: t.x - e.left,
+    top: t.y - e.top,
+    right: e.right - t.x,
+    bottom: e.bottom - t.y
   } : {
     left: 0,
     top: 0,
@@ -4144,402 +2833,309 @@ function getRectOffset(rect, coords) {
     bottom: 0
   };
 }
-function makeModifier(module, name) {
+function mt(e, t) {
   const {
-    defaults: defaults2
-  } = module;
-  const methods = {
-    start: module.start,
-    set: module.set,
-    beforeEnd: module.beforeEnd,
-    stop: module.stop
-  };
-  const modifier = (_options) => {
-    const options = _options || {};
-    options.enabled = options.enabled !== false;
-    for (const prop2 in defaults2) {
-      if (!(prop2 in options)) {
-        options[prop2] = defaults2[prop2];
-      }
-    }
-    const m = {
-      options,
-      methods,
-      name,
-      enable: () => {
-        options.enabled = true;
-        return m;
-      },
-      disable: () => {
-        options.enabled = false;
-        return m;
-      }
+    defaults: n
+  } = e, i = {
+    start: e.start,
+    set: e.set,
+    beforeEnd: e.beforeEnd,
+    stop: e.stop
+  }, o = (s) => {
+    const a = s || {};
+    a.enabled = a.enabled !== !1;
+    for (const c in n)
+      c in a || (a[c] = n[c]);
+    const l = {
+      options: a,
+      methods: i,
+      name: t,
+      enable: () => (a.enabled = !0, l),
+      disable: () => (a.enabled = !1, l)
     };
-    return m;
+    return l;
   };
-  if (name && typeof name === "string") {
-    modifier._defaults = defaults2;
-    modifier._methods = methods;
-  }
-  return modifier;
+  return t && typeof t == "string" && (o._defaults = n, o._methods = i), o;
 }
-function addEventModifiers(_ref) {
+function ge(e) {
   let {
-    iEvent,
-    interaction
-  } = _ref;
-  const result = interaction.modification.result;
-  if (result) {
-    iEvent.modifiers = result.eventProps;
-  }
+    iEvent: t,
+    interaction: n
+  } = e;
+  const i = n.modification.result;
+  i && (t.modifiers = i.eventProps);
 }
-const modifiersBase = {
+const Yr = {
   id: "modifiers/base",
   before: ["actions"],
-  install: (scope2) => {
-    scope2.defaults.perAction.modifiers = [];
+  install: (e) => {
+    e.defaults.perAction.modifiers = [];
   },
   listeners: {
-    "interactions:new": (_ref2) => {
+    "interactions:new": (e) => {
       let {
-        interaction
-      } = _ref2;
-      interaction.modification = new Modification(interaction);
+        interaction: t
+      } = e;
+      t.modification = new Fn(t);
     },
-    "interactions:before-action-start": (arg) => {
+    "interactions:before-action-start": (e) => {
       const {
-        interaction
-      } = arg;
-      const modification = arg.interaction.modification;
-      modification.start(arg, interaction.coords.start.page);
-      interaction.edges = modification.edges;
-      modification.applyToInteraction(arg);
+        interaction: t
+      } = e, n = e.interaction.modification;
+      n.start(e, t.coords.start.page), t.edges = n.edges, n.applyToInteraction(e);
     },
-    "interactions:before-action-move": (arg) => {
+    "interactions:before-action-move": (e) => {
       const {
-        interaction
-      } = arg;
-      const {
-        modification
-      } = interaction;
-      const ret = modification.setAndApply(arg);
-      interaction.edges = modification.edges;
-      return ret;
+        interaction: t
+      } = e, {
+        modification: n
+      } = t, i = n.setAndApply(e);
+      return t.edges = n.edges, i;
     },
-    "interactions:before-action-end": (arg) => {
+    "interactions:before-action-end": (e) => {
       const {
-        interaction
-      } = arg;
-      const {
-        modification
-      } = interaction;
-      const ret = modification.beforeEnd(arg);
-      interaction.edges = modification.startEdges;
-      return ret;
+        interaction: t
+      } = e, {
+        modification: n
+      } = t, i = n.beforeEnd(e);
+      return t.edges = n.startEdges, i;
     },
-    "interactions:action-start": addEventModifiers,
-    "interactions:action-move": addEventModifiers,
-    "interactions:action-end": addEventModifiers,
-    "interactions:after-action-start": (arg) => arg.interaction.modification.restoreInteractionCoords(arg),
-    "interactions:after-action-move": (arg) => arg.interaction.modification.restoreInteractionCoords(arg),
-    "interactions:stop": (arg) => arg.interaction.modification.stop(arg)
+    "interactions:action-start": ge,
+    "interactions:action-move": ge,
+    "interactions:action-end": ge,
+    "interactions:after-action-start": (e) => e.interaction.modification.restoreInteractionCoords(e),
+    "interactions:after-action-move": (e) => e.interaction.modification.restoreInteractionCoords(e),
+    "interactions:stop": (e) => e.interaction.modification.stop(e)
   }
-};
-const aspectRatio = {
-  start(arg) {
+}, qr = {
+  start(e) {
     const {
-      state,
-      rect,
-      edges,
-      pageCoords: coords
-    } = arg;
+      state: t,
+      rect: n,
+      edges: i,
+      pageCoords: o
+    } = e;
     let {
-      ratio,
-      enabled
-    } = state.options;
+      ratio: s,
+      enabled: a
+    } = t.options;
     const {
-      equalDelta,
-      modifiers: modifiers2
-    } = state.options;
-    if (ratio === "preserve") {
-      ratio = rect.width / rect.height;
-    }
-    state.startCoords = extend({}, coords);
-    state.startRect = extend({}, rect);
-    state.ratio = ratio;
-    state.equalDelta = equalDelta;
-    const linkedEdges = state.linkedEdges = {
-      top: edges.top || edges.left && !edges.bottom,
-      left: edges.left || edges.top && !edges.right,
-      bottom: edges.bottom || edges.right && !edges.top,
-      right: edges.right || edges.bottom && !edges.left
+      equalDelta: l,
+      modifiers: c
+    } = t.options;
+    s === "preserve" && (s = n.width / n.height), t.startCoords = I({}, o), t.startRect = I({}, n), t.ratio = s, t.equalDelta = l;
+    const r = t.linkedEdges = {
+      top: i.top || i.left && !i.bottom,
+      left: i.left || i.top && !i.right,
+      bottom: i.bottom || i.right && !i.top,
+      right: i.right || i.bottom && !i.left
     };
-    state.xIsPrimaryAxis = !!(edges.left || edges.right);
-    if (state.equalDelta) {
-      const sign = (linkedEdges.left ? 1 : -1) * (linkedEdges.top ? 1 : -1);
-      state.edgeSign = {
-        x: sign,
-        y: sign
+    if (t.xIsPrimaryAxis = !!(i.left || i.right), t.equalDelta) {
+      const d = (r.left ? 1 : -1) * (r.top ? 1 : -1);
+      t.edgeSign = {
+        x: d,
+        y: d
       };
-    } else {
-      state.edgeSign = {
-        x: linkedEdges.left ? -1 : 1,
-        y: linkedEdges.top ? -1 : 1
+    } else
+      t.edgeSign = {
+        x: r.left ? -1 : 1,
+        y: r.top ? -1 : 1
       };
-    }
-    if (enabled !== false) {
-      extend(edges, linkedEdges);
-    }
-    if (!(modifiers2 != null && modifiers2.length)) return;
-    const subModification = new Modification(arg.interaction);
-    subModification.copyFrom(arg.interaction.modification);
-    subModification.prepareStates(modifiers2);
-    state.subModification = subModification;
-    subModification.startAll({
-      ...arg
+    if (a !== !1 && I(i, r), !(c != null && c.length)) return;
+    const f = new Fn(e.interaction);
+    f.copyFrom(e.interaction.modification), f.prepareStates(c), t.subModification = f, f.startAll({
+      ...e
     });
   },
-  set(arg) {
+  set(e) {
     const {
-      state,
-      rect,
-      coords
-    } = arg;
-    const {
-      linkedEdges
-    } = state;
-    const initialCoords = extend({}, coords);
-    const aspectMethod = state.equalDelta ? setEqualDelta : setRatio;
-    extend(arg.edges, linkedEdges);
-    aspectMethod(state, state.xIsPrimaryAxis, coords, rect);
-    if (!state.subModification) {
+      state: t,
+      rect: n,
+      coords: i
+    } = e, {
+      linkedEdges: o
+    } = t, s = I({}, i), a = t.equalDelta ? Gr : Ur;
+    if (I(e.edges, o), a(t, t.xIsPrimaryAxis, i, n), !t.subModification)
       return null;
-    }
-    const correctedRect = extend({}, rect);
-    addEdges(linkedEdges, correctedRect, {
-      x: coords.x - initialCoords.x,
-      y: coords.y - initialCoords.y
+    const l = I({}, n);
+    Me(o, l, {
+      x: i.x - s.x,
+      y: i.y - s.y
     });
-    const result = state.subModification.setAll({
-      ...arg,
-      rect: correctedRect,
-      edges: linkedEdges,
-      pageCoords: coords,
-      prevCoords: coords,
-      prevRect: correctedRect
-    });
-    const {
-      delta
-    } = result;
-    if (result.changed) {
-      const xIsCriticalAxis = Math.abs(delta.x) > Math.abs(delta.y);
-      aspectMethod(state, xIsCriticalAxis, result.coords, result.rect);
-      extend(coords, result.coords);
+    const c = t.subModification.setAll({
+      ...e,
+      rect: l,
+      edges: o,
+      pageCoords: i,
+      prevCoords: i,
+      prevRect: l
+    }), {
+      delta: r
+    } = c;
+    if (c.changed) {
+      const f = Math.abs(r.x) > Math.abs(r.y);
+      a(t, f, c.coords, c.rect), I(i, c.coords);
     }
-    return result.eventProps;
+    return c.eventProps;
   },
   defaults: {
     ratio: "preserve",
-    equalDelta: false,
+    equalDelta: !1,
     modifiers: [],
-    enabled: false
+    enabled: !1
   }
 };
-function setEqualDelta(_ref, xIsPrimaryAxis, coords) {
+function Gr(e, t, n) {
   let {
-    startCoords,
-    edgeSign
-  } = _ref;
-  if (xIsPrimaryAxis) {
-    coords.y = startCoords.y + (coords.x - startCoords.x) * edgeSign.y;
+    startCoords: i,
+    edgeSign: o
+  } = e;
+  t ? n.y = i.y + (n.x - i.x) * o.y : n.x = i.x + (n.y - i.y) * o.x;
+}
+function Ur(e, t, n, i) {
+  let {
+    startRect: o,
+    startCoords: s,
+    ratio: a,
+    edgeSign: l
+  } = e;
+  if (t) {
+    const c = i.width / a;
+    n.y = s.y + (c - o.height) * l.y;
   } else {
-    coords.x = startCoords.x + (coords.y - startCoords.y) * edgeSign.x;
+    const c = i.height * a;
+    n.x = s.x + (c - o.width) * l.x;
   }
 }
-function setRatio(_ref2, xIsPrimaryAxis, coords, rect) {
+var Vr = mt(qr, "aspectRatio");
+function Kr(e) {
   let {
-    startRect,
-    startCoords,
-    ratio,
-    edgeSign
-  } = _ref2;
-  if (xIsPrimaryAxis) {
-    const newHeight = rect.width / ratio;
-    coords.y = startCoords.y + (newHeight - startRect.height) * edgeSign.y;
-  } else {
-    const newWidth = rect.height * ratio;
-    coords.x = startCoords.x + (newWidth - startRect.width) * edgeSign.x;
-  }
-}
-var aspectRatio$1 = makeModifier(aspectRatio, "aspectRatio");
-function start$5(_ref) {
-  let {
-    rect,
-    startOffset,
-    state,
-    interaction,
-    pageCoords
-  } = _ref;
+    rect: t,
+    startOffset: n,
+    state: i,
+    interaction: o,
+    pageCoords: s
+  } = e;
   const {
-    options
-  } = state;
-  const {
-    elementRect
-  } = options;
-  const offset = extend({
+    options: a
+  } = i, {
+    elementRect: l
+  } = a, c = I({
     left: 0,
     top: 0,
     right: 0,
     bottom: 0
-  }, options.offset || {});
-  if (rect && elementRect) {
-    const restriction = getRestrictionRect(options.restriction, interaction, pageCoords);
-    if (restriction) {
-      const widthDiff = restriction.right - restriction.left - rect.width;
-      const heightDiff = restriction.bottom - restriction.top - rect.height;
-      if (widthDiff < 0) {
-        offset.left += widthDiff;
-        offset.right += widthDiff;
-      }
-      if (heightDiff < 0) {
-        offset.top += heightDiff;
-        offset.bottom += heightDiff;
-      }
+  }, a.offset || {});
+  if (t && l) {
+    const r = Dt(a.restriction, o, s);
+    if (r) {
+      const f = r.right - r.left - t.width, d = r.bottom - r.top - t.height;
+      f < 0 && (c.left += f, c.right += f), d < 0 && (c.top += d, c.bottom += d);
     }
-    offset.left += startOffset.left - rect.width * elementRect.left;
-    offset.top += startOffset.top - rect.height * elementRect.top;
-    offset.right += startOffset.right - rect.width * (1 - elementRect.right);
-    offset.bottom += startOffset.bottom - rect.height * (1 - elementRect.bottom);
+    c.left += n.left - t.width * l.left, c.top += n.top - t.height * l.top, c.right += n.right - t.width * (1 - l.right), c.bottom += n.bottom - t.height * (1 - l.bottom);
   }
-  state.offset = offset;
+  i.offset = c;
 }
-function set$4(_ref2) {
+function Jr(e) {
   let {
-    coords,
-    interaction,
-    state
-  } = _ref2;
+    coords: t,
+    interaction: n,
+    state: i
+  } = e;
   const {
-    options,
-    offset
-  } = state;
-  const restriction = getRestrictionRect(options.restriction, interaction, coords);
-  if (!restriction) return;
-  const rect = xywhToTlbr(restriction);
-  coords.x = Math.max(Math.min(rect.right - offset.right, coords.x), rect.left + offset.left);
-  coords.y = Math.max(Math.min(rect.bottom - offset.bottom, coords.y), rect.top + offset.top);
+    options: o,
+    offset: s
+  } = i, a = Dt(o.restriction, n, t);
+  if (!a) return;
+  const l = Vi(a);
+  t.x = Math.max(Math.min(l.right - s.right, t.x), l.left + s.left), t.y = Math.max(Math.min(l.bottom - s.bottom, t.y), l.top + s.top);
 }
-function getRestrictionRect(value, interaction, coords) {
-  if (is.func(value)) {
-    return resolveRectLike(value, interaction.interactable, interaction.element, [coords.x, coords.y, interaction]);
-  } else {
-    return resolveRectLike(value, interaction.interactable, interaction.element);
-  }
+function Dt(e, t, n) {
+  return p.func(e) ? Yt(e, t.interactable, t.element, [n.x, n.y, t]) : Yt(e, t.interactable, t.element);
 }
-const defaults$5 = {
+const Zr = {
   restriction: null,
   elementRect: null,
   offset: null,
-  endOnly: false,
-  enabled: false
+  endOnly: !1,
+  enabled: !1
+}, ee = {
+  start: Kr,
+  set: Jr,
+  defaults: Zr
 };
-const restrict = {
-  start: start$5,
-  set: set$4,
-  defaults: defaults$5
+var Qr = mt(ee, "restrict");
+const jn = {
+  top: 1 / 0,
+  left: 1 / 0,
+  bottom: -1 / 0,
+  right: -1 / 0
+}, Xn = {
+  top: -1 / 0,
+  left: -1 / 0,
+  bottom: 1 / 0,
+  right: 1 / 0
 };
-var restrict$1 = makeModifier(restrict, "restrict");
-const noInner = {
-  top: Infinity,
-  left: Infinity,
-  bottom: -Infinity,
-  right: -Infinity
-};
-const noOuter = {
-  top: -Infinity,
-  left: -Infinity,
-  bottom: Infinity,
-  right: Infinity
-};
-function start$4(_ref) {
+function to(e) {
   let {
-    interaction,
-    startOffset,
-    state
-  } = _ref;
+    interaction: t,
+    startOffset: n,
+    state: i
+  } = e;
   const {
-    options
-  } = state;
-  let offset;
-  if (options) {
-    const offsetRect = getRestrictionRect(options.offset, interaction, interaction.coords.start.page);
-    offset = rectToXY(offsetRect);
+    options: o
+  } = i;
+  let s;
+  if (o) {
+    const a = Dt(o.offset, t, t.coords.start.page);
+    s = se(a);
   }
-  offset = offset || {
+  s = s || {
     x: 0,
     y: 0
-  };
-  state.offset = {
-    top: offset.y + startOffset.top,
-    left: offset.x + startOffset.left,
-    bottom: offset.y - startOffset.bottom,
-    right: offset.x - startOffset.right
+  }, i.offset = {
+    top: s.y + n.top,
+    left: s.x + n.left,
+    bottom: s.y - n.bottom,
+    right: s.x - n.right
   };
 }
-function set$3(_ref2) {
+function eo(e) {
   let {
-    coords,
-    edges,
-    interaction,
-    state
-  } = _ref2;
+    coords: t,
+    edges: n,
+    interaction: i,
+    state: o
+  } = e;
   const {
-    offset,
-    options
-  } = state;
-  if (!edges) {
+    offset: s,
+    options: a
+  } = o;
+  if (!n)
     return;
-  }
-  const page = extend({}, coords);
-  const inner = getRestrictionRect(options.inner, interaction, page) || {};
-  const outer = getRestrictionRect(options.outer, interaction, page) || {};
-  fixRect(inner, noInner);
-  fixRect(outer, noOuter);
-  if (edges.top) {
-    coords.y = Math.min(Math.max(outer.top + offset.top, page.y), inner.top + offset.top);
-  } else if (edges.bottom) {
-    coords.y = Math.max(Math.min(outer.bottom + offset.bottom, page.y), inner.bottom + offset.bottom);
-  }
-  if (edges.left) {
-    coords.x = Math.min(Math.max(outer.left + offset.left, page.x), inner.left + offset.left);
-  } else if (edges.right) {
-    coords.x = Math.max(Math.min(outer.right + offset.right, page.x), inner.right + offset.right);
-  }
+  const l = I({}, t), c = Dt(a.inner, i, l) || {}, r = Dt(a.outer, i, l) || {};
+  Qe(c, jn), Qe(r, Xn), n.top ? t.y = Math.min(Math.max(r.top + s.top, l.y), c.top + s.top) : n.bottom && (t.y = Math.max(Math.min(r.bottom + s.bottom, l.y), c.bottom + s.bottom)), n.left ? t.x = Math.min(Math.max(r.left + s.left, l.x), c.left + s.left) : n.right && (t.x = Math.max(Math.min(r.right + s.right, l.x), c.right + s.right));
 }
-function fixRect(rect, defaults2) {
-  for (const edge of ["top", "left", "bottom", "right"]) {
-    if (!(edge in rect)) {
-      rect[edge] = defaults2[edge];
-    }
-  }
-  return rect;
+function Qe(e, t) {
+  for (const n of ["top", "left", "bottom", "right"])
+    n in e || (e[n] = t[n]);
+  return e;
 }
-const defaults$4 = {
+const no = {
   inner: null,
   outer: null,
   offset: null,
-  endOnly: false,
-  enabled: false
+  endOnly: !1,
+  enabled: !1
+}, Nt = {
+  noInner: jn,
+  noOuter: Xn,
+  start: to,
+  set: eo,
+  defaults: no
 };
-const restrictEdges = {
-  noInner,
-  noOuter,
-  start: start$4,
-  set: set$3,
-  defaults: defaults$4
-};
-var restrictEdges$1 = makeModifier(restrictEdges, "restrictEdges");
-const defaults$3 = extend({
+var io = mt(Nt, "restrictEdges");
+const ro = I({
   get elementRect() {
     return {
       top: 0,
@@ -4548,165 +3144,123 @@ const defaults$3 = extend({
       right: 1
     };
   },
-  set elementRect(_) {
+  set elementRect(e) {
   }
-}, restrict.defaults);
-const restrictRect = {
-  start: restrict.start,
-  set: restrict.set,
-  defaults: defaults$3
+}, ee.defaults), oo = {
+  start: ee.start,
+  set: ee.set,
+  defaults: ro
 };
-var restrictRect$1 = makeModifier(restrictRect, "restrictRect");
-const noMin = {
-  width: -Infinity,
-  height: -Infinity
+var so = mt(oo, "restrictRect");
+const ao = {
+  width: -1 / 0,
+  height: -1 / 0
+}, co = {
+  width: 1 / 0,
+  height: 1 / 0
 };
-const noMax = {
-  width: Infinity,
-  height: Infinity
-};
-function start$3(arg) {
-  return restrictEdges.start(arg);
+function lo(e) {
+  return Nt.start(e);
 }
-function set$2(arg) {
+function uo(e) {
   const {
-    interaction,
-    state,
-    rect,
-    edges
-  } = arg;
-  const {
-    options
-  } = state;
-  if (!edges) {
+    interaction: t,
+    state: n,
+    rect: i,
+    edges: o
+  } = e, {
+    options: s
+  } = n;
+  if (!o)
     return;
-  }
-  const minSize = tlbrToXywh(getRestrictionRect(options.min, interaction, arg.coords)) || noMin;
-  const maxSize = tlbrToXywh(getRestrictionRect(options.max, interaction, arg.coords)) || noMax;
-  state.options = {
-    endOnly: options.endOnly,
-    inner: extend({}, restrictEdges.noInner),
-    outer: extend({}, restrictEdges.noOuter)
-  };
-  if (edges.top) {
-    state.options.inner.top = rect.bottom - minSize.height;
-    state.options.outer.top = rect.bottom - maxSize.height;
-  } else if (edges.bottom) {
-    state.options.inner.bottom = rect.top + minSize.height;
-    state.options.outer.bottom = rect.top + maxSize.height;
-  }
-  if (edges.left) {
-    state.options.inner.left = rect.right - minSize.width;
-    state.options.outer.left = rect.right - maxSize.width;
-  } else if (edges.right) {
-    state.options.inner.right = rect.left + minSize.width;
-    state.options.outer.right = rect.left + maxSize.width;
-  }
-  restrictEdges.set(arg);
-  state.options = options;
+  const a = Ye(Dt(s.min, t, e.coords)) || ao, l = Ye(Dt(s.max, t, e.coords)) || co;
+  n.options = {
+    endOnly: s.endOnly,
+    inner: I({}, Nt.noInner),
+    outer: I({}, Nt.noOuter)
+  }, o.top ? (n.options.inner.top = i.bottom - a.height, n.options.outer.top = i.bottom - l.height) : o.bottom && (n.options.inner.bottom = i.top + a.height, n.options.outer.bottom = i.top + l.height), o.left ? (n.options.inner.left = i.right - a.width, n.options.outer.left = i.right - l.width) : o.right && (n.options.inner.right = i.left + a.width, n.options.outer.right = i.left + l.width), Nt.set(e), n.options = s;
 }
-const defaults$2 = {
+const fo = {
   min: null,
   max: null,
-  endOnly: false,
-  enabled: false
+  endOnly: !1,
+  enabled: !1
+}, ho = {
+  start: lo,
+  set: uo,
+  defaults: fo
 };
-const restrictSize = {
-  start: start$3,
-  set: set$2,
-  defaults: defaults$2
-};
-var restrictSize$1 = makeModifier(restrictSize, "restrictSize");
-function start$2(arg) {
+var po = mt(ho, "restrictSize");
+function go(e) {
   const {
-    interaction,
-    interactable,
-    element: element2,
-    rect,
-    state,
-    startOffset
-  } = arg;
-  const {
-    options
-  } = state;
-  const origin = options.offsetWithOrigin ? getOrigin(arg) : {
+    interaction: t,
+    interactable: n,
+    element: i,
+    rect: o,
+    state: s,
+    startOffset: a
+  } = e, {
+    options: l
+  } = s, c = l.offsetWithOrigin ? vo(e) : {
     x: 0,
     y: 0
   };
-  let snapOffset;
-  if (options.offset === "startCoords") {
-    snapOffset = {
-      x: interaction.coords.start.page.x,
-      y: interaction.coords.start.page.y
+  let r;
+  if (l.offset === "startCoords")
+    r = {
+      x: t.coords.start.page.x,
+      y: t.coords.start.page.y
     };
-  } else {
-    const offsetRect = resolveRectLike(options.offset, interactable, element2, [interaction]);
-    snapOffset = rectToXY(offsetRect) || {
+  else {
+    const d = Yt(l.offset, n, i, [t]);
+    r = se(d) || {
       x: 0,
       y: 0
-    };
-    snapOffset.x += origin.x;
-    snapOffset.y += origin.y;
+    }, r.x += c.x, r.y += c.y;
   }
   const {
-    relativePoints
-  } = options;
-  state.offsets = rect && relativePoints && relativePoints.length ? relativePoints.map((relativePoint, index) => ({
-    index,
-    relativePoint,
-    x: startOffset.left - rect.width * relativePoint.x + snapOffset.x,
-    y: startOffset.top - rect.height * relativePoint.y + snapOffset.y
+    relativePoints: f
+  } = l;
+  s.offsets = o && f && f.length ? f.map((d, m) => ({
+    index: m,
+    relativePoint: d,
+    x: a.left - o.width * d.x + r.x,
+    y: a.top - o.height * d.y + r.y
   })) : [{
     index: 0,
     relativePoint: null,
-    x: snapOffset.x,
-    y: snapOffset.y
+    x: r.x,
+    y: r.y
   }];
 }
-function set$1(arg) {
+function mo(e) {
   const {
-    interaction,
-    coords,
-    state
-  } = arg;
-  const {
-    options,
-    offsets
-  } = state;
-  const origin = getOriginXY(interaction.interactable, interaction.element, interaction.prepared.name);
-  const page = extend({}, coords);
-  const targets = [];
-  if (!options.offsetWithOrigin) {
-    page.x -= origin.x;
-    page.y -= origin.y;
-  }
-  for (const offset of offsets) {
-    const relativeX = page.x - offset.x;
-    const relativeY = page.y - offset.y;
-    for (let index = 0, len = options.targets.length; index < len; index++) {
-      const snapTarget = options.targets[index];
-      let target;
-      if (is.func(snapTarget)) {
-        target = snapTarget(relativeX, relativeY, interaction._proxy, offset, index);
-      } else {
-        target = snapTarget;
-      }
-      if (!target) {
-        continue;
-      }
-      targets.push({
-        x: (is.number(target.x) ? target.x : relativeX) + offset.x,
-        y: (is.number(target.y) ? target.y : relativeY) + offset.y,
-        range: is.number(target.range) ? target.range : options.range,
-        source: snapTarget,
-        index,
-        offset
+    interaction: t,
+    coords: n,
+    state: i
+  } = e, {
+    options: o,
+    offsets: s
+  } = i, a = Ce(t.interactable, t.element, t.prepared.name), l = I({}, n), c = [];
+  o.offsetWithOrigin || (l.x -= a.x, l.y -= a.y);
+  for (const f of s) {
+    const d = l.x - f.x, m = l.y - f.y;
+    for (let g = 0, b = o.targets.length; g < b; g++) {
+      const C = o.targets[g];
+      let k;
+      p.func(C) ? k = C(d, m, t._proxy, f, g) : k = C, k && c.push({
+        x: (p.number(k.x) ? k.x : d) + f.x,
+        y: (p.number(k.y) ? k.y : m) + f.y,
+        range: p.number(k.range) ? k.range : o.range,
+        source: C,
+        index: g,
+        offset: f
       });
     }
   }
-  const closest2 = {
+  const r = {
     target: null,
-    inRange: false,
+    inRange: !1,
     distance: 0,
     range: 0,
     delta: {
@@ -4714,165 +3268,121 @@ function set$1(arg) {
       y: 0
     }
   };
-  for (const target of targets) {
-    const range = target.range;
-    const dx = target.x - page.x;
-    const dy = target.y - page.y;
-    const distance = hypot(dx, dy);
-    let inRange = distance <= range;
-    if (range === Infinity && closest2.inRange && closest2.range !== Infinity) {
-      inRange = false;
-    }
-    if (!closest2.target || (inRange ? (
+  for (const f of c) {
+    const d = f.range, m = f.x - l.x, g = f.y - l.y, b = oe(m, g);
+    let C = b <= d;
+    d === 1 / 0 && r.inRange && r.range !== 1 / 0 && (C = !1), (!r.target || (C ? (
       // is the closest target in range?
-      closest2.inRange && range !== Infinity ? (
+      r.inRange && d !== 1 / 0 ? (
         // the pointer is relatively deeper in this target
-        distance / range < closest2.distance / closest2.range
+        b / d < r.distance / r.range
       ) : (
         // this target has Infinite range and the closest doesn't
-        range === Infinity && closest2.range !== Infinity || // OR this target is closer that the previous closest
-        distance < closest2.distance
+        d === 1 / 0 && r.range !== 1 / 0 || // OR this target is closer that the previous closest
+        b < r.distance
       )
     ) : (
       // The other is not in range and the pointer is closer to this target
-      !closest2.inRange && distance < closest2.distance
-    ))) {
-      closest2.target = target;
-      closest2.distance = distance;
-      closest2.range = range;
-      closest2.inRange = inRange;
-      closest2.delta.x = dx;
-      closest2.delta.y = dy;
-    }
+      !r.inRange && b < r.distance
+    ))) && (r.target = f, r.distance = b, r.range = d, r.inRange = C, r.delta.x = m, r.delta.y = g);
   }
-  if (closest2.inRange) {
-    coords.x = closest2.target.x;
-    coords.y = closest2.target.y;
-  }
-  state.closest = closest2;
-  return closest2;
+  return r.inRange && (n.x = r.target.x, n.y = r.target.y), i.closest = r, r;
 }
-function getOrigin(arg) {
+function vo(e) {
   const {
-    element: element2
-  } = arg.interaction;
-  const optionsOrigin = rectToXY(resolveRectLike(arg.state.options.origin, null, null, [element2]));
-  const origin = optionsOrigin || getOriginXY(arg.interactable, element2, arg.interaction.prepared.name);
-  return origin;
+    element: t
+  } = e.interaction;
+  return se(Yt(e.state.options.origin, null, null, [t])) || Ce(e.interactable, t, e.interaction.prepared.name);
 }
-const defaults$1 = {
-  range: Infinity,
+const yo = {
+  range: 1 / 0,
   targets: null,
   offset: null,
-  offsetWithOrigin: true,
+  offsetWithOrigin: !0,
   origin: null,
   relativePoints: null,
-  endOnly: false,
-  enabled: false
+  endOnly: !1,
+  enabled: !1
+}, Oe = {
+  start: go,
+  set: mo,
+  defaults: yo
 };
-const snap = {
-  start: start$2,
-  set: set$1,
-  defaults: defaults$1
-};
-var snap$1 = makeModifier(snap, "snap");
-function start$1(arg) {
+var bo = mt(Oe, "snap");
+function xo(e) {
   const {
-    state,
-    edges
-  } = arg;
-  const {
-    options
-  } = state;
-  if (!edges) {
+    state: t,
+    edges: n
+  } = e, {
+    options: i
+  } = t;
+  if (!n)
     return null;
-  }
-  arg.state = {
+  e.state = {
     options: {
       targets: null,
       relativePoints: [{
-        x: edges.left ? 0 : 1,
-        y: edges.top ? 0 : 1
+        x: n.left ? 0 : 1,
+        y: n.top ? 0 : 1
       }],
-      offset: options.offset || "self",
+      offset: i.offset || "self",
       origin: {
         x: 0,
         y: 0
       },
-      range: options.range
+      range: i.range
     }
-  };
-  state.targetFields = state.targetFields || [["width", "height"], ["x", "y"]];
-  snap.start(arg);
-  state.offsets = arg.state.offsets;
-  arg.state = state;
+  }, t.targetFields = t.targetFields || [["width", "height"], ["x", "y"]], Oe.start(e), t.offsets = e.state.offsets, e.state = t;
 }
-function set(arg) {
+function wo(e) {
   const {
-    interaction,
-    state,
-    coords
-  } = arg;
-  const {
-    options,
-    offsets
-  } = state;
-  const relative = {
-    x: coords.x - offsets[0].x,
-    y: coords.y - offsets[0].y
+    interaction: t,
+    state: n,
+    coords: i
+  } = e, {
+    options: o,
+    offsets: s
+  } = n, a = {
+    x: i.x - s[0].x,
+    y: i.y - s[0].y
   };
-  state.options = extend({}, options);
-  state.options.targets = [];
-  for (const snapTarget of options.targets || []) {
-    let target;
-    if (is.func(snapTarget)) {
-      target = snapTarget(relative.x, relative.y, interaction);
-    } else {
-      target = snapTarget;
+  n.options = I({}, o), n.options.targets = [];
+  for (const c of o.targets || []) {
+    let r;
+    if (p.func(c) ? r = c(a.x, a.y, t) : r = c, !!r) {
+      for (const [f, d] of n.targetFields)
+        if (f in r || d in r) {
+          r.x = r[f], r.y = r[d];
+          break;
+        }
+      n.options.targets.push(r);
     }
-    if (!target) {
-      continue;
-    }
-    for (const [xField, yField] of state.targetFields) {
-      if (xField in target || yField in target) {
-        target.x = target[xField];
-        target.y = target[yField];
-        break;
-      }
-    }
-    state.options.targets.push(target);
   }
-  const returnValue = snap.set(arg);
-  state.options = options;
-  return returnValue;
+  const l = Oe.set(e);
+  return n.options = o, l;
 }
-const defaults = {
-  range: Infinity,
+const So = {
+  range: 1 / 0,
   targets: null,
   offset: null,
-  endOnly: false,
-  enabled: false
+  endOnly: !1,
+  enabled: !1
+}, ne = {
+  start: xo,
+  set: wo,
+  defaults: So
 };
-const snapSize = {
-  start: start$1,
-  set,
-  defaults
-};
-var snapSize$1 = makeModifier(snapSize, "snapSize");
-function start(arg) {
+var Eo = mt(ne, "snapSize");
+function zo(e) {
   const {
-    edges
-  } = arg;
-  if (!edges) {
-    return null;
-  }
-  arg.state.targetFields = arg.state.targetFields || [[edges.left ? "left" : "right", edges.top ? "top" : "bottom"]];
-  return snapSize.start(arg);
+    edges: t
+  } = e;
+  return t ? (e.state.targetFields = e.state.targetFields || [[t.left ? "left" : "right", t.top ? "top" : "bottom"]], ne.start(e)) : null;
 }
-const snapEdges = {
-  start,
-  set: snapSize.set,
-  defaults: extend(clone(snapSize.defaults), {
+const Io = {
+  start: zo,
+  set: ne.set,
+  defaults: I(Rt(ne.defaults), {
     targets: void 0,
     range: void 0,
     offset: {
@@ -4881,506 +3391,407 @@ const snapEdges = {
     }
   })
 };
-var snapEdges$1 = makeModifier(snapEdges, "snapEdges");
-const noop = () => {
+var To = mt(Io, "snapEdges");
+const Lt = () => {
 };
-noop._defaults = {};
-var all = {
-  aspectRatio: aspectRatio$1,
-  restrictEdges: restrictEdges$1,
-  restrict: restrict$1,
-  restrictRect: restrictRect$1,
-  restrictSize: restrictSize$1,
-  snapEdges: snapEdges$1,
-  snap: snap$1,
-  snapSize: snapSize$1,
-  spring: noop,
-  avoid: noop,
-  transform: noop,
-  rubberband: noop
+Lt._defaults = {};
+var me = {
+  aspectRatio: Vr,
+  restrictEdges: io,
+  restrict: Qr,
+  restrictRect: so,
+  restrictSize: po,
+  snapEdges: To,
+  snap: bo,
+  snapSize: Eo,
+  spring: Lt,
+  avoid: Lt,
+  transform: Lt,
+  rubberband: Lt
 };
-const modifiers = {
+const Do = {
   id: "modifiers",
-  install(scope2) {
+  install(e) {
     const {
-      interactStatic: interact2
-    } = scope2;
-    scope2.usePlugin(modifiersBase);
-    scope2.usePlugin(snappersPlugin);
-    interact2.modifiers = all;
-    for (const type in all) {
+      interactStatic: t
+    } = e;
+    e.usePlugin(Yr), e.usePlugin(Fr), t.modifiers = me;
+    for (const n in me) {
       const {
-        _defaults,
-        _methods
-      } = all[type];
-      _defaults._methods = _methods;
-      scope2.defaults.perAction[type] = _defaults;
+        _defaults: i,
+        _methods: o
+      } = me[n];
+      i._methods = o, e.defaults.perAction[n] = i;
     }
   }
 };
-interact.use(modifiers);
-var CheckName = /* @__PURE__ */ function(CheckName2) {
-  CheckName2["touchAction"] = "touchAction";
-  CheckName2["boxSizing"] = "boxSizing";
-  CheckName2["noListeners"] = "noListeners";
-  return CheckName2;
-}(CheckName || {});
-const prefix = "[interact.js] ";
-const links = {
+ut.use(Do);
+var Ft = /* @__PURE__ */ function(e) {
+  return e.touchAction = "touchAction", e.boxSizing = "boxSizing", e.noListeners = "noListeners", e;
+}(Ft || {});
+const Se = "[interact.js] ", Ee = {
   touchAction: "https://developer.mozilla.org/en-US/docs/Web/CSS/touch-action",
   boxSizing: "https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing"
 };
-function install$1(scope2) {
+function Mo(e) {
   let {
-    logger
+    logger: t
   } = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
   const {
-    Interactable: Interactable2,
-    defaults: defaults2
-  } = scope2;
-  scope2.logger = logger || console;
-  defaults2.base.devTools = {
+    Interactable: n,
+    defaults: i
+  } = e;
+  e.logger = t || console, i.base.devTools = {
     ignore: {}
-  };
-  Interactable2.prototype.devTools = function(options) {
-    if (options) {
-      extend(this.options.devTools, options);
-      return this;
-    }
-    return this.options.devTools;
+  }, n.prototype.devTools = function(s) {
+    return s ? (I(this.options.devTools, s), this) : this.options.devTools;
   };
   const {
-    _onOff
-  } = Interactable2.prototype;
-  Interactable2.prototype._onOff = function(method, typeArg, listenerArg, options, filter) {
-    if (is.string(this.target) || this.target.addEventListener) {
-      return _onOff.call(this, method, typeArg, listenerArg, options, filter);
-    }
-    if (is.object(typeArg) && !is.array(typeArg)) {
-      options = listenerArg;
-      listenerArg = null;
-    }
-    const normalizedListeners = normalize(typeArg, listenerArg, filter);
-    for (const type in normalizedListeners) {
-      if (isNonNativeEvent(type, scope2.actions)) continue;
-      scope2.logger.warn(prefix + `Can't add native "${type}" event listener to target without \`addEventListener(type, listener, options)\` prop.`);
-    }
-    return _onOff.call(this, method, normalizedListeners, options);
+    _onOff: o
+  } = n.prototype;
+  n.prototype._onOff = function(s, a, l, c, r) {
+    if (p.string(this.target) || this.target.addEventListener)
+      return o.call(this, s, a, l, c, r);
+    p.object(a) && !p.array(a) && (c = l, l = null);
+    const f = Et(a, l, r);
+    for (const d in f)
+      qt(d, e.actions) || e.logger.warn(Se + `Can't add native "${d}" event listener to target without \`addEventListener(type, listener, options)\` prop.`);
+    return o.call(this, s, f, c);
   };
 }
-const checks = [{
-  name: CheckName.touchAction,
-  perform(_ref) {
+const tn = [{
+  name: Ft.touchAction,
+  perform(e) {
     let {
-      element: element2
-    } = _ref;
-    return !!element2 && !parentHasStyle(element2, "touchAction", /pan-|pinch|none/);
+      element: t
+    } = e;
+    return !!t && !Co(t, "touchAction", /pan-|pinch|none/);
   },
-  getInfo(_ref2) {
+  getInfo(e) {
     let {
-      element: element2
-    } = _ref2;
-    return [element2, links.touchAction];
+      element: t
+    } = e;
+    return [t, Ee.touchAction];
   },
-  text: 'Consider adding CSS "touch-action: none" to this element\n'
+  text: `Consider adding CSS "touch-action: none" to this element
+`
 }, {
-  name: CheckName.boxSizing,
-  perform(interaction) {
+  name: Ft.boxSizing,
+  perform(e) {
     const {
-      element: element2
-    } = interaction;
-    return interaction.prepared.name === "resize" && element2 instanceof domObjects.HTMLElement && !hasStyle(element2, "boxSizing", /border-box/);
+      element: t
+    } = e;
+    return e.prepared.name === "resize" && t instanceof q.HTMLElement && !Yn(t, "boxSizing", /border-box/);
   },
   text: 'Consider adding CSS "box-sizing: border-box" to this resizable element',
-  getInfo(_ref3) {
+  getInfo(e) {
     let {
-      element: element2
-    } = _ref3;
-    return [element2, links.boxSizing];
+      element: t
+    } = e;
+    return [t, Ee.boxSizing];
   }
 }, {
-  name: CheckName.noListeners,
-  perform(interaction) {
-    var _interaction$interact;
-    const actionName = interaction.prepared.name;
-    const moveListeners = ((_interaction$interact = interaction.interactable) == null ? void 0 : _interaction$interact.events.types[`${actionName}move`]) || [];
-    return !moveListeners.length;
+  name: Ft.noListeners,
+  perform(e) {
+    var t;
+    const n = e.prepared.name;
+    return !(((t = e.interactable) == null ? void 0 : t.events.types[`${n}move`]) || []).length;
   },
-  getInfo(interaction) {
-    return [interaction.prepared.name, interaction.interactable];
+  getInfo(e) {
+    return [e.prepared.name, e.interactable];
   },
   text: "There are no listeners set for this action"
 }];
-function hasStyle(element2, prop2, styleRe) {
-  const value = element2.style[prop2] || win.getComputedStyle(element2)[prop2];
-  return styleRe.test((value || "").toString());
+function Yn(e, t, n) {
+  const i = e.style[t] || pt.getComputedStyle(e)[t];
+  return n.test((i || "").toString());
 }
-function parentHasStyle(element2, prop2, styleRe) {
-  let parent = element2;
-  while (is.element(parent)) {
-    if (hasStyle(parent, prop2, styleRe)) {
-      return true;
-    }
-    parent = parentNode(parent);
+function Co(e, t, n) {
+  let i = e;
+  for (; p.element(i); ) {
+    if (Yn(i, t, n))
+      return !0;
+    i = gt(i);
   }
-  return false;
+  return !1;
 }
-const id = "dev-tools";
-const defaultExport = {
-  id,
-  install: install$1,
+const _o = "dev-tools", Po = {
+  id: _o,
+  install: Mo,
   listeners: {
-    "interactions:action-start": (_ref4, scope2) => {
+    "interactions:action-start": (e, t) => {
       let {
-        interaction
-      } = _ref4;
-      for (const check of checks) {
-        const options = interaction.interactable && interaction.interactable.options;
-        if (!(options && options.devTools && options.devTools.ignore[check.name]) && check.perform(interaction)) {
-          scope2.logger.warn(prefix + check.text, ...check.getInfo(interaction));
-        }
+        interaction: n
+      } = e;
+      for (const i of tn) {
+        const o = n.interactable && n.interactable.options;
+        !(o && o.devTools && o.devTools.ignore[i.name]) && i.perform(n) && t.logger.warn(Se + i.text, ...i.getInfo(n));
       }
     }
   },
-  checks,
-  CheckName,
-  links,
-  prefix
+  checks: tn,
+  CheckName: Ft,
+  links: Ee,
+  prefix: Se
 };
-interact.use(defaultExport);
-function bottom(layout) {
-  let max = 0;
-  let bottomY;
-  for (let i = 0, len = layout.length; i < len; i++) {
-    bottomY = layout[i].y + layout[i].h;
-    if (bottomY > max) max = bottomY;
+ut.use(Po);
+function Oo(e) {
+  let t = 0, n;
+  for (let i = 0, o = e.length; i < o; i++)
+    n = e[i].y + e[i].h, n > t && (t = n);
+  return t;
+}
+function St(e) {
+  return (e || []).map((t) => ({ ...t }));
+}
+function qn(e, t) {
+  return !(e === t || e.x + e.w <= t.x || e.x >= t.x + t.w || e.y + e.h <= t.y || e.y >= t.y + t.h);
+}
+function Wt(e, t, n) {
+  const i = Un(e), o = Vn(e), s = Array(e.length);
+  for (let a = 0, l = o.length; a < l; a++) {
+    let c = o[a];
+    c.static || (c = Ro(i, c, t, n), i.push(c)), s[e.indexOf(c)] = c, delete c.moved;
   }
-  return max;
+  return s;
 }
-function cloneLayout(layout) {
-  return (layout || []).map((item) => ({ ...item }));
-}
-function collides(l1, l2) {
-  if (l1 === l2) return false;
-  if (l1.x + l1.w <= l2.x) return false;
-  if (l1.x >= l2.x + l2.w) return false;
-  if (l1.y + l1.h <= l2.y) return false;
-  if (l1.y >= l2.y + l2.h) return false;
-  return true;
-}
-function compact(layout, verticalCompact, minPositions) {
-  const compareWith = getStatics(layout);
-  const sorted = sortLayoutItemsByRowCol(layout);
-  const out = Array(layout.length);
-  for (let i = 0, len = sorted.length; i < len; i++) {
-    let l = sorted[i];
-    if (!l.static) {
-      l = compactItem(compareWith, l, verticalCompact, minPositions);
-      compareWith.push(l);
-    }
-    out[layout.indexOf(l)] = l;
-    delete l.moved;
+function Ro(e, t, n, i) {
+  if (n)
+    for (; t.y > 0 && !jt(e, t); )
+      t.y--;
+  else if (i) {
+    const s = i[t.i].y;
+    for (; t.y > s && !jt(e, t); )
+      t.y--;
   }
-  return out;
+  let o;
+  for (; o = jt(e, t); )
+    t.y = o.y + o.h;
+  return t;
 }
-function compactItem(compareWith, l, verticalCompact, minPositions) {
-  if (verticalCompact) {
-    while (l.y > 0 && !getFirstCollision(compareWith, l)) {
-      l.y--;
-    }
-  } else if (minPositions) {
-    const minY = minPositions[l.i].y;
-    while (l.y > minY && !getFirstCollision(compareWith, l)) {
-      l.y--;
-    }
+function ko(e, t) {
+  const n = Un(e);
+  for (let i = 0, o = e.length; i < o; i++) {
+    const s = e[i];
+    if (s.x + s.w > t.cols && (s.x = t.cols - s.w), s.x < 0 && (s.x = 0, s.w = t.cols), !s.static) n.push(s);
+    else
+      for (; jt(n, s); )
+        s.y++;
   }
-  let collides2;
-  while (collides2 = getFirstCollision(compareWith, l)) {
-    l.y = collides2.y + collides2.h;
+  return e;
+}
+function en(e, t) {
+  for (let n = 0, i = e.length; n < i; n++)
+    if (e[n].i === t) return e[n];
+}
+function jt(e, t) {
+  for (let n = 0, i = e.length; n < i; n++)
+    if (qn(e[n], t)) return e[n];
+}
+function Gn(e, t) {
+  return e.filter((n) => qn(n, t));
+}
+function Un(e) {
+  return e.filter((t) => t.static);
+}
+function ze(e, t, n, i, o, s) {
+  if (t.static) return e;
+  const a = t.x, l = t.y, c = i && t.y > i;
+  typeof n == "number" && (t.x = n), typeof i == "number" && (t.y = i), t.moved = !0;
+  let r = Vn(e);
+  c && (r = r.reverse());
+  const f = Gn(r, t);
+  if (s && f.length)
+    return t.x = a, t.y = l, t.moved = !1, e;
+  for (let d = 0, m = f.length; d < m; d++) {
+    const g = f[d];
+    g.moved || t.y > g.y && t.y - g.y > g.h / 4 || (g.static ? e = nn(e, g, t, o) : e = nn(e, t, g, o));
   }
-  return l;
+  return e;
 }
-function correctBounds(layout, bounds) {
-  const collidesWith = getStatics(layout);
-  for (let i = 0, len = layout.length; i < len; i++) {
-    const l = layout[i];
-    if (l.x + l.w > bounds.cols) l.x = bounds.cols - l.w;
-    if (l.x < 0) {
-      l.x = 0;
-      l.w = bounds.cols;
-    }
-    if (!l.static) collidesWith.push(l);
-    else {
-      while (getFirstCollision(collidesWith, l)) {
-        l.y++;
-      }
-    }
-  }
-  return layout;
-}
-function getLayoutItem(layout, id2) {
-  for (let i = 0, len = layout.length; i < len; i++) {
-    if (layout[i].i === id2) return layout[i];
-  }
-}
-function getFirstCollision(layout, layoutItem) {
-  for (let i = 0, len = layout.length; i < len; i++) {
-    if (collides(layout[i], layoutItem)) return layout[i];
-  }
-}
-function getAllCollisions(layout, layoutItem) {
-  return layout.filter((l) => collides(l, layoutItem));
-}
-function getStatics(layout) {
-  return layout.filter((l) => l.static);
-}
-function moveElement(layout, l, x, y, isUserAction, preventCollision) {
-  if (l.static) return layout;
-  const oldX = l.x;
-  const oldY = l.y;
-  const movingUp = y && l.y > y;
-  if (typeof x === "number") l.x = x;
-  if (typeof y === "number") l.y = y;
-  l.moved = true;
-  let sorted = sortLayoutItemsByRowCol(layout);
-  if (movingUp) sorted = sorted.reverse();
-  const collisions = getAllCollisions(sorted, l);
-  if (preventCollision && collisions.length) {
-    l.x = oldX;
-    l.y = oldY;
-    l.moved = false;
-    return layout;
-  }
-  for (let i = 0, len = collisions.length; i < len; i++) {
-    const collision = collisions[i];
-    if (collision.moved) continue;
-    if (l.y > collision.y && l.y - collision.y > collision.h / 4) continue;
-    if (collision.static) {
-      layout = moveElementAwayFromCollision(layout, collision, l, isUserAction);
-    } else {
-      layout = moveElementAwayFromCollision(layout, l, collision, isUserAction);
-    }
-  }
-  return layout;
-}
-function moveElementAwayFromCollision(layout, collidesWith, itemToMove, isUserAction) {
-  const preventCollision = false;
-  if (isUserAction) {
-    const fakeItem = {
-      x: itemToMove.x,
-      y: itemToMove.y,
-      w: itemToMove.w,
-      h: itemToMove.h,
+function nn(e, t, n, i) {
+  if (i) {
+    const s = {
+      x: n.x,
+      y: n.y,
+      w: n.w,
+      h: n.h,
       i: "-1"
     };
-    fakeItem.y = Math.max(collidesWith.y - itemToMove.h, 0);
-    if (!getFirstCollision(layout, fakeItem)) {
-      return moveElement(layout, itemToMove, void 0, fakeItem.y, preventCollision);
-    }
+    if (s.y = Math.max(t.y - n.h, 0), !jt(e, s))
+      return ze(e, n, void 0, s.y, !1);
   }
-  return moveElement(layout, itemToMove, void 0, itemToMove.y + 1, preventCollision);
+  return ze(e, n, void 0, n.y + 1, !1);
 }
-function setTransform(top, left, width, height) {
-  const translate = `translate3d(${left}px,${top}px, 0)`;
+function Ao(e, t, n, i) {
+  const o = `translate3d(${t}px,${e}px, 0)`;
   return {
-    transform: translate,
-    WebkitTransform: translate,
-    MozTransform: translate,
-    msTransform: translate,
-    OTransform: translate,
-    width: `${width}px`,
-    height: `${height}px`,
+    transform: o,
+    WebkitTransform: o,
+    MozTransform: o,
+    msTransform: o,
+    OTransform: o,
+    width: `${n}px`,
+    height: `${i}px`,
     position: "absolute"
   };
 }
-function setTransformRtl(top, right, width, height) {
-  const translate = `translate3d(${right * -1}px,${top}px, 0)`;
+function $o(e, t, n, i) {
+  const o = `translate3d(${t * -1}px,${e}px, 0)`;
   return {
-    transform: translate,
-    WebkitTransform: translate,
-    MozTransform: translate,
-    msTransform: translate,
-    OTransform: translate,
-    width: `${width}px`,
-    height: `${height}px`,
+    transform: o,
+    WebkitTransform: o,
+    MozTransform: o,
+    msTransform: o,
+    OTransform: o,
+    width: `${n}px`,
+    height: `${i}px`,
     position: "absolute"
   };
 }
-function setTopLeft(top, left, width, height) {
+function Ho(e, t, n, i) {
   return {
-    top: `${top}px`,
-    left: `${left}px`,
-    width: `${width}px`,
-    height: `${height}px`,
+    top: `${e}px`,
+    left: `${t}px`,
+    width: `${n}px`,
+    height: `${i}px`,
     position: "absolute"
   };
 }
-function setTopRight(top, right, width, height) {
+function Lo(e, t, n, i) {
   return {
-    top: `${top}px`,
-    right: `${right}px`,
-    width: `${width}px`,
-    height: `${height}px`,
+    top: `${e}px`,
+    right: `${t}px`,
+    width: `${n}px`,
+    height: `${i}px`,
     position: "absolute"
   };
 }
-function sortLayoutItemsByRowCol(layout) {
-  return [].concat(layout).sort((a, b) => {
-    if (a.y === b.y && a.x === b.x) {
-      return 0;
-    }
-    if (a.y > b.y || a.y === b.y && a.x > b.x) {
-      return 1;
-    }
-    return -1;
-  });
+function Vn(e) {
+  return [].concat(e).sort((t, n) => t.y === n.y && t.x === n.x ? 0 : t.y > n.y || t.y === n.y && t.x > n.x ? 1 : -1);
 }
-function validateLayout(layout, contextName) {
-  contextName = contextName || "Layout";
-  const subProps = ["x", "y", "w", "h"];
-  const keyArr = [];
-  if (!Array.isArray(layout)) throw new Error(`${contextName} must be an array!`);
-  for (let i = 0, len = layout.length; i < len; i++) {
-    const item = layout[i];
-    for (let j = 0; j < subProps.length; j++) {
-      if (typeof item[subProps[j]] !== "number") {
-        throw new Error(`VueGridLayout: ${contextName}[${i}].${subProps[j]} must be a number!`);
-      }
-    }
-    if (item.i === void 0 || item.i === null) {
-      throw new Error(`VueGridLayout: ${contextName}[${i}].i cannot be null!`);
-    }
-    if (typeof item.i !== "number" && typeof item.i !== "string") {
-      throw new Error(`VueGridLayout: ${contextName}[${i}].i must be a string or number!`);
-    }
-    if (keyArr.indexOf(item.i) >= 0) {
-      throw new Error(`VueGridLayout: ${contextName}[${i}].i must be unique!`);
-    }
-    keyArr.push(item.i);
-    if (item.static !== void 0 && typeof item.static !== "boolean") {
-      throw new Error(`VueGridLayout: ${contextName}[${i}].static must be a boolean!`);
-    }
+function Wo(e, t) {
+  t = t || "Layout";
+  const n = ["x", "y", "w", "h"], i = [];
+  if (!Array.isArray(e)) throw new Error(`${t} must be an array!`);
+  for (let o = 0, s = e.length; o < s; o++) {
+    const a = e[o];
+    for (let l = 0; l < n.length; l++)
+      if (typeof a[n[l]] != "number")
+        throw new Error(`VueGridLayout: ${t}[${o}].${n[l]} must be a number!`);
+    if (a.i === void 0 || a.i === null)
+      throw new Error(`VueGridLayout: ${t}[${o}].i cannot be null!`);
+    if (typeof a.i != "number" && typeof a.i != "string")
+      throw new Error(`VueGridLayout: ${t}[${o}].i must be a string or number!`);
+    if (i.indexOf(a.i) >= 0)
+      throw new Error(`VueGridLayout: ${t}[${o}].i must be unique!`);
+    if (i.push(a.i), a.static !== void 0 && typeof a.static != "boolean")
+      throw new Error(`VueGridLayout: ${t}[${o}].static must be a boolean!`);
   }
 }
-function getControlPosition(e) {
-  return offsetXYFromParentOf(e);
+function rn(e) {
+  return Bo(e);
 }
-function offsetXYFromParentOf(evt) {
-  const offsetParent = evt.target.offsetParent || document.body;
-  const offsetParentRect = evt.offsetParent === document.body ? { left: 0, top: 0 } : offsetParent.getBoundingClientRect();
-  const x = evt.clientX + offsetParent.scrollLeft - offsetParentRect.left;
-  const y = evt.clientY + offsetParent.scrollTop - offsetParentRect.top;
-  return { x, y };
+function Bo(e) {
+  const t = e.target.offsetParent || document.body, n = e.offsetParent === document.body ? { left: 0, top: 0 } : t.getBoundingClientRect(), i = e.clientX + t.scrollLeft - n.left, o = e.clientY + t.scrollTop - n.top;
+  return { x: i, y: o };
 }
-function createCoreData(lastX, lastY, x, y) {
-  const isStart = !isNum(lastX);
-  if (isStart) {
-    return {
-      deltaX: 0,
-      deltaY: 0,
-      lastX: x,
-      lastY: y,
-      x,
-      y
-    };
-  }
-  return {
-    deltaX: x - lastX,
-    deltaY: y - lastY,
-    lastX,
-    lastY,
-    x,
-    y
+function on(e, t, n, i) {
+  return No(e) ? {
+    deltaX: n - e,
+    deltaY: i - t,
+    lastX: e,
+    lastY: t,
+    x: n,
+    y: i
+  } : {
+    deltaX: 0,
+    deltaY: 0,
+    lastX: n,
+    lastY: i,
+    x: n,
+    y: i
   };
 }
-function isNum(num) {
-  return typeof num === "number" && !Number.isNaN(num);
+function No(e) {
+  return typeof e == "number" && !Number.isNaN(e);
 }
-function getBreakpointFromWidth(breakpoints, width) {
-  const sorted = sortBreakpoints(breakpoints);
-  let matching = sorted[0];
-  for (let i = 1, len = sorted.length; i < len; i++) {
-    const breakpointName = sorted[i];
-    if (width > breakpoints[breakpointName]) matching = breakpointName;
+function Fo(e, t) {
+  const n = Jn(e);
+  let i = n[0];
+  for (let o = 1, s = n.length; o < s; o++) {
+    const a = n[o];
+    t > e[a] && (i = a);
   }
-  return matching;
+  return i;
 }
-function getColsFromBreakpoint(breakpoint, cols) {
-  if (!cols[breakpoint]) {
-    throw new Error(`ResponsiveGridLayout: \`cols\` entry for breakpoint ${breakpoint} is missing!`);
-  }
-  return cols[breakpoint];
+function Kn(e, t) {
+  if (!t[e])
+    throw new Error(`ResponsiveGridLayout: \`cols\` entry for breakpoint ${e} is missing!`);
+  return t[e];
 }
-function findOrGenerateResponsiveLayout(orgLayout, layouts, breakpoints, breakpoint, cols, verticalCompact) {
-  if (layouts[breakpoint]) return cloneLayout(layouts[breakpoint]);
-  let layout = orgLayout;
-  const breakpointsSorted = sortBreakpoints(breakpoints);
-  const breakpointsAbove = breakpointsSorted.slice(breakpointsSorted.indexOf(breakpoint));
-  for (let i = 0, len = breakpointsAbove.length; i < len; i++) {
-    const b = breakpointsAbove[i];
-    if (layouts[b]) {
-      layout = layouts[b];
+function jo(e, t, n, i, o, s) {
+  if (t[i]) return St(t[i]);
+  let a = e;
+  const l = Jn(n), c = l.slice(l.indexOf(i));
+  for (let r = 0, f = c.length; r < f; r++) {
+    const d = c[r];
+    if (t[d]) {
+      a = t[d];
       break;
     }
   }
-  layout = cloneLayout(layout || []);
-  return compact(correctBounds(layout, { cols }), verticalCompact);
+  return a = St(a || []), Wt(ko(a, { cols: o }), s);
 }
-function sortBreakpoints(breakpoints) {
-  const keys = Object.keys(breakpoints);
-  return keys.sort((a, b) => {
-    return breakpoints[a] - breakpoints[b];
-  });
+function Jn(e) {
+  return Object.keys(e).sort((n, i) => e[n] - e[i]);
 }
-const _export_sfc = (sfc, props) => {
-  const target = sfc.__vccOpts || sfc;
-  for (const [key, val] of props) {
-    target[key] = val;
-  }
-  return target;
-};
-const _hoisted_1 = ["id"];
-const _sfc_main$1 = {
+const Zn = (e, t) => {
+  const n = e.__vccOpts || e;
+  for (const [i, o] of t)
+    n[i] = o;
+  return n;
+}, Xo = ["id"], Yo = {
   __name: "grid-item",
   props: {
     i: {
-      required: true
+      required: !0
     },
     x: {
       type: Number,
-      required: true
+      required: !0
     },
     y: {
       type: Number,
-      required: true
+      required: !0
     },
     w: {
       type: Number,
-      required: true
+      required: !0
     },
     h: {
       type: Number,
-      required: true
+      required: !0
     },
     minW: {
       type: Number,
-      required: false,
+      required: !1,
       default: 1
     },
     minH: {
       type: Number,
-      required: false,
+      required: !1,
       default: 1
     },
     maxW: {
       type: Number,
-      required: false,
-      default: Infinity
+      required: !1,
+      default: 1 / 0
     },
     maxH: {
       type: Number,
-      required: false,
-      default: Infinity
+      required: !1,
+      default: 1 / 0
     },
     // cols: {
     //   type: Number,
@@ -5404,17 +3815,17 @@ const _sfc_main$1 = {
     // },
     isDraggable: {
       type: Boolean,
-      required: false,
+      required: !1,
       default: null
     },
     isResizable: {
       type: Boolean,
-      required: false,
+      required: !1,
       default: null
     },
     isBounded: {
       type: Boolean,
-      required: false,
+      required: !1,
       default: null
     },
     // useCssTransforms: {
@@ -5423,37 +3834,37 @@ const _sfc_main$1 = {
     // },
     static: {
       type: Boolean,
-      required: false,
-      default: false
+      required: !1,
+      default: !1
     },
     dragIgnoreFrom: {
       type: String,
-      required: false,
+      required: !1,
       default: "a, button"
     },
     dragAllowFrom: {
       type: String,
-      required: false,
+      required: !1,
       default: null
     },
     resizeIgnoreFrom: {
       type: String,
-      required: false,
+      required: !1,
       default: "a, button"
     },
     preserveAspectRatio: {
       type: Boolean,
-      required: false,
-      default: false
+      required: !1,
+      default: !1
     },
     dragOption: {
       type: Object,
-      required: false,
+      required: !1,
       default: () => ({})
     },
     resizeOption: {
       type: Object,
-      required: false,
+      required: !1,
       default: () => ({})
     }
   },
@@ -5464,1799 +3875,1104 @@ const _sfc_main$1 = {
     "move",
     "moved"
   ],
-  setup(__props, { expose: __expose, emit: __emit }) {
-    const props = __props;
-    const emit = __emit;
-    const exposeObj = {
+  setup(e, { expose: t, emit: n }) {
+    const i = e, o = n, s = {
       el: void 0,
-      calcXY
+      calcXY: O
     };
-    __expose(exposeObj);
-    const emitter = inject("emitter");
-    const gridLayout = inject("gridLayout");
-    let interactObj;
-    const state = reactive({
+    t(s);
+    const a = Le("emitter"), l = Le("gridLayout");
+    let c;
+    const r = hn({
       cols: 1,
       containerWidth: 100,
       rowHeight: 30,
       margin: [10, 10],
-      maxRows: Infinity,
+      maxRows: 1 / 0,
       draggable: null,
       resizable: null,
       bounded: null,
       transformScale: 1,
-      useCssTransforms: true,
-      useStyleCursor: true,
-      isDragging: false,
+      useCssTransforms: !0,
+      useStyleCursor: !0,
+      isDragging: !1,
       dragging: null,
-      isResizing: false,
+      isResizing: !1,
       resizing: null,
       lastX: NaN,
       lastY: NaN,
       lastW: NaN,
       lastH: NaN,
       style: {},
-      dragEventSet: false,
-      resizeEventSet: false,
+      dragEventSet: !1,
+      resizeEventSet: !1,
       previousW: null,
       previousH: null,
       previousX: null,
       previousY: null,
-      innerX: props.x,
-      innerY: props.y,
-      innerW: props.w,
-      innerH: props.h
-    });
-    const classObj = computed(() => {
-      return {
-        "vue-resizable": unref(resizableAndNotStatic),
-        static: props.static,
-        resizing: state.isResizing,
-        "vue-draggable-dragging": state.isDragging,
-        cssTransforms: state.useCssTransforms,
-        "render-rtl": unref(renderRtl),
-        "disable-userselect": state.isDragging,
-        // 'no-touch': unref(isAndroid) && unref(draggableOrResizableAndNotStatic),
-        "no-touch": unref(draggableOrResizableAndNotStatic)
-      };
-    });
-    const resizableAndNotStatic = computed(() => {
-      return state.resizable && !props.static;
-    });
-    const draggableOrResizableAndNotStatic = computed(() => {
-      return (state.draggable || state.resizable) && !props.static;
-    });
-    const renderRtl = computed(() => {
-      return gridLayout.props.isMirrored;
-    });
-    const resizableHandleClass = computed(() => {
-      if (unref(renderRtl)) {
-        return "vue-resizable-handle vue-rtl-resizable-handle";
-      }
-      return "vue-resizable-handle";
-    });
-    function created() {
-      emitter.on("updateWidth", updateWidth);
-      emitter.on("setDraggable", setDraggableHandler);
-      emitter.on("setResizable", setResizableHandler);
-      emitter.on("setBounded", setBoundedHandler);
-      emitter.on("setTransformScale", setTransformScaleHandler);
-      emitter.on("setRowHeight", setRowHeightHandler);
-      emitter.on("setMaxRows", setMaxRowsHandler);
-      emitter.on("directionchange", directionchangeHandler);
-      emitter.on("setColNum", setColNum);
+      innerX: i.x,
+      innerY: i.y,
+      innerW: i.w,
+      innerH: i.h
+    }), f = kt(() => ({
+      "vue-resizable": J(d),
+      static: i.static,
+      resizing: r.isResizing,
+      "vue-draggable-dragging": r.isDragging,
+      cssTransforms: r.useCssTransforms,
+      "render-rtl": J(g),
+      "disable-userselect": r.isDragging,
+      // 'no-touch': unref(isAndroid) && unref(draggableOrResizableAndNotStatic),
+      "no-touch": J(m)
+    })), d = kt(() => r.resizable && !i.static), m = kt(() => (r.draggable || r.resizable) && !i.static), g = kt(() => l.props.isMirrored), b = kt(() => J(g) ? "vue-resizable-handle vue-rtl-resizable-handle" : "vue-resizable-handle");
+    function C() {
+      a.on("updateWidth", vt), a.on("setDraggable", k), a.on("setResizable", A), a.on("setBounded", S), a.on("setTransformScale", _), a.on("setRowHeight", v), a.on("setMaxRows", u), a.on("directionchange", w), a.on("setColNum", y);
     }
-    created();
-    onBeforeUnmount(() => {
-      emitter.off("updateWidth", updateWidth);
-      emitter.off("setDraggable", setDraggableHandler);
-      emitter.off("setResizable", setResizableHandler);
-      emitter.off("setBounded", setBoundedHandler);
-      emitter.off("setTransformScale", setTransformScaleHandler);
-      emitter.off("setRowHeight", setRowHeightHandler);
-      emitter.off("setMaxRows", setMaxRowsHandler);
-      emitter.off("directionchange", directionchangeHandler);
-      emitter.off("setColNum", setColNum);
-      if (interactObj) {
-        interactObj.unset();
-      }
+    C(), pn(() => {
+      a.off("updateWidth", vt), a.off("setDraggable", k), a.off("setResizable", A), a.off("setBounded", S), a.off("setTransformScale", _), a.off("setRowHeight", v), a.off("setMaxRows", u), a.off("directionchange", w), a.off("setColNum", y), c && c.unset();
+    }), gn(() => {
+      const h = { ...l.props, ...l.state };
+      h.responsive && h.lastBreakpoint ? r.cols = Kn(h.lastBreakpoint, h.cols) : r.cols = h.colNum, r.rowHeight = h.rowHeight, r.containerWidth = h.width !== null ? h.width : 100, r.margin = h.margin !== void 0 ? h.margin : [10, 10], r.maxRows = h.maxRows, i.isDraggable === null ? r.draggable = h.isDraggable : r.draggable = i.isDraggable, i.isResizable === null ? r.resizable = h.isResizable : r.resizable = i.isResizable, i.isBounded === null ? r.bounded = h.isBounded : r.bounded = i.isBounded, r.transformScale = h.transformScale, r.useCssTransforms = h.useCssTransforms, r.useStyleCursor = h.useStyleCursor, T();
+    }), W(() => i.isDraggable, () => {
+      r.draggable = i.isDraggable;
+    }), W(() => i.static, () => {
+      yt(), tt();
+    }), W(() => r.draggable, () => {
+      yt();
+    }), W(() => i.isResizable, () => {
+      r.resizable = i.isResizable;
+    }), W(() => i.isBounded, () => {
+      r.bounded = i.isBounded;
+    }), W(() => r.resizable, () => {
+      tt();
+    }), W(() => r.rowHeight, () => {
+      T(), j();
+    }), W(() => r.cols, () => {
+      tt(), T(), j();
+    }), W(() => r.containerWidth, () => {
+      tt(), T(), j();
+    }), W(() => i.x, (h) => {
+      r.innerX = h, T();
+    }), W(() => i.y, (h) => {
+      r.innerY = h, T();
+    }), W(() => i.h, (h) => {
+      r.innerH = h, T();
+    }), W(() => i.w, (h) => {
+      r.innerW = h, T();
+    }), W(g, () => {
+      tt(), T();
+    }), W(() => i.minH, () => {
+      tt();
+    }), W(() => i.maxH, () => {
+      tt();
+    }), W(() => i.minW, () => {
+      tt();
+    }), W(() => i.maxW, () => {
+      tt();
+    }), W(() => l.props.margin, (h) => {
+      !h || Number(h[0]) === Number(r.margin[0]) && Number(h[1]) === Number(r.margin[1]) || (r.margin = h.map((R) => Number(R) || 0), T(), j());
     });
-    onMounted(() => {
-      const parent = { ...gridLayout.props, ...gridLayout.state };
-      if (parent.responsive && parent.lastBreakpoint) {
-        state.cols = getColsFromBreakpoint(parent.lastBreakpoint, parent.cols);
-      } else {
-        state.cols = parent.colNum;
-      }
-      state.rowHeight = parent.rowHeight;
-      state.containerWidth = parent.width !== null ? parent.width : 100;
-      state.margin = parent.margin !== void 0 ? parent.margin : [10, 10];
-      state.maxRows = parent.maxRows;
-      if (props.isDraggable === null) {
-        state.draggable = parent.isDraggable;
-      } else {
-        state.draggable = props.isDraggable;
-      }
-      if (props.isResizable === null) {
-        state.resizable = parent.isResizable;
-      } else {
-        state.resizable = props.isResizable;
-      }
-      if (props.isBounded === null) {
-        state.bounded = parent.isBounded;
-      } else {
-        state.bounded = props.isBounded;
-      }
-      state.transformScale = parent.transformScale;
-      state.useCssTransforms = parent.useCssTransforms;
-      state.useStyleCursor = parent.useStyleCursor;
-      createStyle();
-    });
-    watch(() => props.isDraggable, () => {
-      state.draggable = props.isDraggable;
-    });
-    watch(() => props.static, () => {
-      tryMakeDraggable();
-      tryMakeResizable();
-    });
-    watch(() => state.draggable, () => {
-      tryMakeDraggable();
-    });
-    watch(() => props.isResizable, () => {
-      state.resizable = props.isResizable;
-    });
-    watch(() => props.isBounded, () => {
-      state.bounded = props.isBounded;
-    });
-    watch(() => state.resizable, () => {
-      tryMakeResizable();
-    });
-    watch(() => state.rowHeight, () => {
-      createStyle();
-      emitContainerResized();
-    });
-    watch(() => state.cols, () => {
-      tryMakeResizable();
-      createStyle();
-      emitContainerResized();
-    });
-    watch(() => state.containerWidth, () => {
-      tryMakeResizable();
-      createStyle();
-      emitContainerResized();
-    });
-    watch(() => props.x, (newVal) => {
-      state.innerX = newVal;
-      createStyle();
-    });
-    watch(() => props.y, (newVal) => {
-      state.innerY = newVal;
-      createStyle();
-    });
-    watch(() => props.h, (newVal) => {
-      state.innerH = newVal;
-      createStyle();
-    });
-    watch(() => props.w, (newVal) => {
-      state.innerW = newVal;
-      createStyle();
-    });
-    watch(renderRtl, () => {
-      tryMakeResizable();
-      createStyle();
-    });
-    watch(() => props.minH, () => {
-      tryMakeResizable();
-    });
-    watch(() => props.maxH, () => {
-      tryMakeResizable();
-    });
-    watch(() => props.minW, () => {
-      tryMakeResizable();
-    });
-    watch(() => props.maxW, () => {
-      tryMakeResizable();
-    });
-    watch(() => gridLayout.props.margin, (margin) => {
-      if (!margin || Number(margin[0]) === Number(state.margin[0]) && Number(margin[1]) === Number(state.margin[1])) {
-        return;
-      }
-      state.margin = margin.map((m) => Number(m) || 0);
-      createStyle();
-      emitContainerResized();
-    });
-    function setDraggableHandler(isDraggable) {
-      if (props.isDraggable === null) {
-        state.draggable = isDraggable;
-      }
+    function k(h) {
+      i.isDraggable === null && (r.draggable = h);
     }
-    function setResizableHandler(isResizable) {
-      if (props.isResizable === null) {
-        state.resizable = isResizable;
+    function A(h) {
+      i.isResizable === null && (r.resizable = h);
+    }
+    function S(h) {
+      i.isBounded === null && (r.bounded = h);
+    }
+    function _(h) {
+      r.transformScale = h;
+    }
+    function v(h) {
+      r.rowHeight = h;
+    }
+    function u(h) {
+      r.maxRows = h;
+    }
+    function w() {
+      T();
+    }
+    function y(h) {
+      r.cols = parseInt(h);
+    }
+    function T() {
+      i.x + i.w > r.cols ? (r.innerX = 0, r.innerW = i.w > r.cols ? r.cols : i.w) : (r.innerX = i.x, r.innerW = i.w);
+      const h = D(r.innerX, r.innerY, r.innerW, r.innerH);
+      r.isDragging && (h.top = r.dragging.top, J(g) ? h.right = r.dragging.left : h.left = r.dragging.left), r.isResizing && (h.width = r.resizing.width, h.height = r.resizing.height);
+      let R;
+      r.useCssTransforms ? J(g) ? R = $o(h.top, h.right, h.width, h.height) : R = Ao(h.top, h.left, h.width, h.height) : J(g) ? R = Lo(h.top, h.right, h.width, h.height) : R = Ho(h.top, h.left, h.width, h.height), r.style = R;
+    }
+    function j() {
+      const h = {};
+      for (const R of ["width", "height"]) {
+        const X = r.style[R].match(/^(\d+)px$/);
+        if (!X) return;
+        h[R] = X[1];
       }
+      o("container-resized", i.i, i.h, i.w, h.height, h.width);
     }
-    function setBoundedHandler(isBounded) {
-      if (props.isBounded === null) {
-        state.bounded = isBounded;
-      }
-    }
-    function setTransformScaleHandler(transformScale) {
-      state.transformScale = transformScale;
-    }
-    function setRowHeightHandler(rowHeight) {
-      state.rowHeight = rowHeight;
-    }
-    function setMaxRowsHandler(maxRows) {
-      state.maxRows = maxRows;
-    }
-    function directionchangeHandler() {
-      createStyle();
-    }
-    function setColNum(colNum) {
-      state.cols = parseInt(colNum);
-    }
-    function createStyle() {
-      if (props.x + props.w > state.cols) {
-        state.innerX = 0;
-        state.innerW = props.w > state.cols ? state.cols : props.w;
-      } else {
-        state.innerX = props.x;
-        state.innerW = props.w;
-      }
-      const pos = calcPosition(state.innerX, state.innerY, state.innerW, state.innerH);
-      if (state.isDragging) {
-        pos.top = state.dragging.top;
-        if (unref(renderRtl)) {
-          pos.right = state.dragging.left;
-        } else {
-          pos.left = state.dragging.left;
-        }
-      }
-      if (state.isResizing) {
-        pos.width = state.resizing.width;
-        pos.height = state.resizing.height;
-      }
-      let style;
-      if (state.useCssTransforms) {
-        if (unref(renderRtl)) {
-          style = setTransformRtl(pos.top, pos.right, pos.width, pos.height);
-        } else {
-          style = setTransform(pos.top, pos.left, pos.width, pos.height);
-        }
-      } else {
-        if (unref(renderRtl)) {
-          style = setTopRight(pos.top, pos.right, pos.width, pos.height);
-        } else {
-          style = setTopLeft(pos.top, pos.left, pos.width, pos.height);
-        }
-      }
-      state.style = style;
-    }
-    function emitContainerResized() {
-      const styleProps = {};
-      for (const prop2 of ["width", "height"]) {
-        const val = state.style[prop2];
-        const matches = val.match(/^(\d+)px$/);
-        if (!matches) return;
-        styleProps[prop2] = matches[1];
-      }
-      emit("container-resized", props.i, props.h, props.w, styleProps.height, styleProps.width);
-    }
-    function handleResize(event) {
-      if (props.static) return;
-      const position = getControlPosition(event);
-      if (position == null) return;
-      const { x, y } = position;
-      const newSize = { width: 0, height: 0 };
-      let pos;
-      switch (event.type) {
+    function H(h) {
+      if (i.static) return;
+      const R = rn(h);
+      if (R == null) return;
+      const { x: N, y: X } = R, E = { width: 0, height: 0 };
+      let z;
+      switch (h.type) {
         case "resizestart": {
-          tryMakeResizable();
-          state.previousW = state.innerW;
-          state.previousH = state.innerH;
-          pos = calcPosition(state.innerX, state.innerY, state.innerW, state.innerH);
-          newSize.width = pos.width;
-          newSize.height = pos.height;
-          state.resizing = newSize;
-          state.isResizing = true;
+          tt(), r.previousW = r.innerW, r.previousH = r.innerH, z = D(r.innerX, r.innerY, r.innerW, r.innerH), E.width = z.width, E.height = z.height, r.resizing = E, r.isResizing = !0;
           break;
         }
         case "resizemove": {
-          const coreEvent = createCoreData(state.lastW, state.lastH, x, y);
-          if (unref(renderRtl)) {
-            newSize.width = state.resizing.width - coreEvent.deltaX / state.transformScale;
-          } else {
-            newSize.width = state.resizing.width + coreEvent.deltaX / state.transformScale;
-          }
-          newSize.height = state.resizing.height + coreEvent.deltaY / state.transformScale;
-          state.resizing = newSize;
+          const U = on(r.lastW, r.lastH, N, X);
+          J(g) ? E.width = r.resizing.width - U.deltaX / r.transformScale : E.width = r.resizing.width + U.deltaX / r.transformScale, E.height = r.resizing.height + U.deltaY / r.transformScale, r.resizing = E;
           break;
         }
         case "resizeend": {
-          pos = calcPosition(state.innerX, state.innerY, state.innerW, state.innerH);
-          newSize.width = pos.width;
-          newSize.height = pos.height;
-          state.resizing = null;
-          state.isResizing = false;
+          z = D(r.innerX, r.innerY, r.innerW, r.innerH), E.width = z.width, E.height = z.height, r.resizing = null, r.isResizing = !1;
           break;
         }
       }
-      createStyle();
-      pos = calcWH(newSize.height, newSize.width);
-      if (pos.w < props.minW) {
-        pos.w = props.minW;
-      }
-      if (pos.w > props.maxW) {
-        pos.w = props.maxW;
-      }
-      if (pos.h < props.minH) {
-        pos.h = props.minH;
-      }
-      if (pos.h > props.maxH) {
-        pos.h = props.maxH;
-      }
-      if (pos.h < 1) {
-        pos.h = 1;
-      }
-      if (pos.w < 1) {
-        pos.w = 1;
-      }
-      state.lastW = x;
-      state.lastH = y;
-      if (state.innerW !== pos.w || state.innerH !== pos.h) {
-        emit("resize", props.i, pos.h, pos.w, newSize.height, newSize.width);
-      }
-      if (event.type === "resizeend" && (state.previousW !== state.innerW || state.previousH !== state.innerH)) {
-        emit("resized", props.i, pos.h, pos.w, newSize.height, newSize.width);
-      }
-      emitter.emit("resizeEvent", [
-        event.type,
-        props.i,
-        state.innerX,
-        state.innerY,
-        pos.h,
-        pos.w
+      T(), z = Mt(E.height, E.width), z.w < i.minW && (z.w = i.minW), z.w > i.maxW && (z.w = i.maxW), z.h < i.minH && (z.h = i.minH), z.h > i.maxH && (z.h = i.maxH), z.h < 1 && (z.h = 1), z.w < 1 && (z.w = 1), r.lastW = N, r.lastH = X, (r.innerW !== z.w || r.innerH !== z.h) && o("resize", i.i, z.h, z.w, E.height, E.width), h.type === "resizeend" && (r.previousW !== r.innerW || r.previousH !== r.innerH) && o("resized", i.i, z.h, z.w, E.height, E.width), a.emit("resizeEvent", [
+        h.type,
+        i.i,
+        r.innerX,
+        r.innerY,
+        z.h,
+        z.w
       ]);
     }
-    function handleDrag(event) {
-      if (props.static) return;
-      if (state.isResizing) return;
-      const position = getControlPosition(event);
-      if (position === null) return;
-      const { x, y } = position;
-      const newPosition = { top: 0, left: 0 };
-      switch (event.type) {
+    function P(h) {
+      if (i.static || r.isResizing) return;
+      const R = rn(h);
+      if (R === null) return;
+      const { x: N, y: X } = R, E = { top: 0, left: 0 };
+      switch (h.type) {
         case "dragstart": {
-          state.previousX = state.innerX;
-          state.previousY = state.innerY;
-          const parentRect = event.target.offsetParent.getBoundingClientRect();
-          const clientRect = event.target.getBoundingClientRect();
-          const cLeft = clientRect.left / state.transformScale;
-          const pLeft = parentRect.left / state.transformScale;
-          const cRight = clientRect.right / state.transformScale;
-          const pRight = parentRect.right / state.transformScale;
-          const cTop = clientRect.top / state.transformScale;
-          const pTop = parentRect.top / state.transformScale;
-          if (unref(renderRtl)) {
-            newPosition.left = (cRight - pRight) * -1;
-          } else {
-            newPosition.left = cLeft - pLeft;
-          }
-          newPosition.top = cTop - pTop;
-          state.dragging = newPosition;
-          state.isDragging = true;
+          r.previousX = r.innerX, r.previousY = r.innerY;
+          const U = h.target.offsetParent.getBoundingClientRect(), x = h.target.getBoundingClientRect(), $ = x.left / r.transformScale, B = U.left / r.transformScale, Z = x.right / r.transformScale, nt = U.right / r.transformScale, it = x.top / r.transformScale, rt = U.top / r.transformScale;
+          J(g) ? E.left = (Z - nt) * -1 : E.left = $ - B, E.top = it - rt, r.dragging = E, r.isDragging = !0;
           break;
         }
         case "dragend": {
-          if (!state.isDragging) return;
-          const parentRect = event.target.offsetParent.getBoundingClientRect();
-          const clientRect = event.target.getBoundingClientRect();
-          const cLeft = clientRect.left / state.transformScale;
-          const pLeft = parentRect.left / state.transformScale;
-          const cRight = clientRect.right / state.transformScale;
-          const pRight = parentRect.right / state.transformScale;
-          const cTop = clientRect.top / state.transformScale;
-          const pTop = parentRect.top / state.transformScale;
-          if (unref(renderRtl)) {
-            newPosition.left = (cRight - pRight) * -1;
-          } else {
-            newPosition.left = cLeft - pLeft;
-          }
-          newPosition.top = cTop - pTop;
-          state.dragging = null;
-          state.isDragging = false;
+          if (!r.isDragging) return;
+          const U = h.target.offsetParent.getBoundingClientRect(), x = h.target.getBoundingClientRect(), $ = x.left / r.transformScale, B = U.left / r.transformScale, Z = x.right / r.transformScale, nt = U.right / r.transformScale, it = x.top / r.transformScale, rt = U.top / r.transformScale;
+          J(g) ? E.left = (Z - nt) * -1 : E.left = $ - B, E.top = it - rt, r.dragging = null, r.isDragging = !1;
           break;
         }
         case "dragmove": {
-          const coreEvent = createCoreData(state.lastX, state.lastY, x, y);
-          if (unref(renderRtl)) {
-            newPosition.left = state.dragging.left - coreEvent.deltaX / state.transformScale;
-          } else {
-            newPosition.left = state.dragging.left + coreEvent.deltaX / state.transformScale;
+          const U = on(r.lastX, r.lastY, N, X);
+          if (J(g) ? E.left = r.dragging.left - U.deltaX / r.transformScale : E.left = r.dragging.left + U.deltaX / r.transformScale, E.top = r.dragging.top + U.deltaY / r.transformScale, r.bounded) {
+            const x = h.target.offsetParent.clientHeight - Y(i.h, r.rowHeight, r.margin[1]);
+            E.top = K(E.top, 0, x);
+            const $ = L(), B = r.containerWidth - Y(i.w, $, r.margin[0]);
+            E.left = K(E.left, 0, B);
           }
-          newPosition.top = state.dragging.top + coreEvent.deltaY / state.transformScale;
-          if (state.bounded) {
-            const bottomBoundary = event.target.offsetParent.clientHeight - calcGridItemWHPx(props.h, state.rowHeight, state.margin[1]);
-            newPosition.top = clamp(newPosition.top, 0, bottomBoundary);
-            const colWidth = calcColWidth();
-            const rightBoundary = state.containerWidth - calcGridItemWHPx(props.w, colWidth, state.margin[0]);
-            newPosition.left = clamp(newPosition.left, 0, rightBoundary);
-          }
-          state.dragging = newPosition;
+          r.dragging = E;
           break;
         }
       }
-      createStyle();
-      let pos;
-      if (unref(renderRtl)) {
-        pos = calcXY(newPosition.top, newPosition.left);
-      } else {
-        pos = calcXY(newPosition.top, newPosition.left);
-      }
-      state.lastX = x;
-      state.lastY = y;
-      if (state.innerX !== pos.x || state.innerY !== pos.y) {
-        emit("move", props.i, pos.x, pos.y);
-      }
-      if (event.type === "dragend" && (state.previousX !== state.innerX || state.previousY !== state.innerY)) {
-        emit("moved", props.i, pos.x, pos.y);
-      }
-      emitter.emit("dragEvent", [
-        event.type,
-        props.i,
-        pos.x,
-        pos.y,
-        state.innerH,
-        state.innerW
+      T();
+      let z;
+      J(g), z = O(E.top, E.left), r.lastX = N, r.lastY = X, (r.innerX !== z.x || r.innerY !== z.y) && o("move", i.i, z.x, z.y), h.type === "dragend" && (r.previousX !== r.innerX || r.previousY !== r.innerY) && o("moved", i.i, z.x, z.y), a.emit("dragEvent", [
+        h.type,
+        i.i,
+        z.x,
+        z.y,
+        r.innerH,
+        r.innerW
       ]);
     }
-    function calcPosition(x, y, w, h) {
-      const colWidth = calcColWidth();
-      let out;
-      if (unref(renderRtl)) {
-        out = {
-          right: Math.round(colWidth * x + (x + 1) * state.margin[0]),
-          top: Math.round(state.rowHeight * y + (y + 1) * state.margin[1]),
-          // 0 * Infinity === NaN, which causes problems with resize constriants;
-          // Fix this if it occurs.
-          // Note we do it here rather than later because Math.round(Infinity) causes deopt
-          width: w === Infinity ? w : Math.round(colWidth * w + Math.max(0, w - 1) * state.margin[0]),
-          height: h === Infinity ? h : Math.round(state.rowHeight * h + Math.max(0, h - 1) * state.margin[1])
+    function D(h, R, N, X) {
+      const E = L();
+      let z;
+      return J(g) ? z = {
+        right: Math.round(E * h + (h + 1) * r.margin[0]),
+        top: Math.round(r.rowHeight * R + (R + 1) * r.margin[1]),
+        // 0 * Infinity === NaN, which causes problems with resize constriants;
+        // Fix this if it occurs.
+        // Note we do it here rather than later because Math.round(Infinity) causes deopt
+        width: N === 1 / 0 ? N : Math.round(E * N + Math.max(0, N - 1) * r.margin[0]),
+        height: X === 1 / 0 ? X : Math.round(r.rowHeight * X + Math.max(0, X - 1) * r.margin[1])
+      } : z = {
+        left: Math.round(E * h + (h + 1) * r.margin[0]),
+        top: Math.round(r.rowHeight * R + (R + 1) * r.margin[1]),
+        // 0 * Infinity === NaN, which causes problems with resize constriants;
+        // Fix this if it occurs.
+        // Note we do it here rather than later because Math.round(Infinity) causes deopt
+        width: N === 1 / 0 ? N : Math.round(E * N + Math.max(0, N - 1) * r.margin[0]),
+        height: X === 1 / 0 ? X : Math.round(r.rowHeight * X + Math.max(0, X - 1) * r.margin[1])
+      }, z;
+    }
+    function O(h, R) {
+      const N = L();
+      let X = Math.round((R - r.margin[0]) / (N + r.margin[0])), E = Math.round((h - r.margin[1]) / (r.rowHeight + r.margin[1]));
+      return X = Math.max(Math.min(X, r.cols - r.innerW), 0), E = Math.max(Math.min(E, r.maxRows - r.innerH), 0), { x: X, y: E };
+    }
+    function L() {
+      return (r.containerWidth - r.margin[0] * (r.cols + 1)) / r.cols;
+    }
+    function Y(h, R, N) {
+      return Number.isFinite(h) ? Math.round(
+        R * h + Math.max(0, h - 1) * N
+      ) : h;
+    }
+    function K(h, R, N) {
+      return Math.max(Math.min(h, N), R);
+    }
+    function Mt(h, R, N = !1) {
+      const X = L();
+      let E = Math.round((R + r.margin[0]) / (X + r.margin[0])), z = 0;
+      return N ? z = Math.ceil((h + r.margin[1]) / (r.rowHeight + r.margin[1])) : z = Math.round((h + r.margin[1]) / (r.rowHeight + r.margin[1])), E = Math.max(Math.min(E, r.cols - r.innerX), 0), z = Math.max(Math.min(z, r.maxRows - r.innerY), 0), { w: E, h: z };
+    }
+    function vt(h, R) {
+      r.containerWidth = h, R != null && (r.cols = R);
+    }
+    function yt() {
+      if (c == null && (c = ut(s.el), r.useStyleCursor || c.styleCursor(!1)), r.draggable && !i.static) {
+        const h = {
+          ignoreFrom: i.dragIgnoreFrom,
+          allowFrom: i.dragAllowFrom,
+          ...i.dragOption
         };
-      } else {
-        out = {
-          left: Math.round(colWidth * x + (x + 1) * state.margin[0]),
-          top: Math.round(state.rowHeight * y + (y + 1) * state.margin[1]),
-          // 0 * Infinity === NaN, which causes problems with resize constriants;
-          // Fix this if it occurs.
-          // Note we do it here rather than later because Math.round(Infinity) causes deopt
-          width: w === Infinity ? w : Math.round(colWidth * w + Math.max(0, w - 1) * state.margin[0]),
-          height: h === Infinity ? h : Math.round(state.rowHeight * h + Math.max(0, h - 1) * state.margin[1])
-        };
-      }
-      return out;
-    }
-    function calcXY(top, left) {
-      const colWidth = calcColWidth();
-      let x = Math.round((left - state.margin[0]) / (colWidth + state.margin[0]));
-      let y = Math.round((top - state.margin[1]) / (state.rowHeight + state.margin[1]));
-      x = Math.max(Math.min(x, state.cols - state.innerW), 0);
-      y = Math.max(Math.min(y, state.maxRows - state.innerH), 0);
-      return { x, y };
-    }
-    function calcColWidth() {
-      const colWidth = (state.containerWidth - state.margin[0] * (state.cols + 1)) / state.cols;
-      return colWidth;
-    }
-    function calcGridItemWHPx(gridUnits, colOrRowSize, marginPx) {
-      if (!Number.isFinite(gridUnits)) return gridUnits;
-      return Math.round(
-        colOrRowSize * gridUnits + Math.max(0, gridUnits - 1) * marginPx
-      );
-    }
-    function clamp(num, lowerBound, upperBound) {
-      return Math.max(Math.min(num, upperBound), lowerBound);
-    }
-    function calcWH(height, width, autoSizeFlag = false) {
-      const colWidth = calcColWidth();
-      let w = Math.round((width + state.margin[0]) / (colWidth + state.margin[0]));
-      let h = 0;
-      if (!autoSizeFlag) {
-        h = Math.round((height + state.margin[1]) / (state.rowHeight + state.margin[1]));
-      } else {
-        h = Math.ceil((height + state.margin[1]) / (state.rowHeight + state.margin[1]));
-      }
-      w = Math.max(Math.min(w, state.cols - state.innerX), 0);
-      h = Math.max(Math.min(h, state.maxRows - state.innerY), 0);
-      return { w, h };
-    }
-    function updateWidth(width, colNum) {
-      state.containerWidth = width;
-      if (colNum !== void 0 && colNum !== null) {
-        state.cols = colNum;
-      }
-    }
-    function tryMakeDraggable() {
-      if (interactObj === null || interactObj === void 0) {
-        interactObj = interact(exposeObj.el);
-        if (!state.useStyleCursor) {
-          interactObj.styleCursor(false);
-        }
-      }
-      if (state.draggable && !props.static) {
-        const opts = {
-          ignoreFrom: props.dragIgnoreFrom,
-          allowFrom: props.dragAllowFrom,
-          ...props.dragOption
-        };
-        interactObj.draggable(opts);
-        if (!state.dragEventSet) {
-          state.dragEventSet = true;
-          interactObj.on("dragstart dragmove dragend", (event) => {
-            handleDrag(event);
-          });
-        }
-      } else {
-        interactObj.draggable({
-          enabled: false
+        c.draggable(h), r.dragEventSet || (r.dragEventSet = !0, c.on("dragstart dragmove dragend", (R) => {
+          P(R);
+        }));
+      } else
+        c.draggable({
+          enabled: !1
         });
-      }
     }
-    function tryMakeResizable() {
-      if (interactObj === null || interactObj === void 0) {
-        interactObj = interact(exposeObj.el);
-        if (!state.useStyleCursor) {
-          interactObj.styleCursor(false);
-        }
-      }
-      if (state.resizable && !props.static) {
-        const maximum = calcPosition(0, 0, props.maxW, props.maxH);
-        const minimum = calcPosition(0, 0, props.minW, props.minH);
-        const opts = {
+    function tt() {
+      if (c == null && (c = ut(s.el), r.useStyleCursor || c.styleCursor(!1)), r.resizable && !i.static) {
+        const h = D(0, 0, i.maxW, i.maxH), R = D(0, 0, i.minW, i.minH), N = {
           // allowFrom: "." + unref(resizableHandleClass).trim().replace(" ", "."),
           edges: {
-            left: false,
-            right: `.${unref(resizableHandleClass).trim().replace(" ", ".")}`,
-            bottom: `.${unref(resizableHandleClass).trim().replace(" ", ".")}`,
-            top: false
+            left: !1,
+            right: `.${J(b).trim().replace(" ", ".")}`,
+            bottom: `.${J(b).trim().replace(" ", ".")}`,
+            top: !1
           },
-          ignoreFrom: props.resizeIgnoreFrom,
+          ignoreFrom: i.resizeIgnoreFrom,
           restrictSize: {
             min: {
-              height: minimum.height * state.transformScale,
-              width: minimum.width * state.transformScale
+              height: R.height * r.transformScale,
+              width: R.width * r.transformScale
             },
             max: {
-              height: maximum.height * state.transformScale,
-              width: maximum.width * state.transformScale
+              height: h.height * r.transformScale,
+              width: h.width * r.transformScale
             }
           },
-          ...props.resizeOption
+          ...i.resizeOption
         };
-        if (props.preserveAspectRatio) {
-          opts.modifiers = [
-            interact.modifiers.aspectRatio({
-              ratio: "preserve"
-            })
-          ];
-        }
-        interactObj.resizable(opts);
-        if (!state.resizeEventSet) {
-          state.resizeEventSet = true;
-          interactObj.on("resizestart resizemove resizeend", (event) => {
-            handleResize(event);
-          });
-        }
-      } else {
-        interactObj.resizable({
-          enabled: false
+        i.preserveAspectRatio && (N.modifiers = [
+          ut.modifiers.aspectRatio({
+            ratio: "preserve"
+          })
+        ]), c.resizable(N), r.resizeEventSet || (r.resizeEventSet = !0, c.on("resizestart resizemove resizeend", (X) => {
+          H(X);
+        }));
+      } else
+        c.resizable({
+          enabled: !1
         });
-      }
     }
-    function setRef(e) {
-      exposeObj.el = e;
+    function ce(h) {
+      s.el = h;
     }
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        ref: setRef,
-        class: normalizeClass(["vue-grid-item", classObj.value]),
-        style: normalizeStyle(state.style),
-        id: __props.i,
-        key: __props.i
-      }, [
-        renderSlot(_ctx.$slots, "default", {
-          class: normalizeClass({ rtl: renderRtl.value })
-        }, void 0, true),
-        resizableAndNotStatic.value ? (openBlock(), createElementBlock("span", {
-          key: 0,
-          class: normalizeClass(resizableHandleClass.value)
-        }, null, 2)) : createCommentVNode("", true)
-      ], 14, _hoisted_1);
-    };
+    return (h, R) => (ve(), ye("div", {
+      ref: ce,
+      class: ue(["vue-grid-item", f.value]),
+      style: mn(r.style),
+      id: e.i,
+      key: e.i
+    }, [
+      vn(h.$slots, "default", {
+        class: ue({ rtl: g.value })
+      }, void 0, !0),
+      d.value ? (ve(), ye("span", {
+        key: 0,
+        class: ue(b.value)
+      }, null, 2)) : di("", !0)
+    ], 14, Xo));
   }
-};
-const GridItem = /* @__PURE__ */ _export_sfc(_sfc_main$1, [["__scopeId", "data-v-99aff433"]]);
-function getDefaultExportFromCjs(x) {
-  return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, "default") ? x["default"] : x;
+}, Qn = /* @__PURE__ */ Zn(Yo, [["__scopeId", "data-v-99aff433"]]);
+function qo(e) {
+  return e && e.__esModule && Object.prototype.hasOwnProperty.call(e, "default") ? e.default : e;
 }
-var collectionUtils = { exports: {} };
-var utils$3 = collectionUtils.exports = {};
-utils$3.forEach = function(collection, callback) {
-  for (var i = 0; i < collection.length; i++) {
-    var result = callback(collection[i]);
-    if (result) {
-      return result;
-    }
+var ti = { exports: {} }, Go = ti.exports = {};
+Go.forEach = function(e, t) {
+  for (var n = 0; n < e.length; n++) {
+    var i = t(e[n]);
+    if (i)
+      return i;
   }
 };
-var collectionUtilsExports = collectionUtils.exports;
-var elementUtils = function(options) {
-  var getState2 = options.stateHandler.getState;
-  function isDetectable(element2) {
-    var state = getState2(element2);
-    return state && !!state.isDetectable;
+var ei = ti.exports, Uo = function(e) {
+  var t = e.stateHandler.getState;
+  function n(a) {
+    var l = t(a);
+    return l && !!l.isDetectable;
   }
-  function markAsDetectable(element2) {
-    getState2(element2).isDetectable = true;
+  function i(a) {
+    t(a).isDetectable = !0;
   }
-  function isBusy(element2) {
-    return !!getState2(element2).busy;
+  function o(a) {
+    return !!t(a).busy;
   }
-  function markBusy(element2, busy) {
-    getState2(element2).busy = !!busy;
+  function s(a, l) {
+    t(a).busy = !!l;
   }
   return {
-    isDetectable,
-    markAsDetectable,
-    isBusy,
-    markBusy
+    isDetectable: n,
+    markAsDetectable: i,
+    isBusy: o,
+    markBusy: s
   };
-};
-var listenerHandler = function(idHandler2) {
-  var eventListeners = {};
-  function getListeners(element2) {
-    var id2 = idHandler2.get(element2);
-    if (id2 === void 0) {
-      return [];
-    }
-    return eventListeners[id2] || [];
+}, Vo = function(e) {
+  var t = {};
+  function n(a) {
+    var l = e.get(a);
+    return l === void 0 ? [] : t[l] || [];
   }
-  function addListener(element2, listener) {
-    var id2 = idHandler2.get(element2);
-    if (!eventListeners[id2]) {
-      eventListeners[id2] = [];
-    }
-    eventListeners[id2].push(listener);
+  function i(a, l) {
+    var c = e.get(a);
+    t[c] || (t[c] = []), t[c].push(l);
   }
-  function removeListener(element2, listener) {
-    var listeners = getListeners(element2);
-    for (var i = 0, len = listeners.length; i < len; ++i) {
-      if (listeners[i] === listener) {
-        listeners.splice(i, 1);
+  function o(a, l) {
+    for (var c = n(a), r = 0, f = c.length; r < f; ++r)
+      if (c[r] === l) {
+        c.splice(r, 1);
         break;
       }
-    }
   }
-  function removeAllListeners(element2) {
-    var listeners = getListeners(element2);
-    if (!listeners) {
-      return;
-    }
-    listeners.length = 0;
+  function s(a) {
+    var l = n(a);
+    l && (l.length = 0);
   }
   return {
-    get: getListeners,
-    add: addListener,
-    removeListener,
-    removeAllListeners
+    get: n,
+    add: i,
+    removeListener: o,
+    removeAllListeners: s
   };
-};
-var idGenerator = function() {
-  var idCount = 1;
-  function generate() {
-    return idCount++;
+}, Ko = function() {
+  var e = 1;
+  function t() {
+    return e++;
   }
   return {
-    generate
+    generate: t
   };
-};
-var idHandler = function(options) {
-  var idGenerator2 = options.idGenerator;
-  var getState2 = options.stateHandler.getState;
-  function getId(element2) {
-    var state = getState2(element2);
-    if (state && state.id !== void 0) {
-      return state.id;
-    }
-    return null;
+}, Jo = function(e) {
+  var t = e.idGenerator, n = e.stateHandler.getState;
+  function i(s) {
+    var a = n(s);
+    return a && a.id !== void 0 ? a.id : null;
   }
-  function setId(element2) {
-    var state = getState2(element2);
-    if (!state) {
+  function o(s) {
+    var a = n(s);
+    if (!a)
       throw new Error("setId required the element to have a resize detection state.");
-    }
-    var id2 = idGenerator2.generate();
-    state.id = id2;
-    return id2;
+    var l = t.generate();
+    return a.id = l, l;
   }
   return {
-    get: getId,
-    set: setId
+    get: i,
+    set: o
   };
-};
-var reporter = function(quiet) {
-  function noop2() {
+}, Zo = function(e) {
+  function t() {
   }
-  var reporter2 = {
-    log: noop2,
-    warn: noop2,
-    error: noop2
+  var n = {
+    log: t,
+    warn: t,
+    error: t
   };
-  if (!quiet && window.console) {
-    var attachFunction = function(reporter3, name) {
-      reporter3[name] = function reporterProxy() {
-        var f = console[name];
-        if (f.apply) {
-          f.apply(console, arguments);
-        } else {
-          for (var i = 0; i < arguments.length; i++) {
-            f(arguments[i]);
-          }
-        }
+  if (!e && window.console) {
+    var i = function(o, s) {
+      o[s] = function() {
+        var l = console[s];
+        if (l.apply)
+          l.apply(console, arguments);
+        else
+          for (var c = 0; c < arguments.length; c++)
+            l(arguments[c]);
       };
     };
-    attachFunction(reporter2, "log");
-    attachFunction(reporter2, "warn");
-    attachFunction(reporter2, "error");
+    i(n, "log"), i(n, "warn"), i(n, "error");
   }
-  return reporter2;
-};
-var browserDetector$2 = { exports: {} };
-var detector = browserDetector$2.exports = {};
-detector.isIE = function(version) {
-  function isAnyIeVersion() {
-    var agent = navigator.userAgent.toLowerCase();
-    return agent.indexOf("msie") !== -1 || agent.indexOf("trident") !== -1 || agent.indexOf(" edge/") !== -1;
+  return n;
+}, ni = { exports: {} }, ii = ni.exports = {};
+ii.isIE = function(e) {
+  function t() {
+    var i = navigator.userAgent.toLowerCase();
+    return i.indexOf("msie") !== -1 || i.indexOf("trident") !== -1 || i.indexOf(" edge/") !== -1;
   }
-  if (!isAnyIeVersion()) {
-    return false;
-  }
-  if (!version) {
-    return true;
-  }
-  var ieVersion = function() {
-    var undef, v = 3, div = document.createElement("div"), all2 = div.getElementsByTagName("i");
-    do {
-      div.innerHTML = "<!--[if gt IE " + ++v + "]><i></i><![endif]-->";
-    } while (all2[0]);
-    return v > 4 ? v : undef;
+  if (!t())
+    return !1;
+  if (!e)
+    return !0;
+  var n = function() {
+    var i, o = 3, s = document.createElement("div"), a = s.getElementsByTagName("i");
+    do
+      s.innerHTML = "<!--[if gt IE " + ++o + "]><i></i><![endif]-->";
+    while (a[0]);
+    return o > 4 ? o : i;
   }();
-  return version === ieVersion;
+  return e === n;
 };
-detector.isLegacyOpera = function() {
+ii.isLegacyOpera = function() {
   return !!window.opera;
 };
-var browserDetectorExports = browserDetector$2.exports;
-var utils$2 = { exports: {} };
-var utils$1 = utils$2.exports = {};
-utils$1.getOption = getOption$1;
-function getOption$1(options, name, defaultValue) {
-  var value = options[name];
-  if ((value === void 0 || value === null) && defaultValue !== void 0) {
-    return defaultValue;
-  }
-  return value;
+var ri = ni.exports, oi = { exports: {} }, Qo = oi.exports = {};
+Qo.getOption = ts;
+function ts(e, t, n) {
+  var i = e[t];
+  return i == null && n !== void 0 ? n : i;
 }
-var utilsExports = utils$2.exports;
-var utils = utilsExports;
-var batchProcessor = function batchProcessorMaker(options) {
-  options = options || {};
-  var reporter2 = options.reporter;
-  var asyncProcess = utils.getOption(options, "async", true);
-  var autoProcess = utils.getOption(options, "auto", true);
-  if (autoProcess && !asyncProcess) {
-    reporter2 && reporter2.warn("Invalid options combination. auto=true and async=false is invalid. Setting async=true.");
-    asyncProcess = true;
+var es = oi.exports, sn = es, ns = function(t) {
+  t = t || {};
+  var n = t.reporter, i = sn.getOption(t, "async", !0), o = sn.getOption(t, "auto", !0);
+  o && !i && (n && n.warn("Invalid options combination. auto=true and async=false is invalid. Setting async=true."), i = !0);
+  var s = an(), a, l = !1;
+  function c(b, C) {
+    !l && o && i && s.size() === 0 && d(), s.add(b, C);
   }
-  var batch = Batch();
-  var asyncFrameHandler;
-  var isProcessing = false;
-  function addFunction(level, fn) {
-    if (!isProcessing && autoProcess && asyncProcess && batch.size() === 0) {
-      processBatchAsync();
+  function r() {
+    for (l = !0; s.size(); ) {
+      var b = s;
+      s = an(), b.process();
     }
-    batch.add(level, fn);
+    l = !1;
   }
-  function processBatch() {
-    isProcessing = true;
-    while (batch.size()) {
-      var processingBatch = batch;
-      batch = Batch();
-      processingBatch.process();
-    }
-    isProcessing = false;
+  function f(b) {
+    l || (b === void 0 && (b = i), a && (m(a), a = null), b ? d() : r());
   }
-  function forceProcessBatch(localAsyncProcess) {
-    if (isProcessing) {
-      return;
-    }
-    if (localAsyncProcess === void 0) {
-      localAsyncProcess = asyncProcess;
-    }
-    if (asyncFrameHandler) {
-      cancelFrame(asyncFrameHandler);
-      asyncFrameHandler = null;
-    }
-    if (localAsyncProcess) {
-      processBatchAsync();
-    } else {
-      processBatch();
-    }
+  function d() {
+    a = g(r);
   }
-  function processBatchAsync() {
-    asyncFrameHandler = requestFrame(processBatch);
+  function m(b) {
+    var C = clearTimeout;
+    return C(b);
   }
-  function cancelFrame(listener) {
-    var cancel2 = clearTimeout;
-    return cancel2(listener);
-  }
-  function requestFrame(callback) {
-    var raf2 = function(fn) {
-      return setTimeout(fn, 0);
+  function g(b) {
+    var C = function(k) {
+      return setTimeout(k, 0);
     };
-    return raf2(callback);
+    return C(b);
   }
   return {
-    add: addFunction,
-    force: forceProcessBatch
+    add: c,
+    force: f
   };
 };
-function Batch() {
-  var batch = {};
-  var size = 0;
-  var topLevel = 0;
-  var bottomLevel = 0;
-  function add(level, fn) {
-    if (!fn) {
-      fn = level;
-      level = 0;
-    }
-    if (level > topLevel) {
-      topLevel = level;
-    } else if (level < bottomLevel) {
-      bottomLevel = level;
-    }
-    if (!batch[level]) {
-      batch[level] = [];
-    }
-    batch[level].push(fn);
-    size++;
+function an() {
+  var e = {}, t = 0, n = 0, i = 0;
+  function o(l, c) {
+    c || (c = l, l = 0), l > n ? n = l : l < i && (i = l), e[l] || (e[l] = []), e[l].push(c), t++;
   }
-  function process() {
-    for (var level = bottomLevel; level <= topLevel; level++) {
-      var fns = batch[level];
-      for (var i = 0; i < fns.length; i++) {
-        var fn = fns[i];
-        fn();
+  function s() {
+    for (var l = i; l <= n; l++)
+      for (var c = e[l], r = 0; r < c.length; r++) {
+        var f = c[r];
+        f();
       }
-    }
   }
-  function getSize() {
-    return size;
+  function a() {
+    return t;
   }
   return {
-    add,
-    process,
-    size: getSize
+    add: o,
+    process: s,
+    size: a
   };
 }
-var prop = "_erd";
-function initState(element2) {
-  element2[prop] = {};
-  return getState(element2);
+var Re = "_erd";
+function is(e) {
+  return e[Re] = {}, si(e);
 }
-function getState(element2) {
-  return element2[prop];
+function si(e) {
+  return e[Re];
 }
-function cleanState(element2) {
-  delete element2[prop];
+function rs(e) {
+  delete e[Re];
 }
-var stateHandler$1 = {
-  initState,
-  getState,
-  cleanState
-};
-var browserDetector$1 = browserDetectorExports;
-var object = function(options) {
-  options = options || {};
-  var reporter2 = options.reporter;
-  var batchProcessor2 = options.batchProcessor;
-  var getState2 = options.stateHandler.getState;
-  if (!reporter2) {
+var os = {
+  initState: is,
+  getState: si,
+  cleanState: rs
+}, Ht = ri, ss = function(e) {
+  e = e || {};
+  var t = e.reporter, n = e.batchProcessor, i = e.stateHandler.getState;
+  if (!t)
     throw new Error("Missing required dependency: reporter.");
-  }
-  function addListener(element2, listener) {
-    function listenerProxy() {
-      listener(element2);
+  function o(r, f) {
+    function d() {
+      f(r);
     }
-    if (browserDetector$1.isIE(8)) {
-      getState2(element2).object = {
-        proxy: listenerProxy
-      };
-      element2.attachEvent("onresize", listenerProxy);
-    } else {
-      var object2 = getObject(element2);
-      if (!object2) {
+    if (Ht.isIE(8))
+      i(r).object = {
+        proxy: d
+      }, r.attachEvent("onresize", d);
+    else {
+      var m = l(r);
+      if (!m)
         throw new Error("Element is not detectable by this strategy.");
-      }
-      object2.contentDocument.defaultView.addEventListener("resize", listenerProxy);
+      m.contentDocument.defaultView.addEventListener("resize", d);
     }
   }
-  function buildCssTextString(rules) {
-    var seperator = options.important ? " !important; " : "; ";
-    return (rules.join(seperator) + seperator).trim();
+  function s(r) {
+    var f = e.important ? " !important; " : "; ";
+    return (r.join(f) + f).trim();
   }
-  function makeDetectable(options2, element2, callback) {
-    if (!callback) {
-      callback = element2;
-      element2 = options2;
-      options2 = null;
-    }
-    options2 = options2 || {};
-    options2.debug;
-    function injectObject(element3, callback2) {
-      var OBJECT_STYLE = buildCssTextString(["display: block", "position: absolute", "top: 0", "left: 0", "width: 100%", "height: 100%", "border: none", "padding: 0", "margin: 0", "opacity: 0", "z-index: -1000", "pointer-events: none"]);
-      var positionCheckPerformed = false;
-      var style = window.getComputedStyle(element3);
-      var width = element3.offsetWidth;
-      var height = element3.offsetHeight;
-      getState2(element3).startSize = {
-        width,
-        height
+  function a(r, f, d) {
+    d || (d = f, f = r, r = null), r = r || {}, r.debug;
+    function m(g, b) {
+      var C = s(["display: block", "position: absolute", "top: 0", "left: 0", "width: 100%", "height: 100%", "border: none", "padding: 0", "margin: 0", "opacity: 0", "z-index: -1000", "pointer-events: none"]), k = !1, A = window.getComputedStyle(g), S = g.offsetWidth, _ = g.offsetHeight;
+      i(g).startSize = {
+        width: S,
+        height: _
       };
-      function mutateDom() {
-        function alterPositionStyles() {
-          if (style.position === "static") {
-            element3.style.setProperty("position", "relative", options2.important ? "important" : "");
-            var removeRelativeStyles = function(reporter3, element4, style2, property) {
-              function getNumericalValue(value2) {
-                return value2.replace(/[^-\d\.]/g, "");
+      function v() {
+        function u() {
+          if (A.position === "static") {
+            g.style.setProperty("position", "relative", r.important ? "important" : "");
+            var T = function(j, H, P, D) {
+              function O(Y) {
+                return Y.replace(/[^-\d\.]/g, "");
               }
-              var value = style2[property];
-              if (value !== "auto" && getNumericalValue(value) !== "0") {
-                reporter3.warn("An element that is positioned static has style." + property + "=" + value + " which is ignored due to the static positioning. The element will need to be positioned relative, so the style." + property + " will be set to 0. Element: ", element4);
-                element4.style.setProperty(property, "0", options2.important ? "important" : "");
-              }
+              var L = P[D];
+              L !== "auto" && O(L) !== "0" && (j.warn("An element that is positioned static has style." + D + "=" + L + " which is ignored due to the static positioning. The element will need to be positioned relative, so the style." + D + " will be set to 0. Element: ", H), H.style.setProperty(D, "0", r.important ? "important" : ""));
             };
-            removeRelativeStyles(reporter2, element3, style, "top");
-            removeRelativeStyles(reporter2, element3, style, "right");
-            removeRelativeStyles(reporter2, element3, style, "bottom");
-            removeRelativeStyles(reporter2, element3, style, "left");
+            T(t, g, A, "top"), T(t, g, A, "right"), T(t, g, A, "bottom"), T(t, g, A, "left");
           }
         }
-        function onObjectLoad() {
-          if (!positionCheckPerformed) {
-            alterPositionStyles();
-          }
-          function getDocument(element4, callback3) {
-            if (!element4.contentDocument) {
-              var state = getState2(element4);
-              if (state.checkForObjectDocumentTimeoutId) {
-                window.clearTimeout(state.checkForObjectDocumentTimeoutId);
-              }
-              state.checkForObjectDocumentTimeoutId = setTimeout(function checkForObjectDocument() {
-                state.checkForObjectDocumentTimeoutId = 0;
-                getDocument(element4, callback3);
+        function w() {
+          k || u();
+          function T(H, P) {
+            if (!H.contentDocument) {
+              var D = i(H);
+              D.checkForObjectDocumentTimeoutId && window.clearTimeout(D.checkForObjectDocumentTimeoutId), D.checkForObjectDocumentTimeoutId = setTimeout(function() {
+                D.checkForObjectDocumentTimeoutId = 0, T(H, P);
               }, 100);
               return;
             }
-            callback3(element4.contentDocument);
+            P(H.contentDocument);
           }
-          var objectElement = this;
-          getDocument(objectElement, function onObjectDocumentReady(objectDocument) {
-            callback2(element3);
+          var j = this;
+          T(j, function(P) {
+            b(g);
           });
         }
-        if (style.position !== "") {
-          alterPositionStyles();
-          positionCheckPerformed = true;
-        }
-        var object2 = document.createElement("object");
-        object2.style.cssText = OBJECT_STYLE;
-        object2.tabIndex = -1;
-        object2.type = "text/html";
-        object2.setAttribute("aria-hidden", "true");
-        object2.onload = onObjectLoad;
-        if (!browserDetector$1.isIE()) {
-          object2.data = "about:blank";
-        }
-        if (!getState2(element3)) {
-          return;
-        }
-        element3.appendChild(object2);
-        getState2(element3).object = object2;
-        if (browserDetector$1.isIE()) {
-          object2.data = "about:blank";
-        }
+        A.position !== "" && (u(), k = !0);
+        var y = document.createElement("object");
+        y.style.cssText = C, y.tabIndex = -1, y.type = "text/html", y.setAttribute("aria-hidden", "true"), y.onload = w, Ht.isIE() || (y.data = "about:blank"), i(g) && (g.appendChild(y), i(g).object = y, Ht.isIE() && (y.data = "about:blank"));
       }
-      if (batchProcessor2) {
-        batchProcessor2.add(mutateDom);
-      } else {
-        mutateDom();
-      }
+      n ? n.add(v) : v();
     }
-    if (browserDetector$1.isIE(8)) {
-      callback(element2);
-    } else {
-      injectObject(element2, callback);
-    }
+    Ht.isIE(8) ? d(f) : m(f, d);
   }
-  function getObject(element2) {
-    return getState2(element2).object;
+  function l(r) {
+    return i(r).object;
   }
-  function uninstall(element2) {
-    if (!getState2(element2)) {
-      return;
+  function c(r) {
+    if (i(r)) {
+      var f = l(r);
+      f && (Ht.isIE(8) ? r.detachEvent("onresize", f.proxy) : r.removeChild(f), i(r).checkForObjectDocumentTimeoutId && window.clearTimeout(i(r).checkForObjectDocumentTimeoutId), delete i(r).object);
     }
-    var object2 = getObject(element2);
-    if (!object2) {
-      return;
-    }
-    if (browserDetector$1.isIE(8)) {
-      element2.detachEvent("onresize", object2.proxy);
-    } else {
-      element2.removeChild(object2);
-    }
-    if (getState2(element2).checkForObjectDocumentTimeoutId) {
-      window.clearTimeout(getState2(element2).checkForObjectDocumentTimeoutId);
-    }
-    delete getState2(element2).object;
   }
   return {
-    makeDetectable,
-    addListener,
-    uninstall
+    makeDetectable: a,
+    addListener: o,
+    uninstall: c
   };
-};
-var forEach$1 = collectionUtilsExports.forEach;
-var scroll = function(options) {
-  options = options || {};
-  var reporter2 = options.reporter;
-  var batchProcessor2 = options.batchProcessor;
-  var getState2 = options.stateHandler.getState;
-  options.stateHandler.hasState;
-  var idHandler2 = options.idHandler;
-  if (!batchProcessor2) {
+}, as = ei.forEach, cs = function(e) {
+  e = e || {};
+  var t = e.reporter, n = e.batchProcessor, i = e.stateHandler.getState;
+  e.stateHandler.hasState;
+  var o = e.idHandler;
+  if (!n)
     throw new Error("Missing required dependency: batchProcessor");
-  }
-  if (!reporter2) {
+  if (!t)
     throw new Error("Missing required dependency: reporter.");
+  var s = f(), a = "erd_scroll_detection_scrollbar_style", l = "erd_scroll_detection_container";
+  function c(v) {
+    d(v, a, l);
   }
-  var scrollbarSizes = getScrollbarSizes();
-  var styleId = "erd_scroll_detection_scrollbar_style";
-  var detectionContainerClass = "erd_scroll_detection_container";
-  function initDocument(targetDocument) {
-    injectScrollStyle(targetDocument, styleId, detectionContainerClass);
+  c(window.document);
+  function r(v) {
+    var u = e.important ? " !important; " : "; ";
+    return (v.join(u) + u).trim();
   }
-  initDocument(window.document);
-  function buildCssTextString(rules) {
-    var seperator = options.important ? " !important; " : "; ";
-    return (rules.join(seperator) + seperator).trim();
-  }
-  function getScrollbarSizes() {
-    var width = 500;
-    var height = 500;
-    var child = document.createElement("div");
-    child.style.cssText = buildCssTextString(["position: absolute", "width: " + width * 2 + "px", "height: " + height * 2 + "px", "visibility: hidden", "margin: 0", "padding: 0"]);
-    var container = document.createElement("div");
-    container.style.cssText = buildCssTextString(["position: absolute", "width: " + width + "px", "height: " + height + "px", "overflow: scroll", "visibility: none", "top: " + -width * 3 + "px", "left: " + -height * 3 + "px", "visibility: hidden", "margin: 0", "padding: 0"]);
-    container.appendChild(child);
-    document.body.insertBefore(container, document.body.firstChild);
-    var widthSize = width - container.clientWidth;
-    var heightSize = height - container.clientHeight;
-    document.body.removeChild(container);
-    return {
-      width: widthSize,
-      height: heightSize
+  function f() {
+    var v = 500, u = 500, w = document.createElement("div");
+    w.style.cssText = r(["position: absolute", "width: " + v * 2 + "px", "height: " + u * 2 + "px", "visibility: hidden", "margin: 0", "padding: 0"]);
+    var y = document.createElement("div");
+    y.style.cssText = r(["position: absolute", "width: " + v + "px", "height: " + u + "px", "overflow: scroll", "visibility: none", "top: " + -v * 3 + "px", "left: " + -u * 3 + "px", "visibility: hidden", "margin: 0", "padding: 0"]), y.appendChild(w), document.body.insertBefore(y, document.body.firstChild);
+    var T = v - y.clientWidth, j = u - y.clientHeight;
+    return document.body.removeChild(y), {
+      width: T,
+      height: j
     };
   }
-  function injectScrollStyle(targetDocument, styleId2, containerClass) {
-    function injectStyle(style2, method) {
-      method = method || function(element2) {
-        targetDocument.head.appendChild(element2);
+  function d(v, u, w) {
+    function y(P, D) {
+      D = D || function(L) {
+        v.head.appendChild(L);
       };
-      var styleElement = targetDocument.createElement("style");
-      styleElement.innerHTML = style2;
-      styleElement.id = styleId2;
-      method(styleElement);
-      return styleElement;
+      var O = v.createElement("style");
+      return O.innerHTML = P, O.id = u, D(O), O;
     }
-    if (!targetDocument.getElementById(styleId2)) {
-      var containerAnimationClass = containerClass + "_animation";
-      var containerAnimationActiveClass = containerClass + "_animation_active";
-      var style = "/* Created by the element-resize-detector library. */\n";
-      style += "." + containerClass + " > div::-webkit-scrollbar { " + buildCssTextString(["display: none"]) + " }\n\n";
-      style += "." + containerAnimationActiveClass + " { " + buildCssTextString(["-webkit-animation-duration: 0.1s", "animation-duration: 0.1s", "-webkit-animation-name: " + containerAnimationClass, "animation-name: " + containerAnimationClass]) + " }\n";
-      style += "@-webkit-keyframes " + containerAnimationClass + " { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }\n";
-      style += "@keyframes " + containerAnimationClass + " { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }";
-      injectStyle(style);
+    if (!v.getElementById(u)) {
+      var T = w + "_animation", j = w + "_animation_active", H = `/* Created by the element-resize-detector library. */
+`;
+      H += "." + w + " > div::-webkit-scrollbar { " + r(["display: none"]) + ` }
+
+`, H += "." + j + " { " + r(["-webkit-animation-duration: 0.1s", "animation-duration: 0.1s", "-webkit-animation-name: " + T, "animation-name: " + T]) + ` }
+`, H += "@-webkit-keyframes " + T + ` { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+`, H += "@keyframes " + T + " { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }", y(H);
     }
   }
-  function addAnimationClass(element2) {
-    element2.className += " " + detectionContainerClass + "_animation_active";
+  function m(v) {
+    v.className += " " + l + "_animation_active";
   }
-  function addEvent(el, name, cb2) {
-    if (el.addEventListener) {
-      el.addEventListener(name, cb2);
-    } else if (el.attachEvent) {
-      el.attachEvent("on" + name, cb2);
-    } else {
-      return reporter2.error("[scroll] Don't know how to add event listeners.");
-    }
+  function g(v, u, w) {
+    if (v.addEventListener)
+      v.addEventListener(u, w);
+    else if (v.attachEvent)
+      v.attachEvent("on" + u, w);
+    else
+      return t.error("[scroll] Don't know how to add event listeners.");
   }
-  function removeEvent(el, name, cb2) {
-    if (el.removeEventListener) {
-      el.removeEventListener(name, cb2);
-    } else if (el.detachEvent) {
-      el.detachEvent("on" + name, cb2);
-    } else {
-      return reporter2.error("[scroll] Don't know how to remove event listeners.");
-    }
+  function b(v, u, w) {
+    if (v.removeEventListener)
+      v.removeEventListener(u, w);
+    else if (v.detachEvent)
+      v.detachEvent("on" + u, w);
+    else
+      return t.error("[scroll] Don't know how to remove event listeners.");
   }
-  function getExpandElement(element2) {
-    return getState2(element2).container.childNodes[0].childNodes[0].childNodes[0];
+  function C(v) {
+    return i(v).container.childNodes[0].childNodes[0].childNodes[0];
   }
-  function getShrinkElement(element2) {
-    return getState2(element2).container.childNodes[0].childNodes[0].childNodes[1];
+  function k(v) {
+    return i(v).container.childNodes[0].childNodes[0].childNodes[1];
   }
-  function addListener(element2, listener) {
-    var listeners = getState2(element2).listeners;
-    if (!listeners.push) {
+  function A(v, u) {
+    var w = i(v).listeners;
+    if (!w.push)
       throw new Error("Cannot add listener to an element that is not detectable.");
-    }
-    getState2(element2).listeners.push(listener);
+    i(v).listeners.push(u);
   }
-  function makeDetectable(options2, element2, callback) {
-    if (!callback) {
-      callback = element2;
-      element2 = options2;
-      options2 = null;
-    }
-    options2 = options2 || {};
-    function debug() {
-      if (options2.debug) {
-        var args = Array.prototype.slice.call(arguments);
-        args.unshift(idHandler2.get(element2), "Scroll: ");
-        if (reporter2.log.apply) {
-          reporter2.log.apply(null, args);
-        } else {
-          for (var i = 0; i < args.length; i++) {
-            reporter2.log(args[i]);
-          }
-        }
+  function S(v, u, w) {
+    w || (w = u, u = v, v = null), v = v || {};
+    function y() {
+      if (v.debug) {
+        var x = Array.prototype.slice.call(arguments);
+        if (x.unshift(o.get(u), "Scroll: "), t.log.apply)
+          t.log.apply(null, x);
+        else
+          for (var $ = 0; $ < x.length; $++)
+            t.log(x[$]);
       }
     }
-    function isDetached(element3) {
-      function isInDocument(element4) {
-        var isInShadowRoot = element4.getRootNode && element4.getRootNode().contains(element4);
-        return element4 === element4.ownerDocument.body || element4.ownerDocument.body.contains(element4) || isInShadowRoot;
+    function T(x) {
+      function $(B) {
+        var Z = B.getRootNode && B.getRootNode().contains(B);
+        return B === B.ownerDocument.body || B.ownerDocument.body.contains(B) || Z;
       }
-      if (!isInDocument(element3)) {
-        return true;
-      }
-      if (window.getComputedStyle(element3) === null) {
-        return true;
-      }
-      return false;
+      return !$(x) || window.getComputedStyle(x) === null;
     }
-    function isUnrendered(element3) {
-      var container = getState2(element3).container.childNodes[0];
-      var style = window.getComputedStyle(container);
-      return !style.width || style.width.indexOf("px") === -1;
+    function j(x) {
+      var $ = i(x).container.childNodes[0], B = window.getComputedStyle($);
+      return !B.width || B.width.indexOf("px") === -1;
     }
-    function getStyle() {
-      var elementStyle = window.getComputedStyle(element2);
-      var style = {};
-      style.position = elementStyle.position;
-      style.width = element2.offsetWidth;
-      style.height = element2.offsetHeight;
-      style.top = elementStyle.top;
-      style.right = elementStyle.right;
-      style.bottom = elementStyle.bottom;
-      style.left = elementStyle.left;
-      style.widthCSS = elementStyle.width;
-      style.heightCSS = elementStyle.height;
-      return style;
+    function H() {
+      var x = window.getComputedStyle(u), $ = {};
+      return $.position = x.position, $.width = u.offsetWidth, $.height = u.offsetHeight, $.top = x.top, $.right = x.right, $.bottom = x.bottom, $.left = x.left, $.widthCSS = x.width, $.heightCSS = x.height, $;
     }
-    function storeStartSize() {
-      var style = getStyle();
-      getState2(element2).startSize = {
-        width: style.width,
-        height: style.height
-      };
-      debug("Element start size", getState2(element2).startSize);
+    function P() {
+      var x = H();
+      i(u).startSize = {
+        width: x.width,
+        height: x.height
+      }, y("Element start size", i(u).startSize);
     }
-    function initListeners() {
-      getState2(element2).listeners = [];
+    function D() {
+      i(u).listeners = [];
     }
-    function storeStyle() {
-      debug("storeStyle invoked.");
-      if (!getState2(element2)) {
-        debug("Aborting because element has been uninstalled");
+    function O() {
+      if (y("storeStyle invoked."), !i(u)) {
+        y("Aborting because element has been uninstalled");
         return;
       }
-      var style = getStyle();
-      getState2(element2).style = style;
+      var x = H();
+      i(u).style = x;
     }
-    function storeCurrentSize(element3, width, height) {
-      getState2(element3).lastWidth = width;
-      getState2(element3).lastHeight = height;
+    function L(x, $, B) {
+      i(x).lastWidth = $, i(x).lastHeight = B;
     }
-    function getExpandChildElement(element3) {
-      return getExpandElement(element3).childNodes[0];
+    function Y(x) {
+      return C(x).childNodes[0];
     }
-    function getWidthOffset() {
-      return 2 * scrollbarSizes.width + 1;
+    function K() {
+      return 2 * s.width + 1;
     }
-    function getHeightOffset() {
-      return 2 * scrollbarSizes.height + 1;
+    function Mt() {
+      return 2 * s.height + 1;
     }
-    function getExpandWidth(width) {
-      return width + 10 + getWidthOffset();
+    function vt(x) {
+      return x + 10 + K();
     }
-    function getExpandHeight(height) {
-      return height + 10 + getHeightOffset();
+    function yt(x) {
+      return x + 10 + Mt();
     }
-    function getShrinkWidth(width) {
-      return width * 2 + getWidthOffset();
+    function tt(x) {
+      return x * 2 + K();
     }
-    function getShrinkHeight(height) {
-      return height * 2 + getHeightOffset();
+    function ce(x) {
+      return x * 2 + Mt();
     }
-    function positionScrollbars(element3, width, height) {
-      var expand = getExpandElement(element3);
-      var shrink = getShrinkElement(element3);
-      var expandWidth = getExpandWidth(width);
-      var expandHeight = getExpandHeight(height);
-      var shrinkWidth = getShrinkWidth(width);
-      var shrinkHeight = getShrinkHeight(height);
-      expand.scrollLeft = expandWidth;
-      expand.scrollTop = expandHeight;
-      shrink.scrollLeft = shrinkWidth;
-      shrink.scrollTop = shrinkHeight;
+    function h(x, $, B) {
+      var Z = C(x), nt = k(x), it = vt($), rt = yt(B), Q = tt($), F = ce(B);
+      Z.scrollLeft = it, Z.scrollTop = rt, nt.scrollLeft = Q, nt.scrollTop = F;
     }
-    function injectContainerElement() {
-      var container = getState2(element2).container;
-      if (!container) {
-        container = document.createElement("div");
-        container.className = detectionContainerClass;
-        container.style.cssText = buildCssTextString(["visibility: hidden", "display: inline", "width: 0px", "height: 0px", "z-index: -1", "overflow: hidden", "margin: 0", "padding: 0"]);
-        getState2(element2).container = container;
-        addAnimationClass(container);
-        element2.appendChild(container);
-        var onAnimationStart = function() {
-          getState2(element2).onRendered && getState2(element2).onRendered();
+    function R() {
+      var x = i(u).container;
+      if (!x) {
+        x = document.createElement("div"), x.className = l, x.style.cssText = r(["visibility: hidden", "display: inline", "width: 0px", "height: 0px", "z-index: -1", "overflow: hidden", "margin: 0", "padding: 0"]), i(u).container = x, m(x), u.appendChild(x);
+        var $ = function() {
+          i(u).onRendered && i(u).onRendered();
         };
-        addEvent(container, "animationstart", onAnimationStart);
-        getState2(element2).onAnimationStart = onAnimationStart;
+        g(x, "animationstart", $), i(u).onAnimationStart = $;
       }
-      return container;
+      return x;
     }
-    function injectScrollElements() {
-      function alterPositionStyles() {
-        var style = getState2(element2).style;
-        if (style.position === "static") {
-          element2.style.setProperty("position", "relative", options2.important ? "important" : "");
-          var removeRelativeStyles = function(reporter3, element3, style2, property) {
-            function getNumericalValue(value2) {
-              return value2.replace(/[^-\d\.]/g, "");
+    function N() {
+      function x() {
+        var V = i(u).style;
+        if (V.position === "static") {
+          u.style.setProperty("position", "relative", v.important ? "important" : "");
+          var at = function(_t, xt, li, Ut) {
+            function ui(fi) {
+              return fi.replace(/[^-\d\.]/g, "");
             }
-            var value = style2[property];
-            if (value !== "auto" && getNumericalValue(value) !== "0") {
-              reporter3.warn("An element that is positioned static has style." + property + "=" + value + " which is ignored due to the static positioning. The element will need to be positioned relative, so the style." + property + " will be set to 0. Element: ", element3);
-              element3.style[property] = 0;
-            }
+            var le = li[Ut];
+            le !== "auto" && ui(le) !== "0" && (_t.warn("An element that is positioned static has style." + Ut + "=" + le + " which is ignored due to the static positioning. The element will need to be positioned relative, so the style." + Ut + " will be set to 0. Element: ", xt), xt.style[Ut] = 0);
           };
-          removeRelativeStyles(reporter2, element2, style, "top");
-          removeRelativeStyles(reporter2, element2, style, "right");
-          removeRelativeStyles(reporter2, element2, style, "bottom");
-          removeRelativeStyles(reporter2, element2, style, "left");
+          at(t, u, V, "top"), at(t, u, V, "right"), at(t, u, V, "bottom"), at(t, u, V, "left");
         }
       }
-      function getLeftTopBottomRightCssText(left, top, bottom2, right) {
-        left = !left ? "0" : left + "px";
-        top = !top ? "0" : top + "px";
-        bottom2 = !bottom2 ? "0" : bottom2 + "px";
-        right = !right ? "0" : right + "px";
-        return ["left: " + left, "top: " + top, "right: " + right, "bottom: " + bottom2];
+      function $(V, at, _t, xt) {
+        return V = V ? V + "px" : "0", at = at ? at + "px" : "0", _t = _t ? _t + "px" : "0", xt = xt ? xt + "px" : "0", ["left: " + V, "top: " + at, "right: " + xt, "bottom: " + _t];
       }
-      debug("Injecting elements");
-      if (!getState2(element2)) {
-        debug("Aborting because element has been uninstalled");
+      if (y("Injecting elements"), !i(u)) {
+        y("Aborting because element has been uninstalled");
         return;
       }
-      alterPositionStyles();
-      var rootContainer = getState2(element2).container;
-      if (!rootContainer) {
-        rootContainer = injectContainerElement();
+      x();
+      var B = i(u).container;
+      B || (B = R());
+      var Z = s.width, nt = s.height, it = r(["position: absolute", "flex: none", "overflow: hidden", "z-index: -1", "visibility: hidden", "width: 100%", "height: 100%", "left: 0px", "top: 0px"]), rt = r(["position: absolute", "flex: none", "overflow: hidden", "z-index: -1", "visibility: hidden"].concat($(-(1 + Z), -(1 + nt), -nt, -Z))), Q = r(["position: absolute", "flex: none", "overflow: scroll", "z-index: -1", "visibility: hidden", "width: 100%", "height: 100%"]), F = r(["position: absolute", "flex: none", "overflow: scroll", "z-index: -1", "visibility: hidden", "width: 100%", "height: 100%"]), et = r(["position: absolute", "left: 0", "top: 0"]), bt = r(["position: absolute", "width: 200%", "height: 200%"]), ot = document.createElement("div"), st = document.createElement("div"), Ct = document.createElement("div"), ke = document.createElement("div"), Gt = document.createElement("div"), Ae = document.createElement("div");
+      ot.dir = "ltr", ot.style.cssText = it, ot.className = l, st.className = l, st.style.cssText = rt, Ct.style.cssText = Q, ke.style.cssText = et, Gt.style.cssText = F, Ae.style.cssText = bt, Ct.appendChild(ke), Gt.appendChild(Ae), st.appendChild(Ct), st.appendChild(Gt), ot.appendChild(st), B.appendChild(ot);
+      function $e() {
+        var V = i(u);
+        V && V.onExpand ? V.onExpand() : y("Aborting expand scroll handler: element has been uninstalled");
       }
-      var scrollbarWidth = scrollbarSizes.width;
-      var scrollbarHeight = scrollbarSizes.height;
-      var containerContainerStyle = buildCssTextString(["position: absolute", "flex: none", "overflow: hidden", "z-index: -1", "visibility: hidden", "width: 100%", "height: 100%", "left: 0px", "top: 0px"]);
-      var containerStyle = buildCssTextString(["position: absolute", "flex: none", "overflow: hidden", "z-index: -1", "visibility: hidden"].concat(getLeftTopBottomRightCssText(-(1 + scrollbarWidth), -(1 + scrollbarHeight), -scrollbarHeight, -scrollbarWidth)));
-      var expandStyle = buildCssTextString(["position: absolute", "flex: none", "overflow: scroll", "z-index: -1", "visibility: hidden", "width: 100%", "height: 100%"]);
-      var shrinkStyle = buildCssTextString(["position: absolute", "flex: none", "overflow: scroll", "z-index: -1", "visibility: hidden", "width: 100%", "height: 100%"]);
-      var expandChildStyle = buildCssTextString(["position: absolute", "left: 0", "top: 0"]);
-      var shrinkChildStyle = buildCssTextString(["position: absolute", "width: 200%", "height: 200%"]);
-      var containerContainer = document.createElement("div");
-      var container = document.createElement("div");
-      var expand = document.createElement("div");
-      var expandChild = document.createElement("div");
-      var shrink = document.createElement("div");
-      var shrinkChild = document.createElement("div");
-      containerContainer.dir = "ltr";
-      containerContainer.style.cssText = containerContainerStyle;
-      containerContainer.className = detectionContainerClass;
-      container.className = detectionContainerClass;
-      container.style.cssText = containerStyle;
-      expand.style.cssText = expandStyle;
-      expandChild.style.cssText = expandChildStyle;
-      shrink.style.cssText = shrinkStyle;
-      shrinkChild.style.cssText = shrinkChildStyle;
-      expand.appendChild(expandChild);
-      shrink.appendChild(shrinkChild);
-      container.appendChild(expand);
-      container.appendChild(shrink);
-      containerContainer.appendChild(container);
-      rootContainer.appendChild(containerContainer);
-      function onExpandScroll() {
-        var state = getState2(element2);
-        if (state && state.onExpand) {
-          state.onExpand();
-        } else {
-          debug("Aborting expand scroll handler: element has been uninstalled");
-        }
+      function He() {
+        var V = i(u);
+        V && V.onShrink ? V.onShrink() : y("Aborting shrink scroll handler: element has been uninstalled");
       }
-      function onShrinkScroll() {
-        var state = getState2(element2);
-        if (state && state.onShrink) {
-          state.onShrink();
-        } else {
-          debug("Aborting shrink scroll handler: element has been uninstalled");
-        }
-      }
-      addEvent(expand, "scroll", onExpandScroll);
-      addEvent(shrink, "scroll", onShrinkScroll);
-      getState2(element2).onExpandScroll = onExpandScroll;
-      getState2(element2).onShrinkScroll = onShrinkScroll;
+      g(Ct, "scroll", $e), g(Gt, "scroll", He), i(u).onExpandScroll = $e, i(u).onShrinkScroll = He;
     }
-    function registerListenersAndPositionElements() {
-      function updateChildSizes(element3, width, height) {
-        var expandChild = getExpandChildElement(element3);
-        var expandWidth = getExpandWidth(width);
-        var expandHeight = getExpandHeight(height);
-        expandChild.style.setProperty("width", expandWidth + "px", options2.important ? "important" : "");
-        expandChild.style.setProperty("height", expandHeight + "px", options2.important ? "important" : "");
+    function X() {
+      function x(Q, F, et) {
+        var bt = Y(Q), ot = vt(F), st = yt(et);
+        bt.style.setProperty("width", ot + "px", v.important ? "important" : ""), bt.style.setProperty("height", st + "px", v.important ? "important" : "");
       }
-      function updateDetectorElements(done) {
-        var width = element2.offsetWidth;
-        var height = element2.offsetHeight;
-        var sizeChanged = width !== getState2(element2).lastWidth || height !== getState2(element2).lastHeight;
-        debug("Storing current size", width, height);
-        storeCurrentSize(element2, width, height);
-        batchProcessor2.add(0, function performUpdateChildSizes() {
-          if (!sizeChanged) {
-            return;
-          }
-          if (!getState2(element2)) {
-            debug("Aborting because element has been uninstalled");
-            return;
-          }
-          if (!areElementsInjected()) {
-            debug("Aborting because element container has not been initialized");
-            return;
-          }
-          if (options2.debug) {
-            var w = element2.offsetWidth;
-            var h = element2.offsetHeight;
-            if (w !== width || h !== height) {
-              reporter2.warn(idHandler2.get(element2), "Scroll: Size changed before updating detector elements.");
-            }
-          }
-          updateChildSizes(element2, width, height);
-        });
-        batchProcessor2.add(1, function updateScrollbars() {
-          if (!getState2(element2)) {
-            debug("Aborting because element has been uninstalled");
-            return;
-          }
-          if (!areElementsInjected()) {
-            debug("Aborting because element container has not been initialized");
-            return;
-          }
-          positionScrollbars(element2, width, height);
-        });
-        if (sizeChanged && done) {
-          batchProcessor2.add(2, function() {
-            if (!getState2(element2)) {
-              debug("Aborting because element has been uninstalled");
+      function $(Q) {
+        var F = u.offsetWidth, et = u.offsetHeight, bt = F !== i(u).lastWidth || et !== i(u).lastHeight;
+        y("Storing current size", F, et), L(u, F, et), n.add(0, function() {
+          if (bt) {
+            if (!i(u)) {
+              y("Aborting because element has been uninstalled");
               return;
             }
-            if (!areElementsInjected()) {
-              debug("Aborting because element container has not been initialized");
+            if (!B()) {
+              y("Aborting because element container has not been initialized");
               return;
             }
-            done();
-          });
-        }
-      }
-      function areElementsInjected() {
-        return !!getState2(element2).container;
-      }
-      function notifyListenersIfNeeded() {
-        function isFirstNotify() {
-          return getState2(element2).lastNotifiedWidth === void 0;
-        }
-        debug("notifyListenersIfNeeded invoked");
-        var state = getState2(element2);
-        if (isFirstNotify() && state.lastWidth === state.startSize.width && state.lastHeight === state.startSize.height) {
-          return debug("Not notifying: Size is the same as the start size, and there has been no notification yet.");
-        }
-        if (state.lastWidth === state.lastNotifiedWidth && state.lastHeight === state.lastNotifiedHeight) {
-          return debug("Not notifying: Size already notified");
-        }
-        debug("Current size not notified, notifying...");
-        state.lastNotifiedWidth = state.lastWidth;
-        state.lastNotifiedHeight = state.lastHeight;
-        forEach$1(getState2(element2).listeners, function(listener) {
-          listener(element2);
+            if (v.debug) {
+              var st = u.offsetWidth, Ct = u.offsetHeight;
+              (st !== F || Ct !== et) && t.warn(o.get(u), "Scroll: Size changed before updating detector elements.");
+            }
+            x(u, F, et);
+          }
+        }), n.add(1, function() {
+          if (!i(u)) {
+            y("Aborting because element has been uninstalled");
+            return;
+          }
+          if (!B()) {
+            y("Aborting because element container has not been initialized");
+            return;
+          }
+          h(u, F, et);
+        }), bt && Q && n.add(2, function() {
+          if (!i(u)) {
+            y("Aborting because element has been uninstalled");
+            return;
+          }
+          if (!B()) {
+            y("Aborting because element container has not been initialized");
+            return;
+          }
+          Q();
         });
       }
-      function handleRender() {
-        debug("startanimation triggered.");
-        if (isUnrendered(element2)) {
-          debug("Ignoring since element is still unrendered...");
+      function B() {
+        return !!i(u).container;
+      }
+      function Z() {
+        function Q() {
+          return i(u).lastNotifiedWidth === void 0;
+        }
+        y("notifyListenersIfNeeded invoked");
+        var F = i(u);
+        if (Q() && F.lastWidth === F.startSize.width && F.lastHeight === F.startSize.height)
+          return y("Not notifying: Size is the same as the start size, and there has been no notification yet.");
+        if (F.lastWidth === F.lastNotifiedWidth && F.lastHeight === F.lastNotifiedHeight)
+          return y("Not notifying: Size already notified");
+        y("Current size not notified, notifying..."), F.lastNotifiedWidth = F.lastWidth, F.lastNotifiedHeight = F.lastHeight, as(i(u).listeners, function(et) {
+          et(u);
+        });
+      }
+      function nt() {
+        if (y("startanimation triggered."), j(u)) {
+          y("Ignoring since element is still unrendered...");
           return;
         }
-        debug("Element rendered.");
-        var expand = getExpandElement(element2);
-        var shrink = getShrinkElement(element2);
-        if (expand.scrollLeft === 0 || expand.scrollTop === 0 || shrink.scrollLeft === 0 || shrink.scrollTop === 0) {
-          debug("Scrollbars out of sync. Updating detector elements...");
-          updateDetectorElements(notifyListenersIfNeeded);
-        }
+        y("Element rendered.");
+        var Q = C(u), F = k(u);
+        (Q.scrollLeft === 0 || Q.scrollTop === 0 || F.scrollLeft === 0 || F.scrollTop === 0) && (y("Scrollbars out of sync. Updating detector elements..."), $(Z));
       }
-      function handleScroll() {
-        debug("Scroll detected.");
-        if (isUnrendered(element2)) {
-          debug("Scroll event fired while unrendered. Ignoring...");
+      function it() {
+        if (y("Scroll detected."), j(u)) {
+          y("Scroll event fired while unrendered. Ignoring...");
           return;
         }
-        updateDetectorElements(notifyListenersIfNeeded);
+        $(Z);
       }
-      debug("registerListenersAndPositionElements invoked.");
-      if (!getState2(element2)) {
-        debug("Aborting because element has been uninstalled");
+      if (y("registerListenersAndPositionElements invoked."), !i(u)) {
+        y("Aborting because element has been uninstalled");
         return;
       }
-      getState2(element2).onRendered = handleRender;
-      getState2(element2).onExpand = handleScroll;
-      getState2(element2).onShrink = handleScroll;
-      var style = getState2(element2).style;
-      updateChildSizes(element2, style.width, style.height);
+      i(u).onRendered = nt, i(u).onExpand = it, i(u).onShrink = it;
+      var rt = i(u).style;
+      x(u, rt.width, rt.height);
     }
-    function finalizeDomMutation() {
-      debug("finalizeDomMutation invoked.");
-      if (!getState2(element2)) {
-        debug("Aborting because element has been uninstalled");
+    function E() {
+      if (y("finalizeDomMutation invoked."), !i(u)) {
+        y("Aborting because element has been uninstalled");
         return;
       }
-      var style = getState2(element2).style;
-      storeCurrentSize(element2, style.width, style.height);
-      positionScrollbars(element2, style.width, style.height);
+      var x = i(u).style;
+      L(u, x.width, x.height), h(u, x.width, x.height);
     }
-    function ready() {
-      callback(element2);
+    function z() {
+      w(u);
     }
-    function install2() {
-      debug("Installing...");
-      initListeners();
-      storeStartSize();
-      batchProcessor2.add(0, storeStyle);
-      batchProcessor2.add(1, injectScrollElements);
-      batchProcessor2.add(2, registerListenersAndPositionElements);
-      batchProcessor2.add(3, finalizeDomMutation);
-      batchProcessor2.add(4, ready);
+    function U() {
+      y("Installing..."), D(), P(), n.add(0, O), n.add(1, N), n.add(2, X), n.add(3, E), n.add(4, z);
     }
-    debug("Making detectable...");
-    if (isDetached(element2)) {
-      debug("Element is detached");
-      injectContainerElement();
-      debug("Waiting until element is attached...");
-      getState2(element2).onRendered = function() {
-        debug("Element is now attached");
-        install2();
-      };
-    } else {
-      install2();
-    }
+    y("Making detectable..."), T(u) ? (y("Element is detached"), R(), y("Waiting until element is attached..."), i(u).onRendered = function() {
+      y("Element is now attached"), U();
+    }) : U();
   }
-  function uninstall(element2) {
-    var state = getState2(element2);
-    if (!state) {
-      return;
-    }
-    state.onExpandScroll && removeEvent(getExpandElement(element2), "scroll", state.onExpandScroll);
-    state.onShrinkScroll && removeEvent(getShrinkElement(element2), "scroll", state.onShrinkScroll);
-    state.onAnimationStart && removeEvent(state.container, "animationstart", state.onAnimationStart);
-    state.container && element2.removeChild(state.container);
+  function _(v) {
+    var u = i(v);
+    u && (u.onExpandScroll && b(C(v), "scroll", u.onExpandScroll), u.onShrinkScroll && b(k(v), "scroll", u.onShrinkScroll), u.onAnimationStart && b(u.container, "animationstart", u.onAnimationStart), u.container && v.removeChild(u.container));
   }
   return {
-    makeDetectable,
-    addListener,
-    uninstall,
-    initDocument
+    makeDetectable: S,
+    addListener: A,
+    uninstall: _,
+    initDocument: c
   };
-};
-var forEach = collectionUtilsExports.forEach;
-var elementUtilsMaker = elementUtils;
-var listenerHandlerMaker = listenerHandler;
-var idGeneratorMaker = idGenerator;
-var idHandlerMaker = idHandler;
-var reporterMaker = reporter;
-var browserDetector = browserDetectorExports;
-var batchProcessorMaker2 = batchProcessor;
-var stateHandler = stateHandler$1;
-var objectStrategyMaker = object;
-var scrollStrategyMaker = scroll;
-function isCollection(obj) {
-  return Array.isArray(obj) || obj.length !== void 0;
+}, Bt = ei.forEach, ls = Uo, us = Vo, fs = Ko, ds = Jo, hs = Zo, cn = ri, ps = ns, ft = os, gs = ss, ms = cs;
+function ln(e) {
+  return Array.isArray(e) || e.length !== void 0;
 }
-function toArray(collection) {
-  if (!Array.isArray(collection)) {
-    var array2 = [];
-    forEach(collection, function(obj) {
-      array2.push(obj);
-    });
-    return array2;
-  } else {
-    return collection;
-  }
+function un(e) {
+  if (Array.isArray(e))
+    return e;
+  var t = [];
+  return Bt(e, function(n) {
+    t.push(n);
+  }), t;
 }
-function isElement(obj) {
-  return obj && obj.nodeType === 1;
+function fn(e) {
+  return e && e.nodeType === 1;
 }
-var elementResizeDetector = function(options) {
-  options = options || {};
-  var idHandler2;
-  if (options.idHandler) {
-    idHandler2 = {
-      get: function(element2) {
-        return options.idHandler.get(element2, true);
+var vs = function(e) {
+  e = e || {};
+  var t;
+  if (e.idHandler)
+    t = {
+      get: function(S) {
+        return e.idHandler.get(S, !0);
       },
-      set: options.idHandler.set
+      set: e.idHandler.set
     };
-  } else {
-    var idGenerator2 = idGeneratorMaker();
-    var defaultIdHandler = idHandlerMaker({
-      idGenerator: idGenerator2,
-      stateHandler
+  else {
+    var n = fs(), i = ds({
+      idGenerator: n,
+      stateHandler: ft
     });
-    idHandler2 = defaultIdHandler;
+    t = i;
   }
-  var reporter2 = options.reporter;
-  if (!reporter2) {
-    var quiet = reporter2 === false;
-    reporter2 = reporterMaker(quiet);
+  var o = e.reporter;
+  if (!o) {
+    var s = o === !1;
+    o = hs(s);
   }
-  var batchProcessor2 = getOption(options, "batchProcessor", batchProcessorMaker2({ reporter: reporter2 }));
-  var globalOptions = {};
-  globalOptions.callOnAdd = !!getOption(options, "callOnAdd", true);
-  globalOptions.debug = !!getOption(options, "debug", false);
-  var eventListenerHandler = listenerHandlerMaker(idHandler2);
-  var elementUtils2 = elementUtilsMaker({
-    stateHandler
-  });
-  var detectionStrategy;
-  var desiredStrategy = getOption(options, "strategy", "object");
-  var importantCssRules = getOption(options, "important", false);
-  var strategyOptions = {
-    reporter: reporter2,
-    batchProcessor: batchProcessor2,
-    stateHandler,
-    idHandler: idHandler2,
-    important: importantCssRules
+  var a = dt(e, "batchProcessor", ps({ reporter: o })), l = {};
+  l.callOnAdd = !!dt(e, "callOnAdd", !0), l.debug = !!dt(e, "debug", !1);
+  var c = us(t), r = ls({
+    stateHandler: ft
+  }), f, d = dt(e, "strategy", "object"), m = dt(e, "important", !1), g = {
+    reporter: o,
+    batchProcessor: a,
+    stateHandler: ft,
+    idHandler: t,
+    important: m
   };
-  if (desiredStrategy === "scroll") {
-    if (browserDetector.isLegacyOpera()) {
-      reporter2.warn("Scroll strategy is not supported on legacy Opera. Changing to object strategy.");
-      desiredStrategy = "object";
-    } else if (browserDetector.isIE(9)) {
-      reporter2.warn("Scroll strategy is not supported on IE9. Changing to object strategy.");
-      desiredStrategy = "object";
-    }
-  }
-  if (desiredStrategy === "scroll") {
-    detectionStrategy = scrollStrategyMaker(strategyOptions);
-  } else if (desiredStrategy === "object") {
-    detectionStrategy = objectStrategyMaker(strategyOptions);
-  } else {
-    throw new Error("Invalid strategy name: " + desiredStrategy);
-  }
-  var onReadyCallbacks = {};
-  function listenTo(options2, elements2, listener) {
-    function onResizeCallback(element2) {
-      var listeners = eventListenerHandler.get(element2);
-      forEach(listeners, function callListenerProxy(listener2) {
-        listener2(element2);
+  if (d === "scroll" && (cn.isLegacyOpera() ? (o.warn("Scroll strategy is not supported on legacy Opera. Changing to object strategy."), d = "object") : cn.isIE(9) && (o.warn("Scroll strategy is not supported on IE9. Changing to object strategy."), d = "object")), d === "scroll")
+    f = ms(g);
+  else if (d === "object")
+    f = gs(g);
+  else
+    throw new Error("Invalid strategy name: " + d);
+  var b = {};
+  function C(S, _, v) {
+    function u(P) {
+      var D = c.get(P);
+      Bt(D, function(L) {
+        L(P);
       });
     }
-    function addListener(callOnAdd2, element2, listener2) {
-      eventListenerHandler.add(element2, listener2);
-      if (callOnAdd2) {
-        listener2(element2);
-      }
+    function w(P, D, O) {
+      c.add(D, O), P && O(D);
     }
-    if (!listener) {
-      listener = elements2;
-      elements2 = options2;
-      options2 = {};
-    }
-    if (!elements2) {
+    if (v || (v = _, _ = S, S = {}), !_)
       throw new Error("At least one element required.");
-    }
-    if (!listener) {
+    if (!v)
       throw new Error("Listener required.");
-    }
-    if (isElement(elements2)) {
-      elements2 = [elements2];
-    } else if (isCollection(elements2)) {
-      elements2 = toArray(elements2);
-    } else {
-      return reporter2.error("Invalid arguments. Must be a DOM element or a collection of DOM elements.");
-    }
-    var elementsReady = 0;
-    var callOnAdd = getOption(options2, "callOnAdd", globalOptions.callOnAdd);
-    var onReadyCallback = getOption(options2, "onReady", function noop2() {
-    });
-    var debug = getOption(options2, "debug", globalOptions.debug);
-    forEach(elements2, function attachListenerToElement(element2) {
-      if (!stateHandler.getState(element2)) {
-        stateHandler.initState(element2);
-        idHandler2.set(element2);
-      }
-      var id2 = idHandler2.get(element2);
-      debug && reporter2.log("Attaching listener to element", id2, element2);
-      if (!elementUtils2.isDetectable(element2)) {
-        debug && reporter2.log(id2, "Not detectable.");
-        if (elementUtils2.isBusy(element2)) {
-          debug && reporter2.log(id2, "System busy making it detectable");
-          addListener(callOnAdd, element2, listener);
-          onReadyCallbacks[id2] = onReadyCallbacks[id2] || [];
-          onReadyCallbacks[id2].push(function onReady() {
-            elementsReady++;
-            if (elementsReady === elements2.length) {
-              onReadyCallback();
-            }
+    if (fn(_))
+      _ = [_];
+    else if (ln(_))
+      _ = un(_);
+    else
+      return o.error("Invalid arguments. Must be a DOM element or a collection of DOM elements.");
+    var y = 0, T = dt(S, "callOnAdd", l.callOnAdd), j = dt(S, "onReady", function() {
+    }), H = dt(S, "debug", l.debug);
+    Bt(_, function(D) {
+      ft.getState(D) || (ft.initState(D), t.set(D));
+      var O = t.get(D);
+      if (H && o.log("Attaching listener to element", O, D), !r.isDetectable(D)) {
+        if (H && o.log(O, "Not detectable."), r.isBusy(D)) {
+          H && o.log(O, "System busy making it detectable"), w(T, D, v), b[O] = b[O] || [], b[O].push(function() {
+            y++, y === _.length && j();
           });
           return;
         }
-        debug && reporter2.log(id2, "Making detectable...");
-        elementUtils2.markBusy(element2, true);
-        return detectionStrategy.makeDetectable({ debug, important: importantCssRules }, element2, function onElementDetectable(element3) {
-          debug && reporter2.log(id2, "onElementDetectable");
-          if (stateHandler.getState(element3)) {
-            elementUtils2.markAsDetectable(element3);
-            elementUtils2.markBusy(element3, false);
-            detectionStrategy.addListener(element3, onResizeCallback);
-            addListener(callOnAdd, element3, listener);
-            var state = stateHandler.getState(element3);
-            if (state && state.startSize) {
-              var width = element3.offsetWidth;
-              var height = element3.offsetHeight;
-              if (state.startSize.width !== width || state.startSize.height !== height) {
-                onResizeCallback(element3);
-              }
+        return H && o.log(O, "Making detectable..."), r.markBusy(D, !0), f.makeDetectable({ debug: H, important: m }, D, function(Y) {
+          if (H && o.log(O, "onElementDetectable"), ft.getState(Y)) {
+            r.markAsDetectable(Y), r.markBusy(Y, !1), f.addListener(Y, u), w(T, Y, v);
+            var K = ft.getState(Y);
+            if (K && K.startSize) {
+              var Mt = Y.offsetWidth, vt = Y.offsetHeight;
+              (K.startSize.width !== Mt || K.startSize.height !== vt) && u(Y);
             }
-            if (onReadyCallbacks[id2]) {
-              forEach(onReadyCallbacks[id2], function(callback) {
-                callback();
-              });
-            }
-          } else {
-            debug && reporter2.log(id2, "Element uninstalled before being detectable.");
-          }
-          delete onReadyCallbacks[id2];
-          elementsReady++;
-          if (elementsReady === elements2.length) {
-            onReadyCallback();
-          }
+            b[O] && Bt(b[O], function(yt) {
+              yt();
+            });
+          } else
+            H && o.log(O, "Element uninstalled before being detectable.");
+          delete b[O], y++, y === _.length && j();
         });
       }
-      debug && reporter2.log(id2, "Already detecable, adding listener.");
-      addListener(callOnAdd, element2, listener);
-      elementsReady++;
-    });
-    if (elementsReady === elements2.length) {
-      onReadyCallback();
-    }
+      H && o.log(O, "Already detecable, adding listener."), w(T, D, v), y++;
+    }), y === _.length && j();
   }
-  function uninstall(elements2) {
-    if (!elements2) {
-      return reporter2.error("At least one element is required.");
-    }
-    if (isElement(elements2)) {
-      elements2 = [elements2];
-    } else if (isCollection(elements2)) {
-      elements2 = toArray(elements2);
-    } else {
-      return reporter2.error("Invalid arguments. Must be a DOM element or a collection of DOM elements.");
-    }
-    forEach(elements2, function(element2) {
-      eventListenerHandler.removeAllListeners(element2);
-      detectionStrategy.uninstall(element2);
-      stateHandler.cleanState(element2);
+  function k(S) {
+    if (!S)
+      return o.error("At least one element is required.");
+    if (fn(S))
+      S = [S];
+    else if (ln(S))
+      S = un(S);
+    else
+      return o.error("Invalid arguments. Must be a DOM element or a collection of DOM elements.");
+    Bt(S, function(_) {
+      c.removeAllListeners(_), f.uninstall(_), ft.cleanState(_);
     });
   }
-  function initDocument(targetDocument) {
-    detectionStrategy.initDocument && detectionStrategy.initDocument(targetDocument);
+  function A(S) {
+    f.initDocument && f.initDocument(S);
   }
   return {
-    listenTo,
-    removeListener: eventListenerHandler.removeListener,
-    removeAllListeners: eventListenerHandler.removeAllListeners,
-    uninstall,
-    initDocument
+    listenTo: C,
+    removeListener: c.removeListener,
+    removeAllListeners: c.removeAllListeners,
+    uninstall: k,
+    initDocument: A
   };
 };
-function getOption(options, name, defaultValue) {
-  var value = options[name];
-  if ((value === void 0 || value === null) && defaultValue !== void 0) {
-    return defaultValue;
-  }
-  return value;
+function dt(e, t, n) {
+  var i = e[t];
+  return i == null && n !== void 0 ? n : i;
 }
-const elementResizeDetectorMaker = /* @__PURE__ */ getDefaultExportFromCjs(elementResizeDetector);
-function mitt(n) {
-  return { all: n = n || /* @__PURE__ */ new Map(), on: function(t, e) {
-    var i = n.get(t);
-    i ? i.push(e) : n.set(t, [e]);
-  }, off: function(t, e) {
-    var i = n.get(t);
-    i && (e ? i.splice(i.indexOf(e) >>> 0, 1) : n.set(t, []));
-  }, emit: function(t, e) {
-    var i = n.get(t);
-    i && i.slice().map(function(n2) {
-      n2(e);
-    }), (i = n.get("*")) && i.slice().map(function(n2) {
-      n2(t, e);
+const ys = /* @__PURE__ */ qo(vs);
+function bs(e) {
+  return { all: e = e || /* @__PURE__ */ new Map(), on: function(t, n) {
+    var i = e.get(t);
+    i ? i.push(n) : e.set(t, [n]);
+  }, off: function(t, n) {
+    var i = e.get(t);
+    i && (n ? i.splice(i.indexOf(n) >>> 0, 1) : e.set(t, []));
+  }, emit: function(t, n) {
+    var i = e.get(t);
+    i && i.slice().map(function(o) {
+      o(n);
+    }), (i = e.get("*")) && i.slice().map(function(o) {
+      o(t, n);
     });
   } };
 }
-function hasWindow() {
-  return typeof window !== "undefined";
+function ai() {
+  return typeof window < "u";
 }
-const cb = () => {
+const ci = () => {
 };
-function addWindowEventListener(event, callback = cb) {
-  if (!hasWindow) {
-    callback();
+function xs(e, t = ci) {
+  if (!ai) {
+    t();
     return;
   }
-  window.addEventListener(event, callback);
+  window.addEventListener(e, t);
 }
-function removeWindowEventListener(event, callback = cb) {
-  if (!hasWindow) {
-    return;
-  }
-  window.removeEventListener(event, callback);
+function ws(e, t = ci) {
+  ai && window.removeEventListener(e, t);
 }
-const _sfc_main = {
+const Ss = {
   __name: "grid-layout",
   props: {
     layout: {
       type: Array,
-      required: true
+      required: !0
     },
     responsiveLayouts: {
       type: Object,
@@ -7274,7 +4990,7 @@ const _sfc_main = {
     },
     maxRows: {
       type: Number,
-      default: Infinity
+      default: 1 / 0
     },
     margin: {
       type: Array,
@@ -7284,44 +5000,44 @@ const _sfc_main = {
     },
     isDraggable: {
       type: Boolean,
-      default: true
+      default: !0
     },
     isResizable: {
       type: Boolean,
-      default: true
+      default: !0
     },
     isMirrored: {
       type: Boolean,
-      default: false
+      default: !1
     },
     isBounded: {
       type: Boolean,
-      default: false
+      default: !1
     },
     // If true, the container height swells and contracts to fit contents
     autoSize: {
       type: Boolean,
-      default: true
+      default: !0
     },
     verticalCompact: {
       type: Boolean,
-      default: true
+      default: !0
     },
     restoreOnDrag: {
       type: Boolean,
-      default: false
+      default: !1
     },
     preventCollision: {
       type: Boolean,
-      default: false
+      default: !1
     },
     useCssTransforms: {
       type: Boolean,
-      default: true
+      default: !0
     },
     responsive: {
       type: Boolean,
-      default: false
+      default: !1
     },
     breakpoints: {
       type: Object,
@@ -7337,7 +5053,7 @@ const _sfc_main = {
     },
     useStyleCursor: {
       type: Boolean,
-      default: true
+      default: !0
     },
     transformScale: {
       type: Number,
@@ -7353,27 +5069,23 @@ const _sfc_main = {
     "layout-updated",
     "breakpoint-changed"
   ],
-  setup(__props, { expose: __expose, emit: __emit }) {
-    const props = __props;
-    const emit = __emit;
-    const emitter = mitt();
-    const exposeObj = {
+  setup(e, { expose: t, emit: n }) {
+    const i = e, o = n, s = bs(), a = {
       el: void 0,
       placeholderEl: void 0,
       placeholder: {},
-      emitter
+      emitter: s
     };
-    __expose(exposeObj);
-    const erd = elementResizeDetectorMaker({
+    t(a);
+    const l = ys({
       strategy: "scroll",
       // <- For ultra performance.
       // See https://github.com/wnr/element-resize-detector/issues/110 about callOnAdd.
-      callOnAdd: false
-    });
-    const state = reactive({
+      callOnAdd: !1
+    }), c = hn({
       width: null,
       mergedStyle: {},
-      isDragging: false,
+      isDragging: !1,
       placeholder: {
         x: 0,
         y: 0,
@@ -7389,310 +5101,157 @@ const _sfc_main = {
       originalLayout: null
       // store original Layout
     });
-    provide("emitter", emitter);
-    provide("gridLayout", { props, state });
-    function created() {
-      emitter.on("resizeEvent", onResizeEvent);
-      emitter.on("dragEvent", onDragEvent);
-      emit("layout-created", props.layout);
-      addWindowEventListener("resize", onWindowResize);
+    We("emitter", s), We("gridLayout", { props: i, state: c });
+    function r() {
+      s.on("resizeEvent", k), s.on("dragEvent", C), o("layout-created", i.layout), xs("resize", g);
     }
-    created();
-    onBeforeMount(() => {
-      emit("layout-before-mount", state.layout);
-    });
-    onMounted(() => {
-      emit("layout-mounted", state.layout);
-    });
-    onBeforeUnmount(() => {
-      emitter.off("resizeEvent", onResizeEvent);
-      emitter.off("dragEvent", onDragEvent);
-      removeWindowEventListener("resize", onWindowResize);
-      if (erd && exposeObj.el) {
-        erd.uninstall(exposeObj.el);
-      }
-    });
-    watch(() => state.width, async (newval, oldval) => {
-      emitter.emit("updateWidth", state.width);
-      updateHeight();
-      if (oldval === null) {
-        await nextTick();
-        emit("layout-ready", state.layout);
-      }
-    });
-    watch(() => props.layout, () => {
-      validateLayout(props.layout);
-      state.originalLayout = props.layout;
-      layoutUpdate();
-    }, { deep: true, immediate: true });
-    watch(() => props.colNum, () => {
-      state.colNum = props.colNum;
-      emitter.emit("setColNum", props.colNum);
-    }, { immediate: true });
-    watch(() => props.rowHeight, () => {
-      emitter.emit("setRowHeight", props.rowHeight);
-    });
-    watch(() => props.isDraggable, () => {
-      emitter.emit("setDraggable", props.isDraggable);
-    });
-    watch(() => props.isResizable, () => {
-      emitter.emit("setResizable", props.isResizable);
-    });
-    watch(() => props.isBounded, () => {
-      emitter.emit("setBounded", props.isBounded);
-    });
-    watch(() => props.transformScale, () => {
-      emitter.emit("setTransformScale", props.transformScale);
-    });
-    watch(() => props.responsive, () => {
-      if (!props.responsive) {
-        state.layout = cloneLayout(state.originalLayout);
-        emitter.emit("setColNum", props.colNum);
-      }
-      onWindowResize();
-    });
-    watch(() => props.maxRows, () => {
-      emitter.emit("setMaxRows", props.maxRows);
-    });
-    watch(() => props.margin, () => {
-      updateHeight();
-    }, { deep: true });
-    function layoutIsDiff(newLayout, oldLayout) {
-      if ((newLayout == null ? void 0 : newLayout.length) !== (oldLayout == null ? void 0 : oldLayout.length)) {
-        return true;
-      }
-      let diff = false;
-      let idx = 0;
-      while (idx < newLayout.length) {
-        const nItem = newLayout[idx];
-        const nKeys = Object.keys(nItem);
-        const oItem = oldLayout[idx];
-        const oKeys = Object.keys(oItem);
-        const keys = [.../* @__PURE__ */ new Set([...nKeys, ...oKeys])];
-        let j = 0;
-        while (j < keys.length) {
-          const k = keys[j];
-          if (nItem[k] !== oItem[k]) {
-            diff = true;
+    r(), hi(() => {
+      o("layout-before-mount", c.layout);
+    }), gn(() => {
+      o("layout-mounted", c.layout);
+    }), pn(() => {
+      s.off("resizeEvent", k), s.off("dragEvent", C), ws("resize", g), l && a.el && l.uninstall(a.el);
+    }), W(() => c.width, async (u, w) => {
+      s.emit("updateWidth", c.width), m(), w === null && (await pi(), o("layout-ready", c.layout));
+    }), W(() => i.layout, () => {
+      Wo(i.layout), c.originalLayout = i.layout, d();
+    }, { deep: !0, immediate: !0 }), W(() => i.colNum, () => {
+      c.colNum = i.colNum, s.emit("setColNum", i.colNum);
+    }, { immediate: !0 }), W(() => i.rowHeight, () => {
+      s.emit("setRowHeight", i.rowHeight);
+    }), W(() => i.isDraggable, () => {
+      s.emit("setDraggable", i.isDraggable);
+    }), W(() => i.isResizable, () => {
+      s.emit("setResizable", i.isResizable);
+    }), W(() => i.isBounded, () => {
+      s.emit("setBounded", i.isBounded);
+    }), W(() => i.transformScale, () => {
+      s.emit("setTransformScale", i.transformScale);
+    }), W(() => i.responsive, () => {
+      i.responsive || (c.layout = St(c.originalLayout), s.emit("setColNum", i.colNum)), g();
+    }), W(() => i.maxRows, () => {
+      s.emit("setMaxRows", i.maxRows);
+    }), W(() => i.margin, () => {
+      m();
+    }, { deep: !0 });
+    function f(u, w) {
+      if ((u == null ? void 0 : u.length) !== (w == null ? void 0 : w.length))
+        return !0;
+      let y = !1, T = 0;
+      for (; T < u.length; ) {
+        const j = u[T], H = Object.keys(j), P = w[T], D = Object.keys(P), O = [.../* @__PURE__ */ new Set([...H, ...D])];
+        let L = 0;
+        for (; L < O.length; ) {
+          const Y = O[L];
+          if (j[Y] !== P[Y]) {
+            y = !0;
             break;
           }
-          j += 1;
+          L += 1;
         }
-        if (diff) {
+        if (y)
           break;
-        }
-        idx += 1;
+        T += 1;
       }
-      return diff;
+      return y;
     }
-    function layoutUpdate() {
-      const diff = layoutIsDiff(props.layout, state.layout);
-      if (diff) {
-        initResponsiveFeatures();
-        state.layout = cloneLayout(props.layout);
-        compact(state.layout, props.verticalCompact);
-        emitter.emit("updateWidth", state.width);
-        updateHeight();
-        if (layoutIsDiff(props.layout, state.layout)) {
-          const layout = cloneLayout(state.layout);
-          emit("layout-updated", layout);
-          emit("update:layout", layout);
-        }
+    function d() {
+      if (f(i.layout, c.layout) && (S(), c.layout = St(i.layout), Wt(c.layout, i.verticalCompact), s.emit("updateWidth", c.width), m(), f(i.layout, c.layout))) {
+        const w = St(c.layout);
+        o("layout-updated", w), o("update:layout", w);
       }
     }
-    function updateHeight() {
-      state.mergedStyle = {
-        height: containerHeight()
+    function m() {
+      c.mergedStyle = {
+        height: b()
       };
     }
-    function onWindowResize() {
-      if (exposeObj.el) {
-        state.width = exposeObj.el.offsetWidth;
-      }
-      emitter.emit("resizeEvent");
+    function g() {
+      a.el && (c.width = a.el.offsetWidth), s.emit("resizeEvent");
     }
-    function containerHeight() {
-      var _a;
-      if (!props.autoSize) return;
-      const m2 = ((_a = props.margin) == null ? void 0 : _a[1]) || 0;
-      return `${bottom(state.layout) * (props.rowHeight + m2) + m2}px`;
+    function b() {
+      var w;
+      if (!i.autoSize) return;
+      const u = ((w = i.margin) == null ? void 0 : w[1]) || 0;
+      return `${Oo(c.layout) * (i.rowHeight + u) + u}px`;
     }
-    function onDragEvent([eventName, id2, x, y, h, w] = []) {
-      let l = getLayoutItem(state.layout, id2);
-      if (l === void 0 || l === null) {
-        l = { x: 0, y: 0 };
-      }
-      if (eventName === "dragstart" && !props.verticalCompact) {
-        state.positionsBeforeDrag = state.layout.reduce((result, { i, x: x2, y: y2 }) => ({
-          ...result,
-          [i]: { x: x2, y: y2 }
-        }), {});
-      }
-      if (eventName === "dragmove" || eventName === "dragstart") {
-        state.placeholder.x = l.x;
-        state.placeholder.y = l.y;
-        state.placeholder.w = w;
-        state.placeholder.h = h;
-        state.isDragging = true;
-      } else {
-        state.isDragging = false;
-      }
-      state.layout = moveElement(state.layout, l, x, y, true, props.preventCollision);
-      if (props.restoreOnDrag) {
-        l.static = true;
-        compact(state.layout, props.verticalCompact, state.positionsBeforeDrag);
-        l.static = false;
-      } else {
-        compact(state.layout, props.verticalCompact);
-      }
-      updateHeight();
-      if (eventName === "dragend") {
-        delete state.positionsBeforeDrag;
-      }
-      if (layoutIsDiff(props.layout, state.layout)) {
-        const layout = cloneLayout(state.layout);
-        emit("layout-updated", layout);
-        emit("update:layout", layout);
+    function C([u, w, y, T, j, H] = []) {
+      let P = en(c.layout, w);
+      if (P == null && (P = { x: 0, y: 0 }), u === "dragstart" && !i.verticalCompact && (c.positionsBeforeDrag = c.layout.reduce((D, { i: O, x: L, y: Y }) => ({
+        ...D,
+        [O]: { x: L, y: Y }
+      }), {})), u === "dragmove" || u === "dragstart" ? (c.placeholder.x = P.x, c.placeholder.y = P.y, c.placeholder.w = H, c.placeholder.h = j, c.isDragging = !0) : c.isDragging = !1, c.layout = ze(c.layout, P, y, T, !0, i.preventCollision), i.restoreOnDrag ? (P.static = !0, Wt(c.layout, i.verticalCompact, c.positionsBeforeDrag), P.static = !1) : Wt(c.layout, i.verticalCompact), m(), u === "dragend" && delete c.positionsBeforeDrag, f(i.layout, c.layout)) {
+        const D = St(c.layout);
+        o("layout-updated", D), o("update:layout", D);
       }
     }
-    function onResizeEvent([eventName, id2, x, y, h, w] = []) {
-      let l = getLayoutItem(state.layout, id2);
-      if (l === void 0 || l === null) {
-        l = { h: 0, w: 0 };
-      }
-      let hasCollisions;
-      if (props.preventCollision) {
-        const collisions = getAllCollisions(state.layout, { ...l, w, h }).filter(
-          (layoutItem) => layoutItem.i !== l.i
+    function k([u, w, y, T, j, H] = []) {
+      let P = en(c.layout, w);
+      P == null && (P = { h: 0, w: 0 });
+      let D;
+      if (i.preventCollision) {
+        const O = Gn(c.layout, { ...P, w: H, h: j }).filter(
+          (L) => L.i !== P.i
         );
-        hasCollisions = collisions.length > 0;
-        if (hasCollisions) {
-          let leastX = Infinity;
-          let leastY = Infinity;
-          collisions.forEach((layoutItem) => {
-            if (layoutItem.x > l.x) leastX = Math.min(leastX, layoutItem.x);
-            if (layoutItem.y > l.y) leastY = Math.min(leastY, layoutItem.y);
-          });
-          if (Number.isFinite(leastX)) l.w = leastX - l.x;
-          if (Number.isFinite(leastY)) l.h = leastY - l.y;
+        if (D = O.length > 0, D) {
+          let L = 1 / 0, Y = 1 / 0;
+          O.forEach((K) => {
+            K.x > P.x && (L = Math.min(L, K.x)), K.y > P.y && (Y = Math.min(Y, K.y));
+          }), Number.isFinite(L) && (P.w = L - P.x), Number.isFinite(Y) && (P.h = Y - P.y);
         }
       }
-      if (!hasCollisions) {
-        l.w = w;
-        l.h = h;
-      }
-      if (eventName === "resizestart" || eventName === "resizemove") {
-        state.placeholder.x = x;
-        state.placeholder.y = y;
-        state.placeholder.w = l.w;
-        state.placeholder.h = l.h;
-        state.isDragging = true;
-      } else {
-        state.isDragging = false;
-      }
-      if (props.responsive) {
-        responsiveGridLayout();
-      }
-      compact(state.layout, props.verticalCompact);
-      updateHeight();
-      if (layoutIsDiff(props.layout, state.layout)) {
-        const layout = cloneLayout(state.layout);
-        emit("layout-updated", layout);
-        emit("update:layout", layout);
+      if (D || (P.w = H, P.h = j), u === "resizestart" || u === "resizemove" ? (c.placeholder.x = y, c.placeholder.y = T, c.placeholder.w = P.w, c.placeholder.h = P.h, c.isDragging = !0) : c.isDragging = !1, i.responsive && A(), Wt(c.layout, i.verticalCompact), m(), f(i.layout, c.layout)) {
+        const O = St(c.layout);
+        o("layout-updated", O), o("update:layout", O);
       }
     }
-    function responsiveGridLayout() {
-      const newBreakpoint = getBreakpointFromWidth(props.breakpoints, state.width);
-      const newCols = getColsFromBreakpoint(newBreakpoint, props.cols);
-      if (newCols !== state.colNum) {
-        state.colNum = newCols;
-        state.layout = findOrGenerateResponsiveLayout(
-          state.layout,
-          state.layouts,
-          props.breakpoints,
-          newBreakpoint,
-          newCols,
-          props.verticalCompact
-        );
-        state.layouts[newBreakpoint] = state.layout;
-        emitter.emit("setColNum", newCols);
-      }
-      if (state.lastBreakpoint !== newBreakpoint) {
-        state.lastBreakpoint = newBreakpoint;
-        emit("breakpoint-changed", newBreakpoint, state.layout);
-      }
+    function A() {
+      const u = Fo(i.breakpoints, c.width), w = Kn(u, i.cols);
+      w !== c.colNum && (c.colNum = w, c.layout = jo(
+        c.layout,
+        c.layouts,
+        i.breakpoints,
+        u,
+        w,
+        i.verticalCompact
+      ), c.layouts[u] = c.layout, s.emit("setColNum", w)), c.lastBreakpoint !== u && (c.lastBreakpoint = u, o("breakpoint-changed", u, c.layout));
     }
-    function initResponsiveFeatures() {
-      state.layouts = { ...props.responsiveLayouts };
+    function S() {
+      c.layouts = { ...i.responsiveLayouts };
     }
-    function setRef(e) {
-      if (!e || e === exposeObj.el) {
-        return;
-      }
-      exposeObj.el = e;
-      if (erd) {
-        erd.listenTo(exposeObj.el, () => {
-          onWindowResize();
-        });
-      }
-      state.width = exposeObj.el.offsetWidth;
+    function _(u) {
+      !u || u === a.el || (a.el = u, l && l.listenTo(a.el, () => {
+        g();
+      }), c.width = a.el.offsetWidth);
     }
-    function setPlaceholderRef(e) {
-      if (e) {
-        exposeObj.placeholder = e;
-        exposeObj.placeholderEl = e.el;
-      }
+    function v(u) {
+      u && (a.placeholder = u, a.placeholderEl = u.el);
     }
-    return (_ctx, _cache) => {
-      return openBlock(), createElementBlock("div", {
-        ref: setRef,
-        class: "vue-grid-layout",
-        style: normalizeStyle(state.mergedStyle)
-      }, [
-        renderSlot(_ctx.$slots, "default", {}, void 0, true),
-        withDirectives(createVNode(GridItem, {
-          ref: setPlaceholderRef,
-          class: "vue-grid-placeholder",
-          x: state.placeholder.x,
-          y: state.placeholder.y,
-          w: state.placeholder.w,
-          h: state.placeholder.h,
-          i: "placeholder"
-        }, null, 8, ["x", "y", "w", "h"]), [
-          [vShow, state.isDragging]
-        ])
-      ], 4);
-    };
+    return (u, w) => (ve(), ye("div", {
+      ref: _,
+      class: "vue-grid-layout",
+      style: mn(c.mergedStyle)
+    }, [
+      vn(u.$slots, "default", {}, void 0, !0),
+      gi(mi(Qn, {
+        ref: v,
+        class: "vue-grid-placeholder",
+        x: c.placeholder.x,
+        y: c.placeholder.y,
+        w: c.placeholder.w,
+        h: c.placeholder.h,
+        i: "placeholder"
+      }, null, 8, ["x", "y", "w", "h"]), [
+        [vi, c.isDragging]
+      ])
+    ], 4));
   }
-};
-const GridLayout = /* @__PURE__ */ _export_sfc(_sfc_main, [["__scopeId", "data-v-a10aee95"]]);
-const VueGridLayout = {
-  // ResponsiveGridLayout,
-  GridLayout,
-  GridItem
-};
-function install(Vue) {
-  if (install.installed) return;
-  install.installed = true;
-  Object.keys(VueGridLayout).forEach((name) => {
-    Vue.component(name, VueGridLayout[name]);
-  });
-}
-const plugin = {
-  install
-};
-let GlobalVue = null;
-if (typeof window !== "undefined") {
-  GlobalVue = window.Vue;
-} else if (typeof global !== "undefined") {
-  GlobalVue = global.Vue;
-}
-if (GlobalVue) {
-  GlobalVue.use(plugin);
+}, Es = /* @__PURE__ */ Zn(Ss, [["__scopeId", "data-v-a10aee95"]]);
+function dn(e) {
+  dn.installed || (dn.installed = !0, e.component("GridLayout", Es), e.component("GridItem", Qn));
 }
 export {
-  GridItem,
-  GridLayout,
-  VueGridLayout as default,
-  install
+  Qn as GridItem,
+  Es as GridLayout,
+  dn as default
 };
