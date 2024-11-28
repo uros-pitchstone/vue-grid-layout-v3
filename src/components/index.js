@@ -10,7 +10,16 @@ export default function install(app) {
 
 export { GridLayout, GridItem };
 
-const GlobalVue = window?.Vue || global?.Vue;
-if (GlobalVue) {
-  GlobalVue.use({ install });
+try {
+  let GlobalVue;
+  if (window) {
+    GlobalVue = window?.Vue;
+  } else if (global) {
+    GlobalVue = global?.Vue;
+  }
+  if (GlobalVue) {
+    GlobalVue.use({ install });
+  }
+} catch (e) {
+  //
 }
