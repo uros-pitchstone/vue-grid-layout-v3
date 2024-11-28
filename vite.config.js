@@ -55,7 +55,7 @@ export default defineConfig(() => ({
       output: [{
         format: 'es',
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
-        globals: { vue: 'Vue' },
+        // globals: { vue: 'Vue' },
       }, {
         name: 'VueGridLayout',
         format: 'iife',
@@ -64,6 +64,7 @@ export default defineConfig(() => ({
         globals: { vue: 'Vue' },
       }, {
         name: 'VueGridLayout',
+        entryFileNames: 'vue-grid-layout-v3.umd.js',
         format: 'umd',
         exports: 'named',
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量

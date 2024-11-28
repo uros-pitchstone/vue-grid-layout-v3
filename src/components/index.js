@@ -9,3 +9,8 @@ export default function install(app) {
 }
 
 export { GridLayout, GridItem };
+
+const GlobalVue = window?.Vue || global?.Vue;
+if (GlobalVue) {
+  GlobalVue.use({ install });
+}
