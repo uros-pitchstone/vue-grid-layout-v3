@@ -8,18 +8,5 @@ export default function install(app) {
   app.component('GridItem', GridItem);
 }
 
-export { GridLayout, GridItem };
+export { GridLayout, GridItem, install };
 
-try {
-  let GlobalVue;
-  if (window) {
-    GlobalVue = window?.Vue;
-  } else if (global) {
-    GlobalVue = global?.Vue;
-  }
-  if (GlobalVue) {
-    GlobalVue.use({ install });
-  }
-} catch (e) {
-  //
-}
