@@ -1,5 +1,5 @@
 /**
- * vue-grid-layout-v3 3.1.1
+ * vue-grid-layout-v3 3.1.2-rc.1
  * coffeebi <merfais.bwq@163.com>
  * https://github.com/merfais/vue-grid-layout-v3
  */
