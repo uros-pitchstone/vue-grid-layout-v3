@@ -18,6 +18,9 @@ export default defineConfig({
         '@': fileURLToPath(new URL('../src/', import.meta.url)),
       },
     },
+    ssr: {
+      noExternal: ['vue-grid-layout-v3'],
+    },
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
