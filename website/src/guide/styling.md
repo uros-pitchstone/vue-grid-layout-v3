@@ -1,3 +1,6 @@
+---
+aside: true
+---
 <script setup>
 import ExampleStylingGridLines from '@/example/styling-grid-lines.vue'
 import ExampleStylingPlaceholder from '@/example/styling-placeholder.vue'

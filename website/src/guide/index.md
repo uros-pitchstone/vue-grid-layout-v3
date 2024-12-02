@@ -1,3 +1,6 @@
+---
+aside: true
+---
 # Installation
 
 ## NPM

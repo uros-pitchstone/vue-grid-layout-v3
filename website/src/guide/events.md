@@ -1,3 +1,6 @@
+---
+aside: true
+---
 # Events
 
 Move and resize event listeners can be added to each grid-item, so that the parent Vue can be notified when a grid element is being moved or resized.
