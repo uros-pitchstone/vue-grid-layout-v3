@@ -1,4 +1,8 @@
-<p align="center"><a href="https://merfais.github.io/vue-grid-layout-v3/" target="_blank" rel="noopener noreferrer"><img width="100" src="https://merfais.github.io/vue-grid-layout-v3/assets/img/logo.png" alt="Vue Grid Layout"></a></p>
+<p align="center">
+  <a href="https://merfais.github.io/vue-grid-layout-v3/" target="_blank" rel="noopener noreferrer">
+    <img width="100" src="https://merfais.github.io/vue-grid-layout-v3/logo.png" alt="Vue Grid Layout">
+  </a>
+</p>
 
 <h1 align="center">vue-grid-layout-v3</h1>
 
@@ -8,7 +12,7 @@
     <img src="https://img.shields.io/npm/dm/vue-grid-layout-v3.svg"/>
 </a>
 <a href="https://github.com/merfais/vue-grid-layout-v3/releases">
-    <img src="https://img.shields.io/github/size/merfais/vue-grid-layout-v3/dist/vue-grid-layout.umd.min.js"/>
+    <img src="https://img.shields.io/github/size/merfais/vue-grid-layout-v3/dist/vue-grid-layout.js"/>
 </a>
 <!--a href="https://vuejs.org/">
     <img src="https://img.shields.io/badge/vue-2.2.x-brightgreen.svg"/>
