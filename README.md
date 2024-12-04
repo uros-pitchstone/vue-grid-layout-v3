@@ -12,7 +12,7 @@
     <img src="https://img.shields.io/npm/dm/vue-grid-layout-v3.svg"/>
 </a>
 <a href="https://github.com/merfais/vue-grid-layout-v3/releases">
-    <img src="https://img.shields.io/github/size/merfais/vue-grid-layout-v3/dist/vue-grid-layout.js"/>
+    <img src="https://img.shields.io/github/size/merfais/vue-grid-layout-v3/dist/vue-grid-layout-v3.js"/>
 </a>
 <!--a href="https://vuejs.org/">
     <img src="https://img.shields.io/badge/vue-2.2.x-brightgreen.svg"/>
@@ -55,17 +55,6 @@ Check out the <a href="https://merfais.github.io/vue-grid-layout-v3/" target="_b
 <!--
 Chinese documentation: [简体中文](./README-zh_CN.md)
 -->
-
-#### Projects using vue-grid-layout
-
-- [Transcrev](https://www.transcrev.com/?utm_source=github&utm_medium=web&utm_campaign=vue-grid-layout)
-- [Draxed](https://www.draxed.com/?utm_source=github&utm_medium=web&utm_campaign=vue-grid-layout)
-- [cryptotiles](https://www.cryptotiles.io/?utm_source=github&utm_medium=web&utm_campaign=vue-grid-layout)
-- [Data Providers](https://www.dataproviders.io/?utm_source=github&utm_medium=web&utm_campaign=vue-grid-layout)
-- [Cataholic](https://cataholic.glitch.me/)
-
-*Know of others? Create a PR to let me know!*
-
 
 ## Contribute
 
