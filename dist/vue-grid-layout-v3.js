@@ -1,7 +1,7 @@
 /**
  * vue-grid-layout-v3 3.1.2
  * coffeebi <merfais.bwq@163.com>
- * https://github.com/merfais/vue-grid-layout-v3
+ * https://github.com/uros-pitchstone/vue-grid-layout-v3
  */
 import { inject as Le, reactive as hn, computed as kt, unref as J, onBeforeUnmount as pn, onMounted as gn, watch as W, openBlock as ve, createElementBlock as ye, normalizeClass as ue, normalizeStyle as mn, renderSlot as vn, createCommentVNode as di, provide as We, onBeforeMount as hi, nextTick as pi, withDirectives as gi, createVNode as mi, vShow as vi } from "vue";
 import './index.css';const q = {
@@ -5074,7 +5074,8 @@ const Ss = {
       el: void 0,
       placeholderEl: void 0,
       placeholder: {},
-      emitter: s
+      emitter: s,
+      layoutUpdate: () => d()
     };
     t(a);
     const l = ys({
@@ -5246,7 +5247,7 @@ const Ss = {
       ])
     ], 4));
   }
-}, Es = /* @__PURE__ */ Zn(Ss, [["__scopeId", "data-v-a10aee95"]]);
+}, Es = /* @__PURE__ */ Zn(Ss, [["__scopeId", "data-v-127215c0"]]);
 function dn(e) {
   dn.installed || (dn.installed = !0, e.component("GridLayout", Es), e.component("GridItem", Qn));
 }
